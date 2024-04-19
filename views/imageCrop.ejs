@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client-Side Image Crop</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+
+</head>
+<body>
+
+    <input type="file" accept="image/*" id="imageInput">
+    <img id="croppedImage">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageInput = document.getElementById('imageInput');
+            const croppedImage = document.getElementById('croppedImage');
+
+            imageInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = (e) => {
+                        const imageUrl = e.target.result;
+
+                        // Initialize Cropper
+                        const cropper = new Cropper(croppedImage, {
+                            aspectRatio: 1, // Set the aspect ratio as needed
+                            viewMode: 2,   // Adjust the view mode as needed
+                            crop(event) {
+                                // This function is called when cropping is done
+                                // You can get the cropped data using cropper.getData()
+                                console.log(cropper.getData());
+                            },
+                        });
+
+                        // Set the image source for cropping
+                        cropper.replace(imageUrl);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

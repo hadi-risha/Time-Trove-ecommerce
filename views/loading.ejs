@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* loading.css */
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white background */
+            z-index: 9999; /* ensure it appears on top of other elements */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>  
+
+
+    <!-- js -->
+    <script>
+        // loading.js
+        document.addEventListener("DOMContentLoaded", function () {
+            const loadingOverlay = document.getElementById("loading-overlay");
+            
+            // Show loading indicator
+            loadingOverlay.style.display = "block";
+
+            // Hide loading indicator when the page is fully loaded
+            window.addEventListener("load", function () {
+                loadingOverlay.style.display = "none";
+            });
+        });
+    </script>
+</body>
+</html>

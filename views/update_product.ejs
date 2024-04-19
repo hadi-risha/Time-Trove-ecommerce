@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Products</title>
+    <!-- css -->
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <link rel="stylesheet" href="../css/update_product.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap css cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- end of Bootstrap css cdn link -->
+
+    <!-- jquery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
+    
+</head>
+
+<body>
+
+    
+
+<!-- main section -->
+<main class="main-container" style="min-height: 77vh;">
+    <div class="container-fluid">
+        <div class="row p-0">
+            <div class="col-12 m-0 d-flex p-0">
+                <div class="container-box">  
+
+                <!-- admin dashboard section -->
+                    <p class="constant-txt">Admin Time Trove</p>
+                    <div class="management-txt">
+                        <ul>
+                            <li><a href="/adminHome">Dashboard</a></li>
+                            <li><a href="/add-product">Add Product</a></li>
+                            <li><a href="/user-management">User Management</a></li>
+                            <li><a href="/adminProductManagement">Product Management</a></li>
+                            <li><a href="/category-management">Category Management</a></li>
+                            <li><a href="/order-management">Order Management</a></li>
+                            <li><a href="/coupon-management">Coupon Management</a></li>
+                            <li><a href="/offer-management" class="admin-links">Offer Management</a></li>
+                            <li><a href="/referralOffer-management" class="admin-links">Referral Offer Management</a></li>
+                        </ul>
+                            <form action="/ad-logout" method="post"><button class="logout-btn">
+                                <svg class="logout-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M29.8118 24.632H27.1455C26.9635 24.632 26.7928 24.7116 26.679 24.8518C26.4135 25.1739 26.1291 25.4846 25.8294 25.7802C24.604 27.0059 23.1524 27.9826 21.555 28.6565C19.9001 29.3549 18.1213 29.7132 16.3248 29.71C14.5081 29.71 12.7483 29.3537 11.0946 28.6565C9.49723 27.9826 8.04566 27.0059 6.8202 25.7802C5.59255 24.5587 4.61365 23.1109 3.93771 21.517C3.23606 19.8648 2.88333 18.1102 2.88333 16.295C2.88333 14.4798 3.23985 12.7253 3.93771 11.0731C4.61282 9.47767 5.58377 8.04144 6.8202 6.80984C8.05664 5.57824 9.49409 4.60812 11.0946 3.93359C12.7483 3.23631 14.5081 2.8801 16.3248 2.8801C18.1416 2.8801 19.9014 3.23252 21.555 3.93359C23.1556 4.60812 24.593 5.57824 25.8294 6.80984C26.1291 7.10921 26.4097 7.41995 26.679 7.73827C26.7928 7.87849 26.9673 7.95807 27.1455 7.95807H29.8118C30.0508 7.95807 30.1987 7.6928 30.0659 7.49195C27.1569 2.97484 22.067 -0.0151007 16.2831 5.73684e-05C7.19568 0.0227945 -0.0901822 7.39343 0.000843713 16.4618C0.0918696 25.3861 7.36636 32.59 16.3248 32.59C22.0936 32.59 27.1607 29.6039 30.0659 25.0981C30.1949 24.8973 30.0508 24.632 29.8118 24.632ZM33.1836 16.0563L27.8017 11.812C27.6007 11.6529 27.3086 11.7969 27.3086 12.0508V14.9308H15.3994C15.2325 14.9308 15.096 15.0672 15.096 15.234V17.3561C15.096 17.5228 15.2325 17.6593 15.3994 17.6593H27.3086V20.5393C27.3086 20.7932 27.6045 20.9372 27.8017 20.778L33.1836 16.5338C33.2198 16.5054 33.2492 16.4692 33.2693 16.4278C33.2895 16.3864 33.3 16.341 33.3 16.295C33.3 16.249 33.2895 16.2036 33.2693 16.1622C33.2492 16.1209 33.2198 16.0846 33.1836 16.0563Z" fill="white"/>
+                                    </svg>
+                                    
+                                Logout</button></form>
+                    </div>
+                    <section id="content">
+
+                        <!-- MAIN -->
+                    <div class="dashboard-containerbox"> 
+                        <main>
+                            <div class="head-title">
+                                <div class="left">
+                                    <h1>Update Product</h1>
+                                </div>
+                            </div>
+                    
+                            <div class="manageOptions">
+                                <a href="/adminProductManagement">
+                                    <button>Back to product management</button>
+                                </a>
+                            </div>
+                    
+                            <div class="table-data justify-content-center">
+                            <div id="addProduct" class="order">
+                                <form id="updateProductForm" class="addProductForm"enctype="multipart/form-data" >
+                                    <input required type="text" hidden name="id" value="<%= updateProductDetails._id %>">
+
+                                    <div class="d-flex align-items-center formRow">
+                                        <div class="errMesg">
+                                            <label for="pName" class="d-block">Product Name</label>
+                                            
+                                            <input  type="text" name="pName" value="<%= updateProductDetails?.productName %>">
+                                                <% if(enterValidProductName){ %>
+                                                <p style="color: red; margin-top: 5px;">Product name needs 2+ letters</p>
+                                                <% } %>
+                                                <% if(notValidProName){ %>
+                                                    <p style="color: red; margin-top: 5px;">Product name must be letters only</p>
+                                                <% } %>
+                                        </div>
+
+                                        <div>
+                                            <label for="Category" class="d-block">Category</label>
+                                            <select id="dropdown" name="category">
+                                                <option value="<%= updateProductDetails.category %>"><%= updateProductDetails.category %></option>
+                                                <% for(let i=0; i<allCategories.length; i++) { %>
+                                                    <% if (allCategories[i].unlisted == false) { %>
+                                                        <option value="<%= allCategories[i].category %>"><%= allCategories[i].category %></option>
+                                                    <% } %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p id="pname" style="color: red; font-size: 12px; margin-top: -29px;"></p>
+                                    <p id="ctgry" style="color: red; font-size: 12px; margin-left: 430px;"></p>
+                    
+                                    <div class="d-flex align-items-center formRow pDescription">
+                                        <div class="errMesg pDes ">
+                                            <label for="pDescription" class="d-block">Product Description</label>
+                                            <input required type="text" name="pDescription" value="<%= updateProductDetails.productDescription %>">
+                                                <% if(emptypDscrptn){ %>
+                                                    <p style="color: red; margin-top: 5px;">field required</p>
+                                                <% } %>
+                                            <p id="pDscrptn" style="color: red; margin-top: 5px;"></p>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="d-flex align-items-center formRow priceInput">
+                                        <div class="position-relative errMesg fPrice ">
+                                            <label for="fPrice" class="d-block">First Price</label>
+                                            <input id="fPrice" required class="fPrice" type="number" name="fPrice" value="<%= updateProductDetails.firstPrice %>">
+                                            <% if(negativeFirstPrice){ %>
+                                                <p style="color: red; margin-top: 5px;">Enter non-negative price</p>
+                                             <% } %>
+                                             <% if(invalidFirstPrice){ %>
+                                               <p style="color: red; margin-top: 5px;">Enter at least 2 numbers</p>
+                                            <% } %>
+                                        </div>
+                                        <div  class="dheading  errMesg discount ">
+                                            <label for="discount" class="d-block">Discount (%)</label>
+                                            <input id="discount" required class="discount" type="number" name="discount" value="<%= updateProductDetails.discount %>">
+                                            <% if(negativeDiscount){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Enter non-negative discount</p>
+                                             <% } %>
+                                             <% if(notValidDscnt){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Enter a valid % value</p>
+                                             <% } %>
+                                             <% if(notValidPercentage){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Discount cannot exceed 100%</p>
+                                             <% } %>
+                                             <% if(invalidDiscnt){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Field required</p>
+                                             <% } %>
+                                        </div>
+                                        <div  class="dheading ">
+                                            <label for="lPrice" class="d-block">Last Price</label>
+                                            <input id="lPrice" required class="lPrice" type="number" name="lPrice" value="<%= updateProductDetails.lastPrice %>">
+                                            <% if(negativeLastPrice){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Enter non-negative price</p>
+                                              <% } %>
+                                              <% if(invalidLastPrice){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Enter at least 2 numbers</p>
+                                              <% } %>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <p id="firstPrice" style="color: red; margin-top: -30px; font-size: 12px;"></p>
+                                        <p id="lastPrice" style="color: red; margin-top: -30px; font-size: 12px;margin-left: 117px;"></p>
+                                        <p id="discountOffer" style="color: red; margin-top: -30px; font-size: 12px; margin-left: 118px;"></p>
+                                    </div>
+                    
+                                    <div class="d-flex align-items-center formRow priceInput">
+                                        <div class="errMesg qty ">
+                                            <label for="quantity" class="d-block">Quantity</label>
+                                            <input required type="number" name="quantity" value="<%= updateProductDetails.quantity %>">
+                                            <% if(negativeQty){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Enter non-negative quantity</p>
+                                             <% } %>
+                                             <% if(invalidQty){ %>
+                                                <p style="color: red; margin-top: 5px; font-size: 13px;">Field required</p>
+                                             <% } %>
+                                             <p id="qty" style="color: red; margin-top: 5px; font-size: 13px;"></p>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="d-flex align-items-center formRow">
+                                        <div class="errMesg file" >
+                                            <label for="image" class=" d-block">Image</label>
+                                            
+                                            <input class="p-1" type="file" class="form-control" name="images" id="formFile"  multiple onchange="previewImages(this)">
+                                            <% if(imagenotvalid){ %>
+                                                <p style="color: red; margin-top: 5px;">Please upload valid image files</p>
+                                            <% } %>
+                                            <p id="images" style="color: red; margin-top: 5px;"></p>
+                                        </div>
+                                        <div  id="imagePreview" class="preview-container remove-icon-container"></div>
+                                    </div>
+
+                                    
+                                    
+                                    <!-- image container -->
+                                    <!-- Display images and delete buttons -->
+                                    <div style="display: flex; gap: 3px;">
+                                        <% const maxImages = 6; %>
+                                        <% for (let i = 0; i < Math.min(updateProductDetails.images.length, maxImages); i++) { %>
+                                            <div class="img-container">
+                                                <img src="<%= updateProductDetails.images[i] %>" alt="<%= updateProductDetails.filename %>">
+                                                <button class="delete-image-btn" style="border: 1px solid white;" data-image-url="<%= updateProductDetails.images[i] %>">
+                                                    <!-- Delete -->
+                                                    <i style="background-color: rgb(231, 227, 227); padding: 4px; border-radius: 3px;" class="delete-icon fa-sharp fa-solid fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                    <!-- /image container -->
+
+
+                                    
+                                    
+                                    
+                                    
+                    
+                                    <div  class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-warning final-btn">Update Product</button>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </main>
+                    </div>
+                    <!-- MAIN -->
+                    </section>
+                    <!-- CONTE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- /main section  --> 
+
+
+    <!-- update form using patch and fetch -->
+    <script>
+        document.getElementById('updateProductForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            try {
+                const response = await fetch('/update-product', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Check if the update was successful
+                if (result.success) {
+                    // Redirect to the referral offer management page
+                    window.location.href = '/adminProductManagement';
+                    return;
+                } else if(result.url) {
+                    // Handle errors, e.g., show an error message
+                    location.href = result.url;
+                    return;
+                }
+                console.error(result);
+            } catch (error) {
+                console.error('There was a problem with your fetch operation:', error);
+            }
+            });
+    </script>
+    <!-- update form using patch and fetch -->
+
+
+    <!-- show discount price -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const fPriceInput = document.getElementById('fPrice');
+                const discountInput = document.getElementById('discount');
+                const lPriceInput = document.getElementById('lPrice');
+
+                function calculateLastPrice() {
+                    const firstPrice = parseFloat(fPriceInput.value) || 0;
+                    const discount = parseFloat(discountInput.value) || 0;
+                    const lastPrice = firstPrice - (firstPrice * discount / 100);
+                    lPriceInput.value = Math.trunc(lastPrice); // Adjust the number of decimal places as needed
+                }
+
+                // Listen for changes on the first price and discount inputs
+                fPriceInput.addEventListener('input', calculateLastPrice);
+                discountInput.addEventListener('input', calculateLastPrice);
+
+                // Initial calculation
+                calculateLastPrice();
+            });
+        </script>
+    <!-- /show discount price -->
+
+
+
+
+
+
+<!-- update-product form validation -->
+<script>
+    function validateForm() { 
+        // Get form elements
+        const pNameInput = document.querySelector('input[name="pName"]');
+        const categorySelect = document.querySelector('select[name="category"]');
+        const pDescriptionInput = document.querySelector('input[name="pDescription"]');
+        const fPriceInput = document.querySelector('input[name="fPrice"]');
+        const lPriceInput = document.querySelector('input[name="lPrice"]');
+        const discountInput = document.querySelector('input[name="discount"]');
+        const quantityInput = document.querySelector('input[name="quantity"]');
+        const imagesInput = document.querySelector('input[name="images"]');
+
+        // Validate product name
+        const trimmedPName = pNameInput.value.trim();
+        if (trimmedPName.length < 2) {
+            document.getElementById('pname').innerHTML = "Product name needs 2+ letters...";
+            return false;
+        }
+        if (!/^[A-Za-z ]+$/.test(trimmedPName)) {
+            document.getElementById('pname').innerHTML = "Product name must be letters only";
+            return false;
+        }
+
+        if (categorySelect.value === '') {
+        document.getElementById('ctgry').innerHTML = "Category selection is required";
+        return false;
+        }
+
+        // Validate product description
+        const trimmedPDescription = pDescriptionInput.value.trim();
+        if (trimmedPDescription === '') {
+            document.getElementById('pDscrptn').innerHTML = "Description is required";
+            return false;
+        }
+
+        // Validate first price
+        const trimmedFPrice = fPriceInput.value.trim();
+        if (!/^(?:\d*\.)?\d+$/.test(trimmedFPrice)) {
+            document.getElementById('firstPrice').innerHTML = "Enter non-negative price";
+            return false;
+        }
+        if (!/\d{2,}/.test(trimmedFPrice)) {
+            document.getElementById('firstPrice').innerHTML = "Enter at least 2 numbers";
+            return false;
+        }
+
+        // Validate last price
+        const trimmedLPrice = lPriceInput.value.trim();
+        if (!/^(?:\d*\.)?\d+$/.test(trimmedLPrice)) {
+            document.getElementById('lastPrice').innerHTML = "Enter non-negative price";
+            return false;
+        }
+        if (!/\d{2,}/.test(trimmedLPrice)) {
+            document.getElementById('lastPrice').innerHTML = "Enter at least 2 numbers";
+            return false;
+        }
+
+        // Validate discount
+        const trimmedDiscount = discountInput.value.trim();
+        if (!/^(?:\d*\.)?\d+$/.test(trimmedDiscount)) {
+            document.getElementById('discountOffer').innerHTML = "Enter non-negative discount";
+            return false;
+        }
+        if (trimmedDiscount < 1 || trimmedDiscount > 99) {
+            document.getElementById('discountOffer').innerHTML = "Discount percentage should be between 1 and 99";
+            return false;
+        }
+        if (trimmedDiscount > 100) {
+            document.getElementById('discountOffer').innerHTML = "Discount percentage cannot exceed 100";
+            return false;
+        }
+        if (!/\d{1,}/.test(trimmedDiscount)) {
+            document.getElementById('discountOffer').innerHTML = "Field required";
+            return false;
+        }
+
+        // Validate quantity
+        const trimmedQuantity = quantityInput.value.trim();
+        if (!/^(?:\d*\.)?\d+$/.test(trimmedQuantity)) {
+            document.getElementById('qty').innerHTML = "Enter non-negative quantity";
+            return false;
+        }
+        if (!/\d{1,}/.test(trimmedQuantity)) {
+            document.getElementById('qty').innerHTML = "Field required";
+            return false;
+        }
+
+        
+        const allowedImageExtensions = /\.(png|jpeg|jpg|gif|bmp)$/i;
+        if (!Array.from(imagesInput.files).every(file => allowedImageExtensions.test(file.name))) {
+            document.getElementById('images').innerHTML = "Please upload valid image files with extensions: .png, .jpeg, .jpg, .gif, .bmp";
+            return false;
+        }
+
+        // If all validations pass, allow the form to submit
+        return true;
+    }
+
+    // Attach the validateForm function to the form's onsubmit event
+    const form = document.querySelector('form[action="/update-product"]');
+    if (form) {
+        form.onsubmit = validateForm;
+    }
+</script>    
+<!-- update-product form validation -->
+
+
+
+<!-- script for delete already existing image -->
+<script>
+    // Attach an event listener to each delete button
+    const deleteButtons = document.querySelectorAll('.delete-image-btn');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const imageUrl = button.getAttribute('data-image-url');
+            // Remove image from preview
+            button.parentNode.remove();
+            // Send request to delete image on the server
+            await deleteImageOnServer(imageUrl);
+        });
+    });
+
+    // Function to send a request to delete the image on the server
+    async function deleteImageOnServer(imageUrl) {
+        try {
+            const response = await fetch('/update-deleteImage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ imageUrl }),
+            });
+
+            if (response.ok) {
+                // Optionally, redirect to the update product page
+                // window.location.href = '/update-product';
+            } else {
+                console.error('Error deleting image on the server');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    $('.delete-image-btn').on('click', function () {
+        const imageUrl = $(this).data('image-url');
+
+        // Send AJAX request to delete the image
+        $.ajax({
+            url: '/update-deleteImage', // Replace with your server endpoint for deleting images
+            method: 'POST',
+            data: { imageUrl: imageUrl },
+            success: function () {
+                // Remove the image container on success
+                $(this).closest('.img-container').remove();
+            },
+            error: function () {
+                // alert('Failed to delete image.');
+            }
+        });
+    });
+</script>
+<!-- end of delete already existing image --> 
+
+
+
+
+
+<!--script for preview image -->
+<script>
+    function previewImages(input) {
+        const previewContainer = document.getElementById('imagePreview');
+        previewContainer.innerHTML = ''; // Clear previous previews
+
+        const files = input.files;
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imgContainer = document.createElement('div');
+                imgContainer.classList.add('preview-item');
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = file.name;
+
+                const removeIcon = document.createElement('span');
+                removeIcon.classList.add('remove-icon');
+                removeIcon.innerHTML = '&times;';
+
+                // Handle the removal of the image when the remove icon is clicked
+                removeIcon.onclick = function () {
+                    imgContainer.remove();
+                    // Remove the corresponding file from the input
+                    const inputFiles = Array.from(input.files);
+                    const inputIndex = inputFiles.indexOf(file);
+                    if (inputIndex !== -1) {
+                        inputFiles.splice(inputIndex, 1);
+                        input.value = null; // Clear the input field
+
+                        // Create a new FileList with the updated files
+                        const newFileList = new DataTransfer();
+                        inputFiles.forEach((file) => newFileList.items.add(file));
+
+                        // Set the input.files to the new FileList
+                        input.files = newFileList.files;
+                    }
+                };
+
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(removeIcon);
+
+                previewContainer.appendChild(imgContainer);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+<!-- end of preview image script -->
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/23d1247997.js" crossorigin="anonymous"></script>
+    <!-- end of fontawesome -->
+
+
+    <!-- Bootstrap script file -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <!--end of Bootstrap script file -->
+
+</body>
+</html>

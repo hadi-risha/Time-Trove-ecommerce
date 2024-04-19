@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Coupon</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/admin_dashboard.css">
+    <link rel="stylesheet" href="css/product_management.css">
+    <link rel="stylesheet" href="css/add_coupon.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap css cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- end of Bootstrap css cdn link -->
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
+    
+</head>
+
+<body>
+
+    
+
+    <!-- main section -->
+    <main class="main-container" style="min-height: 77vh;">
+        <div class="container-fluid">
+            <div class="row p-0">
+                <div class="col-12 m-0 d-flex p-0">
+                    <div class="container-box">  
+
+                    <!-- admin dashboard section -->
+                        <p class="constant-txt">Admin Time Trove</p>
+                        <div class="management-txt">
+                            <ul>
+                                <li><a href="/adminHome">Dashboard</a></li>
+                                <li><a href="/user-management">User Management</a></li>
+                                <li><a href="/adminProductManagement">Product Management</a></li>
+                                <li><a href="/add-category" class="admin-links">Category Management</a></li>
+                                <li><a href="/order-management">Order Management</a></li>
+                                <li><a href="/add-coupon" class="admin-links">Coupon Management</a></li>
+                                <li><a href="/offer-management" class="admin-links">Offer Management</a></li>
+                                <li><a href="/referralOffer-management" class="admin-links">Referral Offer Management</a></li>
+                            </ul>
+                            <!-- <div class="log-div" style=" display:flex; justify-content: end;"> -->
+                                <form action="/ad-logout" method="post"><button class="logout-btn">
+                                    <svg class="logout-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M29.8118 24.632H27.1455C26.9635 24.632 26.7928 24.7116 26.679 24.8518C26.4135 25.1739 26.1291 25.4846 25.8294 25.7802C24.604 27.0059 23.1524 27.9826 21.555 28.6565C19.9001 29.3549 18.1213 29.7132 16.3248 29.71C14.5081 29.71 12.7483 29.3537 11.0946 28.6565C9.49723 27.9826 8.04566 27.0059 6.8202 25.7802C5.59255 24.5587 4.61365 23.1109 3.93771 21.517C3.23606 19.8648 2.88333 18.1102 2.88333 16.295C2.88333 14.4798 3.23985 12.7253 3.93771 11.0731C4.61282 9.47767 5.58377 8.04144 6.8202 6.80984C8.05664 5.57824 9.49409 4.60812 11.0946 3.93359C12.7483 3.23631 14.5081 2.8801 16.3248 2.8801C18.1416 2.8801 19.9014 3.23252 21.555 3.93359C23.1556 4.60812 24.593 5.57824 25.8294 6.80984C26.1291 7.10921 26.4097 7.41995 26.679 7.73827C26.7928 7.87849 26.9673 7.95807 27.1455 7.95807H29.8118C30.0508 7.95807 30.1987 7.6928 30.0659 7.49195C27.1569 2.97484 22.067 -0.0151007 16.2831 5.73684e-05C7.19568 0.0227945 -0.0901822 7.39343 0.000843713 16.4618C0.0918696 25.3861 7.36636 32.59 16.3248 32.59C22.0936 32.59 27.1607 29.6039 30.0659 25.0981C30.1949 24.8973 30.0508 24.632 29.8118 24.632ZM33.1836 16.0563L27.8017 11.812C27.6007 11.6529 27.3086 11.7969 27.3086 12.0508V14.9308H15.3994C15.2325 14.9308 15.096 15.0672 15.096 15.234V17.3561C15.096 17.5228 15.2325 17.6593 15.3994 17.6593H27.3086V20.5393C27.3086 20.7932 27.6045 20.9372 27.8017 20.778L33.1836 16.5338C33.2198 16.5054 33.2492 16.4692 33.2693 16.4278C33.2895 16.3864 33.3 16.341 33.3 16.295C33.3 16.249 33.2895 16.2036 33.2693 16.1622C33.2492 16.1209 33.2198 16.0846 33.1836 16.0563Z" fill="white"/>
+                                        </svg>
+                                        
+                                    Logout</button></form>
+                            <!-- </div> -->
+                        </div>
+                        
+                        <!-- here -->
+                        <section id="content">
+
+                            <!-- MAIN -->
+                        <div class="dashboard-containerbox"> 
+                            <main>
+
+                                <!-- coupon added success msg -->
+                                <div class="deletecategory-success">
+                                    <% if (couponAddedSuccess && !messageDisplayed) { %>
+                                        <div class="deletecategory-successBox" id="success-box">  
+                                            <p id="deletecategorySuccessMessage">Coupon Added Successfully!</p>
+                                        </div>
+                                    <% } %>
+                                </div>
+                                <!-- end of coupon added success msg -->
+
+                                <!-- coupon added success msg -->
+                                <!-- <div class="deletecategory-success">
+                                    <%# if (productNotExist && !msgDisplayed) { %>
+                                        <div class="deletecategory-successBox" id="success-box">  
+                                            <p id="productNotExistMessage"></p>
+                                        </div>
+                                    <%# } %>
+                                </div> -->
+                                <!-- end of coupon added success msg -->
+
+
+
+                        
+                                <div class="head-title">
+                                  <div class="left">
+                                    <h1>Add Coupon</h1>
+                                    
+                                  </div>
+                                </div>
+                        
+                                <div class="manageOptions">
+                                  <a href="/coupon-management">
+                                    <button>Back To Coupon Management</button>
+                                    </a>
+                                </div>
+
+                                <!-- add category success msg -->
+                              <div class="categoryadd-success">
+                                <!-- <%# if (categoryAddedSuccess && !messageDisplayed) { %>
+                                    <div class="categoryadd-successBox" id="success-box">  
+                                        <p id="categoryaddSuccessMessage">Category Added Successfully!</p>
+                                    </div>
+                                <%# } %> -->
+                              </div>
+                            <!-- end of add category success msg -->
+
+                            <form action="/add-coupon" method="post" onsubmit="return validateForm()">
+                                <div id="couponContainerBox" class="sub-boxx">
+                                    <p class="cat-mainhead">Add Coupon</p>
+                                    
+
+                                    <label for="coupnCode" class="label-txt">Coupon Code</label>
+                                    <input id="coupnCode" type="text" class="cat-inputbox" name="couponCode">
+                                    <p id="cpncode" style="color: red; margin-top: 5px; font-size: 12px;margin-left: 40px;"></p>
+                                    <% if(couponCodeAlreadyExist){ %>
+                                        <p id="cpncode" style="color: red; margin-top: 5px; font-size: 12px;margin-left: 40px;">Coupon code already exists.Enter a different code.</p>
+                                    <% } %>
+
+                                    <div class="d-flex gap-3">
+                                        <div style="display: block;">
+                                            <label for="discount" class="label-txt">Coupon Discount</label>
+                                            <input id="discount" type="number" class="discount cat-inputbox" name="discount">
+                                        </div>
+                                        
+                                        <div style="display: block;">
+                                            <label for="useAbove" class=" useAbovelabel-txt">Use Above</label>
+                                            <input id="useAbove" type="number" class="useAbove cat-inputbox" name="useAbove">
+                                        </div>
+                                    </div>
+                                    <p id="discountoff" style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;"></p>
+                                    <p id="useabove" style="color: red;  margin-left: 18.6vw; font-size: 12px;margin-top: -32px;"></p>
+                                    
+
+                                    
+
+                                    <div class="d-flex gap-3">
+                                        <div style="display: block;">
+                                            <label for="maxUse" class="label-txt">Max Uses</label>
+                                            <input id="maxUse" type="number" class="discount cat-inputbox" name="maxUses">
+                                        </div>
+                                        
+                                        <div>
+                                            <label for="exp" class="useAbovelabel-txt">Coupon Expiry</label>
+                                            <input required  id="exp" type="date" class="useAbove cat-inputbox" name="expDate">
+                                        </div>
+                                    </div>
+                                    <p id="maxuse" style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;"></p>
+                                    <p id="expdate" style="color: red; margin-top: 5px;"></p>
+
+                                    
+
+                                    
+                                    
+                                        <!-- <%# if(categoryExistError){ %>
+                                            <p class="exist-txt">Category already Exist</p>
+                                        <%# } %>
+
+                                        <%# if(invalidCategoryName){ %>
+                                        <p class="exist-txt" style="margin-left: 70px;">Field Required</p>
+                                        <%# } %>
+
+                                        <%# if(invalidCategory){ %>
+                                        <p class="exist-txt">Category should contain only letters</p>
+                                        <%# } %> -->
+
+                                        <p id="category" style="color: red;font-size: 12px; margin-left: 70px;"></p>
+                                    <button class="cat-btn" onclick="validateDate()">Add Coupon</button>
+                                </div>
+                            </form>
+                              </main>
+                        </div>
+                            <!-- MAIN -->
+                          </section>
+                          <!-- CONTE -->
+                        <!-- to here -->
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- /main section  --> 
+
+
+
+    <!-- add-coupon form validation -->
+    <script>
+        function validateForm() { 
+            // Get form elements
+            const CoupoCodeInput = document.querySelector('input[name="couponCode"]');
+            const discountInput = document.querySelector('input[name="discount"]');
+            const useAboveInput = document.querySelector('input[name="useAbove"]');
+            const maxUseInput = document.querySelector('input[name="maxUses"]');
+            const expDateInput = document.querySelector('input[name="expDate"]');
+    
+            // Validate coupon code
+            const trimmedCoupoCodeInput = CoupoCodeInput.value.trim();
+            if (trimmedCoupoCodeInput.length < 2) {
+                document.getElementById('cpncode').innerHTML = "Coupon Code needs 2+ characters";
+                return false;
+            }
+
+            // Validate discount
+            const trimmedDiscountInput = discountInput.value.trim();
+            if (!/^(?:\d*\.)?\d+$/.test(trimmedDiscountInput)) {
+                document.getElementById('discountoff').innerHTML = "Enter non-negative discount";
+                return false;
+            }
+
+            if (trimmedDiscountInput < 1 || trimmedDiscountInput > 99) {
+                document.getElementById('discountoff').innerHTML = "Discount percentage should be between 1 and 99";
+                return false;
+            }
+            if (trimmedDiscountInput > 100) {
+                document.getElementById('discountoff').innerHTML = "Discount percentage cannot exceed 100";
+                return false;
+            }
+            if (!/\d{1,}/.test(trimmedDiscountInput)) {
+                document.getElementById('discountoff').innerHTML = "Field required";
+                return false;
+            }
+
+            // validate useAbove field
+            const trimmedUseAboveInput = useAboveInput.value.trim();
+            if (!/^(?:\d*\.)?\d+$/.test(trimmedUseAboveInput)) {
+                document.getElementById('useabove').innerHTML = "Enter non-negative Value";
+                return false;
+            }
+            if (!/\d{1,}/.test(trimmedUseAboveInput)) {
+                document.getElementById('useabove').innerHTML = "Field required at least 1 number";
+                return false;
+            }
+
+            
+            // validate maxUse field
+            const trimmedMaxUseInput = maxUseInput.value.trim();
+            if (!/\d{1,}/.test(trimmedMaxUseInput)) {
+                document.getElementById('maxuse').innerHTML = "Field required at least 1 number";
+                return false;
+            }
+
+        
+            // If all validations pass, allow the form to submit
+            return true;
+        }
+    
+        // Attach the validateForm function to the form's onsubmit event
+        const form = document.querySelector('form[action="/add-product"]');
+        if (form) {
+            form.onsubmit = validateForm;
+        }
+    </script>    
+    <!-- add-product form validation -->
+
+
+
+    
+
+    <script>
+        // add-coupon success message
+        setTimeout(function () {
+            var addCouponSuccessMessage = document.getElementById('deletecategorySuccessMessage');
+            var successBox = document.getElementById('success-box');
+  
+            if (addCouponSuccessMessage && successBox) {
+                addCouponSuccessMessage.style.display = 'none';
+            successBox.style.display = 'none';
+  
+            }
+        }, 5000);
+        // end of add-coupon success message
+    </script>
+
+<script>
+    // add-coupon success message
+    setTimeout(function () {
+        var addCouponSuccessMessage = document.getElementById('productNotExistMessage');
+        var successBox = document.getElementById('success-box');
+
+        if (addCouponSuccessMessage && successBox) {
+            addCouponSuccessMessage.style.display = 'none';
+        successBox.style.display = 'none';
+
+        }
+    }, 5000);
+    // end of add-coupon success message
+</script>
+
+
+
+
+
+
+    <!-- script for sidebar menu activation -->
+  <script>
+    // get the current URL
+    var currentUrl = window.location.href;
+
+    // select all links inside the sidebar
+    var sidebarLinks = document.querySelectorAll('.admin-links');
+
+    sidebarLinks.forEach(function(link) {
+        if (link.href === currentUrl) {
+            link.parentElement.classList.add('active');
+        }
+    });
+</script>
+<!-- script for sidebar menu activation -->
+
+
+
+
+
+
+
+
+
+<!-- script for sidebar menu activation -->
+  <script>
+    // get the current URL
+    var currentUrl = window.location.href;
+
+    // select all links inside the sidebar
+    var sidebarLinks = document.querySelectorAll('.admin-links');
+
+    sidebarLinks.forEach(function(link) {
+        if (link.href === currentUrl) {
+            link.parentElement.classList.add('active');
+        }
+    });
+</script>
+<!-- /script for sidebar menu activation -->
+
+
+      <!-- success messages js-->
+  <script>
+    // Add JavaScript to hide the message after 5 seconds
+    // category added  success message
+    setTimeout(function () {
+        var categoryaddSuccessMessage = document.getElementById('categoryaddSuccessMessage');
+        var successBox = document.getElementById('success-box');
+
+        if (categoryaddSuccessMessage && successBox) {
+        categoryaddSuccessMessage.style.display = 'none';
+        successBox.style.display = 'none';
+
+        }
+    }, 5000);
+     // end of category added success message
+     </script>
+  
+  
+
+    
+
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/23d1247997.js" crossorigin="anonymous"></script>
+    <!-- end of fontawesome -->
+
+    <!-- Bootstrap script file -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <!--end of Bootstrap script file -->
+
+</body>
+</html>

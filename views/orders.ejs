@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/order.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap css cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- end of Bootstrap css cdn link -->
+
+</head>
+
+<body>
+
+<!-- header section -->
+<header class="head-section">
+    <div class="container-fluid">
+        <div class="row p-0">
+            <div class="col-12 m-0 head-section d-flex align-items-center p-0">
+
+
+                <!-- logo  -->
+                <a href="/">
+                <svg class="logo" width="115" height="115" viewBox="0 0 115 115" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M31 90.44C26.7867 90.44 23.8267 89.1867 22.12 86.68C21.5333 85.88 21.24 84.84 21.24 83.56C21.24 82.12 21.6933 80.8667 22.6 79.8C23.6667 78.5733 25 77.96 26.6 77.96C27.6667 77.96 28.52 78.3333 29.16 79.08C29.7467 79.6667 30.04 80.4667 30.04 81.48C30.04 82.76 29.5867 83.8 28.68 84.6C27.7733 85.3467 26.8133 85.72 25.8 85.72C24.8933 85.72 24.0667 85.4 23.32 84.76C24.2267 86.7867 25.8533 87.8 28.2 87.8C33.6933 87.8 38.84 84.2267 43.64 77.08C44.8667 75.32 46.0667 73.48 47.24 71.56C48.4133 69.5867 49.5867 67.5333 50.76 65.4C51.8267 63.3733 52.8933 61.3467 53.96 59.32C55.0267 57.2933 56.0933 55.2667 57.16 53.24C61.5333 44.9733 66.36 40.0667 71.64 38.52C69.6133 38.2533 67.5867 37.96 65.56 37.64C63.5867 37.32 61.5867 37 59.56 36.68C57.16 36.3067 54.9467 36.04 52.92 35.88C50.9467 35.72 49.1867 35.64 47.64 35.64C41.3467 35.64 36.2533 36.9467 32.36 39.56C30.12 41.0533 28.3333 42.8667 27 45C25.6133 47.1867 24.92 49.2933 24.92 51.32C24.92 56.0133 28.0667 58.36 34.36 58.36C36.4933 58.36 38.6267 57.96 40.76 57.16C42.8933 56.3067 45.08 55.1067 47.32 53.56C49.1867 52.1733 50.92 50.6267 52.52 48.92C54.12 47.16 55.5333 45.2133 56.76 43.08C57.0267 42.6533 57.3733 42.44 57.8 42.44C58.44 42.44 58.6267 42.68 58.36 43.16C57.2933 45.6133 55.9867 47.8533 54.44 49.88C52.8933 51.8533 51.08 53.6133 49 55.16C44.7333 58.2533 40.0133 59.8 34.84 59.8C32.5467 59.8 30.4933 59.5067 28.68 58.92C26.8667 58.28 25.3467 57.32 24.12 56.04C22.0933 53.9067 21.08 51.3467 21.08 48.36C21.08 45.7467 21.88 43.2133 23.48 40.76C25.08 38.2533 27.3467 36.2533 30.28 34.76C35.08 32.4133 40.3867 31.24 46.2 31.24C48.28 31.24 50.7867 31.4267 53.72 31.8C56.6533 32.1733 60.0133 32.7333 63.8 33.48C68.8667 34.4933 73.0267 35.24 76.28 35.72C79.5333 36.2 81.88 36.44 83.32 36.44C86.4667 36.44 89 35.88 90.92 34.76C91.24 34.6 91.5067 34.52 91.72 34.52C92.04 34.52 92.2 34.7333 92.2 35.16C92.2 35.5333 91.9867 35.8533 91.56 36.12C88.04 38.52 83.5867 39.56 78.2 39.24L75.64 39C70.52 39.5867 66.28 44.0133 62.92 52.28C58.44 63.2133 55.7733 69.5067 54.92 71.16C51.3467 78.0933 47.1067 83.32 42.2 86.84C38.84 89.24 35.1067 90.44 31 90.44ZM76.2094 87C72.7427 87 71.0094 85.1067 71.0094 81.32C71.0094 80.5733 71.0627 79.8 71.1694 79C71.3294 78.2 71.5694 77.4 71.8894 76.6C74.716 69.1333 77.116 63.0533 79.0894 58.36H73.8894L74.8494 56.6H79.8094L81.7294 51C82.4227 49.0267 83.0094 47.8533 83.4894 47.48C83.8627 47.2133 84.716 47.08 86.0494 47.08L89.4894 47.16C88.4227 48.0667 87.6227 49.16 87.0894 50.44L84.4494 56.6H90.5294L89.5694 58.36H83.7294C83.356 59.2133 82.9827 60.0667 82.6094 60.92C82.2894 61.7733 81.916 62.6533 81.4894 63.56C80.3694 66.0133 79.4094 68.3333 78.6094 70.52C77.6494 73.0267 76.876 75.1867 76.2894 77C75.756 78.8133 75.436 80.2533 75.3294 81.32C75.116 83.9333 75.8094 85.24 77.4094 85.24C78.9027 85.24 80.716 83.64 82.8494 80.44L83.8094 81.56C81.2494 85.1867 78.716 87 76.2094 87Z"
+                        fill="#FDFFA8" />
+                    <path
+                        d="M57.55 114.1C88.7817 114.1 114.1 88.7817 114.1 57.55C114.1 26.3183 88.7817 1 57.55 1C26.3183 1 1 26.3183 1 57.55C1 88.7817 26.3183 114.1 57.55 114.1Z"
+                        stroke="#F1F5D9" stroke-width="1.38095" stroke-linecap="round" stroke-linejoin="round" />
+                </svg></a>
+                <!-- /logo -->
+                <!-- icons -->
+                <div class="icons">
+                    <ul class="useroption p-0 m-0 d-flex align-items-center list-unstyled">
+                        <li>
+                            <a href="#" class="search">
+                                <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            </a>
+                            <div class="search-box" style="display: none;">
+                                <button type="button" class="search-close"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
+                                <input id="searchInput" style="color: rgb(0, 0, 0);" type="text"  autocomplete="off" class="search-input" placeholder="Search for products,brands and more">
+                                <button type="submit" class="search-submit"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                            </div>
+                        </li>
+
+                        <!-- container to show search results -->
+                        <div id="searchResults" class="search-results"></div>
+                        <!-- /container to show search results -->
+
+                        
+                        <li>
+                            <div class="dropdown">
+                                <a  class="person">
+                                    <span><svg class="person-icon "  xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                    </svg></span>
+                                    <!-- <i class="bi bi-person-fill"></i> -->
+                                </a>
+
+                                <!-- Dropdown Content -->
+                                <% if(userLoggined){ %>
+                                <div class="dropdown-content" id="dropdownContent">
+                                    <p  class="name-text">Hello <%= userName %></p>
+                                    <div class="dropdown-line1"></div>
+                                    <a href="/user-profile" style="color: black;">Profile</a>
+                                    <a href="/orders" style="color: black;">Orders</a>
+                                    <a href="#" style="color: black;">Wishlist</a>
+                                    <a href="#" style="color: black;">Saved Addresses</a>
+                                    <a href="#" style="color: black;">Edit Profile</a>
+                                    <a href="/forgot-password" style="color: black;">Reset password</a>
+                                    <div class="dropdown-line2"></div>
+                                    <!-- user logout button -->
+                                    <a href="#" style="color: black;">
+                                        <form action="/user-logout" method="post">
+                                            <button class="logOut-btn">Logout</button>
+                                        </form>
+                                    </a>
+                                    <!-- end of user logout button -->
+                                </div>
+                            <% }else{ %>
+                                <div class="dropdown-content" id="dropdownContent">
+                                    <p class="name-text">Welcome</p>
+                                    <!-- <p style="font-size: 13px;">To access account and manage orders</p> -->
+                                    <a href="/user-login"><p class="login-signup">LOGIN / SIGNUP</p></a>
+                                    <div class="dropdown-line1"></div>
+                                    <a href="/user-login" style="color: black;">Profile</a>
+                                    <a href="/user-login" style="color: black;">Orders</a>
+                                    <a href="/user-login" style="color: black;">Wishlist</a>
+                                    <a href="/user-login" style="color: black;">Saved Addresses</a>
+                                    <a href="/user-login" style="color: black;">Edit Profile</a>
+                                </div>
+                            <% } %>
+                            </div>
+
+                            <script>
+                                // Function to toggle the dropdown content
+                                function toggleDropdown() {
+                                    var dropdownContent = document.getElementById("dropdownContent");
+                                    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+                                }
+                            </script>
+
+                        </li>
+                        <li>
+                            <!-- show cart count -->
+                            <% if(cartCount > 0 && userLoggined){ %>
+                                <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                        position: absolute; color: white; padding: 2px; left: 88.4vw; top: 37;">
+                                    <p style="    margin-top: -3px;
+                                    margin-bottom: 1rem;
+                                    font-size: 12px;
+                                "><%= cartCount %></p>
+                                </div>
+                            <% }else{ %>
+                                <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                        position: absolute; color: white; padding: 2px; left: 88.4vw; top: 37;">
+                                    <p style="    margin-top: -3px;
+                                    margin-bottom: 1rem;
+                                    font-size: 12px;
+                                "><%= cartCount %></p>
+                                </div>
+                            <% } %>
+                            
+                            <a href="/shopping-cart" class="cart">
+                                <span class="bag-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                        <li style="margin-left: 10px;">
+                            <a href='/wishlist' class="wishlist">
+                                <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                <!-- /icons -->
+            </div>
+
+        </div>
+    </div>
+</header>
+<!-- /header section -->
+
+
+
+    
+<!-- main section -->  
+<main class="main-container" style="min-height: 120vh;">
+    <div class="container-fluid">
+        <div class="row p-0">
+            <div class="col-12 m-0 p-0">
+                    <% if (orderCancelled) { %>
+                        <!-- <div class="successcontainer"> -->
+                            <div class="success-box" id="success-box">  
+                                <p id="logsuccessMessage">Order Cancelled</p>
+                                <!-- <p>1 Item is cancelled</p> -->
+                            </div>
+                        <!-- </div> -->
+                        
+                    <% } %> 
+                
+                <div class="profile-iconSection">
+                    <svg class="profile-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.9997 3.33301C10.7947 3.33301 3.33301 10.7947 3.33301 19.9997C3.33301 29.2047 10.7947 36.6663 19.9997 36.6663C29.2047 36.6663 36.6663 29.2047 36.6663 19.9997C36.6663 10.7947 29.2047 3.33301 19.9997 3.33301Z" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.11816 30.5767C7.11816 30.5767 10.8332 25.8333 19.9998 25.8333C29.1665 25.8333 32.8832 30.5767 32.8832 30.5767M19.9998 20C21.3259 20 22.5977 19.4732 23.5354 18.5355C24.473 17.5979 24.9998 16.3261 24.9998 15C24.9998 13.6739 24.473 12.4021 23.5354 11.4645C22.5977 10.5268 21.3259 10 19.9998 10C18.6737 10 17.402 10.5268 16.4643 11.4645C15.5266 12.4021 14.9998 13.6739 14.9998 15C14.9998 16.3261 15.5266 17.5979 16.4643 18.5355C17.402 19.4732 18.6737 20 19.9998 20Z" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                            
+                    <p class="main-head">Profile</p> 
+                    <p class="user-name"><%= userName %></p>
+                </div>
+
+                <div class="finishing-line1"></div>
+
+
+                <div class="d-flex gap-3">
+
+                    <div class="left-section">
+                        <div class="left-line"></div>
+                        
+                        <div>
+                            <p class="headings">ORDERS</p>
+                            <div class="orders"><a href="/orders" class="profile-links"><P >Orders & Returns</P></a></div>
+                            <div class="text-line1"></div>
+                        </div>
+                                
+                        <div>
+                            <p class="headings">ACCOUNT</p>
+                            <div class="orders"><a href="/user-profile" class="profile-links"><P>Profile</P></a></div>
+                            <div class="orders"><a href="/user-address" class="profile-links"><p>Addresses</p></a></div>
+                            <div class="orders"><a href="/forgot-password" class="profile-links"><p>Reset password</p></a></div>
+                            <div class="text-line1"></div>
+                        </div>      
+
+                        <div>
+                            <p class="headings">MY STUFF</p>
+                            <!-- <div class="orders"><a href="#" class="profile-links"><P>My Reviews & Ratings</P></a></div> -->
+                            <div class="orders"><a href="/wishlist" class="profile-links"><P>My Wishlist</P></a></div>
+                            <div class="orders"><a href="/user-wallet" class="profile-links"><P>My Wallet</P></a></div>
+                            <div class="text-line1"></div>
+                        </div>
+                                
+                        <!-- <div>
+                            <p class="headings">LEGAL</p>
+                            <div class="orders"><a href="#" class="profile-links"><p>Terms of Use</p></a></div>
+                            <div class="orders"><a href="#" class="profile-links"><p>Privacy Policy</p></a></div>
+                            <div class="text-line1"></div>
+                        </div> -->
+                        
+                        <!-- user logout button -->
+                        <form action="/user-logout" method="post">
+                            <button class="logout-btn" style="margin-left: 13.8vw;"><svg class="userlogoutt-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M29.8118 24.632H27.1455C26.9635 24.632 26.7928 24.7116 26.679 24.8518C26.4135 25.1739 26.1291 25.4846 25.8294 25.7802C24.604 27.0059 23.1524 27.9826 21.555 28.6565C19.9001 29.3549 18.1213 29.7132 16.3248 29.71C14.5081 29.71 12.7483 29.3537 11.0946 28.6565C9.49723 27.9826 8.04566 27.0059 6.8202 25.7802C5.59255 24.5587 4.61365 23.1109 3.93771 21.517C3.23606 19.8648 2.88333 18.1102 2.88333 16.295C2.88333 14.4798 3.23985 12.7253 3.93771 11.0731C4.61282 9.47767 5.58377 8.04144 6.8202 6.80984C8.05664 5.57824 9.49409 4.60812 11.0946 3.93359C12.7483 3.23631 14.5081 2.8801 16.3248 2.8801C18.1416 2.8801 19.9014 3.23252 21.555 3.93359C23.1556 4.60812 24.593 5.57824 25.8294 6.80984C26.1291 7.10921 26.4097 7.41995 26.679 7.73827C26.7928 7.87849 26.9673 7.95807 27.1455 7.95807H29.8118C30.0508 7.95807 30.1987 7.6928 30.0659 7.49195C27.1569 2.97484 22.067 -0.0151007 16.2831 5.73684e-05C7.19568 0.0227945 -0.0901822 7.39343 0.000843713 16.4618C0.0918696 25.3861 7.36636 32.59 16.3248 32.59C22.0936 32.59 27.1607 29.6039 30.0659 25.0981C30.1949 24.8973 30.0508 24.632 29.8118 24.632ZM33.1836 16.0563L27.8017 11.812C27.6007 11.6529 27.3086 11.7969 27.3086 12.0508V14.9308H15.3994C15.2325 14.9308 15.096 15.0672 15.096 15.234V17.3561C15.096 17.5228 15.2325 17.6593 15.3994 17.6593H27.3086V20.5393C27.3086 20.7932 27.6045 20.9372 27.8017 20.778L33.1836 16.5338C33.2198 16.5054 33.2492 16.4692 33.2693 16.4278C33.2895 16.3864 33.3 16.341 33.3 16.295C33.3 16.249 33.2895 16.2036 33.2693 16.1622C33.2492 16.1209 33.2198 16.0846 33.1836 16.0563Z" fill="white"/>
+                                </svg>Logout</button>
+                        </form>
+                        <!-- end of user logout button -->
+                    </div>
+
+
+                    <div class="right-sectionContainer">
+                        <% if (OrderData && OrderData.length > 0) { %>
+
+                            <div class="right-side">
+                                <div class="order-headingPart" >
+                                    <p class="order-txt">Orders</p>
+                                    <svg width="25" height="25" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.83338 26.2503V10.3545L3.57297 5.46908C3.40283 5.10449 3.39068 4.73359 3.53651 4.35637C3.68234 3.97914 3.93755 3.70595 4.30213 3.53678C4.66672 3.36664 5.03762 3.34866 5.41484 3.48283C5.79206 3.61699 6.06526 3.86588 6.23443 4.22949L9.04172 10.2816H25.9584L28.7657 4.22949C28.9358 3.86491 29.2095 3.6097 29.5867 3.46387C29.9639 3.31803 30.3344 3.34234 30.698 3.53678C31.0626 3.70692 31.3178 3.9806 31.4636 4.35783C31.6094 4.73505 31.5973 5.10546 31.4271 5.46908L29.1667 10.3545V26.2503C29.1667 27.0524 28.8809 27.7393 28.3092 28.3109C27.7376 28.8826 27.0512 29.168 26.2501 29.167H8.75005C7.94797 29.167 7.26109 28.8812 6.68943 28.3095C6.11776 27.7378 5.83241 27.0514 5.83338 26.2503ZM14.5834 18.9587H20.4167C20.8299 18.9587 21.1765 18.8187 21.4565 18.5387C21.7365 18.2587 21.876 17.9125 21.8751 17.5003C21.8751 17.0871 21.7351 16.7405 21.4551 16.4605C21.1751 16.1805 20.8289 16.041 20.4167 16.042H14.5834C14.1702 16.042 13.8236 16.182 13.5436 16.462C13.2636 16.742 13.1241 17.0881 13.1251 17.5003C13.1251 17.9135 13.2651 18.2601 13.5451 18.5401C13.8251 18.8201 14.1712 18.9596 14.5834 18.9587Z" fill="black"/>
+                                    </svg>
+                                </div>
+
+                            <% for (const order of OrderData) { %>
+                                <% for (const item of order.orderItems) { %>
+                                <div class="single-box">
+                                    <div class="image-box mt-0">
+                                        <img class="og-img" src="/uploads<%= item.images[0] %>">
+                                    </div>
+                                    <div class="single-info-container">
+                                        <p class="brand-name"><%= item.pName %></p>                         
+                                        <div class="inline-data">
+                                            <div>
+                                                
+                                                <p class="pDescription">Qty: <%= item.userAddedQty %></p>
+                                            </div>
+                                            <div style="visibility: hidden;">
+                                                <p class="lastPrice">₹<%= item.lastPrice %>(per item)</p>
+                                            </div>
+                                            <div>
+                                                <% if( item.orderStatus  === "cancelled"){ %>
+                                                    <div class="status-box">
+                                                        <div>
+                                                            <svg class="cancelled-svg"  width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#FF0000"/>
+                                                            </svg> 
+                                                        </div>
+                                                        <div>
+                                                            <p class="cancelled-status-btn" sty><%= item.orderStatus %></p>
+                                                        </div>  
+                                                    </div>  
+                                                <% }else if(item.orderStatus  === "delivered"){ %> 
+                                                    <div class="status-box">
+                                                        <div>
+                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#52C23F"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            <p class="normal-status"><%= item.orderStatus %></p>
+                                                        </div> 
+                                                            <input type="hidden" value="<%= order._id %>" name="orderId">
+                                                            <input type="hidden" value="<%= item._id %>" name="productId">
+                                                        <form action="/return-product" method="post" onsubmit="return returnProductConfirmation(event);">
+                                                            <input type="text" hidden value="<%= order._id %>" name="invoiceOrderId">
+                                                            <input type="text" hidden value="<%= item._id %>" name="invoiceProductId">
+                                                            <input type="hidden" value="<%= order._id %>" name="orderId">
+                                                            <input type="hidden" value="<%= item._id %>" name="productId">
+                                                            <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">
+
+                                                            <button style="background-color: #D3C330;"  class="cancel-btn" type="submit">Return</button>
+                                                        </form>
+
+                                                        <!-- invoice icon -->
+
+                                                        <input type="text" hidden value="<%= order._id %>" name="invoiceOrderId">
+                                                        <input type="text" hidden value="<%= item._id %>" name="invoiceProductId">
+
+                                                         <!-- <a id="invoiceBtn" class="invoiceBtn" href="/download-invoice?orderId=<%#= order._id %>&productId=<%#= item._id %>"> -->
+                                                            <button class="invoiceBtn" onclick="generateInvoice()"><svg width="22" height="25" viewBox="0 0 39 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.125 13.1253V5.10449L30.0625 13.1253M9.75 2.91699C7.94625 2.91699 6.5 4.21491 6.5 5.83366V29.167C6.5 29.9405 6.84241 30.6824 7.4519 31.2294C8.0614 31.7764 8.88805 32.0837 9.75 32.0837H29.25C30.112 32.0837 30.9386 31.7764 31.5481 31.2294C32.1576 30.6824 32.5 29.9405 32.5 29.167V11.667L22.75 2.91699H9.75Z" fill="white"/>
+                                                            </svg></button>
+                                                        <!-- invoice icon -->
+                                                                
+                                                        <!-- </a> -->
+                                                        <!-- invoice icon -->
+                                                                    
+                                                            
+                                                        <!-- </form> -->
+                                                    </div>
+                                                    
+                                                <% }else if(item.orderStatus  === "return requested"){ %> 
+                                                    <div class="status-box">
+                                                        <div>
+                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                            </svg>
+                                                                
+                                                        </div>
+                                                        <div>
+                                                            <p class="normal-status" style="color: #fa1e0a;"><%= item.orderStatus %></p>
+                                                        </div>
+                                                    </div>
+                                                <% }else if(item.orderStatus  === "pickup"){ %> 
+                                                    <div class="status-box">
+                                                        <div>
+                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                            </svg>
+                                                                
+                                                        </div>
+                                                        <div>
+                                                            <p class="normal-status" style="color: #fa1e0a;">Request is being processed</p>
+                                                        </div>
+                                                    </div>
+                                                <% }else if(item.orderStatus  === "picked"){ %> 
+                                                    <div class="status-box">
+                                                        <!-- <div>
+                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                            </svg>
+                                                                
+                                                        </div> -->
+                                                        <div>
+                                                            <p class="normal-status" style="color: green; margin-left: 70px;">Picked & Refunded</p>
+                                                        </div>
+                                                    </div>
+                                                    <% }else if(item.orderStatus  === "refund"){ %> 
+                                                        <div class="status-box">
+                                                            <div>
+                                                                <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                                </svg>
+                                                                    
+                                                            </div>
+                                                            <div>
+                                                                <p class="normal-status" style="color: #fa1e0a;">Request is being processed</p>
+                                                            </div>
+                                                        </div>
+                                                    <% }else if(item.orderStatus  === "refunded"){ %> 
+                                                        <div class="status-box">
+                                                            <!-- <div>
+                                                                <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                                </svg>
+                                                                    
+                                                            </div> -->
+                                                            <div>
+                                                                <p class="normal-status" style="color: green; margin-left: 70px;">Picked & Refunded</p>
+                                                            </div>
+                                                        </div>
+                                                <% }else{ %>
+                                                    <div class="status-box">
+                                                        <div>
+                                                            <svg class="normal-svg" width="20" height="17"  viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#E4D019"/>
+                                                            </svg> 
+                                                        </div>
+                                                        <div>
+                                                            <p class="normal-status"><%= item.orderStatus %></p>
+                                                        </div>
+                                                        <form action="/cancel-order" method="post" onsubmit="return confirmDelete(event);">
+                                                            <input type="hidden" value="<%= order._id %>" name="orderId">       <!-- its like a parent id -->
+                                                            <input type="hidden" value="<%= item._id %>" name="productId">      <!-- _id of single product in this order db(parsed from multiple product ids) -->
+                                                            <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">  <!-- user added qty in this specific pro -->
+                                                            <button  class="cancel-btn" type="submit">Cancel</button>
+                                                        </form>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex gap-3">
+                                            <% if(order.paymentstatus==='completed'){ %>
+                                                <p class="userAddedQty">Payment Status: 
+                                                    <span style="text-transform: capitalize; color: #09ba14;;"><%= order.paymentstatus %></span></p>
+                                            <% }else if(order.paymentstatus==='pending'){%>
+                                                <p class="userAddedQty">Payment Status: 
+                                                    <span style="text-transform: capitalize; color: #fa301e;"><%= order.paymentstatus %></span></p>
+                                            <% } %> 
+
+
+                                            <!-- item.pName -->
+                                            <input type="hidden" value="<%= order._id %>" name="orderIddd">
+                                            <input type="hidden" value="<%= item._id %>" name="productIddd">
+
+                                            <% if(item.orderStatus === 'cancelled'){ %>
+                                                <script>
+                                                    console.log('retry not show sec');
+                                                </script>
+                                                <!-- <div style="display: none;">
+                                                    <form id="razorpayForm" action="/retry-onlinePayment" method="post">
+                                                        <input type="hidden" value="<%#= order._id %>" name="orderId">
+                                                        <input type="hidden" value="<%#= item._id %>" name="productId">
+                                                        <input type="hidden" value="<%#= item.userAddedQty %>" name="productQty">
+
+
+                                                        <button  id="razorpay-btn" type="submit" style="display: none; height: 28px; margin-top:0px; background-color: #fa1e0a; margin-left: 20px;" class="cancel-btn" type="submit">
+                                                            Retry</button>
+                                                    </form>
+                                                </div> -->
+
+
+                                            <!-- razorpay retry button -->
+                                            <% } else if( order.paymentMethod==='razorpay' && order.paymentstatus ==='pending' ) {%>
+                                                <script>
+                                                    console.log(' show sec');
+                                                    console.log(' show retry of razorpay');
+                                                    console.log("11");
+
+                                                    const orderId = document.getElementById('orderIddd').value;
+                                                    const productId = document.getElementById('productIddd').value;
+
+                                                    console.log("orderID", orderId);
+                                                    console.log("productId", productId);
+                                                    console.log("22");
+                                                </script>
+
+                                                <form id="paymentWithRazorpayForm" action="/retry-onlinePayment" method="post">
+                                                    <input type="hidden" value="<%= order._id %>" name="ordrId">
+                                                    <input type="hidden" value="<%= item._id %>" name="prdctId">
+                                                    
+                                                    <input type="hidden" value="<%= item.userAddedQty %>" name="prdctQty">
+
+                                                            
+                                                    <button id="razorpay-btn" type="submit" style="height: 28px; margin-top:0px; background-color: #fa1e0a; margin-left: 20px;" class="cancel-btn" type="submit">
+                                                        Retry</button>
+                                                </form>
+                                            <!-- razorpay with wallet retry button -->
+                                            <% }else if( order.paymentMethod==='wallet' && order.paymentstatus ==='pending'  &&  order.balanceToPay > 0 ) {%>
+                                                <script>
+                                                    console.log('show retry of razorpay with wallet');
+                                                </script>
+
+                                                <form id="razorpayWithWalletForm" action="/retry-walletWithRazorpay" method="post">
+                                                    <input type="hidden" value="<%= order._id %>" name="orderId">
+                                                    <input type="hidden" value="<%= item._id %>" name="productId">
+                                                    <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">
+
+
+                                                    <button id="razorpay-btn" type="submit" style="height: 28px; margin-top:0px; background-color: #fa1e0a; margin-left: 20px;" class="cancel-btn" type="submit">
+                                                        Retry</button>
+                                                </form>
+                                            <% } %>
+                                            <!-- /razorpay retry button -->
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <% } %>
+                            <% } %>
+                        <% }else{ %>
+                            <div class="no-orderSection">
+                                <img class="no-orderimg" src="/img/noOrder.png" alt="">
+                                <p class="noOrder-text">You have no orders.</p>
+                                <a class="shop-button" href="/">Start shopping</a>
+                            </div>
+                                
+                        <% } %> 
+                            </div>
+                    
+                    </div>
+
+                </div>
+        
+
+            </div> 
+        </div>
+    </div>
+</main>
+<!-- /main section  --> 
+
+    <!-- footer section -->
+    <footer class="footer-section m-0" style="overflow-x: hidden;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="last-section">
+
+                        <p class="logo-text">Time Trove</p>
+
+                        <div class="left-texts">
+                            <p class="bold-text1">Customer Service</p>
+                            <i class="fa-brands fa-whatsapp wtsp-icon"></i>
+                            <i class=" fa-regular fa-envelope email-icon"></i>
+                            <ul class="links1">
+                                <li class="left-subtexts">+91 8756575677</li>
+                                <li class="left-subtexts">(Mon-Fri,9:00am - 5:00pm)</li>
+                                <li class="email left-subtexts" style="margin-top:12px;"><a class="links" href="#">tt@timetrove.com</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="right-texts" style="text-decoration: none;">
+                            <p class="bold-text2">Product Help</p>
+                            <ul class="links2 p-0">
+                                <li class="right-subtexts"><a href="#" class="links">Return and Cancellation<br>Policy</a></li>
+                                <li class="right-subtexts s-policy"style="margin-top:12px;" >
+                                    <a href="#" class="links">Shipping & delivery Policy</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-icons">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> 
+    <!-- /footer section --> 
+
+
+
+    <!-- invoice -->
+    <script>
+    //   <a id="invoiceBtn" class="invoiceBtn" href="/download-invoice?orderId=<%#= order._id %>&productId=<%#= item._id %>">         const invoiceProductId = document.querySelector('input[name="invoiceProductId"]').value;
+        const invoiceOrderId = document.querySelector('input[name="invoiceOrderId"]').value;
+        const invoiceProductId = document.querySelector('input[name="invoiceProductId"]').value;
+
+        async function generateInvoice() {
+
+            const url = '/download-invoice?invoiceProductId=' + invoiceProductId + '&invoiceOrderId=' + invoiceOrderId ;
+
+            const response = await fetch(url);
+            const blob = await response.blob();
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(blob);
+            downloadLink.download = 'invoice.pdf';
+            downloadLink.click();
+
+        }
+    </script>
+    <!-- /invoice -->
+
+
+    <!-- <script>
+    document.getElementById('generatePdf').addEventListener('click', async () => {
+        try {
+            // Get form data
+            const orderId = document.getElementById('invoiceForm').elements.orderId.value;
+            const productId = document.getElementById('invoiceForm').elements.productId.value;
+
+            // Construct the URL with query parameters
+            const url = new URL('/invoice', window.location.origin);
+            url.searchParams.append('orderId', orderId);
+            url.searchParams.append('productId', productId);
+
+            // Send the GET request
+            const response = await fetch(url, {
+                method: 'GET'
+            });
+
+            if (response.ok) {
+                const blob = await response.blob();
+                const downloadUrl = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = 'mypdf.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                console.error('Failed to generate PDF:', response.statusText);
+                alert('Failed to generate PDF');
+            }
+        } catch (error) {
+            console.error('Error fetching PDF:', error);
+            alert('Error fetching PDF');
+        }
+    });
+</script> -->
+
+
+
+    <!-- razorpay -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- razorpay link -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script> 
+
+    <!-- retry option of only using razorpay -->
+    <script>
+        const paymentWithRazorpayForm = document.getElementById('paymentWithRazorpayForm');
+        
+        paymentWithRazorpayForm.addEventListener('submit', (e)=>{
+            retryOrderProduct(e, '#paymentWithRazorpayForm');
+        })          //(codForm)
+       
+
+        async function retryOrderProduct(e, id){
+          
+            
+            e.preventDefault();
+
+            const result = await Swal.fire({
+                title: 'Pay now?',
+                // text: 'You won\'t be able to revert this!',
+                //  icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            });
+
+            if (!result.isConfirmed) {
+                // Cancel form submission
+                Swal.fire('No');
+                return;
+            }
+            
+            var userEmail = '<%= userEmail %>';
+
+            const formData = $(id).serializeArray();
+
+            console.log("jhguhyj",formData);
+            
+
+            $.ajax({
+                url: '/retry-onlinePayment',
+                method: 'POST',
+                data: formData
+            })
+            .then(res => {
+                if(!res.success){
+                    console.log(res);
+                    return;
+                }
+                if(res.paymentMethod === 'razorpay'){
+                    var options = {
+                        "key": "rzp_test_FFleULTlFE3GDB", // Your Razorpay key
+                        "amount": res.order.amount, // avoid , its just a dummy data og in the backend
+                        "currency": "INR",
+                        "name": "Time Trove",
+                        "description": "Test Transaction",
+                        "image": "https://yourwebsite.com/your-logo.png",
+                        "order_id": res.order.id, // Use the order ID passed from the server   //confusion here
+                        "handler": function (response) {
+                            verifyPayment(response)
+                        },
+                        "prefill": {
+                            "name": "Gaurav Kumar",
+                            "email": "gaurav.kumar@example.com",
+                            "contact": "9999999999"
+                        },
+                        "notes": {
+                            "address": "Razorpay Corporate Office"
+                        },
+                        "theme": {
+                            "color": "#F37254"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                    rzp1.on('payment.failed', function (response) {
+
+                        location.href = '/payment-failed';    //add here something like this 
+
+                    })
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            })
+        }
+
+        function verifyPayment(response) {
+            // Access the hidden input values   
+            var orderId = $('input[name="ordrId"]').val();
+            var productId = $('input[name="prdctId"]').val();
+
+            var settings = {
+                "url": "/retryPaymentVerify",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    orderId: response.razorpay_order_id,
+                    paymentId: response.razorpay_payment_id,
+                    signature: response.razorpay_signature,
+                    parentId: orderId,   //order parent id
+                    productId: productId,  //id of single product
+
+                }),
+            };
+            $.ajax(settings).done(function (data) {
+                console.log('dtyjhgghf...', data);
+                if (data.success) {
+                    console.log("Payment verification success.");
+                    window.location.href = '/retry-paymentSuccess';  
+                    // alert("Payment verification success.")    //or payment succesfull
+                    // alert("Payment successfull.")
+
+                    // var userId = 'yourUserId'; 
+                    // var orderId = response.razorpay_order_id;
+                    // updatePaymentStatus(userEmail, orderId);
+
+                    // window.location.href = '/orders';          //and show a success popup for payment success
+
+
+                    // alert("Payment verification success.")
+
+                } else {
+                    console.log('Payment verification failed. please try again.');
+                    // window.location.href = '/payment-failed';
+                    alert("Payment verification failed. please try again.")
+                }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.error(("Error verifying Payment", textStatus, errorThrown));
+                alert("An error occurred while verifying your payment. Please try again.")
+            })
+        }
+    </script>
+    <!-- /retry option of razorpay -->
+
+
+    
+
+    <!-- retry option of using razorpay with wallet -->
+    <script>
+        
+        const razorpayWithWalletForm = document.getElementById('razorpayWithWalletForm');
+        razorpayWithWalletForm.addEventListener('submit', (e)=>{
+            orderProduct(e, '#razorpayWithWalletForm');
+        });
+
+
+        async function orderProduct(e, id){
+            e.preventDefault();
+
+            const result = await Swal.fire({
+                title: 'Pay now?',
+                // text: 'You won\'t be able to revert this!',
+                //  icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            });
+
+            if (!result.isConfirmed) {
+                // Cancel form submission
+                Swal.fire('No');
+                return;
+            }
+
+            var userEmail = '<%= userEmail %>';
+
+            const formData = $(id).serializeArray();
+
+            console.log(formData);
+
+            $.ajax({
+                url: '/retry-walletWithRazorpay',
+                method: 'POST',
+                data: formData
+            })
+            .then(res => {
+                if(!res.success){
+                    console.log(res);
+                    return;
+                }
+                if(res.paymentMethod === 'wallet' && res.razorpayWithWallet){
+                    var options = {
+                        "key": "rzp_test_FFleULTlFE3GDB", // Your Razorpay key
+                        "amount": res.order.amount, // avoid , its just a dummy data og in the backend
+                        "currency": "INR",
+                        "name": "Time Trove",
+                        "description": "Test Transaction",
+                        "image": "https://yourwebsite.com/your-logo.png",
+                        "order_id": res.order.id, // Use the order ID passed from the server   //confusion here
+                        "handler": function (response) {
+                            verifyPaymentOfRazorpayWithWallet(response)
+                        },
+                        "prefill": {
+                            "name": "Gaurav Kumar",
+                            "email": "gaurav.kumar@example.com",
+                            "contact": "9999999999"
+                        },
+                        "notes": {
+                            "address": "Razorpay Corporate Office"
+                        },
+                        "theme": {
+                            "color": "#F37254"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                    rzp1.on('payment.failed', function (response) {
+                        // alert(response.error.code);
+                        // alert(response.error.description); //err mesg in toaster
+                        // alert(response.error.source);
+                        // alert(response.error.step);
+                        // alert(response.error.reason);
+                        // alert(response.error.metadata.order_id);
+                        // alert(response.error.metadata.payment_id);
+
+
+
+
+                        location.href = '/payment-failed';    //add here something like this 
+
+                    })
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            })
+        }
+
+        function verifyPaymentOfRazorpayWithWallet(response) {
+            // Access the hidden input values
+            var orderId = $('input[name="orderId"]').val();
+            var productId = $('input[name="productId"]').val();
+
+            var settings = {
+                "url": "/retryPaymentVerifyOfWallet",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    orderId: response.razorpay_order_id,
+                    paymentId: response.razorpay_payment_id,
+                    signature: response.razorpay_signature,
+                    parentId: orderId,   //order parent id
+                    productId: productId,  //id of single product
+
+                }),
+            };
+            $.ajax(settings).done(function (data) {
+                console.log('dtyjhgghf...', data);
+                if (data.success) {
+                    console.log("Payment verification success.");
+                    window.location.href = '/retry-paymentSuccess';  
+                    // alert("Payment verification success.")    //or payment succesfull
+                    // alert("Payment successfull.")
+
+                    // var userId = 'yourUserId'; 
+                    // var orderId = response.razorpay_order_id;
+                    // updatePaymentStatus(userEmail, orderId);
+
+                    // window.location.href = '/orders';          //and show a success popup for payment success
+
+
+                    // alert("Payment verification success.")
+
+                } else {
+                    console.log('Payment verification failed. please try again.');
+                    // window.location.href = '/payment-failed';
+                    alert("Payment verification failed. please try again.")
+                }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.error(("Error verifying Payment", textStatus, errorThrown));
+                alert("An error occurred while verifying your payment. Please try again.")
+            })
+        }
+
+
+        
+    </script>
+    <!-- /using razorpay with wallet -->
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    <!-- search box- clear input field after performing operations -->
+    <script>
+        // Function to clear the search input field
+        function clearSearchInput() {
+            // Select the input field by its ID
+            var searchInput = document.getElementById('searchInput');
+            // Clear the input field
+            searchInput.value = '';
+        }
+
+        //Clear the search input field after 5 seconds
+        setTimeout(clearSearchInput, 1000);
+    </script>
+    <!-- search box- clear input field after performing operations -->
+
+
+    <!-- search box main function-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#searchInput').on('input', function() {
+                const query = $(this).val();
+                if (query.length >= 1) { // Only search if the query is at least 3 characters long
+                    $.ajax({
+                        url: '/search', // Adjust the URL as necessary
+                        type: 'GET',
+                        data: { q: query },
+                        success: function(products) {
+                            // Clear the previous search results
+                            $('.search-results').empty();
+    
+                            // Render the new search results
+                            products.forEach(product => {
+                                // Create a new div for the product result
+                                const productDiv = $('<div class="product-result"></div>');
+    
+                                // Append the product details to the div
+                                productDiv.append(`
+                                    <h6>${product.productName}</h6>
+                                    <p>${product.productDescription}</p>
+                                    <img src="${product.images[0]}" alt="${product.productName}">
+                                `);
+    
+                                // Attach a click event handler to the div
+                                productDiv.on('click', function() {
+                                    // Redirect to the product details page, passing the product's ID as a parameter
+                                    window.location.href = `/single-product/${product._id}`;
+                                });
+    
+                                // Append the div to the search results container
+                                $('.search-results').append(productDiv);
+                            });
+                            $('.search-results').show(); // Ensure the search results are visible
+
+                        },
+                        error: function(error) {
+                            console.error('Error fetching search results:', error);
+                        }
+                    });
+                }
+            });
+    
+            // Define the hideSearchResults function
+            function hideSearchResults() {
+                $('.search-results').empty().hide(); // Clear and hide the search results
+            }
+    
+            // Listen for click events on the document
+            $(document).on('click', function(event) {
+                // Check if the click was outside the search box and search results container
+                if (!$(event.target).closest('.search-box, .search-results').length) {
+                    // Hide the search results
+                    hideSearchResults();
+                }
+            });
+        });
+    </script>
+    <!-- search box main function-->
+
+
+    <!-- search box close and submit btn activation js-->
+    <script>
+        document.querySelector('.search').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the link
+            var searchBox = document.querySelector('.search-box');
+            searchBox.style.display = searchBox.style.display === 'none' ? 'block' : 'none';
+        });
+
+        document.querySelector('.search-close').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the button
+            document.querySelector('.search-box').style.display = 'none';
+            hideSearchResults(); 
+        });
+
+        document.querySelector('.search-submit').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the button
+            var searchInput = document.querySelector('.search-input').value;
+            console.log('Search submitted:', searchInput);
+            // Here you can add the functionality to perform the search
+        });
+
+        function hideSearchResults() {
+            $('.search-results').empty().hide(); // Clear and hide the search results
+        }
+    </script>
+        <!-- search box js-->
+
+
+
+
+
+
+<!-- script for sidebar menu activation -->
+    <script>
+        // get the current URL
+        var currentUrl = window.location.href;
+
+        // select all links inside the sidebar
+        var sidebarLinks = document.querySelectorAll('.profile-links');
+
+        sidebarLinks.forEach(function(link) {
+            if (link.href === currentUrl) {
+                link.parentElement.classList.add('active');
+            }
+        });
+    </script>
+<!-- script for sidebar menu activation -->
+
+
+
+    <!-- confirmation modal for order product(cod) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        async function returnProductConfirmation(event) {
+            event.preventDefault();
+
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                // text: 'You won\'t be able to revert this!',
+                //  icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Return Item!'
+            });
+
+            if (result.isConfirmed) {
+                // Continue with form submission
+                event.target.submit();
+            } else {
+                // Cancel form submission
+                Swal.fire('Cancelled');
+            }
+        }
+    </script>
+    <!-- /confirmation modal for order product -->
+   
+
+    <!-- order cancel success message-->
+    <script>
+        setTimeout(function () {
+            var logsuccessMessage = document.getElementById('logsuccessMessage'); 
+            var successBox = document.getElementById('success-box');
+    
+            if (logsuccessMessage && successBox) {
+            logsuccessMessage.style.display = 'none';
+            successBox.style.display = 'none';
+    
+            }
+        }, 5000);
+         
+    </script>
+    <!-- / end of order cancel success message  -->
+
+
+    <!-- confirmation for cancel order -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        async function confirmDelete(event) {
+            event.preventDefault();
+            
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Cancel order!'
+            });
+
+            if (result.isConfirmed) {
+                // Continue with form submission
+                event.target.submit();
+            } else {
+                // Cancel form submission
+                Swal.fire('Cancelled');
+            }
+        }
+    </script>
+   <!-- /confirmation for cancel order -->
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Qqd/EHpFnp6bsQz46erFbPaD8npf4lG8SXfM49cJL/9aG4Zg/YU5dF2DLgsP4LS" crossorigin="anonymous"></script>
+
+</body>
+</html>

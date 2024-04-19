@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <!-- Boxicons -->
+      <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"rel="stylesheet"/>
+
+      <!-- Bootstrap css cdn link -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"crossorigin="anonymous"/>
+      
+      <!-- CSS links -->
+      <link rel="stylesheet" href="css/admin_dashboard.css">
+      <link rel="stylesheet" href="/css/user_management.css" />
+      
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+
+
+
+
+
+      <title>User Management</title>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <p class="constant-txt">Admin Time Trove</p>
+        <div class="management-txt">
+            <ul>
+                <li><a href="/adminHome" class="admin-links">Dashboard</a></li>
+                <li><a href="/user-management" class="admin-links">User Management</a></li>
+                <li><a href="/adminProductManagement" class="admin-links">Product Management</a></li>
+                <li><a href="/category-management" class="admin-links">Category Management</a></li>
+                <li><a href="/order-management" class="admin-links">Order Management</a></li>
+                <li><a href="/coupon-management" class="admin-links">Coupon Management</a></li>
+                <li><a href="/offer-management" class="admin-links">Offer Management</a></li>
+                <li><a href="/referralOffer-management" class="admin-links">Referral Offer Management</a></li>
+            </ul>
+        
+            <form action="/ad-logout" method="post"><button class="logout-btn">
+                <svg class="logout-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M29.8118 24.632H27.1455C26.9635 24.632 26.7928 24.7116 26.679 24.8518C26.4135 25.1739 26.1291 25.4846 25.8294 25.7802C24.604 27.0059 23.1524 27.9826 21.555 28.6565C19.9001 29.3549 18.1213 29.7132 16.3248 29.71C14.5081 29.71 12.7483 29.3537 11.0946 28.6565C9.49723 27.9826 8.04566 27.0059 6.8202 25.7802C5.59255 24.5587 4.61365 23.1109 3.93771 21.517C3.23606 19.8648 2.88333 18.1102 2.88333 16.295C2.88333 14.4798 3.23985 12.7253 3.93771 11.0731C4.61282 9.47767 5.58377 8.04144 6.8202 6.80984C8.05664 5.57824 9.49409 4.60812 11.0946 3.93359C12.7483 3.23631 14.5081 2.8801 16.3248 2.8801C18.1416 2.8801 19.9014 3.23252 21.555 3.93359C23.1556 4.60812 24.593 5.57824 25.8294 6.80984C26.1291 7.10921 26.4097 7.41995 26.679 7.73827C26.7928 7.87849 26.9673 7.95807 27.1455 7.95807H29.8118C30.0508 7.95807 30.1987 7.6928 30.0659 7.49195C27.1569 2.97484 22.067 -0.0151007 16.2831 5.73684e-05C7.19568 0.0227945 -0.0901822 7.39343 0.000843713 16.4618C0.0918696 25.3861 7.36636 32.59 16.3248 32.59C22.0936 32.59 27.1607 29.6039 30.0659 25.0981C30.1949 24.8973 30.0508 24.632 29.8118 24.632ZM33.1836 16.0563L27.8017 11.812C27.6007 11.6529 27.3086 11.7969 27.3086 12.0508V14.9308H15.3994C15.2325 14.9308 15.096 15.0672 15.096 15.234V17.3561C15.096 17.5228 15.2325 17.6593 15.3994 17.6593H27.3086V20.5393C27.3086 20.7932 27.6045 20.9372 27.8017 20.778L33.1836 16.5338C33.2198 16.5054 33.2492 16.4692 33.2693 16.4278C33.2895 16.3864 33.3 16.341 33.3 16.295C33.3 16.249 33.2895 16.2036 33.2693 16.1622C33.2492 16.1209 33.2198 16.0846 33.1836 16.0563Z" fill="white"/>
+                </svg>Logout</button>
+            </form>
+        </div>
+        
+    </section>
+    <!--end of  SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+        <main class="d-flex gap-3">
+                <div class="table-data-section">
+                    
+                    <div class="head-part">
+                        <h1>User Management</h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">Dashboard</a>
+                            </li>
+                            <li><i class="bx bx-chevron-right"></i></li>
+                            <li>
+                                <a class="active" href="/user-management">User Management</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+
+                    <table id="dataTable" class="dataTypeTables_wrapper" style="width: 73.5vw; min-height: 30vh;">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Account Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for( let i = 0; i < userDetails.length; i++ ) { %>
+                            <tr>
+                                <td class="user-names" style="display: block;">
+                                    <p style="text-transform: capitalize;" class="textTable"><%= userDetails[i].name %></p>
+                                </td>
+                                <td>
+                                    <p class="textTable email"><%= userDetails[i].email %></p>
+                                </td>
+                                <td>
+                                    <span class="textTable position-relative">
+                                        <% if (!userDetails[i].verified) { %>
+                                            <p>Not Verified</p>
+                                        <% } else { %>
+                                            <p>Verified</p>
+                                        <% } %>
+                                    </span>
+                                </td>
+                                <td class="d-flex align-items-center">
+                                    <a href="/adminUserStaus/">
+                                        <form id="blockForm" action="/user-management/<%= userDetails[i]._id %>" method="post" onsubmit="return confirmBlock(event);">
+                                            <% if (!userDetails[i].isBlocked) { %>
+                                                <button class="notBlockedBtn status completed blockUnblock red">Block</button>
+                                            <% } else { %>
+                                                <button class="blockedBtn status completed blockUnblock red" >Unblock</button>
+                                            <% } %>
+                                        </form>
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+        </main>
+    </section>
+    <!-- CONTENT -->
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- script for sidebar menu activation -->
+    <script>
+        //get the current URL
+        var currentUrl = window.location.href;
+
+        //select all links inside the sidebar
+        var sidebarLinks = document.querySelectorAll('.admin-links');
+
+        sidebarLinks.forEach(function(link) {
+            if (link.href === currentUrl) {
+                link.parentElement.classList.add('active');
+            }
+        });
+    </script>
+    <!-- /script for sidebar menu activation -->
+
+
+    <script>
+        function toggleBlockUnblock(button) {
+            //toggle the button text
+            button.innerText = button.innerText === 'Block' ? 'Unblock' : 'Block';
+        
+            //toggle the hidden input value
+            var hiddenInput = document.querySelector('#blockForm input[name="isBlocked"]');
+            hiddenInput.value = hiddenInput.value === 'true' ? 'false' : 'true';
+        
+            form.submit();
+        }
+    </script>
+
+
+    <!-- confirmation for block/unblock user -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        async function confirmBlock(event) {
+            event.preventDefault();
+            
+            //get the button text
+            const actionButton = event.target.querySelector('.blockUnblock');
+            const action = actionButton.textContent.trim().toLowerCase();
+            
+            //set confirmation message based on the status
+            const confirmationMessage = action === 'block' ? 'Are you sure you want to block this user?' : 'Are you sure you want to unblock this user?';
+            
+            const result = await Swal.fire({
+                title: 'Confirmation',
+                text: confirmationMessage,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: action === 'block' ? 'Yes, Block user!' : 'Yes, Unblock user!'
+            });
+
+            if (result.isConfirmed) {
+                event.target.submit();
+            } else {
+                Swal.fire('Cancelled');
+            }
+        }
+    </script>
+    <!-- /confirmation for block/unblock user -->
+
+
+    <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/23d1247997.js"crossorigin="anonymous"></script>
+    <!-- end of fontawesome -->
+
+    <!-- Bootstrap script file -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"crossorigin="anonymous"></script>
+    <!-- end of Bootstrap script file -->
+
+
+    <!-- data table - pagination -->
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "paging": true,
+                "pageLength": 10
+            });
+        });
+    </script>
+    <!-- /data table - pagination -->
+        
+
+    <!-- DataTables JS -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
+    <!-- initialize DataTables -->
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
+    <!-- /initialize DataTables -->
+
+    </body>
+</html>

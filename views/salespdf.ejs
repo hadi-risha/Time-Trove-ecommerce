@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sales report</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .invoice {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 80%;
+            margin: auto;
+        }
+        .invoice h2 {
+            text-align: center;
+        }
+        .invoice-details {
+            margin-top: 20px;
+        }
+        .invoice-details p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice">
+        <h2>Sales Report</h2>
+        <div class="invoice-details">
+            <!-- <p>Total Sales : <%# noOrders ? 'No sales data available for the selected interval.' : totalSales[0].total %></p> -->
+            <p class="texts">Total Users: <%= totalUsers %></p>
+            <p class="texts">Latest Orders: <%= latestOrders %></p>
+            <!-- <p class="texts">Total Sales: <%#= totalSalesAmount %></p> -->
+
+            <% if (noOrders) { %>
+                <p class="texts">Total Sales: No sales data available for the selected interval.</p>
+            <% } else { %>
+                <p class="texts">Total Sales: <%= totalSalesAmount %></p>
+            <% } %>
+            
+        </div>
+    </div>
+</body>
+</html>

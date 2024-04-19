@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin dashboard</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/user_login.css">
+    <link rel="stylesheet" href="css/admin_dashboard.css">
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- lead chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <!-- main section -->
+    <main class="main-container" style="min-height: 77vh;">
+        <div class="container-fluid">
+            <div class="row p-0">
+                <div class="col-12 m-0 d-flex p-0">
+                    <div class="container-box">  
+
+                        <!-- admin dashboard section -->
+                        <p class="constant-txt">Admin Time Trove</p>
+                        <div class="management-txt">
+                            <ul>
+                                <li><a href="/adminHome" class="admin-links">Dashboard</a></li>
+                                <li><a href="/user-management" class="admin-links">User Management</a></li>
+                                <li><a href="/adminProductManagement" class="admin-links">Product Management</a></li>
+                                <li><a href="/category-management" class="admin-links">Category Management</a></li>
+                                <li><a href="/order-management" class="admin-links">Order Management</a></li>
+                                <li><a href="/coupon-management" class="admin-links">Coupon Management</a></li>
+                                <li><a href="/offer-management" class="admin-links">Offer Management</a></li>
+                                <li><a href="/referralOffer-management" class="admin-links">Referral Offer Management</a></li>
+                            </ul>
+                                <form action="/ad-logout" method="post"><button class="logout-btn">
+                                    <svg class="logout-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M29.8118 24.632H27.1455C26.9635 24.632 26.7928 24.7116 26.679 24.8518C26.4135 25.1739 26.1291 25.4846 25.8294 25.7802C24.604 27.0059 23.1524 27.9826 21.555 28.6565C19.9001 29.3549 18.1213 29.7132 16.3248 29.71C14.5081 29.71 12.7483 29.3537 11.0946 28.6565C9.49723 27.9826 8.04566 27.0059 6.8202 25.7802C5.59255 24.5587 4.61365 23.1109 3.93771 21.517C3.23606 19.8648 2.88333 18.1102 2.88333 16.295C2.88333 14.4798 3.23985 12.7253 3.93771 11.0731C4.61282 9.47767 5.58377 8.04144 6.8202 6.80984C8.05664 5.57824 9.49409 4.60812 11.0946 3.93359C12.7483 3.23631 14.5081 2.8801 16.3248 2.8801C18.1416 2.8801 19.9014 3.23252 21.555 3.93359C23.1556 4.60812 24.593 5.57824 25.8294 6.80984C26.1291 7.10921 26.4097 7.41995 26.679 7.73827C26.7928 7.87849 26.9673 7.95807 27.1455 7.95807H29.8118C30.0508 7.95807 30.1987 7.6928 30.0659 7.49195C27.1569 2.97484 22.067 -0.0151007 16.2831 5.73684e-05C7.19568 0.0227945 -0.0901822 7.39343 0.000843713 16.4618C0.0918696 25.3861 7.36636 32.59 16.3248 32.59C22.0936 32.59 27.1607 29.6039 30.0659 25.0981C30.1949 24.8973 30.0508 24.632 29.8118 24.632ZM33.1836 16.0563L27.8017 11.812C27.6007 11.6529 27.3086 11.7969 27.3086 12.0508V14.9308H15.3994C15.2325 14.9308 15.096 15.0672 15.096 15.234V17.3561C15.096 17.5228 15.2325 17.6593 15.3994 17.6593H27.3086V20.5393C27.3086 20.7932 27.6045 20.9372 27.8017 20.778L33.1836 16.5338C33.2198 16.5054 33.2492 16.4692 33.2693 16.4278C33.2895 16.3864 33.3 16.341 33.3 16.295C33.3 16.249 33.2895 16.2036 33.2693 16.1622C33.2492 16.1209 33.2198 16.0846 33.1836 16.0563Z" fill="white"/>
+                                    </svg>
+                                    Logout</button>
+                                </form>
+                        </div>
+                        
+                        <div class="dashboard-container"> 
+                            <div class="d-flex gap-3">
+                                <p class="subhead">Dashboard</p>
+                                <button id="pdfOrExcelOption" class="downloadBtn"><i id="cloudIcon" class="fa fa-cloud-download" aria-hidden="true"></i>Download Sales Report</button>
+                            </div>
+
+                            <!-- generate excel -->
+                            <!-- <button id="generatePdf" class="downloadBtn"><i id="cloudIcon" class="fa fa-cloud-download" aria-hidden="true"></i>Download Sales Report</button> -->
+                            <!-- /generate excel -->
+
+
+                            <!-- generate excel -->
+                            <!-- <button onclick="generateExcel()">excel</button> -->
+                            <!-- /generate excel -->
+
+
+                            <div class="d-flex gap-3">
+                                <div class="user-box">
+                                    <svg width="82" height="97" viewBox="0 0 82 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M40.9993 16.1665C44.624 16.1665 48.1001 17.8698 50.6631 20.9016C53.2261 23.9334 54.666 28.0455 54.666 32.3332C54.666 36.6208 53.2261 40.7329 50.6631 43.7647C48.1001 46.7966 44.624 48.4998 40.9993 48.4998C37.3747 48.4998 33.8986 46.7966 31.3356 43.7647C28.7726 40.7329 27.3327 36.6208 27.3327 32.3332C27.3327 28.0455 28.7726 23.9334 31.3356 20.9016C33.8986 17.8698 37.3747 16.1665 40.9993 16.1665ZM40.9993 80.8332C40.9993 80.8332 68.3327 80.8332 68.3327 72.7498C68.3327 63.0498 55.0077 52.5415 40.9993 52.5415C26.991 52.5415 13.666 63.0498 13.666 72.7498C13.666 80.8332 40.9993 80.8332 40.9993 80.8332Z" fill="black"/>
+                                    </svg>
+                                    <p class="no-txt"><%= totalUsers %></p>
+                                    <p class="txt">Total Users</p>
+                                    <input hidden type="text" value="<%= totalUsers %>" name="totalUsers">
+                                </div>
+                                <div class="order-box">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_110_86)"><path d="M26.25 15V18.75H15V15H26.25ZM15 26.25V22.5H26.25V26.25H15ZM15 33.75V30H22.5V33.75H15ZM11.25 15V18.75H7.5V15H11.25ZM11.25 22.5V26.25H7.5V22.5H11.25ZM7.5 33.75V30H11.25V33.75H7.5ZM3.75 3.75V56.25H22.5V60H0V0H32.666L48.75 16.084V22.5H45V18.75H30V3.75H3.75ZM33.75 6.41602V15H42.334L33.75 6.41602ZM52.5 30H60V60H26.25V30H33.75V26.25H37.5V30H48.75V26.25H52.5V30ZM56.25 56.25V41.25H30V56.25H56.25ZM56.25 37.5V33.75H30V37.5H56.25Z" fill="black"/>
+                                        </g><defs><clipPath id="clip0_110_86"><rect width="60" height="60" fill="white"/></clipPath></defs>
+                                    </svg>
+                                    <p class="no-txt2"><%= latestOrders %></p>
+                                    <p class="txt2">New Orders</p>
+                                    <input hidden type="text" value="<%= latestOrders %>" name="latestOrders">
+                                </div> 
+                                <div class="sales-box"> 
+                                    <svg width="68" height="69" viewBox="0 0 68 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M58.0827 20.125L33.9993 5.75L9.91602 20.125V48.875L33.9993 63.25L58.0827 48.875V20.125Z" stroke="black" stroke-width="3.33333" stroke-linejoin="round"/><path d="M33.9993 31.625V43.125M45.3327 25.875V43.125M22.666 37.375V43.125" stroke="black" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>                                    
+                                    <p class="no-txt3">₹<%= totalSalesAmount %></p>
+                                    <p class="txt3">Total Sales</p>
+                                    <input hidden type="text" value="<%= totalSalesAmount %>" name="totalSalesAmount">
+                                </div> 
+                            </div>
+                            
+
+                            
+
+                            <!-- pdf/excel popup -->
+                            <div id="pdfExcelContainer" >
+
+                                <label class="labels">
+                                  <input type="radio" name="exportType" value="excel" checked> Excel
+                                </label>
+
+                                <label class="labels">
+                                  <input type="radio" name="exportType" value="pdf"> PDF
+                                </label>
+
+                                <label class="labels" style="margin-left: 20px;">Start Date:
+                                  <input type="date" id="startDate">
+                                </label>
+
+                                <label class="labels" style="margin-left: 20px;">End Date:
+                                    <input type="date" id="endDate">
+                                </label>
+
+                                <select id="timeintervalOfPdfExcel" style="width: 130px; height: 28px; margin-left: 20px;">
+                                    <option value="" disabled selected>Filter By</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="yearly">Yearly</option>
+                                </select>
+
+                                <button onclick="exportData()" class="exportBtn">Export</button>
+                                <button onclick="closeExportModal()"  class="cancelBtn" style="margin-left: 15px;">Cancel</button>
+                            </div>
+                            <!-- /pdf/excel popup -->
+
+
+
+                        <!-- best selling products -->
+                            <div class="d-flex gap-3">
+                                <p style="background-color: white; width: 100px;background-color: #a3a7e9;
+                                    width: 173px;
+                                    padding: 8px;
+                                    margin-left: 20px;
+                                    margin-top: 50px;
+                                    border-radius: 20px;
+                                    color: white;
+                                    font-size: 17px;">Best selling products</p>
+                                <select id="timeIntervalSelect" style="width: 130px;    width: 130px;
+                                height: 38px;
+                                /* margin-top: 51px; */
+                                position: relative;
+                                left: 55vw;
+                                top: 62px;">
+                                    <option value="monthly">Monthly</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="yearly">Yearly</option>
+                                </select>
+                            </div>
+
+                            <canvas id="bestSellingProductsChart"></canvas>
+                            <!-- /best selling products -->
+                            
+
+                            <!-- best selling category -->
+                            <select id="timeIntervalCategory" style="width: 130px;    width: 130px;
+                                height: 38px;
+                                /* margin-top: 51px; */
+                                position: relative;
+                                left: 67vw;
+                                top: 97px;">
+                                <option value="monthly">Monthly</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="daily">Daily</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                            <p style="background-color: white; width: 100px;background-color: #c27171;
+                                width: 173px;
+                                padding: 8px;
+                                margin-left: 20px;
+                                margin-top: 50px;
+                                border-radius: 20px;
+                                color: white;
+                                font-size: 17px;">Best selling category</p>
+                            <canvas id="bestSellingCategoriesChart"></canvas>
+                            <!-- /best selling category -->
+
+                            <!-- best selling brands -->
+                            <select id="timeIntervalBrand" style="width: 130px;    width: 130px;
+                                height: 38px;
+                                /* margin-top: 51px; */
+                                position: relative;
+                                left: 67vw;
+                                top: 100px;">
+                                <option value="monthly">Monthly</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="daily">Daily</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                            <p style="background-color: white; width: 100px;background-color: #8a94da;
+                                width: 173px;
+                                padding: 8px;
+                                margin-left: 20px;
+                                margin-top: 50px;
+                                border-radius: 20px;
+                                color: white;
+                                font-size: 17px;">Best selling brands</p>
+                            <canvas id="bestSellingBrandsChart"></canvas>
+                            <!-- /best selling brands -->
+
+                            
+
+                            
+
+                        </div> 
+                        <!-- admin dashboard section -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- /main section  --> 
+
+
+
+
+<!-- close pdf/excel modal -->
+    <script>
+        function closeExportModal() {
+            var pdfExcelContainer = document.getElementById('pdfExcelContainer');
+            pdfExcelContainer.style.display = 'none';
+        }
+    </script>
+<!-- / close pdf/excel modal -->
+
+
+
+
+<!-- show pdf/excel div -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+            var pdfOrExcelOption = document.getElementById('pdfOrExcelOption');
+            var pdfExcelContainer = document.getElementById('pdfExcelContainer');
+        
+            pdfOrExcelOption.addEventListener('click', function() {
+                if (pdfExcelContainer.style.display === 'none') {
+                    pdfExcelContainer.style.display = 'block';
+                } else {
+                    pdfExcelContainer.style.display = 'none';
+                }
+            });
+        });
+    </script>
+<!-- show pdf/excel div -->
+
+
+
+<!-- pdf and excel handling -->
+<script>
+    async function exportData() {
+        // Get the selected export type
+        const exportType = document.querySelector('input[name="exportType"]:checked').value;
+
+        // Get the start and end dates
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        console.log('startDate', startDate);
+        console.log('endDate', endDate);
+
+        // Retrieve the values for totalUsers, latestOrders, and totalSalesAmount from hidden input fields
+        const totalUsers = document.querySelector('input[name="totalUsers"]').value;
+        const latestOrders = document.querySelector('input[name="latestOrders"]').value;
+        const totalSalesAmount = document.querySelector('input[name="totalSalesAmount"]').value;
+
+        const interval = document.getElementById('timeintervalOfPdfExcel').value;
+
+        // Construct the URL based on the selected export type
+        let url = '';
+        if (exportType === 'excel') {
+            url =  `/excel-salesReport?startDate=${startDate}&endDate=${endDate}&interval=${interval}`
+            // url = '/excel-salesReport?startDate=' + startDate + '&endDate=' + endDate + '&totalUsers=' + encodeURIComponent(totalUsers) + '&latestOrders=' + encodeURIComponent(latestOrders) + '&totalSalesAmount=' + encodeURIComponent(totalSalesAmount);
+        }
+         else if (exportType === 'pdf') {
+            url = `/pdf-salesReport?startDate=${startDate}&endDate=${endDate}&interval=${interval}`;
+            // url = '/pdf-salesReport?startDate=' + startDate + '&endDate=' + endDate + '&totalUsers=' + encodeURIComponent(totalUsers) + '&latestOrders=' + encodeURIComponent(latestOrders) + '&totalSalesAmount=' + encodeURIComponent(totalSalesAmount);
+            const response = await fetch(url);
+            const blob = await response.blob();
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(blob);
+            downloadLink.download = 'sales report';
+            downloadLink.click();
+        }
+
+        // If the URL is constructed, redirect to the URL
+        if (url) {
+            window.location.href = url;
+        } else {
+            alert('Please select an export type.');
+        }
+    }
+</script>
+
+<!-- pdf and excel handling -->
+
+  
+
+
+
+<!-- best selling products -->
+<script>
+        
+    const timeIntervalSelect = document.getElementById('timeIntervalSelect');
+    
+    function updateChart(dataType, interval) {
+    fetch(`/bestSellingProducts?interval=${interval}`)
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('bestSellingProductsChart').getContext('2d');
+            const existingChart = Chart.getChart(ctx); // Get existing chart instance
+
+            if (existingChart) {
+                existingChart.destroy(); // Destroy existing chart instance
+            }
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(item => item._id),
+                    datasets: [{
+                        label: 'Number of Orders',
+                        data: data.map(item => item.total),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+        }
+
+    // Update chart when selection changes
+    timeIntervalSelect.addEventListener('change', (event) => {
+        updateChart('bestSellingProducts', event.target.value);
+    });
+
+    //initial calling
+    //updateChart('bestSellingProducts', event.target.value);
+    updateChart('bestSellingProducts', timeIntervalSelect.value);
+</script>
+<!-- best selling products  -->
+
+
+
+
+
+<!-- best selling categories -->
+    <script>
+        const timeIntervalCategory = document.getElementById('timeIntervalCategory');
+        function updateChartt(dataType, interval) {
+        fetch(`/bestSellingCategories?interval=${interval}`)
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('bestSellingCategoriesChart').getContext('2d');
+            const existChart = Chart.getChart(ctx); // Get existing chart instance
+
+            if (existChart) {
+                existChart.destroy(); // Destroy existing chart instance
+            }
+            new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.map(item => item._id),
+                datasets: [{
+                label: 'Number of Orders',
+                data: data.map(item => item.total),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Different color for categories
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                y: {
+                    beginAtZero: true
+                }
+                }
+            }
+            });
+        });
+    }
+
+    // Update chart when selection changes
+    timeIntervalCategory.addEventListener('change', (event) => {
+        updateChartt('bestSellingCategories', event.target.value);
+    });
+
+    //initial calling
+    //updateChart('bestSellingCategories', event.target.value);
+    updateChartt('bestSellingCategories', timeIntervalCategory.value);
+    </script>
+<!-- best selling category -->
+
+
+<!-- best selling brands -->
+    <script>
+        const timeIntervalBrand = document.getElementById('timeIntervalBrand');
+        function updatechart(dataType, interval) {
+            fetch(`/bestSellingBrands?interval=${interval}`)
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('bestSellingBrandsChart').getContext('2d');
+                const chartExist = Chart.getChart(ctx); // Get existing chart instance
+
+                if (chartExist) {
+                    chartExist.destroy(); // Destroy existing chart instance
+                }
+                
+                new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(item => item._id),
+                    datasets: [{
+                    label: 'Number of Orders',
+                    data: data.map(item => item.total),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                    }
+                }
+                });
+            });
+        }
+
+        // Update chart when selection changes
+        timeIntervalBrand.addEventListener('change', (event) => {
+            updatechart('bestSellingBrands', event.target.value);
+    });
+
+    //initial calling
+    updatechart('bestSellingBrands', timeIntervalBrand.value);
+   </script>
+<!-- best selling brands  -->
+
+
+
+<!-- script for sidebar menu activation -->
+    <script>
+        // get the current URL
+        var currentUrl = window.location.href;
+        // select all links inside the sidebar
+        var sidebarLinks = document.querySelectorAll('.admin-links');
+
+        sidebarLinks.forEach(function(link) {
+            if (link.href === currentUrl) {
+                link.parentElement.classList.add('active');
+            }
+        });
+    </script>
+<!-- /script for sidebar menu activation -->
+
+    
+   
+   
+
+<!-- bootstrap links -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEX9r+05Op9j7t17I1MIY+6Y55pZeHoDQT6gQ"crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy5q4KZl+ddPnhB6J4l1p4kp6AP6Mab1+g"crossorigin="anonymous"></script>
+
+</body>
+</html>
