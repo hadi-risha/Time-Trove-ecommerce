@@ -25,18 +25,43 @@ const getUserSignup = {
 
         //track the referredUser
         const referralId = req.query.userId;      //id of the referred user
+
         console.log('referred user id', referralId );
 
-        const referredUser = await userdbCollection.findOne({_id: referralId});
-        if(referredUser){
-        console.log("referred user exist");
-        req.session.invaliddReferralLink = false;
-        console.log("Invalid referral link session value: when user exist", req.session.invaliddReferralLink);
+        // const referredUser = await userdbCollection.findOne({_id: referralId});
+        // if(referredUser){
+        //     console.log("referred user exist");
+        //     req.session.invaliddReferralLink = false;
+        //     console.log("Invalid referral link session value: when user exist", req.session.invaliddReferralLink);
+        // }else{
+        //     console.log("Invalid referral link session value: inside and invalid case", req.session.invaliddReferralLink);
+        //     console.log("invalid referral link");
+        //     req.session.invaliddReferralLink = true;
+        // }
+
+
+        // ******************************
+        if(!referralId){
+            console.log("ReferralId is empty");
+            req.session.invaliddReferralLink = true;
         }else{
-        console.log("Invalid referral link session value: inside and invalid case", req.session.invaliddReferralLink);
-        console.log("invalid referral link");
-        req.session.invaliddReferralLink = true;
+            try{
+                console.log("ReferralId is not empty section");
+                const referredUser = await userdbCollection.findOne({_id: referralId});
+                if(referredUser){
+                    console.log("Referred user exists");
+                    req.session.invaliddReferralLink = false;
+                    console.log("Invalid referral link session value: when user exist", req.session.invaliddReferralLink);
+                } else {
+                    console.log("Referred user does not exist");
+                    req.session.invaliddReferralLink = true;
+                }
+            }catch(error){
+                console.error("Error occurred while querying referred user:", error);
+                req.session.invaliddReferralLink = true;
+            }
         }
+        //**************************************** */
           
         const { passnotmatch, namenotvalid, userExist, invaliddReferralLink } = req.session;
         res.render("signup", { invaliddReferralLink, referralId, passError: passnotmatch, nameError: namenotvalid,
@@ -371,6 +396,10 @@ const getMenswatches = {
             if(allProductDetails.length < 0){
                 req.session.productNotFound = true
             }
+
+            allProductDetails.forEach( eachPro => {
+                console.log("single pro in mens............>", eachPro);
+            })
 
             //generate pagination links
             const paginationLinks = [];

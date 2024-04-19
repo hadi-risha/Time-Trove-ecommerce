@@ -59,28 +59,7 @@
                                <main class="d-flex gap-3">
                                    <div class="table-data-section">
 
-                                    <!-- coupon Updated success msg -->
-                                    <!-- <div class="deletecategory-success">
-                                        <%# if (couponUpdatedSuccess && !messageDisplayed) { %>
-                                            <div class="deletecategory-successBox" id="success-box">  
-                                                <p id="deletecategorySuccessMessage">Coupon Updated Successfully!</p>
-                                            </div>
-                                        <%# } %>
-                                    </div> -->
-                                    <!-- end of coupon Updated success msg -->
-
-                                    <!-- coupon deleted success msg -->
-                                    <!-- <div class="deletecategory-success">
-                                        <%# if (couponDeletedSuccess && !messageDisplayed) { %>
-                                            <div class="deletecategory-successBox" id="success-box">  
-                                                <p id="deletecategorySuccessMessage">Coupon Deleted Successfully!</p>
-                                            </div>
-                                        <%# } %>
-                                    </div> -->
-                                    <!-- end of coupon deleted success msg -->
-
                                     
-
                                         <!-- **********product-Offer updated success msg************* -->
                                         <div class="updateproduct-success">
                                             <% if (productOfferUpdated && !messageDisplayed) { %>
@@ -101,11 +80,21 @@
                                         </div>
                                         <!-- ************end of product offer deleted success msg********* -->
 
+                                        <!-- Category Offer updated successfully -->
+                                        <div class="updateproduct-success">
+                                            <% if (categoryOfferUpdated && !popupDisplayed) { %>
+                                                <div class="updateproduct-successBox" id="success-box">  
+                                                    <p id="updateproductSuccessMessage">Offer updated successfully</p>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                         <!-- Category Offer updated successfully -->
+
                                         <!-- category offer deleted success msg -->
                                         <div class="deleteproduct-success">
                                             <% if (categoryOfferDeleted && !mssgDisplayed) { %>
                                                 <div class="deleteproduct-successBox" id="success-box">  
-                                                    <p id="deletecategorySuccessMessage" style="width: 283px;">Category Offer deleted successfully!</p>
+                                                    <p id="deletecategorySuccessMessage" style="width: 283px;">Category Offer deleted successfully</p>
                                                 </div>
                                             <% } %>
                                         </div>

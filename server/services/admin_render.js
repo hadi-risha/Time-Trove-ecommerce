@@ -644,8 +644,8 @@ const getOfferManagement = {
             // product-offer deleted success message  
             let {productOfferDeleted, successMsgDisplayed} =req.session;
             let msgDisplayed = successMsgDisplayed;
-                if(productOfferDeleted && !msgDisplayed) {                       
-                    successMsgDisplayed = true;       
+                if(productOfferDeleted && !msgDisplayed){                       
+                    successMsgDisplayed = true;      
                 }else{
                     successMsgDisplayed = false;
                     msgDisplayed = false;
@@ -661,9 +661,20 @@ const getOfferManagement = {
                     mssgDisplayed = false;
                 }
 
-            res.render("offer_management", {categoryOfferDeleted,mssgDisplayed, allCategoryOffDetails, allProductOfferdata,
-                            productOfferUpdated,messageDisplayed,productOfferDeleted,msgDisplayed }, (error,data) =>{ 
-                if(error) {
+            // category offer updated success message 
+            let {categoryOfferUpdated, successpopupDisplayed} =req.session;
+            let popupDisplayed = successpopupDisplayed;
+                if(categoryOfferUpdated && !popupDisplayed) {                       
+                    successpopupDisplayed = true;       
+                }else{
+                    successpopupDisplayed = false;
+                    popupDisplayed = false;
+                }
+
+            res.render("offer_management", { categoryOfferUpdated, popupDisplayed, categoryOfferDeleted, mssgDisplayed,
+                            allCategoryOffDetails, allProductOfferdata,productOfferUpdated,messageDisplayed,
+                            productOfferDeleted,msgDisplayed }, (error,data) =>{ 
+                if(error){
                     console.error('Error rendering offer_management template:', error);
                     return res.status(500).send("Internal server error");
                 }
@@ -674,6 +685,8 @@ const getOfferManagement = {
                 delete req.session.productOfferDeleted;
                 succsMsgDisplayed = false;
                 delete req.session.categoryOfferDeleted
+                successpopupDisplayed = false;
+                delete req.session.categoryOfferUpdated;
 
                 res.send(data);
             });

@@ -72,40 +72,54 @@ const userSignup = {
 
 
         console.log("referral id ( _id of old user )", req.body.referralId); //track referral id
-        const referralId = req.body.referralId
-        if(user){
-          const referredUser = await userdbCollection.findOne({_id: referralId});
-          if(referredUser){
-            console.log("referred user exist");
-            const referrerEmail = referredUser.email;
-            // console.log("referrerEmail", referrerEmail);
-            const referralOfferData = await referralOfferDB.findOne();
-            const referralAmount = referralOfferData.referralAmount;
-            // console.log("referralAmount", referralAmount);
-            const referredUserReward = referralOfferData.referredUserReward;
-            // console.log("referredUserReward", referredUserReward);
+        console.log("...", req.body.referralId);
+        const referralId = req.body.referralId;
 
-            const existinguserWallet = await walletDB.findOneAndUpdate({email : referrerEmail}, {$inc:{balance : referralAmount }}, {new : true, upsert: true});
-            if(existinguserWallet.modifiedCount === 0){
-              console.log("referral amount not added in wallet");
+        if (!referralId) {
+          console.log("ReferralId is empty");
+          req.session.invalidReferalLink = true;
+        }else{
+
+
+          if(user){
+            const referredUser = await userdbCollection.findOne({_id: referralId});
+            if(referredUser){
+              console.log("referred user exist");
+              const referrerEmail = referredUser.email;
+              // console.log("referrerEmail", referrerEmail);
+              const referralOfferData = await referralOfferDB.findOne();
+              const referralAmount = referralOfferData.referralAmount;
+              // console.log("referralAmount", referralAmount);
+              const referredUserReward = referralOfferData.referredUserReward;
+              // console.log("referredUserReward", referredUserReward);
+  
+              const existinguserWallet = await walletDB.findOneAndUpdate({email : referrerEmail}, {$inc:{balance : referralAmount }}, {new : true, upsert: true});
+              if(existinguserWallet.modifiedCount === 0){
+                console.log("referral amount not added in wallet");
+              }else{
+                console.log("referral amount added in wallet");
+              }
+  
+              const newUserWallet = await walletDB.findOneAndUpdate({email : user.email}, {$inc:{balance : referredUserReward }}, {new : true, upsert: true});
+              if(newUserWallet.modifiedCount === 0){
+                console.log("reward amount not added in wallet");
+              }else{
+                console.log("reward amount added in wallet");
+              }
+  
             }else{
-              console.log("referral amount added in wallet");
+              console.log("invalid referal Link");
+              // invalid referal code case here
+              // sweetAlert
+              req.session.invalidReferalLink = true
             }
-
-            const newUserWallet = await walletDB.findOneAndUpdate({email : user.email}, {$inc:{balance : referredUserReward }}, {new : true, upsert: true});
-            if(newUserWallet.modifiedCount === 0){
-              console.log("reward amount not added in wallet");
-            }else{
-              console.log("reward amount added in wallet");
-            }
-
-          }else{
-            console.log("invalid referal Link");
-            // invalid referal code case here
-            // sweetAlert
-            req.session.invalidReferalLink = true
           }
+
+
+
         }
+
+        
         //************ /referalLink *********** *//
 
       req.session.userEmail = user.email;

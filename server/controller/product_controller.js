@@ -1583,7 +1583,7 @@ const orderVerifyPayment = {
 const retryRazorpayWithWallet = {
   async razorpayOption(req, res) {
     try {
-      console.log('payment with wallet and razorpy===========================');
+      console.log('payment with wallet and razorpy');
       const { orderId, productId, productQty } = req.body;
       console.log('data...',orderId, productId, productQty);
       const orderData = await Orderdb.findOne({_id : orderId})
@@ -1640,10 +1640,10 @@ const orderVerifyPaymentOfWallet = {
     try {
 const {userEmail} = req.session;
 
-      console.log('now in the verify section of retry razorpayWithWallet-----------------');
+      console.log('now in the verify section of retry razorpayWithWallet');
       const { orderId, paymentId, signature, parentId, productId } = req.body;
 
-      console.log("this is retry verify section, is orderId and single is here------------..",parentId, productId );
+      console.log("this is retry verify section ",parentId, productId );
 
 
       console.log("asdfghj..", orderId, paymentId, signature);
@@ -1659,7 +1659,7 @@ const {userEmail} = req.session;
 
           const orderData = await Orderdb.findOne({_id:parentId, email: req.session.userEmail});
           const newFinalAmount = parseInt(orderData.finalAmount + orderData.balanceToPay);
-          console.log("---------------------------------newFinalAmount", newFinalAmount);
+          console.log("newFinalAmount", newFinalAmount);
 
           const result = await Orderdb.updateOne({_id:parentId, email: req.session.userEmail},
                          { $set:{ paymentstatus:'completed', finalAmount : newFinalAmount }, $unset:{ balanceToPay:""} },{ new : true } );

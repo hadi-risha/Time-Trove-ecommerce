@@ -178,7 +178,7 @@
                   const result = await response.json();
                   //check if the update was successful
                   if(result.success) {
-                      window.location.href = '/coupon-management';
+                      window.location.href = '/unlisted-category';
                   }else{
                       //handle errors
                       console.error('recover failed:', result.message);
