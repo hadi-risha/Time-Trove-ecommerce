@@ -1,7 +1,7 @@
 const productDB = require("../model/productModel");
 const shoppingCartDB = require("../model/shoppingCartModel");
 const Orderdb = require("../model/orderModel");
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const AddressDB = require("../model/address-model");
 const wishlistDB = require('../model/wishlistModel')
 const walletDB = require('../model/walletModel')
@@ -172,7 +172,10 @@ const downloadSalesReport = {
 
             // Function to generate PDF
             async function generatePDF(data) {
-                const browser = await puppeteer.launch();
+                const browser = await puppeteer.launch({ 
+                    headless: "new",
+                    executablePath: '/snap/bin/chromium',
+                  });
                 const page = await browser.newPage();
 
                 // Load the EJS template

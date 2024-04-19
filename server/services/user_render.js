@@ -11,7 +11,7 @@ const categoryOfferDB = require('../model/offer-CategoryModel');
 const walletDB = require("../model/walletModel")
 const path = require('path');
 const fs = require('fs')
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const ejs = require('ejs')
 
 
@@ -1268,7 +1268,10 @@ const getDownloadInvoice = {
 
         //function to generate PDF
         async function generatePDF(data) {
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch({ 
+                headless: "new",
+                executablePath: '/snap/bin/chromium',
+              });
             const page = await browser.newPage();
 
             //load the ejs template

@@ -1,4 +1,4 @@
-// const puppeteer = require('puppeteer');
+// const puppeteer = require('puppeteer-core');
 // const fs = require('fs-extra');
 
 
@@ -6,7 +6,10 @@
 //     const generatePdf = {
 //         generate: async (req, res) => {
 //             try {
-//                 const browser = await puppeteer.launch();
+                // const browser = await puppeteer.launch({ 
+                //     headless: "new",
+                //     executablePath: '/snap/bin/chromium',
+                //   });
 //                 const page = await browser.newPage();
 
 
