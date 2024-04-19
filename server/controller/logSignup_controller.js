@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');      //password handler
+const bcrypt = require('bcryptjs');      //password handler
 const userdbCollection = require("../model/model");      
 const Otpdb = require("../model/userVerification");        
 
