@@ -1,0 +1,2481 @@
+.main-containerr{
+    min-height: 177vh;
+    position: relative;
+    display: flex;
+}
+.profile-icon{
+    background-color: rgb(255, 255, 255);
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 33px;
+    left: 12.5vw;
+}
+.main-head{
+    font-weight: 500;
+    font-size: 17px;
+    position: absolute;
+    top: 28px;
+    left: 16vw;
+}
+.user-name{
+    font-size: 19px;
+    position: absolute;
+    top: 51px;
+    left: 16vw;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+.finishing-line1{
+    width: 74vw;
+    height: 1px;
+    background-color: #b3a3a3;
+    margin-top: 100px;
+    margin-left: 12.5vw;
+}
+.left-line{
+    position: absolute;
+    width: 1px;
+    height: 560px;
+    background-color: #b3a3a3;
+    left: 351px;
+}
+.headings{
+    margin-left: 12.5vw; 
+    color: #948e8e;
+    font-size: 12px;
+    padding-top: 23px;
+}
+.orders{
+    margin-left: 12.5vw; 
+    font-size: 16px;
+    margin-top: -5px;
+}
+.text-line1{
+    width: 160px;
+    height: 1px;
+    background-color: #b3a3a3;
+    margin-left: 12.5vw; 
+}
+.logout-btn{
+    border:none;
+    border-radius: 5px;
+    margin-left: 13.5vw;
+    margin-top: 20px;
+    width: 110px;
+    height: 30px;
+    color: white;
+    background-color: rgb(145, 143, 49);
+}
+.profile-links{
+    text-decoration: none;
+    color: rgb(99, 98, 98);
+}
+
+.profile-links:hover,
+.profile-links:active,
+.profile-links:focus {
+    color: #EC5858;
+    font-weight: 500;
+}
+.userlogoutt-svg{
+    height: 17px;
+    width: 17px;
+    margin-left: -10px;
+    margin-right: 8px;
+    margin-top: -4px;
+}
+.right-section{
+    position: absolute;
+    left: 35vw;
+    top: 100px;
+}
+.parent-box{
+    width: 750px;
+    height: 300px;
+    border: 1px solid rgb(189, 187, 187);
+    border-radius: 4px;
+    position: relative;
+    top: 20px;
+    left: -70px;
+}
+.wallet-head{
+    position: relative;
+    left: 20vw;
+    top: 30px;
+    font-size: 19px;
+    font-weight: 500;
+}
+.userNameBox{
+    display: flex;
+    justify-content: space-between;
+    font-size: 17px;
+    margin-top: 60px;
+}
+.userName{
+    margin-left: 30px;
+}
+.uName{
+    margin-right: 30px;
+}
+.balance-box{
+    display: flex;
+    justify-content: space-between;
+    font-size: 17px;
+}
+.middle-line{
+    height: .3px;
+    width: 690px;
+    margin-left: 30px;
+    background-color: rgb(171, 166, 166);
+}
+.addToWalletBtn{
+    margin-left: 30px;
+    margin-top: 20px;
+    border: 1px solid transparent;
+    width: 690px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: rgb(145, 143, 49);
+    color: white;
+}
+.historyBox{
+    display: flex;
+    gap: 10px;
+    margin-top: -30px;
+    margin-left: 200px;
+}
+
+
+
+
+
+/* css for sidebar menu activation */
+.profile-links {
+    text-decoration: none;
+    color: rgb(99, 98, 98);
+}
+.profile-links:hover,
+.profile-links:active,
+.profile-links:focus {
+    color: #050505;
+    font-weight: 500;
+}
+.active {
+    background-color: #e0dce1; 
+    border-radius: 20px;
+    padding-left: 12px;
+    width: 100px;
+}
+/* /css for sidebar menu activation */
+
+
+
+@media screen and (max-width : 1171px) {
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 32vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 140px;
+        height: 30px;
+    }
+    .addAddress-link p{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 5px;
+        margin-top: 5px;
+    } 
+}
+
+
+@media screen and (max-width : 1061px) {   
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    /* .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 16vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 16vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    /* .finishing-line1{
+        width: 74vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 560px;
+        background-color: #b3a3a3;
+        left: 351px;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    } */
+    /* .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    } */
+    /* .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    .right-section{
+        position: absolute;
+        left: 38vw;
+        top: 100px;
+    }
+    /* .details-heading{
+        font-weight: 500;
+        font-size: 18px;
+        margin-top: 30px;
+    } */
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 35vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 130px;
+        height: 30px;
+    }
+    .addAddress-link p{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 5px;
+    } 
+    /* .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    .defAddress-container{
+        position: relative;
+        width: 48.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    }
+    /* .name{
+        margin-top: 15px;
+        margin-left: 15px;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    }
+    .address-type{
+        position: absolute;
+        top: 15px;
+        left: 40.5vw;
+        font-size: 11px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 51px;
+        padding-left: 11px;
+    } */
+    /* .address{
+        font-size: 14px;
+        margin-left: 15px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 15px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .state{
+        font-size: 13px;
+        margin-left: 15px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    } */
+    /* .mobile{
+        font-size: 13px;
+        margin-left: 15px;
+        color: rgb(124, 122, 122);
+    } */
+    .actions{
+        width: 48.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+    }
+    /* .edit-btn{
+        text-decoration: none;
+        width: 60px;
+        height: 40px;
+    }
+    .edit-txt{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 159px;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 160px;
+    } */
+    /* .edit-btn{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    /* .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 165px;
+        left: 29vw;
+        font-size: 14px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-right: 15px;
+        width: 90px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    /* .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 36px;
+        top: 175px;
+        left: 23vw;
+        background-color:rgb(196, 191, 191);
+    } */
+}
+
+@media screen and (max-width : 962px) {   
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    /* .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 16vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 16vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    /* .finishing-line1{
+        width: 74vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 560px;
+        background-color: #b3a3a3;
+        left: 351px;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    } */
+    /* .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    } */
+    /* .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    .right-section{
+        position: absolute;
+        left: 42vw;
+        top: 100px;
+    }
+    /* .details-heading{
+        font-weight: 500;
+        font-size: 18px;
+        margin-top: 30px;
+    } */
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 33vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 130px;
+        height: 30px;
+    }
+    .addAddress-link p{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 5px;
+    } 
+    /* .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    .defAddress-container{
+        position: relative;
+        width: 48.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    }
+    /* .name{
+        margin-top: 15px;
+        margin-left: 15px;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    }
+    .address-type{
+        position: absolute;
+        top: 15px;
+        left: 40.5vw;
+        font-size: 11px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 51px;
+        padding-left: 11px;
+    } */
+    /* .address{
+        font-size: 14px;
+        margin-left: 15px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 15px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .state{
+        font-size: 13px;
+        margin-left: 15px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    } */
+    /* .mobile{
+        font-size: 13px;
+        margin-left: 15px;
+        color: rgb(124, 122, 122);
+    } */
+    .actions{
+        width: 48.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+    }
+    /* .edit-btn{
+        text-decoration: none;
+        width: 60px;
+        height: 40px;
+    } */
+    .edit-txt{
+        font-size: 13px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 110px;
+    }
+    /* .edit-btn{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 165px;
+        left: 29vw;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-right: 15px;
+        width: 90px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    }
+    .edit-btn{
+        font-size: 13px;
+    }
+    /* .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 36px;
+        top: 175px;
+        left: 23vw;
+        background-color:rgb(196, 191, 191);
+    } */
+}
+
+@media screen and (max-width : 800px) {   
+    .right-section{
+        position: absolute;
+        left: 42vw;
+        top: 100px;
+    }
+    .details-heading{
+        font-weight: 500;
+        font-size: 17px;
+        margin-top: 30px;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 31vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 130px;
+        height: 30px;
+    }
+    .addAddress-link p{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 5px;
+    } 
+    /* .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    .defAddress-container{
+        position: relative;
+        width: 48.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    }
+    .name{
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    }
+    .address-type{
+        position: absolute;
+        top: 15px;
+        left: 38.5vw;
+        font-size: 11px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 51px;
+        padding-left: 11px;
+    }
+    .address{
+        margin-top: -5px;
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .state{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .mobile{
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+        margin-top: -5px;
+    }
+    .actions{
+        width: 48.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+        height: 40px;
+    }
+    .edit-btn{
+        text-decoration: none;
+        width: 40px;
+        height: 0px;
+    }
+    .edit-txt{
+        font-size: 13px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 90px;
+        margin-top: -15px;
+    }
+    /* .edit-btn{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 145px;
+        left: 26vw;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-right: 15px;
+        width: 90px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    }
+    .edit-btn{
+        font-size: 13px;
+    }
+    .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 25px;
+        top: 158px;
+        left: 23vw;
+        background-color:rgb(196, 191, 191);
+    }
+}
+
+@media screen and (max-width : 726px) {   
+    .right-section{
+        position: absolute;
+        left: 45vw;
+        top: 100px;
+    }
+    .details-heading{
+        font-weight: 500;
+        font-size: 17px;
+        margin-top: 30px;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 30vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 120px;
+        height: 30px;
+    }
+    .addAddress-link p{
+        font-size: 11.5px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 5px;
+    } 
+    /* .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    /* .defAddress-container{
+        position: relative;
+        width: 48.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    } */
+    /* .name{
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    } */
+    /* .address-type{
+        position: absolute;
+        top: 15px;
+        left: 38.5vw;
+        font-size: 11px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 51px;
+        padding-left: 11px;
+    } */
+    /* .address{
+        margin-top: -5px;
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    } */
+    /* .state{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .mobile{
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+        margin-top: -5px;
+    } */
+    /* .actions{
+        width: 48.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+        height: 40px;
+    }
+    .edit-btn{
+        text-decoration: none;
+        width: 40px;
+        height: 0px;
+    } */
+    /* .edit-txt{
+        font-size: 13px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 90px;
+        margin-top: -15px;
+    } */
+    /* .edit-btn{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    /* .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 145px;
+        left: 26vw;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-right: 15px;
+        width: 90px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    }
+    .edit-btn{
+        font-size: 13px;
+    } */
+    /* .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 25px;
+        top: 158px;
+        left: 23vw;
+        background-color:rgb(196, 191, 191);
+    } */
+}
+
+@media screen and (max-width : 642px) {   
+    .right-section{
+        position: absolute;
+        left: 45vw;
+        top: 100px;
+    }
+    .details-heading{
+        font-weight: 500;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 28vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 118px;
+        height: 27px;
+    }
+    .addAddress-link p{
+        font-size: 11.1px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 5px;
+    } 
+    /* .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    /* .defAddress-container{
+        position: relative;
+        width: 48.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    } */
+    /* .name{
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    } */
+    /* .address-type{
+        position: absolute;
+        top: 15px;
+        left: 38.5vw;
+        font-size: 11px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 51px;
+        padding-left: 11px;
+    } */
+    /* .address{
+        margin-top: -5px;
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    } */
+    /* .state{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .mobile{
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+        margin-top: -5px;
+    } */
+    /* .actions{
+        width: 48.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+        height: 40px;
+    }
+    .edit-btn{
+        text-decoration: none;
+        width: 40px;
+        height: 0px;
+    } */
+    .edit-txt{
+        font-size: 13px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 70px;
+        margin-top: -15px;
+    }
+    /* .edit-btn{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    /* .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 145px;
+        left: 26vw;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-right: 15px;
+        width: 90px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    }
+    .edit-btn{
+        font-size: 13px;
+    } */
+    /* .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 25px;
+        top: 158px;
+        left: 23vw;
+        background-color:rgb(196, 191, 191);
+    } */
+}
+
+@media screen and (max-width : 550px) {   
+    .right-section{
+        position: absolute;
+        left: 38vw;
+        top: 100px;
+    }
+    .details-heading{
+        font-weight: 500;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 31vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 107px;
+        height: 24px;
+    }
+    .addAddress-link p{
+        font-size: 10px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 3px;
+    } 
+    .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    }
+    .defAddress-container{
+        position: relative;
+        width: 52.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    }
+    .name{
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    }
+    .address-type{
+        position: absolute;
+        top: 15px;
+        left: 38.5vw;
+        font-size: 10px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 46px;
+        padding-left: 8px;
+    }
+    /* .address{
+        margin-top: -5px;
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    } */
+    /* .state{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .mobile{
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+        margin-top: -5px;
+    } */
+    .actions{
+        width: 52.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+        height: 40px;
+    }
+    .edit-btn{
+        text-decoration: none;
+        width: 40px;
+        height: 0px;
+    }
+    .edit-txt{
+        font-size: 12px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 60px;
+        margin-top: -15px;
+    }
+    /* .edit-btn{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 140px;
+        left: 26vw;
+        font-size: 12px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-right: 15px;
+        width: 90px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    }
+    /* .edit-btn{
+        font-size: 13px;
+    } */
+    .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 23px;
+        top: 158px;
+        left: 25vw;
+        background-color:rgb(196, 191, 191);
+    }
+}
+
+@media screen and (max-width : 480px) {   
+    .right-section{
+        position: absolute;
+        left: 38vw;
+        top: 100px;
+    }
+    /* .details-heading{
+        font-weight: 500;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 31vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 107px;
+        height: 24px;
+    } */
+    /* .addAddress-link p{
+        font-size: 10px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 3px;
+    } 
+    .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    .defAddress-container{
+        position: relative;
+        width: 55.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    }
+    /* .name{
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    } */
+    /* .address-type{
+        position: absolute;
+        top: 15px;
+        left: 38.5vw;
+        font-size: 10px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 46px;
+        padding-left: 8px;
+    } */
+    /* .address{
+        margin-top: -5px;
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    } */
+    /* .state{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .mobile{
+        font-size: 13px;
+        margin-left: 10px;
+        color: rgb(124, 122, 122);
+        margin-top: -5px;
+    } */
+    .actions{
+        width: 55.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+        height: 40px;
+    }
+    /* .edit-btn{
+        text-decoration: none;
+        width: 40px;
+        height: 0px;
+    }
+    .edit-txt{
+        font-size: 12px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 60px;
+        margin-top: -15px;
+    } */
+    /* .edit-btn{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    /* .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 140px;
+        left: 26vw;
+        font-size: 12px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 15px;
+        padding-right: 15px;
+        width: 90px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    } */
+    /* .edit-btn{
+        font-size: 13px;
+    } */
+    /* .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 23px;
+        top: 158px;
+        left: 25vw;
+        background-color:rgb(196, 191, 191);
+    } */
+}
+
+@media screen and (max-width : 450px) {   
+    .right-section{
+        position: absolute;
+        left: 36vw;
+        top: 100px;
+    }
+    /* .details-heading{
+        font-weight: 500;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 31vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 107px;
+        height: 24px;
+    } */
+    /* .addAddress-link p{
+        font-size: 10px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 3px;
+    } 
+    .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    .defAddress-container{
+        position: relative;
+        width: 57.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    }
+    .name{
+        margin-top: 10px;
+        margin-left: 5px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    }
+    .address-type{
+        position: absolute;
+        top: 15px;
+        left: 38.5vw;
+        font-size: 10px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 40px;
+        padding-left: 8px;
+    }
+    .address{
+        margin-top: -5px;
+        font-size: 12px;
+        height: 20px;
+        margin-left: 5px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 5px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .state{
+        font-size: 13px;
+        margin-left: 5px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .mobile{
+        font-size: 13px;
+        margin-left: 5px;
+        color: rgb(124, 122, 122);
+        margin-top: -5px;
+    }
+    .actions{
+        width: 55.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+        height: 42px;
+    }
+    /* .edit-btn{
+        text-decoration: none;
+        width: 40px;
+        height: 0px;
+    } */
+    .edit-txt{
+        font-size: 11px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 60px;
+        margin-top: -15px;
+    }
+    .edit-btn{
+        font-size: 11px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    }
+    .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 149px;
+        left: 26vw;
+        font-size: 11px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 0px;
+        padding-right: 15px;
+        width: 90px;
+        height: 30px;
+        color: rgb(70, 70, 228);
+    }
+    /* .edit-btn{
+        font-size: 13px;
+    } */
+    /* .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 23px;
+        top: 158px;
+        left: 25vw;
+        background-color:rgb(196, 191, 191);
+    } */
+}
+
+@media screen and (max-width : 447px) {   
+    .right-section{
+        position: absolute;
+        left: 38vw;
+        top: 100px;
+    }
+}
+
+@media screen and (max-width : 399px) {   
+    .right-section{
+        position: absolute;
+        left: 38vw;
+        top: 100px;
+    }
+    /* .details-heading{
+        font-weight: 500;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 31vw;
+        top: 27px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 107px;
+        height: 24px;
+    } */
+    /* .addAddress-link p{
+        font-size: 10px;
+        font-weight: 500;
+        margin-left: 0px;
+        margin-top: 3px;
+    } 
+    .defAddress-heading{
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 30px;
+    } */
+    .defAddress-container{
+        position: relative;
+        width: 57.6vw;
+        min-height:130px ;
+        margin-top: 10px;
+        border: 1px solid rgb(196, 191, 191);
+        box-shadow: 1px 1px 1px 0px rgb(190, 190, 190);
+    }
+    .name{
+        margin-top: 10px;
+        margin-left: 5px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgb(99, 98, 98);
+    }
+    .address-type{
+        position: absolute;
+        top: 15px;
+        left: 38.5vw;
+        font-size: 10px;
+        font-weight: 500;
+        color: rgb(71, 71, 71);
+        background-color: rgb(245, 240, 240);
+        border-radius: 20px;
+        height: 16px;
+        width: 40px;
+        padding-left: 8px;
+    }
+    .address{
+        margin-top: -5px;
+        font-size: 12px;
+        height: 20px;
+        margin-left: 5px;
+        color: rgb(124, 122, 122);
+    }
+    .district{
+        font-size: 13px;
+        margin-left: 5px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .state{
+        font-size: 13px;
+        margin-left: 5px;
+        margin-top: -15px; 
+        color: rgb(124, 122, 122);
+    }
+    .mobile{
+        font-size: 13px;
+        margin-left: 5px;
+        color: rgb(124, 122, 122);
+        margin-top: -5px;
+    }
+    .actions{
+        width: 55.6vw;
+        border-top: 1px solid rgb(196, 191, 191);
+        height: 42px;
+    }
+    /* .edit-btn{
+        text-decoration: none;
+        width: 40px;
+        height: 0px;
+    } */
+    .edit-txt{
+        font-size: 11px;
+        font-weight: 500;
+        width: 60px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+        margin: 0px;
+        padding: 0px;
+        margin-left: 60px;
+        margin-top: -15px;
+    }
+    .edit-btn{
+        font-size: 11px;
+        font-weight: 500;
+        margin-left: 19px;
+        width: 30px;
+        height: 40px;
+        color: rgb(70, 70, 228);
+    }
+    .remove-btn {
+        position: absolute;
+        text-decoration: none;
+        top: 149px;
+        left: 26vw;
+        font-size: 11px;
+        font-weight: 500;
+        padding-left: 20px;
+        padding-top: 0px;
+        padding-right: 15px;
+        width: 90px;
+        height: 30px;
+        color: rgb(70, 70, 228);
+    }
+    /* .edit-btn{
+        font-size: 13px;
+    } */
+    /* .middle-line{
+        position: absolute;
+        width: 1px;
+        height: 23px;
+        top: 158px;
+        left: 25vw;
+        background-color:rgb(196, 191, 191);
+    } */
+}
+
+
+
+
+/* ********************media queries of left side********************** */
+@media screen and (max-width : 961px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 18vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 18vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 78.5vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 320px;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 839px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 18vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 18vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    /* .finishing-line1{
+        width: 74vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 300px;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    } */
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 14px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+    
+    
+}
+
+@media screen and (max-width : 698px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 250px;
+    }
+
+    .left-section{
+        margin-left: -32px;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 622px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 34vw;
+    }
+
+    .left-section{
+        margin-left: -32px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 26vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+
+@media screen and (max-width : 556px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 34px;
+        height: 34px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 31px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 18px;
+        position: absolute;
+        top: 48px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    /* .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 31vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    /* .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    } */
+    .text-line1{
+        width: 24vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+    
+}
+
+@media screen and (max-width : 512px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    /* .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 34px;
+        height: 34px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 31px;
+        left: 15vw;
+    } */
+    /* .user-name{
+        font-size: 18px;
+        position: absolute;
+        top: 48px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    /* .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 33vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    } */
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 24vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 447px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 33px;
+        left: 4.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 31px;
+        left: 13.5vw;
+    }
+    .user-name{
+        font-size: 13px;
+        position: absolute;
+        top: 48px;
+        left: 13.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 36vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    } */
+    /* .orders{
+        margin-left: 11.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    } */
+    .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    }
+    .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+
+@media screen and (max-width : 395px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    }
+    .user-name{
+        font-size: 13px;
+        position: absolute;
+        top: 48px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 11.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 36vw;
+    }
+
+    .left-section{
+        margin-left: -38px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 12px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    } */
+    /* .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 350px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 12px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    }
+    .user-name{
+        font-size: 12px;
+        position: absolute;
+        top: 47px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 11.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 34vw;
+    }
+
+    .left-section{
+        margin-left: -36px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 11px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    } */
+    /* .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 320px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    /* .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 12px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    } */
+    /* .user-name{
+        font-size: 12px;
+        position: absolute;
+        top: 47px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 37.5vw;
+    }
+
+    .left-section{
+        margin-left: -29px;
+    }
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 11px;
+        margin-top: -5px;
+    } */
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 70px;
+        height: 24px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    }
+    .userlogoutt-svg{
+        height: 12px;
+        width: 12px;
+        margin-left: -3px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+/* ******************** /media queries of left side********************** */

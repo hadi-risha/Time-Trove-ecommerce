@@ -1,0 +1,85 @@
+body{
+    overflow-x: hidden;
+}
+
+.invoice-container{
+    border: 1px solid black;
+    width: 75vw;
+    height: 600px;
+    margin-left: 190px;
+    margin-top: 30px;
+}
+.heading{
+    display: flex;
+    gap: 10px;
+    position: relative;
+    left: 30px;
+}
+.head-txt{
+    font-size: 20px;
+}
+.invoice-icon{
+    width: 17px;
+    height: 18px;
+    position: relative;
+    top: 15px;
+}
+.first-line{
+    width: 75vw;
+    height: 1px;
+    background-color: black;
+}
+.address-data{
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+.ordeInfo-container{
+    margin-left: 60px;
+    width: 500px;
+}
+.orderId{
+    font-weight: bold;
+}
+.odrDatehead{
+    font-weight: bold;
+}
+.second-line{
+    width: 75vw;
+    height: 1px;
+    background-color: black;
+}
+th {
+    padding: 20px 50px; 
+}
+td {
+    padding: 20px 0px 0px 50px; 
+}
+.third-line{
+    width: 75vw;
+    height: 1px;
+    background-color: black;
+    margin-top: 30px;
+}
+.final-box{
+    position: relative;
+    left: 63vw;
+    top: 10px;
+    align-items: end;
+}
+.logo-icon{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.gratitude{
+    color: #b7a62b;
+    margin-top: -0px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+/* make the remaining description like etc...  */
+/* width: 120px;
+overflow: hidden;
+text-overflow: ellipsis;
+text-wrap: nowrap; */

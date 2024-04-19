@@ -1,0 +1,593 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+/* font-family: 'Libre Bodoni', serif; */
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+/* hide scrollbar */
+body::-webkit-scrollbar{
+    display: none;
+}
+.otp-container{
+    width: 100vw;
+    height: 543px;
+}
+.verification-section{
+    position: relative;
+    width: 37vw;
+    margin-left: 31vw;
+    margin-top: 78px;
+    height: 395px;
+    border: solid 1px rgb(197, 196, 196);
+    border-radius:15px ;
+    box-shadow: 2px 2px 4px rgb(206, 202, 202);
+}
+.mail-icon{
+    height: 50px;
+    width: 50px;
+    display: inline;
+    margin-left: 7vw;
+    margin-top: 48px;
+}
+.heading{
+    font-size: 29px;
+    font-weight: bold;
+    display: inline;
+    position: absolute;
+    top: 56px;
+}
+.texts{
+    font-size: 14px;
+    text-align: center;
+    padding-top: 20px;
+    color: rgb(48, 48, 48);
+    line-height: 20px;
+}
+.label-txt{
+    font-size: 14px;
+    display: block;
+    margin-left: 5.3vw;
+    line-height: 22px;
+    margin-top: 0px;
+}
+.otp-inputbox{
+    width: 26vw;
+    display: block;
+    margin-left: 5.3vw;
+    border: solid 1px rgb(197, 196, 196);
+    border-radius:5px ;
+    height: 39px;
+}
+.otpError-txt{
+    color: red;
+     margin-top: 0px;
+     margin-bottom: 0px;
+     font-size: 13px;
+     margin-left: 70px;
+} 
+.otp-btn{
+    width: 26vw;
+    height: 39px;
+    margin-top: 11px;
+    margin-left: 5.3vw;
+    border: solid 1px rgb(197, 196, 196);
+    border-radius:5px ;
+    background-color: #89D276;
+    color: white;
+    font-weight: 600;
+    font-size: 16px; 
+}
+#timer {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    /* display: flex; */
+  }
+.resend-txt{
+    font-size: 13px;
+    margin-left: 10.5vw;
+    padding-top: 10px;
+    color: rgb(116, 113, 113);
+    /* display: flex; */
+}
+.resend-btn{
+    position: absolute;
+    border: none;
+    background-color: white;
+    margin-left: 25.1vw;
+    margin-top: -38px;
+    font-size: 13px;
+    text-decoration: underline;
+    
+}
+
+
+@media screen and (max-width: 1386px){
+    .resend-txt{
+        font-size: 13px;
+        margin-left: 7.5vw;
+        padding-top: 10px;
+        color: rgb(116, 113, 113);
+        /* display: flex; */
+    }
+}
+
+@media screen and (max-width: 1168px) {
+    .mail-icon{
+        height: 40px;
+        width: 40px;
+    }
+    .heading{
+        font-size: 26px;
+        top: 51px;
+    }
+}
+
+@media screen and (max-width: 1148px){
+    .resend-txt{
+        font-size: 12px;
+        margin-left: 5.5vw;
+        padding-top: 10px;
+        color: rgb(116, 113, 113);
+        /* display: flex; */
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    
+    .verification-section{
+        height: 397px;   
+        width: 50vw;
+        margin-left: 27vw; 
+    }
+    .mail-icon{
+        height: 7vh;
+        width: 33px;
+        margin-left: 12vw;
+        margin-top: 8vh;  
+    }
+    .heading{
+        font-size: 2.5vw;   
+        top: 48px;
+    }
+    .texts{
+        font-size: 13px;
+        text-align: left;
+        margin-left: 125px;
+    }
+    
+    .label-txt{
+        font-size: 13px;
+        margin-top: 57px;
+        margin-left: 9vw;
+    }
+    .otp-inputbox{
+        border-radius:4px ;
+        height: 36px;
+        margin-left: 9vw;
+        width: 32vw;
+    }
+    .otp-btn{
+        height: 36px;
+        border-radius:4px ;
+        font-size: 15px;  
+        margin-left: 9vw; 
+        width: 32vw;
+    }
+    .resend-btn {
+        margin-left: 32.1vw;
+    }
+    .resend-txt{
+        font-size: 12px;
+        margin-left: 9.5vw;
+        padding-top: 10px;
+        color: rgb(116, 113, 113);
+        /* display: flex; */
+    }
+  
+}
+
+@media screen and (max-width: 951px) {
+    
+    .verification-section{
+        height: 397px;   
+        width: 50vw;
+        margin-left: 27vw; 
+    }
+    .mail-icon{
+        height: 7vh;
+        width: 33px;
+        margin-left: 10vw;
+        margin-top: 8vh;  
+    }
+    .heading{
+        font-size: 2.5vw;   
+        top: 48px;
+    }
+    .texts{
+        font-size: 13px;
+        text-align: left;
+        margin-left: 95px;
+    }
+    
+    /* .label-txt{
+        font-size: 13px;
+        margin-top: 57px;
+        margin-left: 9vw;
+    }
+    .otp-inputbox{
+        border-radius:4px ;
+        height: 36px;
+        margin-left: 9vw;
+        width: 32vw;
+    }
+    .otp-btn{
+        height: 36px;
+        border-radius:4px ;
+        font-size: 15px;  
+        margin-left: 9vw; 
+        width: 32vw;
+    } */
+}
+
+@media screen and (max-width: 833px) {
+    
+    /* .verification-section{
+        height: 397px;   
+        width: 50vw;
+        margin-left: 27vw; 
+    } */
+    .mail-icon{
+        height: 6vh;
+        width: 30px;
+        margin-left: 10vw;
+        margin-top: 8vh;  
+    }
+    /* .heading{
+        font-size: 2.5vw;   
+        top: 48px;
+    } */
+    .texts{
+        font-size: 13px;
+        text-align: left;
+        margin-left: 80px;
+    }
+    
+    /* .label-txt{
+        font-size: 13px;
+        margin-top: 57px;
+        margin-left: 9vw;
+    }
+    .otp-inputbox{
+        border-radius:4px ;
+        height: 36px;
+        margin-left: 9vw;
+        width: 32vw;
+    }
+    .otp-btn{
+        height: 36px;
+        border-radius:4px ;
+        font-size: 15px;  
+        margin-left: 9vw; 
+        width: 32vw;
+    } */
+    .resend-btn {
+        margin-left: 32.1vw;
+        font-size: 12px;
+    }
+    .resend-txt{
+        font-size: 11px;
+        margin-left: 9.5vw;
+        padding-top: 10px;
+        color: rgb(116, 113, 113);
+        /* display: flex; */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    /* .verification-section{
+        height: 397px;   
+        width: 50vw;
+        margin-left: 27vw; 
+    } */
+    .mail-icon{
+        height: 6vh;
+        width: 30px;
+        margin-left: 10vw;
+        margin-top: 8vh;  
+    }
+    /* .heading{
+        font-size: 2.5vw;   
+        top: 48px;
+    } */
+    .texts{
+        font-size: 13px;
+        text-align: left;
+        margin-left: 70px;
+    }
+    
+    /* .label-txt{
+        font-size: 13px;
+        margin-top: 57px;
+        margin-left: 9vw;
+    }
+    .otp-inputbox{
+        border-radius:4px ;
+        height: 36px;
+        margin-left: 9vw;
+        width: 32vw;
+    }
+    .otp-btn{
+        height: 36px;
+        border-radius:4px ;
+        font-size: 15px;  
+        margin-left: 9vw; 
+        width: 32vw;
+    } */
+    .resend-btn {
+        margin-left: 20.1vw;
+        font-size: 11px;
+        margin-top: -19px;
+    }
+    .resend-txt{
+        font-size: 11px;
+        margin-left: 9.5vw;
+        padding-top: 10px;
+        color: rgb(116, 113, 113);
+        /* display: flex; */
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .verification-section{
+        width: 51vw;
+        margin-left: 28vw;
+    }
+    .mail-icon{
+        height: 6.5vh;
+        width: 3.2vw;
+        margin-left: 13vw;
+        margin-top: 7vh; 
+    }
+    .heading{
+        font-size: 2.5vw;
+        top: 49px;
+        margin-left: 5px;
+    }
+    .texts{
+        font-size: 11.5px;
+        margin-left: 60px;
+    }
+    .label-txt{
+        font-size: 11.5px;
+        margin-left: 5.2vw ;
+    }
+    .otp-inputbox{
+        height: 34px;
+        width: 40vw;
+        margin-left: 5.2vw ;
+    }
+    .otp-btn{
+        height: 34px;
+        font-size: 13px; 
+        width: 40vw;
+        margin-left: 5.2vw;
+    }
+}
+
+@media screen and (max-width: 592px) {
+    /* .verification-section{
+        width: 51vw;
+        margin-left: 28vw;
+    } */
+    /* .mail-icon{
+        height: 6.5vh;
+        width: 3.2vw;
+        margin-left: 13vw;
+        margin-top: 7vh; 
+    }
+    .heading{
+        font-size: 2.5vw;
+        top: 49px;
+        margin-left: 5px;
+    } */
+    .texts{
+        font-size: 11.5px;
+        margin-left: 40px;
+    }
+    .label-txt{
+        font-size: 11.5px;
+        margin-left: 5.2vw ;
+    }
+    .otp-inputbox{
+        height: 34px;
+        width: 40vw;
+        margin-left: 5.2vw ;
+    }
+    .otp-btn{
+        height: 34px;
+        font-size: 13px; 
+        width: 40vw;
+        margin-left: 5.2vw;
+    }
+}
+
+
+@media screen and (max-width: 554px) {
+    .verification-section{
+        width: 72vw;
+        margin-left: 15vw;
+        margin-top: 75px;
+    }
+    .mail-icon{
+        height: 6vh;
+        width: 5vw;
+        margin-left: 14vw;
+        margin-top: 7.5vh; 
+    }
+    .heading{
+        font-size: 18px;
+        top: 49px;
+    }
+    .texts{
+        font-size: 12px;
+        margin-left: 60px;
+    }
+    .label-txt{
+        font-size: 12px;
+        margin-left: 9vw ;
+    }
+    .otp-inputbox{
+        width: 53vw;
+        height: 33px;
+        margin-left: 9vw ;
+    }
+    .otp-btn{
+        width: 53vw;
+        height: 33px;
+        font-size: 14px; 
+        margin-left: 9vw ;
+    }
+    .resend-btn {
+        margin-left: 40.1vw;
+        font-size: 11px;
+        margin-top: -19px;
+    }
+    .resend-txt{
+        font-size: 11px;
+        margin-left: 9.5vw;
+        padding-top: 10px;
+        color: rgb(116, 113, 113);
+        /* display: flex; */
+    }
+}
+
+@media screen and (max-width: 462px) {
+    /* .verification-section{
+        width: 72vw;
+        margin-left: 15vw;
+        margin-top: 75px;
+    }
+    .mail-icon{
+        height: 6vh;
+        width: 5vw;
+        margin-left: 14vw;
+        margin-top: 7.5vh; 
+    }
+    .heading{
+        font-size: 18px;
+        top: 49px;
+    } */
+    .texts{
+        font-size: 12px;
+        margin-left: 40px;
+    }
+    /* .label-txt{
+        font-size: 12px;
+        margin-left: 9vw ;
+    }
+    .otp-inputbox{
+        width: 53vw;
+        height: 33px;
+        margin-left: 9vw ;
+    }
+    .otp-btn{
+        width: 53vw;
+        height: 33px;
+        font-size: 14px; 
+        margin-left: 9vw ;
+    } */
+}
+
+@media screen and (max-width: 400px) {
+    .otp-container{  
+        height: 393px;
+    }
+    .verification-section{
+        width: 85vw;
+        margin-left: 8vw;
+        margin-top: 40px;
+        height: 350px;   
+    }
+    .mail-icon{
+        height: 6vh;
+        width: 5vw;
+        margin-left: 17.5vw;
+        margin-top: 7vh; 
+    }
+    .heading{
+        font-size: 17px;
+        top: 47px;
+    }
+    .texts{
+        font-size: 11px;
+        padding-top: 15px;
+        line-height: 17px;
+    }
+    .label-txt{
+        font-size: 11px;
+        margin-left: 7.3vw;
+        margin-top: 35px;
+    }
+    .otp-inputbox{
+        width: 68vw;
+        margin-left: 7.3vw;
+        height: 32px;
+    }
+    .otp-btn{
+        width: 68vw;
+        height: 32px;
+        margin-top: 14px;
+        margin-left: 7.3vw;
+        font-size: 14px; 
+    }
+}
+
+@media screen and (max-width: 313px) {
+    /* .otp-container{  
+        height: 393px;
+    }
+    .verification-section{
+        width: 85vw;
+        margin-left: 8vw;
+        margin-top: 40px;
+        height: 350px;   
+    } */
+    .mail-icon{
+        height: 6vh;
+        width: 5vw;
+        margin-left: 14.5vw;
+        margin-top: 7vh; 
+    }
+    .heading{
+        font-size: 16px;
+        top: 47px;
+    }
+    .texts{
+        font-size: 11px;
+        padding-top: 15px;
+        line-height: 17px;
+        margin-left: 20px;
+    }
+    .label-txt{
+        font-size: 11px;
+        margin-left: 7.3vw;
+        margin-top: 35px;
+    }
+    .otp-inputbox{
+        width: 68vw;
+        margin-left: 7.3vw;
+        height: 32px;
+    }
+    .otp-btn{
+        width: 68vw;
+        height: 32px;
+        margin-top: 14px;
+        margin-left: 7.3vw;
+        font-size: 14px; 
+    }
+}

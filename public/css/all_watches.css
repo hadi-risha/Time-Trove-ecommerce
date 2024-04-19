@@ -1,0 +1,2645 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+/* font-family: 'Libre Bodoni', serif; */
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/* hide scrollbar */
+body::-webkit-scrollbar{
+    display: none;
+}
+.main-section{
+    overflow-x: hidden;
+    min-height: 87vh;
+}
+.container-box{
+    width: 100vw;
+    min-height: 245.6vh;
+    background-color: rgb(0, 0, 0);
+    position: relative;
+}
+.heading-section{
+    width: 100vw;
+    height: 70px;
+    background-color: rgb(0, 0, 0);
+}
+.heading-section h1{
+    color: #A59B46;
+    font-family: 'Libre Bodoni', serif;
+    font-size: 37px;
+    margin-left: 43vw;
+    padding-top: 17px;
+}
+.sort-section{
+    width: 84vw;
+    height: 54px;
+    position: absolute;
+    top: 70px;
+    left: 15.8vw;
+    background-color: rgb(0, 0, 0);
+}
+.filter-section{
+    /* width: 17.1vw; */
+    width: 15.7vw;
+    /* height: 1030px; */
+    height: 645px;
+    background-color: rgb(21, 21, 21);
+    border-right: 1px solid rgb(58, 57, 57);   /* border color */
+    margin-top: -71px;
+}
+.sub-heading{
+    font-size: 17px;
+    margin-left: 3vw;
+    color: white;
+    font-weight: 500;
+    padding-top: 15px;
+}
+.clear-txt{
+    font-size: 12px;
+    color: rgb(175, 43, 43);
+    position: absolute;
+    top: 92px;
+    left: 11vw;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0px 2px 0px 1px;
+    border-radius: 8px;
+}
+.clear-txt:hover{
+    background-color: rgb(183, 188, 230);
+    color: rgb(0, 0, 0);
+}
+.line1{
+    width: 15.3vw;
+    height: 10px;
+    font-size: 10px;
+    margin-top: -33px;
+}
+.filter-component{
+    margin-left: 1vw;
+}
+.filter-head1{
+    color: white;
+    /* font-size: 1.2vw; */
+    font-size: 1vw;
+    margin-left: .5vw;
+    font-weight: 500;
+}
+.filter-heads{
+    color: white;
+    /* font-size: 1.2vw; */
+    font-size: 1vw;
+    margin-left: 3vw;
+    font-weight: 500;
+}
+.filter-section ul{
+    list-style: none;
+    color: white;
+    font-size: 1.1vw;
+}
+.prev-btn{
+    display: inline;
+    margin-top: 50px;
+    margin-left: 15vw;
+    background-color: #C2BEBE;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 150px;
+}
+.btm-line1{
+    display: block;
+    margin-left: 4.5vw;
+    margin-top: 30px;
+    width: 72.8vw;
+    height: 1px;
+    background-color: black;
+}
+.btm-line2{
+    display: block;
+    margin-left: 4.5vw;
+    margin-top: 42px;
+    width: 72.8vw;
+    height: 1px;
+    background-color: black;
+}
+.next-btn{
+    display: inline;
+    margin-left: 29vw;
+    margin-top: 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 150px;
+}
+.prev-btn svg{
+    width: 13px;
+    height: 13px;
+}
+.next-btn svg{
+    width: 13px;
+    height: 13px;
+}
+.collection-section{
+    /* height: 1300px; */
+    min-height: 236.1vh;
+    /* width: 83.6vw; */
+    width: 84vw;
+    background-color: #151414;
+    position: absolute;
+    top:70px;
+    left: 15.7vw;
+    /* left: 235px; */
+    display: flex;
+    flex-wrap: wrap;
+}
+.each-box{
+    position: absolute;
+    top: 0px;
+}
+
+.collection-box{
+    position: relative;
+    /* width:27.86vw; */
+    width:28vw;
+    height: 430px;
+    background-color: rgb(0, 0, 0);
+    /* padding-left: .1vw; */
+    border: .5px solid rgb(70, 70, 70);
+    text-decoration: none;
+    
+}
+.collection-img{
+    width: 100%;
+    height: 80%;
+}
+.brand-name{
+    font-size: 17px;
+    font-family: 'Libre Bodoni', serif;
+    color: #BEC757;
+    padding-left: 25px;
+    padding-top: 10px;
+    text-transform: capitalize;
+}
+.caption{
+    font-size: 14px;
+    color: rgb(214, 211, 211);
+    padding-left: 25px;
+    margin-top: -18px;
+}
+.price-container{
+    margin-top: -15px;
+    font-size: 14px;
+    color: rgb(214, 211, 211);
+    margin-left: 25px;
+}
+
+.offer-price{
+    font-size: 12px;
+    color: rgb(160, 158, 158);
+    text-decoration: line-through;
+}
+.offer{
+    font-size: 13px;
+    color: #BEC757;
+    
+} 
+
+/* profile dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:#ffffff;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    left: -90px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.dropdown-content a {
+    color: black;
+    padding: 4px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+.dropdown-content a:hover {
+    /* background-color: #ddd; */
+    font-weight: 500;
+}
+.logOut-btn:hover{
+    font-weight: 500;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.person {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.person-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.name-text{
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    margin-left: 15px;
+    text-transform: capitalize;
+}
+.login-signup{
+    font-size: 13px;
+    font-weight: 500;
+    /* margin-left: 15px; */
+    border: 1px solid rgb(182, 179, 179);
+    color:  #ce4e4e;
+    padding: 10px;
+    margin-right: 65px;
+    margin-top: -10px;
+}
+.dropdown-line1{
+    width: 190px;
+    height: 1px;
+    margin-top: -5px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    background-color:  rgb(182, 179, 179);
+}
+.dropdown-line2{
+    width: 190px;
+    height: 1px;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    background-color:  rgb(182, 179, 179);
+}
+.logOut-btn{
+    border: none;
+    /* background-color: ; */
+    background-color: #ffffff;
+}
+/* end of the profile dropdown container */
+
+
+
+/* ***************hamburger****************  */
+.navbar {
+    color: #fff;
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+    display: none;
+}
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 30px;
+    display: none;
+}
+.line {
+    background-color: #fff;
+    height: 3px;
+    width: 100%;
+}
+/* *************** /end of hamburger****************   */
+
+
+
+@media screen and (max-width : 1019px){
+    .filter-head1{
+        color: white;
+        /* font-size: 1.2vw; */
+        font-size: 1vw;
+        margin-left: -.5vw;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width : 1352px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    }
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 37px;
+        margin-left: 43vw;
+        padding-top: 17px;
+    } */
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    }
+    .filter-section{
+        width: 15.7vw;
+        height: 1030px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 17px;
+        margin-left: 3vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 12px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 89px;
+        left: 12vw;
+    } */
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    }
+    .filter-component{
+        margin-left: 1vw;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1vw;
+        margin-left: 3vw;
+        font-weight: 500;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.1vw;
+    } */
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    /* .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:70px;
+        left: 15.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    /* .collection-box{
+        position: relative;
+        width:28vw;
+        height: 430px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    .collection-img{
+        width: 100%;
+        height: 80%;
+    }
+    .brand-name{
+        font-size: 17px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 25px;
+        padding-top: 10px;
+    } */
+    .caption{
+        font-size: 15px;
+        color: rgb(214, 211, 211);
+        padding-left: 25px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        }
+    /* .price{
+        font-size: 15px;
+        color: rgb(214, 211, 211);
+        padding-left: 25px;
+        padding-top: -35px;
+        display: inline;
+        position: relative;
+        top: -14px;
+    }
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        margin-top: -35px;
+        display: inline;
+        position: relative;
+        top: -14px;
+        left: 27px;
+        text-decoration: line-through;
+    }
+    .offer{
+        font-size: 13px;
+        color: #BEC757;
+        padding-top: -35px;
+        display: inline;
+        position: relative;
+        top: -14px;
+        margin-left: 50px;
+    } */
+}
+
+@media screen and (max-width : 1158px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    }
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 37px;
+        margin-left: 43vw;
+        padding-top: 17px;
+    } */
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    }
+    .filter-section{
+        width: 15.7vw;
+        height: 1030px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 17px;
+        margin-left: 3vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    } */
+    .clear-txt{
+        font-size: 12px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 89px;
+        left: 10vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    }
+    .filter-component{
+        margin-left: 1vw;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1vw;
+        margin-left: 3vw;
+        font-weight: 500;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.1vw;
+    } */
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    /* .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:70px;
+        left: 15.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:28vw;
+        height: 380px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 16px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 25px;
+        padding-top: 10px;
+    }
+    .caption{
+        font-size: 15px;
+        color: rgb(214, 211, 211);
+        padding-left: 25px;
+        margin-top: -18px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -15px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 25px;
+    }
+    
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+    }
+    .offer{
+        font-size: 13px;
+        color: #BEC757;
+        
+    } 
+}
+
+@media screen and (max-width : 1110px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    } */
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 30px;
+        margin-left: 43vw;
+        padding-top: 17px;
+    }
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    }
+    .filter-section{
+        width: 15.7vw;
+        height: 1030px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    } */
+    .sub-heading{
+        font-size: 14px;
+        margin-left: 3vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    /* .clear-txt{
+        font-size: 12px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 89px;
+        left: 10vw;
+    } */
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    }
+    .filter-component{
+        margin-left: 1vw;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1vw;
+        margin-left: 3vw;
+        font-weight: 500;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.1vw;
+    } */
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    /* .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:70px;
+        left: 15.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:28vw;
+        height: 360px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 15px;
+        /* font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 25px; */
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 13px;
+        color: rgb(214, 211, 211);
+        padding-left: 25px;
+        margin-top: -18px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -15px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 25px;
+    }
+    
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+    }
+    .offer{
+        font-size: 13px;
+        color: #BEC757;
+        
+    } 
+}
+
+@media screen and (max-width : 865px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    } */
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 30px;
+        margin-left: 43vw;
+        padding-top: 22px;
+    }
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    } */
+    .filter-section{
+        width: 15.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 13px;
+        margin-left: 2vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 12px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 89px;
+        left: 9vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    } */
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 1.2vw;
+        margin-left: -1vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1.2vw;
+        margin-left: 3vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -5px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.2vw;
+        margin-top: -5px;
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    /* .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:70px;
+        left: 15.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:42vw;
+        height: 390px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 15px;
+        /* font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 25px; */
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 13px;
+        color: rgb(214, 211, 211);
+        padding-left: 25px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -15px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 25px;
+    }
+    
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 25px;
+    }
+    .offer{
+        font-size: 13px;
+        color: #BEC757;
+        padding-left: 25px;
+    } 
+}
+
+@media screen and (max-width : 766px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    } */
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 25px;
+        margin-left: 40vw;
+        padding-top: 25px;
+    }
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    } */
+    .filter-section{
+        width: 15.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 12px;
+        margin-left: 2vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 11px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 86px;
+        left: 9vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    } */
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 1.2vw;
+        margin-left: -1.5vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1.2vw;
+        margin-left: 3vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -10px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.2vw;
+        margin-top: -5px;
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    /* .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:70px;
+        left: 15.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:42vw;
+        height: 365px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 14px;
+        /* font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 25px; */
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 12px;
+        color: rgb(214, 211, 211);
+        padding-left: 25px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -15px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 25px;
+    }
+    
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 25px;
+    }
+    .offer{
+        font-size: 13px;
+        color: #BEC757;
+        padding-left: 25px;
+    } 
+}
+
+@media screen and (max-width : 711px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    } */
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 25px;
+        margin-left: 40vw;
+        padding-top: 25px;
+    }
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    } */
+    .filter-section{
+        width: 15.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 12px;
+        margin-left: 2vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 11px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 86px;
+        left: 9vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    } */
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 1.2vw;
+        margin-left: -1.5vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1.2vw;
+        margin-left: 3vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -10px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.2vw;
+        margin-top: -5px;
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    /* .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:70px;
+        left: 15.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:42vw;
+        height: 365px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 14px;
+        /* font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 25px; */
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 12px;
+        color: rgb(214, 211, 211);
+        padding-left: 25px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -15px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 25px;
+    }
+    
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 10px;
+    }
+    .offer{
+        font-size: 13px;
+        color: #BEC757;
+        padding-left: 10px;
+    } 
+}
+
+/* footer-mediaquery 1 */
+@media screen and (max-width: 650px) {
+    .footer-section{ 
+        min-height: 130px;  
+    }
+    .bold-text1{
+        position: absolute;
+        top: 20px;  
+        font-size: 12px;
+    }
+    .left-texts{
+        position: absolute;
+        left: 20vw;
+    }
+    .right-texts{
+        position: absolute;
+        left: 60vw;
+    }
+    .links2{
+        list-style: none;
+    }
+    .left-subtexts{      
+        font-size: 11px;     
+    }
+    .bold-text2{ 
+        left: -4vw;
+        font-size: 12px;
+    }
+    .right-subtexts{
+        font-size: 11px; 
+        left: -10px;
+    }
+    .wtsp-icon{
+        left: 1vw;  
+        font-size: 13px;
+    }
+    .email-icon{
+        position: absolute;
+        top: 97px;   
+        font-size: 11px;
+        left: 1vw;
+    }
+    .person-icon{
+        height: 16px;
+        width: 16px;
+    }
+    .logo-text{
+        font-size: 12px;
+        top: 94px;
+        left: 4vw;
+    }
+    .footer-icons{
+        top: 102px;
+        left: 72vw;
+        gap: .6vw;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width : 649px){
+    .person .person-icon {
+        width: 15px;
+        height: 15px;
+        
+    }
+}
+
+@media screen and (max-width : 637px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    } */
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 22px;
+        margin-left: 40vw;
+        padding-top: 25px;
+    }
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    } */
+    .filter-section{
+        width: 15.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 11px;
+        margin-left: 1vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 10px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 87px;
+        left: 8.5vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    } */
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 1.4vw;
+        margin-left: -2.9vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1.4vw;
+        margin-left: 2.3vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -15px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.2vw;
+        margin-top: -8px;
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    /* .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:70px;
+        left: 15.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:42vw;
+        height: 325px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 14px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 15px;
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 12px;
+        color: rgb(214, 211, 211);
+        padding-left: 15px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -18px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 15px;
+    }
+    .price{
+        font-size: 13px;
+    }
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 5px;
+    }
+    .offer{
+        font-size: 12px;
+        color: #BEC757;
+        padding-left: 5px;
+    } 
+}
+
+@media screen and (max-width : 569px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    .heading-section{
+        width: 100vw;
+        height: 50px;
+        background-color: rgb(0, 0, 0);
+    }
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 22px;
+        margin-left: 40vw;
+        padding-top: 15px;
+    }
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    } */
+    .filter-section{
+        width: 29.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 14px;
+        margin-left: 3vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 13px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 65px;
+        left: 18.5vw;
+    }
+    .line1{
+        width: 29.8vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    }
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 1.9vw;
+        margin-left: -2.4vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 1.9vw;
+        margin-left: 3.2vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -10px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 1.8vw;
+        margin-top: -8px;
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    .collection-section{
+        height: 1300px;
+        width: 84vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:50px;
+        left: 29.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    /* .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:70.2vw;
+        height: 375px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 16px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 15px;
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 12px;
+        color: rgb(214, 211, 211);
+        padding-left: 15px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -15px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 15px;
+    }
+    .price{
+        font-size: 13px;
+    }
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 45px;
+    }
+    .offer{
+        font-size: 12px;
+        color: #BEC757;
+        padding-left: 45px;
+    } 
+}
+@media screen and (max-width: 550px) {
+    .bold-text1{
+        position: absolute;
+        top: 20px;
+        font-size: 10px;
+    } 
+    .left-texts{
+        /* top: 265vh; */
+        left: 7vw;
+    }
+    .footer-section{
+        position: relative;
+    }
+    .right-texts{
+        left: 59.5vw;
+    }
+    .left-subtexts{      
+        font-size: 10px; 
+        top: 40px;    
+    }
+    .bold-text2{ 
+        left: -4vw;
+        font-size: 10px;
+    }
+    .right-subtexts{
+        font-size: 10px; 
+        top: 40px;  
+    }
+    .wtsp-icon{
+        left: 2vw;  
+        font-size: 11px;
+        top: 43px;
+    }
+    .email-icon{ 
+        top: 86px;   
+        font-size: 9px;
+        left: 2vw;
+    }
+    .logo-text{
+        font-size: 10px;
+        top: 99px;
+        left: 5vw;
+    }
+    .footer-icons{
+        left: 51vw;
+        gap: 2vw;
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 513px){
+    
+    .icons{
+        margin-left: 74%; 
+    }
+}
+
+@media screen and (max-width : 471px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    .heading-section{
+        width: 100vw;
+        height: 50px;
+        background-color: rgb(0, 0, 0);
+    }
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 20px;
+        margin-left: 40vw;
+        padding-top: 15px;
+    }
+    /* .sort-section{
+        width: 84vw;
+        height: 54px;
+        position: absolute;
+        top: 70px;
+        left: 15.8vw;
+        background-color: rgb(0, 0, 0);
+    } */
+    .filter-section{
+        width: 28.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 13px;
+        margin-left: 2vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 12px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 65px;
+        left: 17vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    } */
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 2.1vw;
+        margin-left: -3.7vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 2.1vw;
+        margin-left: 3.2vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -15px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: vw;
+        margin-top: -8px;
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    .collection-section{
+        height: 1300px;
+        width: 71.2vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:50px;
+        left: 28.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    /* .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:71.1vw;
+        height: 375px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 16px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 15px;
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 12px;
+        color: rgb(214, 211, 211);
+        padding-left: 15px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -15px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 15px;
+    }
+    .price{
+        font-size: 13px;
+    }
+    .offer-price{
+        font-size: 12px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 45px;
+    }
+    .offer{
+        font-size: 12px;
+        color: #BEC757;
+        padding-left: 45px;
+    } 
+}
+
+@media screen and (max-width : 450px){
+    .brand-name{
+        font-size: 15px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 15px;
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 11px;
+        color: rgb(214, 211, 211);
+        padding-left: 15px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -12px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 15px;
+    }
+    .price{
+        font-size: 13px;
+    }
+    .offer-price{
+        font-size: 11px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 30px;
+    }
+    .offer{
+        font-size: 12px;
+        color: #BEC757;
+        padding-left: 30px;
+    } 
+}
+
+@media screen and (max-width : 400px){
+    .filter-section{
+        width: 28.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);   
+    }
+    .sub-heading{
+        font-size: 13px;
+        margin-left: 2vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 10px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 70px;
+        left: 16vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    } */
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 2.5vw;
+        margin-left: -4.9vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 2.5vw;
+        margin-left: 3.2vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -20px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 2.6vw;
+        margin-top: -8px;
+    }
+    .filter-longText{
+       /* make the remaining description like etc...  */
+        width: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap; 
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    .collection-section{
+        height: 1300px;
+        width: 71.2vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:50px;
+        left: 28.7vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    /* .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:71.1vw;
+        height: 315px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+        
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 14px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 15px;
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 11px;
+        color: rgb(214, 211, 211);
+        padding-left: 15px;
+        margin-top: -15px;
+
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .price-container{
+        margin-top: -17px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 15px;
+    }
+    .price{
+        font-size: 12px;
+    }
+    .offer-price{
+        font-size: 11px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 15px;
+    }
+    .offer{
+        font-size: 11px;
+        color: #BEC757;
+        padding-left: 15px;
+    } 
+}
+
+@media screen and (max-width: 377px){
+
+    .offer-bgText{
+        font-size: 6px; 
+    }
+}
+
+@media screen and (max-width: 355px){
+    
+    .icons{
+        margin-left: 60%; 
+    }
+}
+
+@media screen and (max-width : 350px){
+    /* .main-section{
+        overflow-x: hidden;
+        min-height: 87vh;
+    } */
+    /* .container-box{
+        width: 100vw;
+        min-height: 87vh;
+        background-color: rgb(0, 0, 0);
+        position: relative;
+    } */
+    /* .heading-section{
+        width: 100vw;
+        height: 70px;
+        background-color: rgb(0, 0, 0);
+    } */
+    .heading-section h1{
+        color: #A59B46;
+        font-family: 'Libre Bodoni', serif;
+        font-size: 21px;
+        margin-left: 20vw;
+        padding-top: 18px;
+    }
+    
+    
+    /* *************************8 */
+    .filter-section{
+        /* width: 28.7vw;
+        height: 650px;
+        background-color: rgb(21, 21, 21);
+        border-right: 1px solid rgb(58, 57, 57);    */
+        display: block;
+        /* visibility: hidden; */
+    }
+    .sub-heading{
+        font-size: 13px;
+        margin-left: 2vw;
+        color: white;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+    .clear-txt{
+        font-size: 10px;
+        color: rgb(175, 43, 43);
+        position: absolute;
+        top: 70px;
+        left: 16vw;
+    }
+    /* .line1{
+        width: 15.3vw;
+        height: 10px;
+        font-size: 10px;
+        margin-top: -33px;
+    } */
+    .filter-component{
+        margin-left: 0vw;
+    }
+    .filter-head1{
+        color: white;
+        font-size: 2.5vw;
+        margin-left: -4.9vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-heads{
+        color: white;
+        font-size: 2.5vw;
+        margin-left: 3.2vw;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .filter-checkbox{
+        margin-left: -20px;
+    }
+    .filter-section ul{
+        list-style: none;
+        color: white;
+        font-size: 2.6vw;
+        margin-top: -8px;
+    }
+    .filter-longText{
+       /* make the remaining description like etc...  */
+        width: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap; 
+    }
+    /* .prev-btn{
+        display: inline;
+        margin-top: 50px;
+        margin-left: 15vw;
+        background-color: #C2BEBE;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .btm-line1{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 30px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    }
+    .btm-line2{
+        display: block;
+        margin-left: 4.5vw;
+        margin-top: 42px;
+        width: 72.8vw;
+        height: 1px;
+        background-color: black;
+    } */
+    /* .next-btn{
+        display: inline;
+        margin-left: 29vw;
+        margin-top: 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 150px;
+    }
+    .prev-btn svg{
+        width: 13px;
+        height: 13px;
+    }
+    .next-btn svg{
+        width: 13px;
+        height: 13px;
+    } */
+    .collection-section{
+        height: 1300px;
+        width: 71.2vw;
+        background-color: #5e5504;
+        position: absolute;
+        top:50px;
+        left: 0vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    /* .each-box{
+        position: absolute;
+        top: 0px;
+    } */
+
+    .collection-box{
+        position: relative;
+        width:100vw;
+        height: 335px;
+        background-color: rgb(0, 0, 0);
+        border: .5px solid rgb(70, 70, 70);
+        text-decoration: none;
+    }
+    /* .collection-img{
+        width: 100%;
+        height: 80%;
+    } */
+    .brand-name{
+        font-size: 14px;
+        font-family: 'Libre Bodoni', serif;
+        color: #BEC757;
+        padding-left: 15px;
+        padding-top: 7px;
+    }
+    .caption{
+        font-size: 11px;
+        color: rgb(214, 211, 211);
+        padding-left: 15px;
+        margin-top: -18px;
+
+        /* make the remaining description like etc...  */
+        /* width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap; */
+    }
+    .price-container{
+        margin-top: -17px;
+        font-size: 14px;
+        color: rgb(214, 211, 211);
+        margin-left: 15px;
+    }
+    .price{
+        font-size: 12px;
+    }
+    .offer-price{
+        font-size: 11px;
+        color: rgb(160, 158, 158);
+        text-decoration: line-through;
+        padding-left: 35px;
+    }
+    .offer{
+        font-size: 11px;
+        color: #BEC757;
+        padding-left: 35px;
+    } 
+
+    /* ***************hamburger****************  */
+    .navbar {
+        /* background-color: #000000; */
+        color: #fff;
+        /* display: flex; */
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        display: flex;
+        /* background-color: #000000; */
+        margin-left: 20px;
+    }
+    .hamburger {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 21px;
+        height: 13px;
+    }
+    .line {
+        background-color: #fff;
+        height: 3px;
+        width: 100%;
+    }
+    /* *************** /end of hamburger****************   */
+}
+
+@media screen and (max-width: 297){
+    .last-box{
+        width: 255px;
+        left: 1vw; 
+    }
+}

@@ -1,0 +1,4195 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+/* font-family: 'Libre Bodoni', serif; */
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: aqua;
+}
+/* hide scrollbar */
+body::-webkit-scrollbar{
+    display: none;
+}
+.head-section{
+    background-color: #B1A669;
+    width: 100vw;
+    height: 100px;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+}
+.logo{
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    left: 6vw;  
+    top: 15px; 
+}
+.icon{
+    margin-left: 81vw;     
+}
+.iicon{
+    margin-left: 88vw;  
+}
+.useroptions li a{
+    color: aliceblue;
+}
+.icons{
+    margin-left: 83vw;  
+}
+.icons .useroption li {
+    padding-left: 10px;
+}
+.useroption li a{
+    color: aliceblue;
+}
+.person .person-icon{
+    height: 19px;
+    height: 19px;
+    margin-top: -3px;
+}
+
+/* profile dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:#ffffff;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    left: -90px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.dropdown-content a {
+    color: black;
+    padding: 4px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+.dropdown-content a:hover {
+    font-weight: 500;
+}
+.logOut-btn:hover{
+    font-weight: 500;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.person {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.person-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.name-text{
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    margin-left: 15px;
+    text-transform: capitalize;
+}
+.login-signup{
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid rgb(182, 179, 179);
+    color:  #ce4e4e;
+    padding: 10px;
+    margin-right: 65px;
+    margin-top: -10px;
+}
+.dropdown-line1{
+    width: 190px;
+    height: 1px;
+    margin-top: -5px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    background-color:  rgb(182, 179, 179);
+}
+.dropdown-line2{
+    width: 190px;
+    height: 1px;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    background-color:  rgb(182, 179, 179);
+}
+.logOut-btn{
+    border: none;
+    background-color: #ffffff;
+    
+}
+/* end of the profile dropdown container */
+
+
+
+
+
+/********** leftside links **********/
+.main-containerr{
+    min-height: 177vh;
+    position: relative;
+    display: flex;
+}
+.profile-iconSection{
+    position: relative;
+    top: 3px;
+}
+.profile-icon{
+    background-color: rgb(255, 255, 255);
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 33px;
+    left: 12.5vw;
+}
+.main-head{
+    font-weight: 500;
+    font-size: 17px;
+    position: absolute;
+    top: 28px;
+    left: 16vw;
+}
+.user-name{
+    font-size: 19px;
+    position: absolute;
+    top: 51px;
+    left: 16vw;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+.finishing-line1{
+    width: 1100px;
+    height: 1px;
+    background-color: #b3a3a3;
+    margin-top: 100px;
+    margin-left: 12.5vw;
+}
+.left-line{
+    position: absolute;
+    width: 1px;
+    height: 560px;
+    background-color: #b3a3a3;
+    left: 351px;
+}
+.headings{
+    margin-left: 12.5vw; 
+    color: #948e8e;
+    font-size: 12px;
+    padding-top: 23px;
+}
+.orders{
+    margin-left: 12.5vw; 
+    font-size: 16px;
+    margin-top: -5px;
+}
+.text-line1{
+    width: 160px;
+    height: 1px;
+    background-color: #b3a3a3;
+    margin-left: 12.5vw; 
+}
+.logout-btn{
+    border:none;
+    border-radius: 5px;
+    margin-left: 14.8vw;
+    margin-top: 20px;
+    width: 110px;
+    height: 30px;
+    color: white;
+    background-color: rgb(145, 143, 49);
+}
+.profile-links{
+    text-decoration: none;
+    color: rgb(99, 98, 98);
+}
+
+.profile-links:hover,
+.profile-links:active,
+.profile-links:focus {
+    color: #EC5858;
+    font-weight: 500;
+}
+.userlogoutt-svg{
+    height: 17px;
+    width: 17px;
+    margin-left: -10px;
+    margin-right: 8px;
+    margin-top: -4px;
+}
+/******* end of leftside links **********/
+
+
+
+
+
+/******* order rightside  **********/
+.right-sectionContainer{
+    margin-left: 20px;
+}
+.order-headingPart{
+    padding-top: 50px;
+    font-size: 19px ;
+    font-weight: 500;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.order-txt{
+    margin: 0px;
+}
+.single-box{
+    width: 900px;
+    height: 160px;
+    margin-bottom: 15px;
+    border: 1px solid #b3a3a3;
+    border-radius: 9px;
+    display: flex;
+    gap: 3px;
+}
+/* .image-box{
+    
+} */
+.og-img{
+    width: 150px;
+    height: 150px;
+    padding-top: 8px;
+    padding-left: 10px;
+    object-fit: cover;
+}
+.single-info-container{
+    margin-top: 27px;
+    margin-left: 1vw;
+}
+.brand-name{
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.inline-data{
+    align-items: center;
+    display: flex;
+    gap: 1vw; 
+    margin-top: -5px;
+}
+.pDescription{
+    text-transform: capitalize;
+    font-size: 15px;
+    /* make the remaining description like etc...  */
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+.lastPrice{
+    margin-left: 2vw;
+    width: 130px;
+}
+.status-box{
+    margin-left: 130px;
+    display: flex;
+    gap: 3px;
+}
+.cancelled-svg{
+    margin-left: 0px;
+    visibility: hidden;
+}
+.cancelled-status-btn{
+    align-items: center; 
+    margin-left: 6vw;
+    background-color: rgb(218, 57, 57);
+    border-radius: 4px;
+    padding: 0px 10px 0px 10px;
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+}
+.normal-svg{
+    margin-left: 2px;
+}
+.normal-status{
+    /* margin-left: -15px; */
+    margin-left: 0px;
+    text-transform: capitalize;
+}
+.cancel-btn{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 90px;
+    margin-top: -10px;
+    margin-left: 40px;
+}
+
+
+/******* end of order rightside  **********/
+
+
+
+/******* footer section  **********/
+.footer-section{
+    width: 100vw;
+    background-color: black;
+    min-height: 140px;
+    color: white;  
+    overflow-x: hidden;
+}
+.last-section{
+    display: flex;
+
+}
+.bold-text1{
+    position: absolute;
+    top: 20px;
+    
+    font-size: 14px;
+}
+.left-texts{
+    position: absolute;
+    left: 28vw;
+}
+.right-texts{
+    position: absolute;
+    left: 60vw;
+}
+.links1{
+    list-style: none;
+}
+.links2{
+    list-style: none;
+}
+.left-subtexts{
+    color: rgb(170, 169, 169);
+    font-size: 13px;
+    position: relative;
+    top: 50px;
+    left: -5px;
+}
+.bold-text2{
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    font-size: 14px;
+}
+.links2{
+    list-style: none;
+}
+.links2{
+    list-style: none;
+}
+.links{
+    text-decoration: none;
+    color: rgb(170, 169, 169);
+}
+.right-subtexts{
+    color: rgb(170, 169, 169);
+    font-size: 13px;
+    position: relative;
+    top: 50px;
+    left: -10px;
+}
+.wtsp-icon{
+    position: absolute;
+    left: 8px;
+    top: 53px;
+    color: rgb(170, 169, 169);
+    font-size: 15px;
+}
+.email-icon{
+    position: absolute;
+    top: 105px;
+    left: 9px;
+    color: rgb(139, 139, 139);
+    font-size: 13px;
+}
+
+.logo-text{
+    font-size: 14px;
+    font-family: 'Libre Bodoni', serif;
+    position: relative;
+    top: 100px;
+    left: 7vw;
+}
+.footer-icons{
+    position: relative;
+    top: 102px;
+    left: 80vw;
+    display: flex;
+    gap: 1vw;
+    font-size: 14px;
+}
+/******* end of footer section  **********/
+
+
+/******* success messages  **********/
+.success-box{
+    background-color: white;
+    width: 100vw;
+    height: 30px;
+}
+#successMessage{
+    color: rgb(34, 49, 34);
+    font-size: 15px;
+    margin-left: 5px;
+    padding-top: 4px;
+}
+.success-box{
+    background-color: white;
+    width: 100vw;
+    height: 50px;
+}
+.success-box p{
+    margin-left: 45vw;
+    background-color: black;
+    color: white;
+    width: 150px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+/******* end of success messages  **********/
+
+
+/* ************no order case************* */
+.no-orderSection{
+    margin-left: 20vw;
+}
+.no-orderimg{
+    height: 300px;
+    width: 300px;
+}
+.noOrder-text{
+    margin-left: 80px;
+    margin-bottom: 20px;
+}
+.shop-button{
+    margin-left: 80px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #e45959;
+    border: 1px dotted #e45959;
+    padding: 10px 15px 10px 15px;
+}
+/* ************ /no order case************* */
+
+
+/* css for sidebar menu activation */
+.profile-links {
+    text-decoration: none;
+    color: rgb(99, 98, 98);
+}
+.profile-links:hover,
+.profile-links:active,
+.profile-links:focus {
+    color: #050505;
+    font-weight: 500;
+}
+.active {
+    background-color: #e0dce1; 
+    border-radius: 20px;
+    padding-left: 5px;
+    width: 140px;
+}
+/* /css for sidebar menu activation */
+
+
+/* *********************search box***************** */
+.search-box {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 28vw;
+    padding: 10px;
+    width: 690px;
+    height: 81px;
+    /* background-color: #9f9560; */
+    background-color: #a89d65;
+    border-radius: 30px;
+    
+}
+.search-close {
+    background-color: transparent;
+    color: #d6cccc;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+    left: 10px;
+    top: -18px;
+}
+.search-input {
+    width: 50%;
+    padding: 5px;
+    margin-left: 117px;
+    margin-top: 15px;
+    color: white;
+    background-color: #c7bf96 ;
+    border: 1px solid #c7bf96;
+    font-size: 14px;
+    border-radius: 30px;
+}
+
+.search-submit{
+    background-color: transparent;
+    color: #e7e6e6;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+    margin-left: -37px;
+}
+
+
+.search-close:hover {
+    /* color: rgb(240, 229, 191); */
+    color: #000000;
+}
+.search-submit:hover{
+    color: rgb(0, 0, 0);
+}
+/* ***************search box******************* */
+
+
+
+/* ****************** container to show search result *************** */
+.search-results {
+    position: absolute;
+    top: 100px;
+    left: 420px;
+    background-color: black;
+    color: white;
+    width: 680px;
+    /* padding: 10px; */
+    box-sizing: border-box; 
+    overflow-y: auto;    /*bnable vertical scrolling*/
+    scrollbar-width: thin; /* Use 'thin' or 'auto' */
+    scrollbar-color: #888 #f1f1f1; /* Thumb and track color */
+}
+
+
+/* style the scrollbar for WebKit-based browsers(search box) */
+.search-results::-webkit-scrollbar {
+    width: 5px; 
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+
+
+.product-result {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid #696868;
+    /* padding: 10px; */
+    margin-bottom: 10px;
+    height: 60px;
+}
+.product-result h6 {
+    color: #fbfbfb;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.product-result p {
+    color: #ffffff;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-top: 8px;
+
+}
+
+.product-result img {
+    width: 45px;
+    height: auto;
+    margin-left: 590px;
+    margin-top: -102px;
+    margin-bottom: 6px;
+}
+
+
+.hide {
+    display: none;
+}
+.product-result {
+    cursor: pointer;
+}
+
+
+/* ****************** /container to show search result *************** */
+
+
+/* ******** invoice icon ***** */
+.invoiceBtn{
+    margin-left: 3px;
+    border: none;
+    height: 26px;
+    width: 30px;
+    background-color: #D3C330;
+    border-radius: 2px;
+    padding-left: 4px;
+}
+/* ******** /invoice icon ***** */
+
+
+
+
+@media screen and (max-width:1091px){
+    .icon{
+        margin-left: 76vw; 
+        padding-top: 8px; 
+    }
+    
+}
+@media screen and (max-width:909px){
+    .icon{
+        margin-left: 73vw;  
+    }
+}
+@media screen and (max-width:741px){
+    .icon{
+        margin-left: 68vw;  
+    }
+}
+@media screen and (max-width: 650px) {
+    .head-section{  
+        width: 100vw;
+        height: 70px;
+    }
+    .logo{
+        width: 44px;
+        height: 44px;   
+    }
+    .icons{
+        margin-left: 78%; 
+    }
+    .useroption li{
+        font-size: 12px; 
+    }
+    .icon{
+        margin-left: 65vw;  
+    }
+    .login-section{
+        display: block;
+    }
+    .login-img{
+      width: 100vw;
+      height: 100vh;
+    }
+    .login-txt{
+    font-size: 25px;
+    font-weight:400;
+    }
+    .box-1{
+        width: 91vw;
+        height: 39px;
+        font-size: 13px;
+    }
+    .box-2{
+        width: 91vw;
+        height: 39px;
+        font-size: 13px;
+    }
+    
+      .login-btn{
+        width: 91vw;
+        height: 39px;
+        font-size: 14px;
+      }
+      .forgot-txt{
+        font-size: 12px;
+      }
+      .txt-2{
+        left: 43vw;
+        top: 40px;
+    }
+    .login-btn{
+        width: 91vw;
+        height: 39px;
+        font-size: 14px;
+      }
+    .txt-3{
+        width: 91vw;
+        height: 39px;
+        background-color: black;
+        padding-top: 1vh;
+        margin-bottom: 2rem;
+    }
+    .signup-box{
+        top: 4px;
+        left: 29vw;
+        font-size: 14px;
+    }
+    .single-line1{
+        width: 25vw;
+        top: 279px;
+        left: 57vw;
+      }
+      .single-line2{
+        width: 25vw;
+        top: 278px;
+        left: 40px;
+      }  
+      .logo-text {
+        position: relative;
+        top: 40px;
+        left: 7vw;
+    }
+}
+@media screen and (max-width: 1222px) {
+    
+    .login-section{
+        display: block;
+    }
+    .login-img{
+      width: 100vw;
+      height: 100vh;
+    }
+    .login-txt{
+    font-size: 25px;
+    font-weight:400;
+    }
+    .txt-3{
+        padding-left:44vw ;
+    }
+    .star1{
+        color: red;
+        position:absolute;
+        left: 49px;
+        top: 65px;
+        font-size: 10px;
+    }
+    .star2{
+        
+        left:73px;
+        top:121px;
+    }  
+    .box-1{
+        width: 91vw;
+        height: 39px;
+        font-size: 13px;
+    }
+    .box-2{
+        width: 91vw;
+        height: 39px;
+        font-size: 13px;
+    }
+      .login-btn{
+        width: 91vw;
+        height: 39px;
+        font-size: 14px;
+      }
+      .forgot-txt{
+        font-size: 12px;
+      }
+      .txt-2{
+        left: 43vw;
+        top: 40px;
+    }
+    .login-btn{
+        width: 91vw;
+        height: 39px;
+        font-size: 14px;
+      }
+    .txt-3{
+        width: 91vw;
+        height: 39px;
+        background-color: black;
+        padding-top: 1vh;
+        margin-bottom: 2rem;
+    }
+    .signup-box{
+        top: 4px;
+        left: 29vw;
+        font-size: 14px;
+    }
+    .single-line1{
+        width: 25vw;
+        top: 279px;
+        left: 57vw;
+      }
+      .single-line2{
+        width: 25vw;
+        top: 278px;
+        left: 40px;
+      }
+      .logo-text{
+        left: 7vw;
+    }
+    .footer-icons{
+        top: 104px;
+        left: 75vw;
+    }
+}
+
+
+/* footer-mediaquery 1 */
+@media screen and (max-width: 650px) {
+    .footer-section{ 
+        min-height: 130px;  
+    }
+    .bold-text1{
+        position: absolute;
+        top: 20px;  
+        font-size: 12px;
+    }
+    .left-texts{
+        position: absolute;
+        left: 20vw;
+    }
+    .right-texts{
+        position: absolute;
+        left: 60vw;
+    }
+    .links2{
+        list-style: none;
+    }
+    .left-subtexts{      
+        font-size: 11px;     
+    }
+    .bold-text2{ 
+        left: -4vw;
+        font-size: 12px;
+    }
+    .right-subtexts{
+        font-size: 11px; 
+        left: -10px;
+    }
+    .wtsp-icon{
+        left: 1vw;  
+        font-size: 13px;
+    }
+    .email-icon{
+        position: absolute;
+        top: 97px;   
+        font-size: 11px;
+        left: 1vw;
+    }
+    .person-icon{
+        height: 16px;
+        width: 16px;
+    }
+    .logo-text{
+        font-size: 12px;
+        top: 94px;
+        left: 4vw;
+    }
+    .footer-icons{
+        top: 102px;
+        left: 72vw;
+        gap: .6vw;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 565px){
+    .useroptions li{
+        font-size: 12px; 
+    }
+    .icon{
+        margin-left: 60vw;  
+    }
+}
+@media screen and (max-width: 513px){
+    .icon{
+        margin-left: 58vw;  
+    }
+}
+@media screen and (max-width: 513px){
+    .icon{
+        margin-left: 55vw;  
+    }
+    .icons{
+        margin-left: 74%; 
+    }
+}
+@media screen and (max-width: 435px){
+    .icon{
+        margin-left: 51vw;  
+    }
+}
+@media screen and (max-width: 391px){
+    .icon{
+        margin-left: 47vw;  
+    }
+}
+@media screen and (max-width: 355px){
+    .icon{
+        margin-left: 42vw;  
+    }
+    .txt-3{
+        padding-left:41vw ;
+        padding-top: 10px;
+        font-size: 12.5px;
+    }
+    .icons{
+        margin-left: 60%; 
+    }
+}
+
+@media screen and (max-width: 317px){
+    .icon{
+        margin-left: 33vw;  
+    }
+}
+/* footer-mediaquery 2 */
+@media screen and (max-width: 550px) {
+    .bold-text1{
+        position: absolute;
+        top: 20px;
+        font-size: 10px;
+    } 
+    .left-texts{
+        /* top: 265vh; */
+        left: 7vw;
+    }
+    .footer-section{
+        position: relative;
+    }
+    .right-texts{
+        left: 59.5vw;
+    }
+    .left-subtexts{      
+        font-size: 10px; 
+        top: 40px;    
+    }
+    .bold-text2{ 
+        left: -4vw;
+        font-size: 10px;
+    }
+    .right-subtexts{
+        font-size: 10px; 
+        top: 40px;  
+    }
+    .wtsp-icon{
+        left: 2vw;  
+        font-size: 11px;
+        top: 43px;
+    }
+    .email-icon{ 
+        top: 86px;   
+        font-size: 9px;
+        left: 2vw;
+    }
+    .logo-text{
+        font-size: 10px;
+        top: 99px;
+        left: 5vw;
+    }
+    .footer-icons{
+        left: 51vw;
+        gap: 2vw;
+        font-size: 9px;
+    }
+}
+
+
+
+
+
+
+
+
+/* ********************media queries of left side********************** */
+@media screen and (max-width : 961px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 18vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 18vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 78.5vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 320px;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 839px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 18vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 18vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    /* .finishing-line1{
+        width: 74vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 300px;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    } */
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 14px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+    
+    
+}
+
+@media screen and (max-width : 698px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 250px;
+    }
+
+    .left-section{
+        margin-left: -32px;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 622px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 34vw;
+    }
+
+    .left-section{
+        margin-left: -32px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 26vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+
+@media screen and (max-width : 556px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 34px;
+        height: 34px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 31px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 18px;
+        position: absolute;
+        top: 48px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    /* .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 31vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    /* .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    } */
+    .text-line1{
+        width: 24vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+    
+}
+
+@media screen and (max-width : 512px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    /* .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 34px;
+        height: 34px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 31px;
+        left: 15vw;
+    } */
+    /* .user-name{
+        font-size: 18px;
+        position: absolute;
+        top: 48px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    /* .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 33vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    } */
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 24vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 447px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 33px;
+        left: 4.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 31px;
+        left: 13.5vw;
+    }
+    .user-name{
+        font-size: 13px;
+        position: absolute;
+        top: 48px;
+        left: 13.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 36vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    } */
+    /* .orders{
+        margin-left: 11.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    } */
+    .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    }
+    .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+
+@media screen and (max-width : 395px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    }
+    .user-name{
+        font-size: 13px;
+        position: absolute;
+        top: 48px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 11.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 36vw;
+    }
+
+    .left-section{
+        margin-left: -38px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 12px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    } */
+    /* .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 350px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 12px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    }
+    .user-name{
+        font-size: 12px;
+        position: absolute;
+        top: 47px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 11.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 34vw;
+    }
+
+    .left-section{
+        margin-left: -36px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 11px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    } */
+    /* .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 320px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    /* .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 12px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    } */
+    /* .user-name{
+        font-size: 12px;
+        position: absolute;
+        top: 47px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 37.5vw;
+    }
+
+    .left-section{
+        margin-left: -29px;
+    }
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 11px;
+        margin-top: -5px;
+    } */
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 70px;
+        height: 24px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    }
+    .userlogoutt-svg{
+        height: 12px;
+        width: 12px;
+        margin-left: -3px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+/* ******************** /media queries of left side********************** */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ******************** media queries of right side********************** */
+@media screen and (max-width : 1291px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-iconSection{
+        position: relative;
+        top: 3px;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 16vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 16vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 1010px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    /*.left-line{
+        position: absolute;
+        width: 1px;
+        height: 560px;
+        background-color: #b3a3a3;
+        left: 351px;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 40px;
+    }
+    .order-headingPart{
+        padding-top: 50px;
+        font-size: 19px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-txt{
+        margin: 0px;
+    }
+    .single-box{
+        width: 790px;
+        height: 150px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+    }
+    /* .image-box{
+        
+    } */
+    .og-img{
+        width: 140px;
+        height: 140px;
+        padding-top: 8px;
+        padding-left: 10px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 18px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .inline-data{
+        align-items: center;
+        display: flex;
+        gap: .5vw; 
+    }
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+    .lastPrice{
+        margin-left: 2vw;
+        width: 130px;
+    }
+    .single-inf0-container svg{
+        margin-top: -15px;
+    }
+    .status-box{
+        margin-left: 20px;
+        display: flex;
+        gap: 3px;
+    }
+    .cancelled-svg{
+        /* margin-left: 140px; */
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        /* margin-left: -2vw; */
+        margin-left: 6vw;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 10px 0px 10px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+    }
+    .normal-status{
+        /* margin-left: -15px; */
+        margin-left: 0px;
+        text-transform: capitalize;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 90px;
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+    }
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 1291px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -70px;
+    }
+    /*.profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 16vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 16vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 1010px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 6.5vw;
+    }
+    .left-section{
+        margin-left: -70px;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 560px;
+        background-color: #b3a3a3;
+        left: 22vw;
+    }
+    /*.headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }*/
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        margin-bottom: 20px;
+    }
+    /*.profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 40px;
+    }
+    .order-headingPart{
+        padding-top: 50px;
+        font-size: 19px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-txt{
+        margin: 0px;
+    }
+    .single-box{
+        width: 790px;
+        height: 150px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+    }
+    /* .image-box{
+        
+    } */
+    .og-img{
+        width: 140px;
+        height: 140px;
+        padding-top: 8px;
+        padding-left: 10px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 18px;
+        margin-left: .7vw;
+    }
+    /* .brand-name{
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .inline-data{
+        align-items: center;
+        display: flex;
+        gap: .5vw; 
+    } */
+    /* .pDescription{
+        text-transform: capitalize; */
+        /* make the remaining description like etc...  */
+        /* width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    } */
+    /* .lastPrice{
+        margin-left: 2vw;
+        width: 130px;
+    } */
+    /* .single-inf0-container svg{
+        margin-top: -15px;
+    }
+    .status-box{
+        margin-left: 20px;
+        display: flex;
+        gap: 3px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    } */
+    /* .cancelled-status-btn{
+        align-items: center; 
+        margin-left: 6vw;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 10px 0px 10px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+    } */
+    /* .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 90px;
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+    } */
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 1091px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -70px;
+    }
+    /*.profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 16vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 16vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 900px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 6.5vw;
+    }
+    /* .left-section{
+        margin-left: -70px;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 560px;
+        background-color: #b3a3a3;
+        left: 22vw;
+    } */
+    /*.headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }*/
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        margin-bottom: 20px;
+    }
+    /*.profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 30px;
+    }
+    /* .order-headingPart{
+        padding-top: 50px;
+        font-size: 19px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-txt{
+        margin: 0px;
+    } */
+    .single-box{
+        width: 715px;
+        height: 130px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+    }
+    .og-img{
+        width: 120px;
+        height: 120px;
+        padding-top: 8px;
+        padding-left: 10px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 10px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 17px;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    /* .inline-data{
+        align-items: center;
+        display: flex;
+        gap: .5vw; 
+    } */
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 220px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 14px;
+    }
+    .lastPrice{
+        margin-left: 1vw;
+        width: 130px;
+        font-size: 14px;
+    }
+    .status-box{
+        margin-left: 10px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: 6.5vw;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 10px 0px 10px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+    }
+    .normal-svg{
+        margin-left: 0px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 90px;
+        margin-top: -10px;
+        margin-left: 10px;
+    }
+    .userAddedQty{
+        font-size: 14px;
+    }
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 980px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -80px;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 30px;
+        left: 16.5vw;
+    }
+    .user-name{
+        font-size: 15px;
+        position: absolute;
+        top: 48px;
+        left: 16.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 85vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 4.5vw;
+    }
+    /* .left-section{
+        margin-left: -70px;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 520px;
+        background-color: #b3a3a3;
+        left: 20vw;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 14vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 90px;
+        height: 27px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    /* .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    } */
+    
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 20px;
+    }
+    /* .order-headingPart{
+        padding-top: 50px;
+        font-size: 19px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-txt{
+        margin: 0px;
+    } */
+    .single-box{
+        width: 625px;
+        height: 100px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+    }
+    .og-img{
+        width: 90px;
+        height: 90px;
+        padding-top: 8px;
+        padding-left: 10px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 12px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+    }
+    .inline-data{
+        align-items: center;
+        display: flex;
+        gap: .5vw; 
+        margin-bottom: -10px;
+    }
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 13px;
+    }
+    .lastPrice{
+        margin-left: 1vw;
+        width: 130px;
+        font-size: 13px;
+    }
+    .status-box{
+        margin-left: 0px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: 5.5vw;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 5px 0px 5px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+        width: 12px;
+        height: 12px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 63px;
+        height: 18px;
+        font-size: 12px;
+        margin-left: 10px;
+        padding: 0px 0px 6px 0px;
+    }
+    .userAddedQty{
+        font-size: 13px;
+    }
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 838px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    /* .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -80px;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    /* .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 30px;
+        left: 16.5vw;
+    }
+    .user-name{
+        font-size: 15px;
+        position: absolute;
+        top: 48px;
+        left: 16.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 88vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 4.5vw;
+    }
+    /* .left-section{
+        margin-left: -70px;
+    } */
+    /* .left-line{
+        position: absolute;
+        width: 1px;
+        height: 520px;
+        background-color: #b3a3a3;
+        left: 20vw;
+    } */
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    } */
+    /* .text-line1{
+        width: 14vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 90px;
+        height: 27px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    /* .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /* .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    } */
+    
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 20px;
+    }
+    .order-headingPart{
+        padding-top: 50px;
+        font-size: 17px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-headingPart svg{
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        margin-left: -10px;
+    }
+    .order-txt{
+        margin: 0px;
+    }
+    .single-box{
+        width: 575px;
+        height: 100px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+    }
+    .og-img{
+        width: 90px;
+        height: 90px;
+        padding-top: 8px;
+        padding-left: 10px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 12px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+    }
+    .inline-data{
+        align-items: center;
+        display: flex;
+        gap: .5vw; 
+        margin-bottom: -10px;
+    }
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 13px;
+    }
+    .lastPrice{
+        margin-left: 1vw;
+        width: 130px;
+        font-size: 13px;
+    }
+    .status-box{
+        margin-left: 0px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: 5.5vw;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 5px 0px 5px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+        width: 12px;
+        height: 12px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 63px;
+        height: 18px;
+        font-size: 12px;
+        margin-left: 10px;
+        padding: 0px 0px 6px 0px;
+    }
+    .userAddedQty{
+        font-size: 13px;
+    }
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 771px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    /* .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -80px;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 14px;
+        position: absolute;
+        top: 30px;
+        left: 17vw;
+    }
+    .user-name{
+        font-size: 15px;
+        position: absolute;
+        top: 48px;
+        left: 17vw;
+        font-size: 12px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 85vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 2.5vw;
+    }
+    .left-section{
+        margin-left: -75px;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 440px;
+        background-color: #b3a3a3;
+        left: 18vw;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 11px;
+        margin-top: -10px;
+    }
+    /* .text-line1{
+        width: 14vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 15px;
+        width: 80px;
+        height: 23px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    /* .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /* .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    } */
+    
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 0px;
+    }
+    .order-headingPart{
+        padding-top: 27px;
+        font-size: 17px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    /* .order-headingPart svg{
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        margin-left: -10px;
+    } */
+    .order-txt{
+        margin: 0px;
+    }
+    .single-box{
+        width: 525px;
+        height: 88px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+    }
+    .og-img{
+        width: 80px;
+        height: 80px;
+        padding-top: 6px;
+        padding-left: 6px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 5px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+    }
+    /* .inline-data{
+        align-items: center;
+        display: flex;
+        gap: .5vw; 
+        margin-bottom: -10px;
+    } */
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 13px;
+    }
+    .lastPrice{
+        margin-left: 1vw;
+        width: 110px;
+        font-size: 13px;
+    }
+    .status-box{
+        margin-left: 5px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: 5.5vw;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 3px 0px 3px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+        width: 10px;
+        height: 10px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+        font-size: 13px;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 60px;
+        height: 18px;
+        font-size: 11.5px;
+        margin-left: 5px;
+        padding: 0px 0px 6px 0px;
+    }
+    .userAddedQty{
+        font-size: 12px;
+    }
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 662px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -50px;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 29px;
+        height: 29px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 14px;
+        position: absolute;
+        top: 30px;
+        left: 18vw;
+    }
+    .user-name{
+        font-size: 15px;
+        position: absolute;
+        top: 50px;
+        left: 18vw;
+        font-size: 12px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 85vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 5vw;
+    }
+    .left-section{
+        margin-left: -45px;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 440px;
+        background-color: #b3a3a3;
+        left: 24.3vw;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 11px;
+        margin-top: -10px;
+    } */
+    .text-line1{
+        width: 17vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 13.8vw;
+        margin-top: 15px;
+        width: 75px;
+        height: 21px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    .userlogoutt-svg{
+        height: 13px;
+        width: 13px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    /* .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    } */
+    
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 0px;
+    }
+    .order-headingPart{
+        padding-top: 27px;
+        font-size: 15px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-headingPart svg{
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        margin-left: -10px;
+    }
+    .order-txt{
+        margin: 0px;
+    }
+    .single-box{
+        width: 345px;
+        height: 158px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+        position: relative;
+    }
+    .og-img{
+        width: 150px;
+        height: 150px;
+        padding-top: 6px;
+        padding-left: 6px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 5px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+    }
+    .inline-data{
+        align-items: center;
+        display: block;
+        gap: .5vw; 
+        margin-bottom: -10px;
+    }
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 13px;
+    }
+    .lastPrice{
+        margin-left: 0vw;
+        width: 110px;
+        font-size: 13px;
+    }
+    .status-box{
+        margin-left: 0px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+        margin-top: 40px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: -22px;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 3px 0px 3px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+        width: 10px;
+        height: 10px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+        font-size: 13px;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 60px;
+        height: 18px;
+        font-size: 11.5px;
+        margin-left: 5px;
+        padding: 0px 0px 6px 0px;
+    }
+    .userAddedQty{
+        position: absolute;
+        top: 100px;
+        font-size: 12px;
+    }
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 537px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    /* .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -50px;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 29px;
+        height: 29px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 30px;
+        left: 20vw;
+    }
+    .user-name{
+        font-size: 15px;
+        position: absolute;
+        top: 50px;
+        left: 20vw;
+        font-size: 12px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 85vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 3vw;
+    }
+    /* .left-section{
+        margin-left: -45px;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 440px;
+        background-color: #b3a3a3;
+        left: 26vw;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 11px;
+        margin-top: -10px;
+    } */
+    .text-line1{
+        width: 20vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 13.8vw;
+        margin-top: 15px;
+        width: 75px;
+        height: 21px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    .userlogoutt-svg{
+        height: 13px;
+        width: 13px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /* .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    } */
+    
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 5px;
+    }
+    /* .order-headingPart{
+        padding-top: 27px;
+        font-size: 15px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-headingPart svg{
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        margin-left: -10px;
+    } */
+    /* .order-txt{
+        margin: 0px;
+    } */
+    .single-box{
+        width: 325px;
+        height: 158px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+        position: relative;
+    }
+    .og-img{
+        width: 140px;
+        height: 140px;
+        padding-top: 6px;
+        padding-left: 6px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 5px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+    }
+    .inline-data{
+        align-items: center;
+        display: block;
+        gap: .5vw; 
+        margin-bottom: -10px;
+    }
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+    .lastPrice{
+        margin-left: 0vw;
+        width: 110px;
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+    .userAddedQty{
+        position: absolute;
+        top: 85px;
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    .status-box{
+        margin-left: 0px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+        margin-top: 35px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: -22px;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 3px 0px 3px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+        width: 10px;
+        height: 10px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+        font-size: 13px;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 60px;
+        height: 18px;
+        font-size: 11.5px;
+        margin-left: 5px;
+        padding: 0px 0px 6px 0px;
+    }
+    
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 475px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -40px;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 27px;
+        height: 27px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    /* .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 30px;
+        left: 20vw;
+    } */
+    /* .user-name{
+        font-size: 15px;
+        position: absolute;
+        top: 50px;
+        left: 20vw;
+        font-size: 12px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 84vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 3vw;
+    }
+    /* .left-section{
+        margin-left: -45px;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 440px;
+        background-color: #b3a3a3;
+        left: 28vw;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 11px;
+        margin-top: -10px;
+    } */
+    .text-line1{
+        width: 20vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 13.8vw;
+        margin-top: 15px;
+        width: 75px;
+        height: 21px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    .userlogoutt-svg{
+        height: 13px;
+        width: 13px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /* .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    } */
+    
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 1vw;
+    }
+    /* .order-headingPart{
+        padding-top: 27px;
+        font-size: 15px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-headingPart svg{
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        margin-left: -10px;
+    } */
+    /* .order-txt{
+        margin: 0px;
+    } */
+    .single-box{
+        width: 265px;
+        height: 148px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+        position: relative;
+    }
+    .og-img{
+        width: 92px;
+        height: 95px;
+        padding-top: 6px;
+        padding-left: 6px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 5px;
+        margin-left: 1vw;
+    }
+    .brand-name{
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+    }
+    /* .inline-data{
+        align-items: center;
+        display: block;
+        gap: .5vw; 
+        margin-bottom: -10px;
+    } */
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .lastPrice{
+        margin-left: 0vw;
+        width: 110px;
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .userAddedQty{
+        position: absolute;
+        top: 85px;
+        font-size: 12px;
+        margin-bottom: 10px;
+        line-height: 30px;
+    }
+    .status-box{
+        margin-left: 0px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+        margin-top: 37px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: -22px;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 3px 0px 3px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+        width: 10px;
+        height: 10px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+        font-size: 13px;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 60px;
+        height: 18px;
+        font-size: 11.5px;
+        margin-left: 5px;
+        padding: 0px 0px 6px 0px;
+    }
+    
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+@media screen and (max-width : 400px) {
+        
+    /********** leftside links **********/
+    /* .main-containerr{
+        min-height: 177vh;
+        position: relative;
+        display: flex;
+    }*/
+    .profile-iconSection{
+        position: relative;
+        top: 3px;
+        left: -40px;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 27px;
+        height: 27px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    }
+    /* .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 30px;
+        left: 20vw;
+    } */
+    /* .user-name{
+        font-size: 15px;
+        position: absolute;
+        top: 50px;
+        left: 20vw;
+        font-size: 12px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 89vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 3vw;
+    }
+    /* .left-section{
+        margin-left: -45px;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 440px;
+        background-color: #b3a3a3;
+        left: 30vw;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 11px;
+        margin-top: -10px;
+    } */
+    .text-line1{
+        width: 25vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 13.8vw;
+        margin-top: 15px;
+        width: 75px;
+        height: 21px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    .userlogoutt-svg{
+        height: 13px;
+        width: 13px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    /* .profile-links{
+        text-decoration: none;
+        color: rgb(99, 98, 98);
+    }
+
+    .profile-links:hover,
+    .profile-links:active,
+    .profile-links:focus {
+        color: #EC5858;
+        font-weight: 500;
+    } */
+    
+    /******* end of leftside links **********/
+
+
+
+
+
+    /******* order rightside  **********/
+    .right-sectionContainer{
+        margin-left: 1vw;
+    }
+    /* .order-headingPart{
+        padding-top: 27px;
+        font-size: 15px ;
+        font-weight: 500;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .order-headingPart svg{
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        margin-left: -10px;
+    } */
+    /* .order-txt{
+        margin: 0px;
+    } */
+    .single-box{
+        width: 245px;
+        height: 145px;
+        margin-bottom: 15px;
+        border: 1px solid #b3a3a3;
+        border-radius: 9px;
+        display: flex;
+        gap: 3px;
+        position: relative;
+    }
+    .og-img{
+        width: 90px;
+        height: 90px;
+        padding-top: 6px;
+        padding-left: 6px;
+        object-fit: cover;
+    }
+    .single-info-container{
+        margin-top: 5px;
+        margin-left: .7vw;
+    }
+    .brand-name{
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+    }
+    /* .inline-data{
+        align-items: center;
+        display: block;
+        gap: .5vw; 
+        margin-bottom: -10px;
+    } */
+    .pDescription{
+        text-transform: capitalize;
+        /* make the remaining description like etc...  */
+        width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    .lastPrice{
+        margin-left: 0vw;
+        width: 110px;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    .userAddedQty{
+        position: absolute;
+        top: 78px;
+        font-size: 12px;
+        margin-bottom: 10px;
+        line-height: 30px;
+    }
+    .status-box{
+        margin-left: 0px;
+        display: flex;
+        gap: 3px;
+        font-size: 14px;
+        margin-top: 35px;
+    }
+    .cancelled-svg{
+        margin-left: 0px;
+        visibility: hidden;
+    }
+    .cancelled-status-btn{
+        align-items: center; 
+        margin-left: -22px;
+        background-color: rgb(218, 57, 57);
+        border-radius: 4px;
+        padding: 0px 3px 0px 3px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+    .normal-svg{
+        margin-left: 0px;
+        width: 10px;
+        height: 10px;
+    }
+    .normal-status{
+        margin-left: 0px;
+        text-transform: capitalize;
+        font-size: 13px;
+    }
+    .cancel-btn{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 60px;
+        height: 18px;
+        font-size: 11.5px;
+        margin-left: 5px;
+        padding: 0px 0px 6px 0px;
+    }
+    
+    
+    
+    /******* end of order rightside  **********/     
+}
+
+/* ******************** /media queries of right side********************** */
+
+
+
+
+/* ******************** media queries of no order case********************** */
+
+@media screen and (max-width : 797px) {
+    .no-orderSection{
+        margin-top: 30px;
+        margin-left: 14vw;
+    }
+    .no-orderimg{
+        height: 260px;
+        width: 260px;
+    }
+    .noOrder-text{
+        margin-left: 70px;
+        margin-bottom: 20px;
+        font-size: 15px;
+    }
+    .shop-button{
+        margin-left: 75px;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 7px 10px 10px 7px;
+        color: #e45959;
+        text-decoration: none;
+        border: 1px dotted #e45959;
+        
+        
+    }
+}
+
+@media screen and (max-width : 678px) {
+    .no-orderSection{
+        margin-top: 30px;
+        margin-left: 14vw;
+    }
+    .no-orderimg{
+        height: 210px;
+        width: 210px;
+    }
+    .noOrder-text{
+        margin-left: 70px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .shop-button{
+        margin-left: 70px;
+        font-weight: 500;
+        font-size: 12px;
+        padding: 7px 10px 10px 7px;
+        color: #e45959;
+        text-decoration: none;
+        border: 1px dotted #e45959;   
+    }
+}
+
+@media screen and (max-width : 522px) {
+    .no-orderSection{
+        margin-top: 30px;
+        margin-left: 10vw;
+    }
+    .no-orderimg{
+        height: 190px;
+        width: 190px;
+    }
+    .noOrder-text{
+        margin-left: 50px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .shop-button{
+        margin-left: 50px;
+        font-weight: 500;
+        font-size: 12px;
+        padding: 5px 8px 7px 7px;
+        color: #e45959;
+        text-decoration: none;
+        border: 1px dotted #e45959;   
+    }
+}
+
+@media screen and (max-width : 422px) {
+
+     
+
+
+    /* *********right side*********** */
+    .no-orderSection{
+        margin-top: 30px;
+        margin-left: 3vw;
+    }
+    .no-orderimg{
+        height: 190px;
+        width: 190px;
+    }
+    .noOrder-text{
+        margin-left: 50px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .shop-button{
+        margin-left: 50px;
+        font-weight: 500;
+        font-size: 12px;
+        padding: 5px 8px 7px 7px;
+        color: #e45959;
+        text-decoration: none;
+        border: 1px dotted #e45959;   
+    }
+    /* ********* right side*********** */
+}
+
+/* ******************** media queries of no order case********************** */

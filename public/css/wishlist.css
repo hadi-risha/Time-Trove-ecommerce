@@ -1,0 +1,154 @@
+.main-container{
+    min-height: 100vh;
+    position: relative;
+}
+.wishlist-head{
+    margin-left: 100px;
+    font-size: 22px;
+    margin-top: 30px;
+}
+.parent-div{
+    margin-top: 100px;
+    margin-left: -190px;
+    width: 450px;
+}
+.image-box{
+    width: 220px;
+    height: 225px;
+    /* position: absolute; */
+    top: 90px;
+    left: 50px;
+    border: 1px solid #DDD7D7;
+}
+.image-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cross-bkg{
+    position: relative;
+    background-color: #BEB9B9;
+    width: 24px;
+    height: 24px;
+    border-radius: 50px;
+    top: -200px;
+    left: 185px;
+    
+}
+.cross-icon{
+    width: 13px;
+    height: 13px;
+    margin-top: -4px;
+}
+.details-section{
+    border: 1px solid #DDD7D7;
+    /* position: absolute;  */
+    top: 314px;
+    width: 220px;
+    height: 135px;
+    left: 51px;
+}
+.brand-namee{
+    margin-left: 6px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.description{
+    margin-left: 6px;
+    margin-top: -15px;
+    font-size: 13px;
+    /* make the remaining description like etc...  */
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+.parent-box{
+    display: flex;
+    gap: 3px;
+    margin-top: -12px;
+}
+.last-price{
+    margin-left: 6px;
+    /* margin-top: -15px; */
+    font-size: 13px;
+    font-weight: 500;
+}
+.og-price{
+    font-size: 12px;
+    font-weight: 500;
+    color: gray;
+    /* position: absolute; */
+    /* top: 55px; */
+    left: 80px;
+    text-decoration: line-through;
+}
+.discount{
+    font-size: 12px;
+    font-weight: 500;
+    color: #5F7914;
+    /* position: absolute; */
+    /* top: 55px; */
+    left: 151px;
+}
+.second-line{
+    background-color: #DDD7D7;
+    /* position: absolute; */
+    top: 90px;
+    width: 216px;
+    height: 1px;
+}
+.move-txt{
+    border: transparent;
+    width: 140px;
+    height: 36px;
+    background-color: white;
+    color: #F44545;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+    padding-top: 10px;
+}
+
+
+/* *************************empty WISHLIST section*********************** */
+img{
+    width: 190px;
+    height: 190px;
+}
+.main-container{
+    /* font-family: 'Libre Bodoni', serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: -.5px;
+}
+.empty-cartSection{
+    margin-top: 100px;
+    margin-left: 20px;
+}
+.emptyCart-img{
+    margin-left: 560px;
+    width: 300px;
+    height: 200px;
+}
+.first-text{
+    margin-left: 575px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.text{
+    margin-left: 558px;
+    margin-top: -13px;
+    color: gray;
+    font-size: 13.5px;
+    margin-bottom: 60px;
+}
+.shop-button{
+    margin-left: 605px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #e45959;
+    border: 1px dotted #e45959;
+    padding: 10px 15px 10px 15px;
+}
+/* *************************end of empty WISHLIST section*********************** */

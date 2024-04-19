@@ -1,0 +1,1248 @@
+.main-container{
+    height: 115vh;
+    position: relative;
+    display: flex;
+}
+/* .profile-icon{
+    width: 50px;
+    height: 50px;
+} */
+
+.profile-icon{
+    background-color: rgb(255, 255, 255);
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 33px;
+    left: 12.5vw;
+}
+.main-head{
+    font-weight: 500;
+    font-size: 17px;
+    position: absolute;
+    top: 28px;
+    left: 16vw;
+}
+.user-name{
+    font-size: 19px;
+    position: absolute;
+    top: 51px;
+    left: 16vw;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+.finishing-line1{
+    width: 74vw;
+    height: 1px;
+    background-color: #b3a3a3;
+    margin-top: 100px;
+    margin-left: 12.5vw;
+}
+.left-line{
+    position: absolute;
+    width: 1px;
+    height: 470px;
+    background-color: #b3a3a3;
+    left: 350px;
+}
+.headings{
+    margin-left: 12.5vw; 
+    color: #948e8e;
+    font-size: 12px;
+    padding-top: 23px;
+}
+.orders{
+    margin-left: 12.5vw; 
+    font-size: 16px;
+    margin-top: -5px;
+}
+.text-line1{
+    width: 160px;
+    height: 1px;
+    background-color: #b3a3a3;
+    margin-left: 12.5vw; 
+}
+.logout-btn{
+    border:none;
+    border-radius: 5px;
+    margin-left: 14.8vw;
+    margin-top: 20px;
+    width: 110px;
+    height: 30px;
+    color: white;
+    background-color: rgb(145, 143, 49);
+}
+.profile-links{
+    text-decoration: none;
+    color: rgb(99, 98, 98);
+}
+
+.profile-links:hover,
+.profile-links:active,
+.profile-links:focus {
+    color: #EC5858;
+    font-weight: 500;
+}
+.userlogoutt-svg{
+    height: 17px;
+    width: 17px;
+    margin-left: -10px;
+    margin-right: 8px;
+    margin-top: -4px;
+}
+.right-section{
+    position: absolute;
+    left: 30vw;
+    top: 100px;
+}
+.address-image{
+    margin-top: 30px;
+    width: 200px; 
+    width: 200px;
+    margin-left: 19vw;
+}
+.img-head{
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 19vw;
+}
+.img-txt{
+    font-size: 14px;
+    margin-left: 15.4vw;
+    margin-top: -5px;
+    color: rgb(102, 101, 101);
+}
+.addAddress-link{
+    display: inline;
+    text-decoration: none;
+    position: absolute;
+    left: 20vw;
+    top: 330px;
+    border: 1px solid rgb(158, 154, 154);
+    border-radius: 4px;
+    width: 170px;
+    height: 38px;
+}
+.addAddress-link p{
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
+/* *********************No address found - media Queries*********************** */
+@media screen and (max-width : 872px) {  
+    .right-section{
+        position: absolute;
+        left: 34vw;
+        top: 100px;
+    }
+    .address-image{
+        margin-top: 30px;
+        width: 200px; 
+        width: 200px;
+        margin-left: 19vw;
+    }
+    .img-head{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19vw;
+    }
+    .img-txt{
+        font-size: 14px;
+        margin-left: 15.4vw;
+        margin-top: -5px;
+        color: rgb(102, 101, 101);
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 20vw;
+        top: 330px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 170px;
+        height: 38px;
+    }
+    .addAddress-link p{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-top: 7px;
+    }
+        
+}
+
+@media screen and (max-width : 732px) {  
+    .right-section{
+        position: absolute;
+        left: 34vw;
+        top: 120px;
+    }
+    .address-image{
+        margin-top: 30px;
+        width: 170px; 
+        height: 170px;
+        margin-left: 19vw;
+    }
+    .img-head{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 19vw;
+    }
+    .img-txt{
+        font-size: 14px;
+        margin-left: 15.4vw;
+        margin-top: -5px;
+        color: rgb(102, 101, 101);
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 20vw;
+        top: 330px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 170px;
+        height: 38px;
+    }
+    .addAddress-link p{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-top: 7px;
+    }
+        
+}
+
+@media screen and (max-width : 612px) {  
+    .right-section{
+        position: absolute;
+        left: 28vw;
+        top: 120px;
+    }
+    .address-image{
+        margin-top: 30px;
+        width: 160px; 
+        height: 160px;
+        margin-left: 21vw;
+    }
+    .img-head{
+        font-size: 13px;
+        font-weight: 500;
+        margin-left: 19vw;
+    }
+    .img-txt{
+        font-size: 13px;
+        margin-left: 13.4vw;
+        margin-top: -5px;
+        color: rgb(102, 101, 101);
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 20vw;
+        top: 300px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 160px;
+        height: 35px;
+    }
+    .addAddress-link p{
+        font-size: 13px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-top: 7px;
+    }
+        
+}
+
+@media screen and (max-width : 498px) {  
+    .right-section{
+        position: absolute;
+        left: 25vw;
+        top: 120px;
+    }
+    .address-image{
+        margin-top: 30px;
+        width: 130px; 
+        height: 130px;
+        margin-left: 23vw;
+    }
+    .img-head{
+        font-size: 13px;
+        font-weight: 500;
+        margin-left: 19vw;
+    }
+    .img-txt{
+        font-size: 13px;
+        margin-left: 13.4vw;
+        margin-top: -5px;
+        color: rgb(102, 101, 101);
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 20vw;
+        top: 300px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 140px;
+        height: 31px;
+    }
+    .addAddress-link p{
+        font-size: 12.5px;
+        font-weight: 500;
+        margin-left: 3px;
+        margin-top: 5px;
+    }
+        
+}
+
+@media screen and (max-width : 442px) {  
+    .right-section{
+        position: absolute;
+        left: 25vw;
+        top: 120px;
+    }
+    .address-image{
+        margin-top: 30px;
+        width: 130px; 
+        height: 130px;
+        margin-left: 23vw;
+    }
+    .img-head{
+        font-size: 13px;
+        font-weight: 500;
+        margin-left: 19vw;
+    }
+    .img-txt{
+        font-size: 13px;
+        margin-left: 17.4vw;
+        margin-top: -5px;
+        color: rgb(102, 101, 101);
+        width: 180px;
+        text-align: center;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 22vw;
+        top: 280px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 140px;
+        height: 31px;
+    }
+    .addAddress-link p{
+        font-size: 12.5px;
+        font-weight: 500;
+        margin-left: 3px;
+        margin-top: 5px;
+    }
+        
+}
+
+@media screen and (max-width : 342px) {  
+    .right-section{
+        position: absolute;
+        left: 21vw;
+        top: 120px;
+    }
+    .address-image{
+        margin-top: 30px;
+        width: 110px; 
+        height: 110px;
+        margin-left: 28vw;
+    }
+    .img-head{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 19vw;
+    }
+    .img-txt{
+        font-size: 13px;
+        margin-left: 17.4vw;
+        margin-top: -5px;
+        color: rgb(102, 101, 101);
+        width: 180px;
+        text-align: center;
+    }
+    .addAddress-link{
+        display: inline;
+        text-decoration: none;
+        position: absolute;
+        left: 24vw;
+        top: 260px;
+        border: 1px solid rgb(158, 154, 154);
+        border-radius: 4px;
+        width: 135px;
+        height: 29px;
+    }
+    .addAddress-link p{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 3px;
+        margin-top: 5px;
+    }
+        
+}
+
+
+
+/* ********************* /No address found - media Queries*********************** */
+
+
+
+
+
+
+
+/* ********************media queries of left side********************** */
+@media screen and (max-width : 961px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 18vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 18vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 78.5vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 320px;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 16px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 839px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    }
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 12.5vw;
+    } */
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 18vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 18vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    /* .finishing-line1{
+        width: 74vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 300px;
+    }
+    /* .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 12px;
+        padding-top: 23px;
+    } */
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 14px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+    
+    
+}
+
+@media screen and (max-width : 698px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 250px;
+    }
+
+    .left-section{
+        margin-left: -32px;
+    }
+    .headings{
+        margin-left: 12.5vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 160px;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 14.8vw;
+        margin-top: 20px;
+        width: 110px;
+        height: 30px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+    }
+    .userlogoutt-svg{
+        height: 17px;
+        width: 17px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 622px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 17px;
+        position: absolute;
+        top: 28px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 19px;
+        position: absolute;
+        top: 51px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 34vw;
+    }
+
+    .left-section{
+        margin-left: -32px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 26vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+
+@media screen and (max-width : 556px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 34px;
+        height: 34px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 31px;
+        left: 15vw;
+    }
+    .user-name{
+        font-size: 18px;
+        position: absolute;
+        top: 48px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    /* .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 31vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    }
+    /* .orders{
+        margin-left: 12.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    } */
+    .text-line1{
+        width: 24vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+    
+}
+
+@media screen and (max-width : 512px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    /* .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 34px;
+        height: 34px;
+        position: absolute;
+        top: 33px;
+        left: 7.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 15px;
+        position: absolute;
+        top: 31px;
+        left: 15vw;
+    } */
+    /* .user-name{
+        font-size: 18px;
+        position: absolute;
+        top: 48px;
+        left: 15vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    /* .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 100px;
+        margin-left: 12.5vw;
+    } */
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 33vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    } */
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .text-line1{
+        width: 24vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    /* .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 16px;
+        width: 90px;
+        height: 28px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 14px;
+    }
+    .userlogoutt-svg{
+        height: 15px;
+        width: 15px;
+        margin-left: -10px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 447px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 33px;
+        left: 4.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 31px;
+        left: 13.5vw;
+    }
+    .user-name{
+        font-size: 13px;
+        position: absolute;
+        top: 48px;
+        left: 13.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 36vw;
+    }
+
+    /* .left-section{
+        margin-left: -32px;
+    } */
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 11px;
+        padding-top: 23px;
+    } */
+    /* .orders{
+        margin-left: 11.5vw; 
+        font-size: 13px;
+        margin-top: -5px;
+    } */
+    .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    }
+    .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+
+@media screen and (max-width : 395px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 13px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    }
+    .user-name{
+        font-size: 13px;
+        position: absolute;
+        top: 48px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 11.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 36vw;
+    }
+
+    .left-section{
+        margin-left: -38px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 12px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    } */
+    /* .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 350px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 12px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    }
+    .user-name{
+        font-size: 12px;
+        position: absolute;
+        top: 47px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 11.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 34vw;
+    }
+
+    .left-section{
+        margin-left: -36px;
+    }
+    .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 11px;
+        margin-top: -5px;
+    }
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    }
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 80px;
+        height: 26px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    } */
+    /* .userlogoutt-svg{
+        height: 14px;
+        width: 14px;
+        margin-left: -5px;
+        margin-right: 8px;
+        margin-top: -4px;
+    } */
+    
+}
+
+@media screen and (max-width : 320px) {
+    /* .main-container{
+        height: 136vh;
+        position: relative;
+        display: flex;
+    } */
+    /* .profile-icon{
+        background-color: rgb(255, 255, 255);
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 33px;
+        left: 2.5vw;
+    }
+    .main-head{
+        font-weight: 500;
+        font-size: 12px;
+        position: absolute;
+        top: 31px;
+        left: 12.5vw;
+    } */
+    /* .user-name{
+        font-size: 12px;
+        position: absolute;
+        top: 47px;
+        left: 12.5vw;
+        font-size: 13px;
+        text-transform: capitalize;
+    } */
+    .finishing-line1{
+        width: 81vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-top: 90px;
+        margin-left: 12.5vw;
+    }
+    .left-line{
+        position: absolute;
+        width: 1px;
+        height: 470px;
+        background-color: #b3a3a3;
+        left: 37.5vw;
+    }
+
+    .left-section{
+        margin-left: -29px;
+    }
+    /* .headings{
+        margin-left: 12vw; 
+        color: #948e8e;
+        font-size: 10px;
+        padding-top: 23px;
+    }
+    .orders{
+        margin-left: 11.5vw; 
+        font-size: 11px;
+        margin-top: -5px;
+    } */
+    /* .text-line1{
+        width: 28vw;
+        height: 1px;
+        background-color: #b3a3a3;
+        margin-left: 12.5vw; 
+    } */
+    .logout-btn{
+        border:none;
+        border-radius: 5px;
+        margin-left: 16.8vw;
+        margin-top: 14px;
+        width: 70px;
+        height: 24px;
+        color: white;
+        background-color: rgb(145, 143, 49);
+        font-size: 13px;
+    }
+    .userlogoutt-svg{
+        height: 12px;
+        width: 12px;
+        margin-left: -3px;
+        margin-right: 8px;
+        margin-top: -4px;
+    }
+    
+}
+/* ******************** /media queries of left side********************** */
