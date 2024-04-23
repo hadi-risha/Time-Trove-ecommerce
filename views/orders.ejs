@@ -259,7 +259,7 @@
 
                             <% for (const order of OrderData) { %>
                                 <% for (const item of order.orderItems) { %>
-                            <a style="text-decoration: none; color: black;" href="/order-summary?orderId=<%= order._id %>&productId=<%= item._id %>"  >
+                            
                                 <div class="single-box">
                                     <div class="image-box mt-0">
                                         <img class="og-img" src="/uploads<%= item.images[0] %>">
@@ -480,11 +480,18 @@
                                                 </form>
                                             <% } %>
                                             <!-- /razorpay retry button -->
+
+
+
+                                            <a style="text-decoration: none; color: black;" href="/order-summary?orderId=<%= order._id %>&productId=<%= item._id %>"  >
+                                                <!-- <p>view full details</p> -->
+                                                <button class="orderSummary">Details</button>
+                                            </a>
                                         </div>
                                         
                                     </div>
                                 </div>
-                                </a>
+                                <!-- </a> -->
                                 <% } %>
                             <% } %>
                         <% }else{ %>
