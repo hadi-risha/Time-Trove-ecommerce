@@ -116,7 +116,28 @@
                                 </a>
                             </li>
                             <li style="margin-left: 10px;">
-                                <a href="#" class="wishlist">
+
+                                <!-- show wishlist count -->
+                                <% if(wishlistCount > 0 && userLoggined){ %>
+                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% }else{ %>
+                                    <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% } %>
+
+
+                                <a href='/wishlist' class="wishlist">
                                     <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                 </a>
                             </li>

@@ -17,6 +17,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- end of Bootstrap css cdn link -->
 
+     <!-- sweet alert -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 
 <body>
@@ -158,6 +161,43 @@
         <div class="container-fluid">
             <div class="row p-0">
                 <div class="col-12 m-0 d-flex p-0">
+
+
+                    <!-- profile updated success message -->
+                    <% if (updatedProfile && !messageDisplayed) { %> 
+                        <script>
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            customClass: {
+                                container: 'custom-toast-container',
+                                popup: 'custom-toast-popup',
+                                header: 'custom-toast-header',
+                                title: 'custom-toast-title',
+                                icon: 'custom-toast-icon',
+                                image: 'custom-toast-image',
+                                content: 'custom-toast-content',
+                                confirmButton: 'custom-toast-confirm-button'
+                            }
+                            });
+                            Toast.fire({
+                                icon: "success",
+                                title: "Profile Updated"
+                            });
+                            
+                        </script>
+                    <% } %> 
+                    <!-- end of profile updated success message -->
+
+
+
                     <div class="left-section">
                         <div class="profileIcon-section d-flex gap-48">
                             <div>

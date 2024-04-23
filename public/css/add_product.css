@@ -46,6 +46,25 @@
 	margin-left: 344px;
 	/* border-radius: 5px; */
 }
+.duplicateProductBox{
+	width: 453px;
+	height: 40px;
+	/* background-color: white; */
+	/* color: #19b319; */
+	margin-left: 344px;
+	/* border-radius: 5px; */
+}
+.duplicateName{
+	background-color: white;
+	color: red;
+	padding: 5px;
+	border-radius: 5px;
+	padding-top: 7px;
+	padding-left: 15px;
+	position: relative;
+    top: 40px;
+    left: -82px;
+}
 #addproductSuccessMessage{
 	background-color: white;
 	color: #19b319;
@@ -55,7 +74,7 @@
 	padding-left: 15px;
 	position: relative;
     top: 40px;
-    left: 114px;
+    left: 104px;
 }
 .final-btn{
 	position: relative;

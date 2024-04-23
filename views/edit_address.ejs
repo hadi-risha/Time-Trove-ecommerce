@@ -137,11 +137,32 @@
                                 </a>
                             </li>
                             <li style="margin-left: 10px;">
-                            <li>
-                                <a href='/wishlist' class="wishlist">
-                                    <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
-                                </a>
-                            </li>
+                                <li style="margin-left: 10px;">
+
+                                    <!-- show wishlist count -->
+                                    <% if(wishlistCount > 0 && userLoggined){ %>
+                                        <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                                position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                            <p style="    margin-top: -3px;
+                                            margin-bottom: 1rem;
+                                            font-size: 12px;
+                                        "><%= wishlistCount %></p>
+                                        </div>
+                                    <% }else{ %>
+                                        <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                                position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                            <p style="    margin-top: -3px;
+                                            margin-bottom: 1rem;
+                                            font-size: 12px;
+                                        "><%= wishlistCount %></p>
+                                        </div>
+                                    <% } %>
+    
+    
+                                    <a href='/wishlist' class="wishlist">
+                                        <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                                    </a>
+                                </li>
                         </ul>
                         
                     </div>
@@ -213,7 +234,7 @@
                     </div>
 
                     <div class="right-section">
-                        <form action='/edit-address' method="post" onsubmit="return validateForm()">
+                        <form id="editUserAddressForm" onsubmit="return validateForm()">
                             <p class="details-heading">Update Address</p>
                             <div class="profile-line"></div>
                             <div class="input-fieldContainer">
@@ -260,6 +281,7 @@
                                     <input class="adType-content2" type="radio" value="Office" name="addressType" <% if (userAddressDetails[0].addressType === 'Office') { %>checked<% } %>> Office
                                     <input class="adType-content2" type="radio" value="Other" name="addressType" <% if (userAddressDetails[0].addressType === 'Other') { %>checked<% } %> > Other
                             </div>
+                            
                             
                             <input type="hidden" name="id" value="<%= userAddressDetails[0]._id %>">
                             <button type="submit" class="edit-btn">UPDATE</button>
@@ -314,6 +336,54 @@
         </div>
     </footer> 
     <!-- /footer section -->
+
+
+    <!-- update user address using fetch -->
+    <script>
+        document.getElementById('editUserAddressForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Validate the form
+            if (!validateForm()) {
+                // If validation fails, do not proceed with form submission
+                return;
+            }
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            try {
+                const response = await fetch('/edit-address', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Check if the update was successful
+                if(result.success) {
+                    window.location.href = '/user-address';
+                    return;
+                }else if(result.url) {
+                    // Handle errors, e.g., show an error message
+                    location.href = result.url;
+                    return;
+                }
+                console.error(result);
+            } catch (error) {
+                console.error('There was a problem with your fetch operation:', error);
+            }
+            });
+    </script>
+    <!-- /update user address using fetch -->
 
 
 
@@ -439,69 +509,81 @@
             const addressInput = document.querySelector('input[name="address"]');
             const districtInput = document.querySelector('input[name="district"]');
             const mobileInput = document.querySelector('input[name="mobile"]');
-            const addressTypeInput = document.querySelector('input[name="address-type"]:checked');
+            // const addressTypeInput = document.querySelector('input[name="address-type"]:checked');
+            console.log( pincodeInput, stateInput, addressInput, districtInput, mobileInput );
+
+            // Flag to track if any validation error occurs
+            let isValid = true;
     
             // Validate pincode
             if (!/^\d{6}$/.test(pincodeInput.value)) {
                 const pinCode = document.getElementById('pinCode');
                 pinCode.innerHTML = "Invalid PIN code. Please enter a 6-digit numeric PIN code.";
-                return false;
+                // return false;
+                isValid = false;
             }
     
             // Validate state
             if (stateInput.value.trim() === '') {
                 const state = document.getElementById('state');
                 state.innerHTML = "State is required.";
-                return false;
+                // return false;
+                isValid = false;
             }
             if (!/^[A-Za-z\s]+$/.test(stateInput.value)) {
                 const state = document.getElementById('state');
                 state.innerHTML = "Invalid state name. Please use only letters and spaces.";
-                return false;
+                // return false;
+                isValid = false;
             }
     
             // Validate address
             if (addressInput.value.trim() === '') {
                 const address = document.getElementById('address');
                 address.innerHTML = "Address is required.";
-                return false;
+                // return false;
+                isValid = false;
             }
     
             // Validate district
             if (districtInput.value.trim() === '') {
                 const district = document.getElementById('district');
                 district.innerHTML = "District is required.";
-                return false;
+                // return false;
+                isValid = false;
             }
             if (!/^[A-Za-z\s]+$/.test(districtInput.value)) {
                 const district = document.getElementById('district');
                 district.innerHTML = "Invalid district name. Please use only letters and spaces.";
-                return false;
+                // return false;
+                isValid = false;
             }
     
             // Validate mobile
             if (!/^\d{10}$/.test(mobileInput.value)) {
                 const mobile = document.getElementById('mobile');
                 mobile.innerHTML = "Mobile number must be 10 digits.";
-                return false;
+                // return false;
+                isValid = false;
             }
     
             // Validate address type
-            if (!addressTypeInput) {
-                const addressType = document.getElementById('addressType');
-                addressType.innerHTML = "Address type is required.";
-                return false;
-            }
+            // if (!addressTypeInput) {
+            //     const addressType = document.getElementById('addressType');
+            //     addressType.innerHTML = "Address type is required.";
+            //     // return false;
+            //     isValid = false;
+            // }
     
             // If all validations pass, allow the form to submit
-            return true;
+            return isValid;
         }
     
         //attach the validateForm function to the form's onsubmit event
-        const form = document.querySelector('form[action="/save-address"]');
-        if (form) {
-            form.onsubmit = validateForm;
-        }
+        // const form = document.querySelector('form[action="/save-address"]');
+        // if (form) {
+        //     form.onsubmit = validateForm;
+        // }
     </script>
     <!-- user edit address form validation -->
    

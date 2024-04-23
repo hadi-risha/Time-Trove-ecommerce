@@ -109,7 +109,7 @@
                                                     <th>Brand</th>
                                                     <th>Quantity</th>
                                                     <th>Category</th>
-                                                    <th>Discount</th>
+                                                    <th>Total Discount</th>
                                                     <th>Final Price</th>
                                                     <th>Update</th>
                                                     <th>Remove</th>
@@ -137,10 +137,158 @@
                                                                 <p class="m-0 p-0"><%= allProductDetails[i].category %></p>
                                                             </td>
                                                             <td>
-                                                                <p class="mb-2 p-0">Current Discount: <%= allProductDetails[i].discount %>%</p>
+
+
+                                                                <!-- ********************* -->
+
+                                                                <!-- discount handiling -->
+                                                                <div class="price-container d-flex gap-3">
+
+                                                                    <!-- both offer exist case-------  categoryOfferExist, categoryDiscInPercentage -->
+                                                                    <% if(allProductDetails[i]?.categoryofferDiscount && allProductDetails[i]?.productofferDiscount){ %>
+                                                                        <% let finalizeDiscount = allProductDetails[i].productofferDiscount > allProductDetails[i].categoryofferDiscount ? allProductDetails[i].productofferDiscount : allProductDetails[i].categoryofferDiscount %>
+
+                                                                        <% let totalDisc = allProductDetails[i].discount + finalizeDiscount %>
+                                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+                                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                                        <!-- <p class="m-0 p-0"> ₹<%#= finalAmount %></p> -->
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount + finalizeDiscount %>% OFF)</p> -->
+                                                                        <p class="mb-2 p-0">₹ <%= allProductDetails[i].discount + finalizeDiscount %>% OFF</p>
+                                                                        <script>
+                                                                            console.log('in both offer case');
+                                                                        </script>
+
+                                                                    <!-- only product-offer exist case  -->
+                                                                    <% } else if(allProductDetails[i]?.productofferDiscount) { %>
+
+                                                                        <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>
+                                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+                                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                                        <!-- <p class="m-0 p-0"> ₹<%#= finalAmount %></p> -->
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>% OFF)</p> -->
+                                                                        <p class="mb-2 p-0">₹ <%= allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>% OFF</p>
+
+                                                                        <script>
+                                                                            console.log('in product offer case');
+                                                                        </script>
+
+                                                                    <!-- only category-offer exist case -->
+                                                                    <% } else if(allProductDetails[i]?.categoryofferDiscount) { %>
+
+                                                                        <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].categoryofferDiscount %>
+                                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+                                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                                        <!-- <p class="m-0 p-0"> ₹<%#= finalAmount %></p> -->
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount + categoryOfferExist.discount %>% OFF)</p> -->
+                                                                        <p class="mb-2 p-0">₹ <%= allProductDetails[i].discount + allProductDetails[i].categoryofferDiscount %>% OFF</p>
+
+                                                                        <script>
+                                                                            console.log('in cat offer case');
+                                                                        </script>
+
+                                                                    <!-- none of these offer exist case -->
+                                                                    <% } else { %>
+                                                                        <!-- <p class="m-0 p-0"> ₹<%#= allProductDetails[i].lastPrice %></p> -->
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount %>% OFF)</p> -->
+                                                                        <p class="mb-2 p-0">₹ <%= allProductDetails[i].discount %>% OFF</p>
+                                                                        <script>
+                                                                            console.log('in no-extra offer case');
+                                                                        </script>
+                                                                    <% } %>
+
+                                                                </div>
+                                                                <!-- /discount handiling -->
+                                                                <!-- ********************* -->
+
+
+
+
+                                                                <!-- <p class="mb-2 p-0">Current Discount: <%#= allProductDetails[i].discount %>%</p> -->
                                                             </td>
                                                             <td>
-                                                                <p class="m-0 p-0"> ₹<%= allProductDetails[i].lastPrice %></p>
+
+                                                                <!-- ****************************** -->
+
+
+                                                                <!-- price handiling -->
+                                                                <div class="price-container d-flex gap-3">
+
+                                                                    <!-- both offer exist case-------  categoryOfferExist, categoryDiscInPercentage -->
+                                                                    <% if(allProductDetails[i]?.categoryofferDiscount && allProductDetails[i]?.productofferDiscount){ %>
+                                                                        <% let finalizeDiscount = allProductDetails[i].productofferDiscount > allProductDetails[i].categoryofferDiscount ? allProductDetails[i].productofferDiscount : allProductDetails[i].categoryofferDiscount %>
+
+                                                                        <% let totalDisc = allProductDetails[i].discount + finalizeDiscount %>
+                                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+                                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                                        <p class="m-0 p-0"> ₹<%= finalAmount %></p>
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount + finalizeDiscount %>% OFF)</p> -->
+                                                                        <script>
+                                                                            console.log('in both offer case');
+                                                                        </script>
+
+                                                                    <!-- only product-offer exist case  -->
+                                                                    <% } else if(allProductDetails[i]?.productofferDiscount) { %>
+
+                                                                        <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>
+                                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+                                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                                        <p class="m-0 p-0"> ₹<%= finalAmount %></p>
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>% OFF)</p> -->
+                                                                        <script>
+                                                                            console.log('in product offer case');
+                                                                        </script>
+
+                                                                    <!-- only category-offer exist case -->
+                                                                    <% } else if(allProductDetails[i]?.categoryofferDiscount) { %>
+
+                                                                        <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].categoryofferDiscount %>
+                                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+                                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                                        <p class="m-0 p-0"> ₹<%= finalAmount %></p>
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount + categoryOfferExist.discount %>% OFF)</p> -->
+                                                                        <script>
+                                                                            console.log('in cat offer case');
+                                                                        </script>
+
+                                                                    <!-- none of these offer exist case -->
+                                                                    <% } else { %>
+                                                                        <p class="m-0 p-0"> ₹<%= allProductDetails[i].lastPrice %></p>
+                                                                        <!-- <p class="offer-price">Rs. <%#= allProductDetails[i].firstPrice %></p> -->
+                                                                        <!-- <p class="offer">(<%#= allProductDetails[i].discount %>% OFF)</p> -->
+                                                                        <script>
+                                                                            console.log('in no-extra offer case');
+                                                                        </script>
+                                                                    <% } %>
+
+                                                                </div>
+                                                                <!-- /price handiling -->
+
+
+
+                                                                <!-- ****************************** -->
+
+
+
+                                                                <!-- <p class="m-0 p-0"> ₹<%#= allProductDetails[i].lastPrice %></p> -->
                                                             </td>
                                                             <td>
                                                                 <a href="/update-product?productId=<%= allProductDetails[i]._id %>">

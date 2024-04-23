@@ -17,6 +17,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- end of Bootstrap css cdn link -->
 
+    <!-- SweetAlert library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 </head>
 
 <body>
@@ -135,6 +139,27 @@
                                 </a>
                             </li>
                             <li style="margin-left: 10px;">
+
+                                <!-- show wishlist count -->
+                                <% if(wishlistCount > 0 && userLoggined){ %>
+                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% }else{ %>
+                                    <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% } %>
+
+
                                 <a href='/wishlist' class="wishlist">
                                     <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                 </a>
@@ -155,6 +180,45 @@
         <div class="container-fluid">
             <div class="row p-0">
                 <div class="col-12 m-0 d-flex p-0">
+
+
+
+                    <!-- product removed popup -->
+                    <% if (wishlistProductRemoved && !messageDisplayed) { %> 
+                        <script>
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            customClass: {
+                                container: 'custom-toast-container',
+                                popup: 'custom-toast-popup',
+                                header: 'custom-toast-header',
+                                title: 'custom-toast-title',
+                                icon: 'custom-toast-icon',
+                                image: 'custom-toast-image',
+                                content: 'custom-toast-content',
+                                confirmButton: 'custom-toast-confirm-button'
+                            }
+                            });
+                            Toast.fire({
+                                icon: "success",
+                                title: "Product Removed."
+                            });
+                            
+                        </script>
+                    <% } %> 
+                    <!-- end of product removed popup -->
+
+
+
+
                     <% if(wishlistProductDetails.length > 0){ %>
                     <p class="wishlist-head"><span style="font-weight: 500;">My Wishlist</span> <%= wishlistProductDetails.length %> items</p>
                         <% for(let i=0; i<wishlistProductDetails.length; i++) { %>
@@ -163,7 +227,7 @@
                                 <div class="image-box">
                                     <img class="og-img" src="<%= wishlistProductDetails[i]?.proDetails[0]?.images[0] %>">
                                     <!-- remove product from wishlist -->
-                                    <form action="/wishlistRemove-item" method="post" onsubmit="return confirmDelete(event);">
+                                    <form class="wishlistRemoveForm" >
                                         <div class="cross-bkg">
                                             <button style="border: none; background-color: transparent;">
                                                 <input type="hidden" name="email" value="<%= userEmail %>">
@@ -243,7 +307,7 @@
                                             </script>
 
                                         <!-- none of these offer exist case -->
-                                        <% } else { %>
+                                        <% }else{ %>
                                             <p class="last-price">Rs. <%= wishlistProductDetails[i].proDetails[0].lastPrice %></p>
                                             <p class="og-price">Rs. <%= wishlistProductDetails[i].proDetails[0].firstPrice %></p>
                                             <p class="discount">(<%= wishlistProductDetails[i].proDetails[0].discount %>% OFF)</p>
@@ -330,6 +394,64 @@
         </div>
     </footer> 
     <!-- /footer section -->
+
+
+    <!-- delete wishlist product using fetch -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script>
+       const forms = document.querySelectorAll('.wishlistRemoveForm');
+       forms.forEach(each => {
+
+           each.addEventListener('submit', async (event) => {
+           event.preventDefault();
+
+           const result = await Swal.fire({
+               title: 'Are you sure?',
+               // text: 'You won\'t be able to revert this!', (optional)
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, Remove product'
+           });
+           
+           if(result.isConfirmed) {
+               const formData = new FormData(event.target);
+               const data = Object.fromEntries(formData);
+               
+               try{
+                   const response = await fetch('/wishlistRemove-item', {
+                       method: 'DELETE',
+                       headers: {
+                           'Content-Type': 'application/json',
+                       },
+                       body: JSON.stringify(data),
+                   });
+       
+                   if(!response.ok) {
+                       throw new Error('Network response was not ok');
+                   }
+       
+                   const result = await response.json();
+                   //check if the update was successful
+                   if(result.success) {
+                       window.location.href = '/wishlist';
+                   }else{
+                       //handle errors
+                       console.error('deletion failed:', result.message);
+                   }
+               }catch(error) {
+                   console.error('There was a problem with your fetch operation:', error);
+               }
+           }else{
+               Swal.fire('Cancelled');
+           }
+       });
+
+       })
+       
+   </script>
+   <!-- /delete wishlist product using fetch -->
 
 
 
@@ -448,7 +570,7 @@
 
 
     <!-- confirmation for remove product from wishlist -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         async function confirmDelete(event) {
@@ -472,7 +594,7 @@
                 Swal.fire('Cancelled');
             }
         }
-    </script>
+    </script> -->
 
    <!-- /confirmation for remove product from wishlist -->
 

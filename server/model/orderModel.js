@@ -116,6 +116,9 @@ const orderSchema = new mongoose.Schema({
     usedCouponDiscount: {
         type: Number
     },
+    totalDiscount:{
+        type: Number
+    },
     finalAmountWithoutCoupon:{
         type: Number
     }

@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-    integrity="sha384-k6RqeT8HML5Amx6YeHdCeZpMVO8Tz2plkgwEe1UwWj5IiiMvVq/ZqCkrItjR5AaQ" crossorigin="anonymous">
     
     <!-- css -->
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="/css/shopping_cart.css">
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap css cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- end of Bootstrap css cdn link -->
+
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
@@ -137,6 +145,27 @@
                                 </a>
                             </li>
                             <li style="margin-left: 10px;">
+
+                                <!-- show wishlist count -->
+                                <% if(wishlistCount > 0 && userLoggined){ %>
+                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% }else{ %>
+                                    <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% } %>
+
+
                                 <a href='/wishlist' class="wishlist">
                                     <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                 </a>
@@ -176,7 +205,7 @@
                                             <p class="brand-name"><%= cartProductDetails[i]?.pDetails[0]?.productName %></p>
                                             <!-- product remove icon -->
                                             <div class="delete">
-                                                <form action="/remove-item" method="post" onsubmit="return confirmDelete(event);">
+                                                <form class="removeProductForm">
                                                     <button>
                                                         <input type="hidden" name="id" value="<%= cartProductDetails[i].pDetails[0]._id %>">
                                                         <svg class="remove-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -258,7 +287,7 @@
                                                     
 
                                                 <!-- only product-offer exist case  -->
-                                                <% } else if(cartProductDetails[i].pDetails[0]?.productofferDiscount) { %>
+                                                <% }else if(cartProductDetails[i].pDetails[0]?.productofferDiscount) { %>
 
                                                     <% let totalDisc = cartProductDetails[i].pDetails[0].discount + cartProductDetails[i].pDetails[0].productofferDiscount %>
                                                     <% let disc = (cartProductDetails[i].pDetails[0].firstPrice * totalDisc)/100 %>
@@ -274,7 +303,7 @@
                                                     </script>
 
                                                 <!-- only category-offer exist case -->
-                                                <% } else if(cartProductDetails[i].pDetails[0]?.categoryofferDiscount) { %>
+                                                <% }else if(cartProductDetails[i].pDetails[0]?.categoryofferDiscount) { %>
 
                                                     <% let totalDisc = cartProductDetails[i].pDetails[0].discount + cartProductDetails[i].pDetails[0].categoryofferDiscount %>
                                                     <% let disc = (cartProductDetails[i].pDetails[0].firstPrice * totalDisc)/100 %>
@@ -290,7 +319,7 @@
                                                     </script>
 
                                                 <!-- none of these offer exist case -->
-                                                <% } else { %>
+                                                <% }else{ %>
 
                                                     <p class="last-price">Rs. <%= cartProductDetails[i].pDetails[0].lastPrice %></p>
                                                     <p class="first-price">Rs. <%= cartProductDetails[i].pDetails[0].firstPrice %></p>
@@ -417,6 +446,7 @@
                                                 <%# console.log(product.pDetails[0].firstPrice * product.userAddedQuantity); %>
                                                 <%# totalLAstPrice = (product.pDetails[0].firstPrice * product.userAddedQuantity)  - totalDiscount %>
                                             <%# }); %>
+                                            
                                             <p class="tPrice">₹<%= totalPrice - totalDiscount %></p>
 
                                             <!-- <p class="tPrice">₹<%#= totalLAstPrice %></p> -->
@@ -521,6 +551,65 @@
     <!-- /footer section -->
 
 
+    <!-- remove product from cart using fetch -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const forms = document.querySelectorAll('.removeProductForm');
+        forms.forEach(each => {
+
+            each.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                // text: 'You won\'t be able to revert this!', (optional)
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove product'
+            });
+            
+            if(result.isConfirmed) {
+                const formData = new FormData(event.target);
+                const data = Object.fromEntries(formData);
+                
+                try{
+                    const response = await fetch('/remove-item', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+        
+                    if(!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+        
+                    const result = await response.json();
+                    //check if the update was successful
+                    if(result.success) {
+                        window.location.href = '/shopping-cart';
+                    }else{
+                        //handle errors
+                        console.error('deletion failed:', result.message);
+                    }
+                }catch(error) {
+                    console.error('There was a problem with your fetch operation:', error);
+                }
+            }else{
+                Swal.fire('Cancelled');
+            }
+        });
+
+        })
+        
+    </script>
+    <!-- /remove product from cart using fetch -->
+
+
+
 
 
     <!-- quantity script -->
@@ -534,7 +623,7 @@
             if (newQuantity >= 1) {
     
                 $.ajax({
-                    type: 'POST',
+                    type: 'PATCH',
                     url: '/update-cart-quantity',
                     data: {
                         productId: productId,
@@ -550,15 +639,26 @@
                     
                     
                         
-                         if (response?.error) {
+                        if(response?.error){
+                            if (change > 0) { // only show alert for incrementing qty
+                                alert('Quantity limit reached. Please adjust.');
+                            }
                             location.reload();
-                            // If there's an error message, display it
-                            alert('Quantity limit reached. Please adjust.')
                             document.getElementById('finalProceedBtn').disabled = true;
-    
-                            // Store the disabled state in local storage
-                            localStorage.setItem('finalProceedBtnDisabled', 'true');  
+
+                            //store the disabled state in local storage
+                            localStorage.setItem('finalProceedBtnDisabled', 'true');
                             return;
+
+
+                            // location.reload();
+                            // // If there's an error message, display it
+                            // alert('Quantity limit reached. Please adjust.')
+                            // document.getElementById('finalProceedBtn').disabled = true;
+
+                            // // Store the disabled state in local storage
+                            // localStorage.setItem('finalProceedBtnDisabled', 'true');  
+                            // return;
                         }
 
                         $( "#payment-box" ).load( "/shopping-cart #payment-box" );     //reload right section
@@ -568,7 +668,7 @@
                         console.error('Error:', textStatus, errorThrown);
                         // Handle the error here
                         // For example, show an error message to the user
-                        alert('An error occurred while applying the coupon. Please try again.');
+                        alert('An error occurred while updating qty. Please try again.');
                     }
                 });
             }
@@ -757,7 +857,7 @@
 
 
      <!-- confirmation for remove product from cart -->
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
      <script>
          async function confirmDelete(event) {
@@ -781,7 +881,7 @@
                  Swal.fire('Cancelled');
              }
          }
-     </script>
+     </script> -->
 
     <!-- /confirmation for remove product from cart -->
    
@@ -789,7 +889,8 @@
 
     <script>
         function removePopup(){
-            alert('decrease qty or remove product from cart')
+            // alert('decrease qty or remove product from cart')
+            alert('remove limit exceeded product to proceed')
         }
 
         function outofStockPopup(){

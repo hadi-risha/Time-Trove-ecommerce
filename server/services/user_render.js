@@ -185,8 +185,14 @@ const getHome = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
+            //cart count in heart icon
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+
+
             const { successPasswordReset, isUserAuthenticated, logoutSuccess } = req.session;
-            res.render('home', {cartCount,
+            res.render('home', {cartCount, wishlistCount,
                 randomCouponData,PswResetSuccess: successPasswordReset, userName: result ? result.name : 'User not found',
                 userLoggined: isUserAuthenticated, loginSuccess: isUserAuth, messageDisplayed,logoutSuccess: logoutSuccess
             }, (err, html) => {
@@ -331,6 +337,9 @@ const getSingleProduct = {
             //cart count in cart icon
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
 
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
             // *********cat/product offer section*********             
             const categoryOfferExist = await categoryOfferDB.findOne({category: allProductDetails.category, unlisted:false, expDate: {$gt: new Date()}});
             console.log('hgcat off',categoryOfferExist);
@@ -346,7 +355,7 @@ const getSingleProduct = {
             }
             // ***********/cat/product offer section************
 
-            res.render("single_product", {categoryDiscInPercentage, categoryOfferExist, cartCount,
+            res.render("single_product", {categoryDiscInPercentage, categoryOfferExist, cartCount, wishlistCount, 
                     userName: result ? result.name : 'User not found', userLoggined: isUserAuthenticated,
                     allProductDetails, isInBag, isInWishlist
             }, (err, html) => {
@@ -437,6 +446,9 @@ const getMenswatches = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
 
             // *********cate/product offer section*********    
             const categoryOfferExist = await categoryOfferDB.findOne({category: 'men',unlisted:false, expDate: {$gt: new Date()}});
@@ -459,7 +471,7 @@ const getMenswatches = {
             })
 
             res.render("mens_watches", {  categoryOfferExist, categoryDiscInPercentage,
-                products, cartCount, 
+                products, cartCount, wishlistCount,
                 pageTitle: 'Mens Watches',
                 page: '/mens-watches',
                 paginationLinks,
@@ -548,6 +560,9 @@ const getWomenswatches = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
 
             // *********cate/product offer section*********
             const categoryOfferExist = await categoryOfferDB.findOne({category: 'women', unlisted:false, expDate: {$gt: new Date()}});
@@ -565,7 +580,7 @@ const getWomenswatches = {
            // ***********/cate/product offer section************
 
             res.render("womens_watches", { categoryOfferExist, categoryDiscInPercentage,
-                  products, cartCount,
+                  products, cartCount, wishlistCount,
                 pageTitle: 'Womens Watches',
                 page: '/womens-watches',
                 paginationLinks,
@@ -635,7 +650,10 @@ const getShoppingCart = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('shopping_cart', {cartCount, userName: result ? result.name : 'User not found', QuantityData, cartProductDetails ,
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            res.render('shopping_cart', {cartCount, wishlistCount, userName: result ? result.name : 'User not found', QuantityData, cartProductDetails ,
                          userLoggined: isUserAuthenticated,}, (err, html) => {
                 if (err) {
                     res.status(500).send('Render err' + err.message);
@@ -718,13 +736,43 @@ const getPaymentDeliveryDetails = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('checkout_address', { cartCount,
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            let { successMessageDisplayed, updatedAddress } = req.session
+            // address updated popup
+            let messageDisplayed = successMessageDisplayed;
+            if(updatedAddress && !messageDisplayed) {
+                successMessageDisplayed = true;    //create session for displaying sccs msg
+                console.log('address updated message');
+            }else{
+                successMessageDisplayed = false;
+                messageDisplayed = false;
+            } 
+
+            // address removed popup
+            let { checkoutAddressDeleted, scssMsgDisplayed } = req.session
+            let msgDisplayed = scssMsgDisplayed;
+            if(checkoutAddressDeleted && !msgDisplayed) {
+                scssMsgDisplayed = true;    //create session for displaying sccs msg
+                console.log('address removed message');
+            }else{
+                scssMsgDisplayed = false;
+                msgDisplayed = false;
+            }
+
+            
+            res.render('checkout_address', { checkoutAddressDeleted, msgDisplayed, cartCount, wishlistCount, updatedAddress, messageDisplayed,
                 allCouponDetails, userAddressDetails, userName: Result.name, userName: result ? result.name : 'User not found',
                 QuantityData, cartProductDetails, userLoggined: isUserAuthenticated
             }, (err, html) => {
                 if(err){
                     res.status(500).send('Render err' + err.message);
                 }
+                delete req.session.updatedAddress;
+                successMessageDisplayed =false;
+                delete req.session.checkoutAddressDeleted;
+                scssMsgDisplayed = false;
 
                 res.send(html);
             });
@@ -783,12 +831,15 @@ const checkoutAddAddress = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
             const {checkoutAddressInvalidPin,checkoutAddressInvalidState, checkoutAddressNotvalidState,
                 checkoutAddressInvalidAddress,checkoutAddressInvalidDistrict,checkoutAddressNotnvalidDistrict,invalidMobile} = req.session;
 
             const { isUserAuthenticated } = req.session; 
 
-            res.render('checkout_addAddress', { cartCount, checkoutAddressInvalidPin, checkoutAddressInvalidState, checkoutAddressNotvalidState,
+            res.render('checkout_addAddress', { cartCount, wishlistCount, checkoutAddressInvalidPin, checkoutAddressInvalidState, checkoutAddressNotvalidState,
                                         checkoutAddressInvalidAddress, checkoutAddressInvalidDistrict, checkoutAddressNotnvalidDistrict,
                                         invalidMobile, userName: result ? result.name : 'User not found',QuantityData, cartProductDetails,
                                         userLoggined: isUserAuthenticated}, (err, html) => {
@@ -875,7 +926,10 @@ const checkoutEditAddress = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('checkout_editAddress', { cartCount,
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            res.render('checkout_editAddress', { cartCount, wishlistCount,
                             userAddressDetails,checkoutAddressInvalidPin, checkoutAddressInvalidState, checkoutAddressNotvalidState,
                             checkoutAddressInvalidAddress, checkoutAddressInvalidDistrict, checkoutAddressNotnvalidDistrict,
                             invalidMobile, userName: result ? result.name : 'User not found',QuantityData, cartProductDetails,
@@ -915,6 +969,9 @@ const getPaymentMethod = {
             //cart count in cart icon
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
+
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
 
             const userAddressDetails = await AddressDB.find({});
             // ***** render no-address page ******
@@ -993,7 +1050,8 @@ const getPaymentMethod = {
             }
             console.log("cod not applicable", req.session.codNotApplicable);
             
-            res.render('payment_method', {codNotApplicable, totalPriceAfterCouponDiscount, discountAmountInNumber, cartCount, 
+            res.render('payment_method', { wishlistCount,
+                            codNotApplicable, totalPriceAfterCouponDiscount, discountAmountInNumber, cartCount, 
                             newTotalPrice: req.session.newTotalPrice, userEmail, orderId:req.session.orderId,
                              selectedPaymentType,selectedAddressID, userAddressDetails,
                             userName: Result.name,userName: result ? result.name : 'User not found', QuantityData,
@@ -1031,7 +1089,10 @@ const getOrderSuccess = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('orderPlacedSuccessfull', { cartCount,
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            res.render('orderPlacedSuccessfull', { cartCount, wishlistCount,
                 userName: result ? result.name : 'User not found',userLoggined: isUserAuthenticated
                 }, (err, html) => {
                     if(err) {
@@ -1059,9 +1120,17 @@ const getPaymentFailed = {
                     console.log('User not found');
                 }
 
+            //cart count in cart icon
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            console.log(cartCount);
+
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
             const { isUserAuthenticated } = req.session;
-            res.render('payment_failed', {userName: result ? result.name : 'User not found',
-                                        userLoggined: isUserAuthenticated
+            res.render('payment_failed', { cartCount, wishlistCount,
+                        userName: result ? result.name : 'User not found',
+                        userLoggined: isUserAuthenticated
                 }, (err, html) => {
                     if(err) {
                         return res.send('Render error');
@@ -1097,8 +1166,11 @@ const getOrders = {
             //cart count in cart icon
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
+
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
                
-            res.render('orders', { cartCount, orderCancelled: orderCancelled, OrderData, userName: result.name,
+            res.render('orders', { cartCount, wishlistCount, orderCancelled: orderCancelled, OrderData, userName: result.name,
                                  userEmail: result.email, userLoggined: isUserAuthenticated }, (err, html) => {
                 if (err) {
                     console.error(err); 
@@ -1133,7 +1205,10 @@ const getretryPaymentSuccess = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('retryPayment_success', { cartCount,
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            res.render('retryPayment_success', { cartCount, wishlistCount,
                 userName: result ? result.name : 'User not found',userLoggined: isUserAuthenticated
             }, (err, html) => {
                 if(err) {
@@ -1155,17 +1230,226 @@ const getOrdersummary = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
-                if(result){
-                    console.log('User data: ', result.name, result.email);
-                }else{
-                    console.log('User not found');
-                }
+            if(result){
+                console.log('User data: ', result.name, result.email);
+            }else{
+                console.log('User not found');
+            }
 
-            const { isUserAuthenticated } = req.session;
+        const { isUserAuthenticated } = req.session;
+
+        //cart count in cart icon
+        const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+        console.log(cartCount);
+
+        const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+        console.log("wishlistCount", wishlistCount);
+
+
+
+            const {orderId, productId} = req.query;
             
-            res.render('userOrderSummaryPage', { userName: result ? result.name : 'User not found', userLoggined: isUserAuthenticated }, (err, html) => {
+            console.log("-----------bb",orderId, productId);
+
+            const orderData = await Orderdb.findOne({email: userEmail, _id : orderId});
+            console.log("dtaaaap",orderData);
+
+
+            const findProduct = await Orderdb.findOne({ _id: orderId, 'orderItems._id': productId }, { 'orderItems.$': 1 }).exec();
+            console.log("nnnnnnnnn", findProduct);
+            let productName, description, firstPrice, defaultOffer, productImage, orderStatus;
+            if(findProduct){
+                const productDetails = findProduct.orderItems[0];
+                console.log('product details in orderDb:-----', productDetails);
+                console.log("Product ID:-----------", productDetails.productId);
+
+                productName = productDetails.pName;
+                description = productDetails.pDescription;
+                firstPrice = productDetails.firstPrice;
+                defaultOffer = productDetails.discount;
+                productImage = productDetails.images[0]
+                orderStatus = productDetails.orderStatus
+                
+                
+                
+            }
+        let date = orderData.orderDate;
+        let orderDate = new Date(orderData.orderDate);
+        let formattedDate = `${orderDate.getDate().toString().padStart(2, '0')}/${(orderDate.getMonth() + 1).toString().padStart(2, '0')}/${orderDate.getFullYear()}`;
+
+        console.log(formattedDate);
+
+
+        let subTotal = orderData.finalAmount && orderData.balanceToPay ? orderData.finalAmount + orderData.balanceToPay : orderData.finalAmount;
+        console.log("jgfukh",subTotal);
+        let couponDiscount = orderData.usedCouponDiscount;
+        let paymentMethod = orderData.paymentMethod;
+        let paymentstatus = orderData.paymentstatus;
+        
+        // let totalDiscount ;
+
+        const addressDetails = orderData.selectedAddress[0];
+        console.log("addressDetails---jh---", addressDetails);
+        console.log(addressDetails.address);
+        console.log(addressDetails.mobile);
+
+
+        console.log("product deailsuuyufghgjjhhhhhhhhhhhhhhh", productName, description, firstPrice, defaultOffer, formattedDate, subTotal, couponDiscount, paymentMethod, paymentstatus, productImage);
+
+
+
+
+
+
+
+        // ****************testing*******************
+
+        // const resulttt = await Orderdb.findOne({ _id: invoiceOrderId, 'orderItems._id': invoiceProductId }, { 'orderItems.$': 1 }).exec();
+        // const resulttt = await Orderdb.findOne({ _id: orderId, 'orderItems._id': productId }, { 'orderItems.$': 1 }).exec();
+        // console.log("hjnlkn",resulttt);   //findProduct and result are same
+
+        let productData = null;
+        let finalAmount  = 0;
+        let totalDiscInNums = 0;
+        let userAddedQty = 0;
+        let productDiscountInPer = 0
+        let singleLastPrice = 0
+        
+        const foundProduct = findProduct.orderItems[0];
+        console.log('Found product in orderDb:', foundProduct);
+        console.log("Product ID:", foundProduct.productId);
+        
+        console.log("user added qty", foundProduct.userAddedQty);
+        userAddedQty = foundProduct.userAddedQty;
+
+        productData = await productDB.findOne({ _id: foundProduct.productId });
+        let productNameee= foundProduct.pName;
+        console.log("productName", productName);
+        let totalMRP = foundProduct.firstPrice * userAddedQty
+        console.log("totalMRP", totalMRP);
+        if(productData) {
+            console.log('productData : ', productData);
+            
+            console.log("product name",foundProduct.pName);
+            console.log("userAddedQty", userAddedQty);
+            console.log("total discount", productData.discount );
+            
+            console.log("final price",productData.firstPrice);
+            
+            let pfirstPrice = productData.firstPrice
+
+            singleLastPrice = pfirstPrice
+            // singleLastPrice = pfirstPrice - totalDiscInNums
+
+            if(productData.productofferDiscount && productData.categoryofferDiscount){
+                console.log("have both offers");
+                console.log(productData.productofferDiscount );
+                console.log(productData.categoryofferDiscount );
+                console.log( productData.discount );
+                const finalizeDisc = productData.productofferDiscount > productData.categoryofferDiscount ? productData.productofferDiscount : productData.categoryofferDiscount;
+                const totalDiscpercentage = finalizeDisc + productData.discount;
+
+                productDiscountInPer = totalDiscpercentage;
+
+                totalDiscInNums = (pfirstPrice * totalDiscpercentage ) / 100;
+                let onePPrice = pfirstPrice - totalDiscInNums
+                finalAmount = onePPrice * userAddedQty;
+
+                singleLastPrice -= totalDiscInNums
+
+            }else if(productData.productofferDiscount){
+                console.log("have product offer");
+                console.log(productData.productofferDiscount );
+                console.log( productData.discount );
+                
+                const totalDiscpercentage = productData.productofferDiscount + productData.discount;
+                productDiscountInPer = totalDiscpercentage;
+                console.log("totalDiscpercentage", totalDiscpercentage);
+                totalDiscInNums = (pfirstPrice * totalDiscpercentage ) / 100;
+                console.log("totalDiscInNums", totalDiscInNums);
+                console.log("pfirstPrice", pfirstPrice);
+                let onePPrice = pfirstPrice - totalDiscInNums
+                finalAmount = onePPrice * userAddedQty;
+
+                singleLastPrice -= totalDiscInNums
+                console.log("finalAmount", finalAmount);
+                console.log("finalAmount", finalAmount * userAddedQty);
+            }else if(productData.categoryofferDiscount){
+                console.log("have category offer");
+                console.log(productData.categoryofferDiscount );
+                console.log( productData.discount );
+                
+                const totalDiscpercentage = productData.categoryofferDiscount + productData.discount;
+                productDiscountInPer = totalDiscpercentage;
+                console.log("totalDiscpercentage", totalDiscpercentage);
+                totalDiscInNums = (pfirstPrice * totalDiscpercentage ) / 100;
+                console.log("totalDiscInNums", totalDiscInNums);
+                console.log("pfirstPrice", pfirstPrice);
+                let onePPrice = pfirstPrice - totalDiscInNums
+                finalAmount = onePPrice * userAddedQty;
+
+                singleLastPrice -= totalDiscInNums
+                console.log("finalAmount", finalAmount);
+                console.log("finalAmount", finalAmount * userAddedQty);
+            }else{
+                console.log("have no specific offer");
+                console.log( productData.discount );
+                productDiscountInPer = productData.discount;
+                totalDiscInNums = (pfirstPrice * productData.discount ) / 100;
+                let onePPrice = pfirstPrice - totalDiscInNums
+                finalAmount = onePPrice * userAddedQty;
+
+                singleLastPrice -= totalDiscInNums
+            }
+        }
+
+        console.log('product totalDiscInNums',totalDiscInNums);
+        console.log("product finalAmount",finalAmount);
+
+
+        
+        
+
+        // ****************testing******************
+
+
+
+
+
+
+
+            let finalData = {
+                orderId,
+                userName : result.name,
+                userNumber : addressDetails.mobile,
+                productName, description, productImage,
+                singlePrice : firstPrice,
+                firstPrice : firstPrice * userAddedQty,
+                defaultOffer, formattedDate, subTotal,
+                couponDiscount, paymentMethod, paymentstatus,
+                userAddress : addressDetails.address,
+                mobile : addressDetails.mobile,
+                orderStatus,
+                totalDiscInNums : totalDiscInNums * userAddedQty,
+                finalAmount,
+                productDiscountInPer,
+                singleLastPrice,
+                userAddedQty
+            }
+
+
+
+
+
+
+            
+           
+            
+            res.render('userOrderSummaryPage', {finalData, orderData, cartCount, wishlistCount, userName: result ? result.name : 'User not found',
+                         userLoggined: isUserAuthenticated }, (err, html) => {
                 if (err) {
-                    return res.send('Render error');
+                    console.log(err)
+                    return res.send('Render error' + err);
                 }
                 res.send(html);
             });
@@ -1357,7 +1641,7 @@ const getDownloadInvoice = {
 //wishlist - GET
 const getWishlist = {
     async wishlist(req, res) {
-        try {
+        try{
             const { isUserAuthenticated, userEmail} = req.session;
 
             const result = await userdbCollection.findOne({ email: userEmail });
@@ -1382,13 +1666,31 @@ const getWishlist = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('wishlist', { cartCount, wishlistProductDetails, userName: result ? result.name : 'User not found',
-                                    userEmail: result.email,userLoggined: isUserAuthenticated
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+
+            let { wishlistProductRemoved, successMessageDisplayed } = req.session;
+            console.log("wishlistProductRemoved", wishlistProductRemoved);
+            // wishlist product removed popup
+            let messageDisplayed = successMessageDisplayed;
+            if(wishlistProductRemoved && !messageDisplayed) {
+                successMessageDisplayed = true;    //create session for displaying sccs msg
+                console.log('product removed message');
+            }else{
+                successMessageDisplayed = false;
+                messageDisplayed = false;
+            }
+
+            res.render('wishlist', { wishlistProductRemoved, messageDisplayed, cartCount, wishlistCount, wishlistProductDetails, 
+                    userName: result ? result.name : 'User not found',userEmail: result.email,userLoggined: isUserAuthenticated
             }, (err, html) => {
                 if (err) {
                     console.error(err)
                     return res.send('Render error');
                 }
+                successMessageDisplayed = false;
+                delete req.session.wishlistProductRemoved;
                 res.send(html);
             });
         } catch (error) {
@@ -1417,12 +1719,32 @@ const getUserProfile = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            console.log("user referal link", result.referralLink );
-            res.render('user_profile', { cartCount, result, userGender: result.gender, userName: result.name, userLoggined: isUserAuthenticated,
-                                userEmail: result.email, userNumber: result.phno }, (err, html) => {
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            console.log("user referal link", result.referralLink ); 
+            // 
+
+            let { successMessageDisplayed, updatedProfile } = req.session
+            // profile updated success popup
+            let messageDisplayed = successMessageDisplayed;
+            if(updatedProfile && !messageDisplayed) {
+                successMessageDisplayed = true;    //create session for displaying sccs msg
+                console.log('profile updated message');
+            }else{
+                successMessageDisplayed = false;
+                messageDisplayed = false;
+            }
+
+            res.render('user_profile', { updatedProfile, messageDisplayed, cartCount, wishlistCount, result, userGender: result.gender, userName: result.name,
+                        userLoggined: isUserAuthenticated,
+                        userEmail: result.email, userNumber: result.phno }, (err, html) => {
                 if(err){
                     return res.send('Render error');
                 }
+                successMessageDisplayed = false;
+                delete req.session.updatedProfile;
+
                 res.send(html);
             });
         }catch(error) {
@@ -1450,7 +1772,10 @@ const getUserEditProfile = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('edit_profile', { cartCount,
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            res.render('edit_profile', { cartCount, wishlistCount,
                             notValidNameError: notValidName, invalidNameError: invalidName, invalidNoError: invalidNumber,
                             userGender: result.gender, userName: result.name, userEmail: result.email,
                             userNumber: result.phno, userLoggined: isUserAuthenticated }, (err, html) => {
@@ -1485,10 +1810,13 @@ const getAddAddress = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
             const { isUserAuthenticated } = req.session;       
 
             const {invalidPinCode, invalidState, notValidState, invalidAddress, invalidDistrict, notValidDistrict, invalidMobile} = req.session;
-            res.render('add_address', { cartCount,
+            res.render('add_address', { cartCount, wishlistCount,
                 invalidPinCode, invalidState, notValidState, invalidAddress,
                 invalidDistrict, notValidDistrict,invalidMobile,
                 userName: result.name, userEmail: result.email,userLoggined: isUserAuthenticated
@@ -1516,13 +1844,23 @@ const getAddAddress = {
 const getUserAddress = {
     async userAddress(req, res) {
         try {
+            console.log("its hereee....");
             const { userEmail } = req.session;
+            //cart count in cart icon
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            console.log(cartCount);
+
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            const { isUserAuthenticated } = req.session;
 
             const userAddressDetails = await AddressDB.find({ email: userEmail }).sort({ createdAt: -1 });
             // ******render no-address page******
             if (userAddressDetails.length === 0) {
-                res.render('address_image', (err, html) => {
+                return res.render('address_image', {cartCount, wishlistCount, userLoggined: isUserAuthenticated}, (err, html) => {
                     if (err) {
+                        console.log(err);
                         return res.send('Render error');
                     }
                     res.send(html);
@@ -1542,16 +1880,29 @@ const getUserAddress = {
                 console.log('User not found');
             }
 
-            const { isUserAuthenticated } = req.session;    
+                
             
-            //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
-            console.log(cartCount);
+            
 
-            res.render('user_address', {cartCount,  userAddressDetails, userName: result.name, userLoggined: isUserAuthenticated }, (err, html) => {
+
+            let { successMessageDisplayed, updatedAddress } = req.session
+            // address updated success popup
+            let messageDisplayed = successMessageDisplayed;
+            if(updatedAddress && !messageDisplayed) {
+                successMessageDisplayed = true;    //create session for displaying sccs msg
+                console.log('address updated message');
+            }else{
+                successMessageDisplayed = false;
+                messageDisplayed = false;
+            }
+
+            res.render('user_address', { updatedAddress, messageDisplayed, cartCount, wishlistCount,
+                  userAddressDetails, userName: result.name, userLoggined: isUserAuthenticated }, (err, html) => {
                 if (err) {
                     return res.send('Render error');
                 }
+                // successMessageDisplayed = false;
+                // delete req.session.updatedAddress;
                 res.send(html);
             });
         }catch(error) {
@@ -1587,9 +1938,12 @@ const getEditAddress = {
             //cart count in cart icon
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
+
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
                    
 
-            res.render('edit_address', { cartCount,
+            res.render('edit_address', { cartCount, wishlistCount,
                 invalidPinCode,invalidStateName,invalidState,emptyAddress,invalidDistrictName,
                 invalidDistrict,invalidMobile,userAddressDetails,userName: result.name, userLoggined: isUserAuthenticated
             }, (err, html) => {
@@ -1637,6 +1991,9 @@ const getUserWallet = {
             console.log(cartCount);
             // /cart count in cart icon
 
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
             const userWalletData = await walletDB.findOne({email:userEmail}).sort({createdAt:-1});
             console.log(userWalletData);
             
@@ -1648,7 +2005,8 @@ const getUserWallet = {
                 console.log("No transactions found for the user or user data not found.");
             }
 
-            res.render('user_wallet', { userWalletData, cartCount, userName: result.name, userLoggined: isUserAuthenticated }, (err, html) => {
+            res.render('user_wallet', { userWalletData, cartCount, wishlistCount,
+                 userName: result.name, userLoggined: isUserAuthenticated }, (err, html) => {
                 if(err){
                     console.error('Render error:', err); 
                     return res.status(500).send('Render error: ' + err.message);
@@ -1680,7 +2038,10 @@ const getWalletPaymentSuccess = {
             const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
             console.log(cartCount);
 
-            res.render('walletPayment_success', { cartCount,
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+            res.render('walletPayment_success', { cartCount, wishlistCount,
                 userName: result ? result.name : 'User not found',userLoggined: isUserAuthenticated
             }, (err, html) => {
                 if(err) {
@@ -1708,9 +2069,17 @@ const getWalletPaymentFailed = {
                     console.log('User not found');
                 }
 
+            //cart count in cart icon
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            console.log(cartCount);
+
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
             const { isUserAuthenticated } = req.session;
-            res.render('wallet_paymentFailed', {userName: result ? result.name : 'User not found',
-                                        userLoggined: isUserAuthenticated
+            res.render('wallet_paymentFailed', { cartCount, wishlistCount,
+                            userName: result ? result.name : 'User not found',
+                            userLoggined: isUserAuthenticated
                 }, (err, html) => {
                     if(err) {
                         return res.send('Render error');

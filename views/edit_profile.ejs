@@ -139,6 +139,27 @@
                                 </a>
                             </li>
                             <li style="margin-left: 10px;">
+
+                                <!-- show wishlist count -->
+                                <% if(wishlistCount > 0 && userLoggined){ %>
+                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% }else{ %>
+                                    <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% } %>
+
+
                                 <a href='/wishlist' class="wishlist">
                                     <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                 </a>
@@ -217,7 +238,7 @@
 
 
                     <div class="right-section">
-                        <form action="/save-profileDetails" method="post" onsubmit="return validateForm()">
+                        <form id="editUserProfileForm" onsubmit="return validateForm()">
                             <p class="details-heading">Edit Details</p>
                             <div class="profile-line"></div>
                             <div class="subheads-container">
@@ -331,6 +352,54 @@
     </footer> 
     <!-- /footer section -->
 
+
+
+    <!-- update user profile using fetch -->
+    <script>
+        document.getElementById('editUserProfileForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Validate the form
+            if (!validateForm()) {
+                // If validation fails, do not proceed with form submission
+                return;
+            }
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            try {
+                const response = await fetch('/save-profileDetails', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Check if the update was successful
+                if(result.success) {
+                    window.location.href = '/user-profile';
+                    return;
+                }else if(result.url) {
+                    // Handle errors, e.g., show an error message
+                    location.href = result.url;
+                    return;
+                }
+                console.error(result);
+            } catch (error) {
+                console.error('There was a problem with your fetch operation:', error);
+            }
+            });
+    </script>
+    <!-- /update user profile using fetch -->
 
 
     <!-- search box- clear input field after performing operations -->
@@ -469,42 +538,53 @@
             const mobileInput = document.querySelector('input[name="phno"]');
             const genderInput = document.querySelector('input[name="gender"]');
 
+            
+
+            // Flag to track if any validation error occurs
+            let isValid = true;
+            
+
             //validate name
             if (nameInput.value.trim() === '') {
-                        const name = document.getElementById('name');
+                const name = document.getElementById('name');
                 name.innerHTML = "Field required";
-                return false;
+                // return false;
+                isValid = false;
             }
 
             if (!/^[A-Za-z\s]+$/.test(nameInput.value)) {
                 const name = document.getElementById('name');
                 name.innerHTML = "Please use only letters and spaces.";
-                return false;
+                // return false;
+                isValid = false;
             }
 
             //validate mobile
             if (!/^\d{10}$/.test(mobileInput.value)) {
                 const mobile = document.getElementById('mobile');
                 mobile.innerHTML = "Please enter exactly 10 numeric digits.";
-                return false;
+                // return false;
+                isValid = false;
             }
             
-            if (!genderSelect.value || genderSelect.value === '<%= userGender %>') {
-                const gender = document.getElementById('gender');
-                gender.innerHTML = "Gender selection is required.";
-                return false;
-            }
+            // if (!genderSelect.value || genderSelect.value === '<%= userGender %>') {
+            //     const gender = document.getElementById('gender');
+            //     gender.innerHTML = "Gender selection is required.";
+            //     // return false;
+            //     isValid = false;
+            // }
             
     
             // If all validations pass, allow the form to submit
-            return true;
+            // return true;
+            return isValid;
         }
     
         // Attach the validateForm function to the form's onsubmit event
-        const form = document.querySelector('form[action="/save-address"]');
-        if (form) {
-            form.onsubmit = validateForm;
-        }
+        // const form = document.querySelector('form[action="/save-address"]');
+        // if (form) {
+        //     form.onsubmit = validateForm;
+        // }
     </script>
     <!-- update-profile form validation -->
    

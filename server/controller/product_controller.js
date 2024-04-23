@@ -53,10 +53,9 @@ const shoppingCart = {
     try {
       const { id } = req.body;
       const { userEmail } = req.session;
-      console.log("this is comingggggggggggggggg,,", id);
+      console.log( id);
 
       const newCartDetails = new shoppingCartDB({ email: userEmail, productId: id });
-      //save new cartDetails in mongodb
       await newCartDetails.save();
 
       res.redirect(`/single-product/${id}`);
@@ -71,30 +70,23 @@ const shoppingCart = {
 // cartQty - POST
 const cartQty = {
   async addItem(req, res) {
-    try {
+    try{
+      console.log(".........ggnhjgkhj, working here");
       const { productId, quantity, totalPrice, totalDiscount} = req.body;
-      console.log('New user neede qty--', quantity);
+      console.log('current needed qty of the prdct for the user', quantity);
       console.log('id of product/cart data(_id of product in shoppingCart db)',productId);
 
-      // testing
-      console.log('id of product/cart data(_id of product in shoppingCart db)',productId);
       const findCartData = await shoppingCartDB.findOne({_id:productId})
       console.log('real productId(from productDb',(findCartData.productId))
       const actualProductId = findCartData.productId;
 
       const productOgDetails = await productDB.findOne({_id : actualProductId})
       const availableQty = productOgDetails.quantity;
-      const productPrice = productOgDetails.lastPrice;
-      const discountInPercentage = productOgDetails.discount;
-      // if( availableQty === 0){
-      //   return res.json({ error: 'Product Out Of Stock' });
-      // }
-      if (availableQty > 0 && quantity > availableQty) {
+      
+      if( availableQty > 0 && quantity > availableQty ) {
         console.log('Product Quantity limit exceeded.');
         return res.json({ error: 'Product Quantity limit exceeded.', details: 'Product Quantity limit exceeded.' });
-     }
-
-    
+      }
 
       const { userEmail } = req.session;
       await shoppingCartDB.updateOne({ $and: [{ _id: productId }, { email: userEmail }] }, { $set: { userAddedQuantity: quantity } }, { upsert: true });
@@ -103,14 +95,10 @@ const cartQty = {
 
       res.json({
         success: "proceed to address page",           
-        showMessage: 'Proceed',
-        // finalPrice,
-        // finalDiscount
+        showMessage: 'Proceed'
       });
      
-
-      
-    } catch (error) {
+    }catch(error) {
       console.error('Error updating cart qty :', error);
       res.status(500).send('Internal Server Error');
     }
@@ -125,10 +113,10 @@ const removeItem = {
       const { id } = req.body;
 
       const result = await productDB.findOneAndUpdate({ _id: id }, { $set: { addToBag: false } }, { new: true })
-      if (result) {
+      if(result){
         console.log("success,Product removed from cart");
         console.log('addToBag result should be false', result);
-      } else {
+      }else{
         console.log('product still in the cart,not removed');
       }
 
@@ -139,7 +127,16 @@ const removeItem = {
         console.log('Document not found or not removed');
       }
 
-      res.redirect('/shopping-cart');
+
+      if (removeCartDB.modifiedCount === 0) {
+        console.log('product not found or not removed');
+        res.status(200).json({ success: false, message: "product not removed from cart" });
+      }else{
+        console.log('product removed successfully');
+        res.status(200).json({ success: true });
+      }
+
+      // res.redirect('/shopping-cart');
     } catch (error) {
       console.error('Error removing product from cart : ', error);
       res.status(500).send('Internal Server Error');
@@ -153,7 +150,7 @@ const productPayment = {
   async proceedtoPayment(req, res) {
     try {
       console.log("data : ", req.body);
-    } catch (error) {
+    }catch(error) {
       console.error('Error in productPayment :', error);
       res.status(500).send('Internal Server Error');
     }
@@ -292,49 +289,49 @@ const checkoutUpdateAddress = {
       if (!/^\d{6}$/.test(trimmedPincode)) {
         console.log("Invalid PIN code. Please enter a 6-digit numeric PIN code");
         req.session.checkoutAddressInvalidPin = true;
-        res.redirect(`/checkout-editAddress/${id}`);    
+        res.json({success: false, url: `/checkout-editAddress/${id}`});
         return;
       }
 
       if (trimmedState === '') {
         req.session.checkoutAddressNotvalidState = true;
         console.log('state is empty,field required');
-        res.redirect(`/checkout-editAddress/${id}`);
+        res.json({success: false, url: `/checkout-editAddress/${id}`});
         return;
       }
 
       if (!/^[A-Za-z\s]+$/.test(trimmedState)) {
         console.log('Invalid state name,Please use only letters and spaces');
         req.session.checkoutAddressInvalidState = true;
-        res.redirect(`/checkout-editAddress/${id}`);
+        res.json({success: false, url: `/checkout-editAddress/${id}`});
         return;
       }
 
       if (trimmedAddress === '') {
         req.session.checkoutAddressInvalidAddress = true;
         console.log('adress is empty,field required');
-        res.redirect(`/checkout-editAddress/${id}`);
+        res.json({success: false, url: `/checkout-editAddress/${id}`});
         return;
       }
 
       if (trimmedDistrict === '') {
         req.session.checkoutAddressNotnvalidDistrict = true;
         console.log('district is empty,field required');
-        res.redirect(`/checkout-editAddress/${id}`);
+        res.json({success: false, url: `/checkout-editAddress/${id}`});
         return;
       }
 
       if (!/^[A-Za-z\s]+$/.test(trimmedDistrict)) {
         console.log('Invalid district name,Please use only letters and spaces');
         req.session.checkoutAddressInvalidDistrict = true;
-        res.redirect(`/checkout-editAddress/${id}`);
+        res.json({success: false, url: `/checkout-editAddress/${id}`});
         return;
       }
 
       if (!/^\d{10}$/.test(mobile)) {
         req.session.invalidMobile = true;
         console.log('mobile number not included 10 digits');
-        res.redirect(`/checkout-editAddress/${id}`);
+        res.json({success: false, url: `/checkout-editAddress/${id}`});
         return;
       }
 
@@ -348,14 +345,17 @@ const checkoutUpdateAddress = {
       }
 
       const updatedAddress = await AddressDB.updateOne({ _id: id }, { $set: newData }, { new: true, useFindAndModify: false });
-        if (updatedAddress) {
+        
+      if(updatedAddress.modifiedCount === 0){
+          console.log("address not found or not updated");
+          res.status(200).json({ success: false, message: "address not found or not updated" });
+      }else{
           console.log('new address details after updation', updatedAddress);
           console.log("Address Updated successfully");
-          req.session.updatedAddress = true
-          res.redirect('/checkout-address');
-        } else {
-          console.log("address not found or not updated");
-        }
+          req.session.updatedAddress = true;
+          res.status(200).json({ success: true });
+      }
+
     }catch (error) {
       console.error('Error while editing address', error);
       res.status(500).send('Internal Server Error');
@@ -371,14 +371,17 @@ const deleteCheckoutAddress = {
       const { id } = req.body;
       console.log('address Id', id);
 
-      const removedAddress = await AddressDB.findOneAndDelete({ _id: id });
-      if (removedAddress) {
+      const removedAddress = await AddressDB.findOneAndDelete({ _id: id }, );
+     
+      if(removedAddress.modifiedCount === 0) {
+        console.log("checkout address not found or not removed");
+        res.status(200).json({ success: false, message: "address not deleted" });
+      }else{
         console.log("checkout Address Deleted successfully");
-        res.redirect('/checkout-address');
-      } else {
-        console.log("checkout address not found or not updated");
+        req.session.checkoutAddressDeleted = true;
+        res.status(200).json({ success: true });
       }
-    } catch (error) {
+    }catch(error){
       console.error('Error while deleting address', error);
       res.status(500).send('Internal Server Error');
     }
@@ -705,13 +708,17 @@ const paymentType = {
 const finalpData = {
   async orderedProducts(req, res) {        
     try {
+      console.log("testingTotaldiscount",req.body.totalDiscountInNums);
+
+      const { discountAmountInNumber } = req.session;
       console.log('wallet, payedAmountThoroughWallet , remainingBalancetoPay ',req.session.payedAmountThoroughWallet, req.session.remainingBalancetoPay );
       console.log('total order price from wallet, ',req.session.totalOrderPriceFromWallet );
       
       console.log('1 this is from coupon section totalPriceAfterCouponDiscount', req.session.totalPriceAfterCouponDiscount);   //this is coupon applied total price
-      console.log('2 og price from totalPrice column of paymentpage',req.body.testingTotalPrice);    //og price comes frob body
+      console.log("2 this is from coupon section discountAmountInNumber",req.session.discountAmountInNumber);
+      console.log('3 og price from totalPrice column of paymentpage',req.body.testingTotalPrice);    //og price comes frob body
 
-      console.log('3 in razorpay this will give proper final amount',req.body.amount);
+      console.log('4 in razorpay this will give proper final amount',req.body.amount);
       
 
 
@@ -721,15 +728,14 @@ const finalpData = {
       const price = req.body.amount || req.body.testingTotalPrice
       const paymType = SelectedPaymentType || 'cod'
       req.session.codNotApplicable = false;
-      console.log('whats hereeeeeeee',req.session.codNotApplicable);
-      if((req.body.amount || req.body.testingTotalPrice) > 1000 &&  paymType === 'cod' ){
-        console.log("user can't order,cash on delivery only for orders under rs 1000");
-        req.session.codBelowThousand = true;
-        // req.session.codNotApplicable = true;
-        // return res.redirect('/checkout-paymentMode?error=codAbove1000');
-        console.log('whats hereeeeeeee',req.session.codNotApplicable);
-        return res.redirect('/checkout-paymentMode');   //pass error parameter
-      }
+      // console.log('whats hereeeeeeee',req.session.codNotApplicable);
+      // if((req.body.amount || req.body.testingTotalPrice) > 1000 &&  paymType === 'cod' ){
+      //   console.log("user can't order,cash on delivery only for orders under rs 1000");
+      //   req.session.codBelowThousand = true;
+      //   // req.session.codNotApplicable = true;
+      //   console.log('whats hereeeeeeee',req.session.codNotApplicable);
+      //   return res.redirect('/checkout-paymentMode');   //pass error parameter
+      // }
       const result = await shoppingCartDB.find({ _id: { $in: req.body.productId } });
       if (result) {
         const productIds = result.map(item => item.productId);
@@ -764,14 +770,17 @@ const finalpData = {
         console.log('in cod this will give proper final amount',req.body.testingTotalPrice);
         console.log('in razorpay this will give proper final amount',req.body.amount);
 
+        console.log("req.session.discountAmountInNumber", req.session.discountAmountInNumber);
         let newOrder = new Orderdb({
           email: req.session.userEmail,
           orderItems: orderItems,
           userAddedQty: UserQty[0],               
-          finalAmount: req.session.payedAmountThoroughWallet || req.body.testingTotalPrice ||  Math.round(req.body.amount) || req.session.totalPriceAfterCouponDiscount ,
+          finalAmount: req.session.totalPriceAfterCouponDiscount || req.session.payedAmountThoroughWallet || req.body.testingTotalPrice ||  Math.round(req.body.amount) ,
           balanceToPay :  req.session.remainingBalancetoPay ?  req.session.remainingBalancetoPay : 0 ,
           paymentMethod: SelectedPaymentType || 'cod',
-          selectedAddress: [{ pincode, state, address, district, mobile, addressType }]
+          selectedAddress: [{ pincode, state, address, district, mobile, addressType }],
+          usedCouponDiscount : req.session.discountAmountInNumber > 0 ? req.session.discountAmountInNumber : 0,
+          totalDiscount : req.body.totalDiscountInNums
         });
 
         const newOrderData = await newOrder.save();
@@ -1177,7 +1186,8 @@ const CancelUserOrder = {
         const updatePrice = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{finalAmount : newFinalAmount}}, {new : true});
 
         //handle wallet
-        const wallet = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$inc:{balance: price * cancelledDetails.userAddedQty},
+        const walletAmount = Math.round(price * cancelledDetails.userAddedQty)
+        const wallet = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$inc:{balance: walletAmount},
                         $push: { transactions: {
                                   amount: price,
                                   action: "credit"
@@ -1477,7 +1487,7 @@ const retryOnlinePayment = {
       console.log("herhjgjh");
       const finalAmount = orderData.finalAmount ;
       console.log("herehjgujveeee", orderData.finalAmount);
-      console.log("final Amount got in retry option;;;;;;;;;;;;;;;;;;;;;", finalAmount );
+      console.log("final Amount got in retry option", finalAmount );
 
       // console.log('when razorpay........this will give the proper price: ', req.body.amount);
 
@@ -1751,14 +1761,16 @@ const wishListRemoveItem = {
       console.log("id and email", id, email);
       const result = await wishlistDB.deleteOne({ productId: id, email: email })
 
-      if (result) {
+      if(result.modifiedCount === 0) {
+        console.log('product still in the wishlist,not removed');
+        res.status(200).json({ success: false, message: "product still in the wishlist,not removed" });
+      }else{
         console.log("product removed from wishlist");
-        console.log(result);
-      } else {
-        console.log('product still in the wishlist,not removed :( ');
+        req.session.wishlistProductRemoved = true;
+        res.status(200).json({ success: true });
       }
-      res.redirect('/wishlist');
-    } catch (error) {
+
+    }catch (error) {
       console.error('Error removing product from wishlist:', error);
       res.status(500).send('Internal Server Error');
     }

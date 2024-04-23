@@ -30,20 +30,22 @@ async userDetails(req, res) {
       if(!/^\d{10}$/.test(trimmedPhno)) {
         req.session.invalidNumber = true;
         console.log('number not included 10 digits');
-        res.redirect("/edit-profile");
+        res.json({success: false, url: "/edit-profile"});
         return;
       }
+
+      
 
       if (!/^[A-Za-z\s]+$/.test(trimmedName)) {
         req.session.invalidName = true;
         console.log('Name should only contain letters');
-        res.redirect("/edit-profile");
+        res.json({success: false, url: "/edit-profile"});
         return;
       }
       if (!/\S+/.test(trimmedName)) {
         req.session.notValidName = true;
         console.log('Name is empty,field required');
-        res.redirect("/edit-profile");
+        res.json({success: false, url: "/edit-profile"});
         return;
       }
 
@@ -53,14 +55,17 @@ async userDetails(req, res) {
                       gender : gender}
 
       const updatedProfile = await userdbCollection.findOneAndUpdate({email:email}, { $set:newData}, { new: true, useFindAndModify: false });
-        if(updatedProfile) {
-            console.log('new profile details after updation',updatedProfile);
-            console.log("profile Updated successfully");
-            req.session.updatedProfile = true
-            res.redirect('/user-profile');
-        }else{
-            console.log("profile not found or not updated");
-        }
+          
+      if(updatedProfile.modifiedCount === 0){
+        console.log("profile not found or not updated");
+        res.status(200).json({ success: false, message: "profile not updated" });
+      }else{
+        console.log('new profile details after updation',updatedProfile);
+        console.log("profile Updated successfully");
+        req.session.updatedProfile = true
+        res.status(200).json({ success: true });
+      }
+
     }catch(error) {
       console.error('Error while editing profile', error);
       res.status(500).send('Internal Server Error');
@@ -169,9 +174,10 @@ const NewAddress = {
 const editAddress = {
   async userAddress(req, res) {
     try{
+      console.log("come hereeee---------..");
       const {id} = req.body;
       console.log('address id : ',id);
-      const currentAddress = await AddressDB.findOne({_id : id})
+      const currentAddress = await AddressDB.findOne({_id : id});
       console.log('address details before updation',currentAddress);
 
       const { pincode, state, address, district, mobile, addressType} = req.body;
@@ -186,15 +192,16 @@ const editAddress = {
       if (!/^\d{6}$/.test(trimmedPincode)) {
         req.session.invalidPinCode = true;
         console.log('pin number not included 6 digits');
-        res.redirect(`/edit-address/${id}`);
+        res.json({success: false, url: `/edit-address/${id}`});
         return;
       }
+      
 
       // validate state
       if (trimmedState.length < 3) {
         req.session.invalidStateName = true;
         console.log('State should contain at least 3 letters');
-        res.redirect(`/edit-address/${id}`);
+        res.json({success: false, url: `/edit-address/${id}`});
         return;
       }
     
@@ -202,7 +209,7 @@ const editAddress = {
       if (!/^[A-Za-z ]+$/.test(trimmedState)) {
         req.session.invalidState = true;
         console.log('State should contain only letters');
-        res.redirect(`/edit-address/${id}`);
+        res.json({success: false, url: `/edit-address/${id}`});
         return;
       }
 
@@ -210,7 +217,7 @@ const editAddress = {
       if (trimmedAddress === '') {
         req.session.emptyAddress = true; 
         console.log('Address is empty,field required');
-        res.redirect(`/edit-address/${id}`);
+        res.json({success: false, url: `/edit-address/${id}`});
         return;
       }
 
@@ -218,7 +225,7 @@ const editAddress = {
       if (trimmedDistrict.length < 3) {
         req.session.invalidDistrictName = true;
         console.log('District should contain at least 3 letters');
-        res.redirect(`/edit-address/${id}`);
+        res.json({success: false, url: `/edit-address/${id}`});
         return;
       }
     
@@ -226,7 +233,7 @@ const editAddress = {
       if (!/^[A-Za-z ]+$/.test(trimmedDistrict)) {
         req.session.invalidDistrict = true;
         console.log('District should contain only letters');
-        res.redirect(`/edit-address/${id}`);
+        res.json({success: false, url: `/edit-address/${id}`});
         return;
       }
 
@@ -234,7 +241,7 @@ const editAddress = {
       if(!/^\d{10}$/.test(trimmedPMobile)) {
         req.session.invalidMobile = true;
         console.log('number not included 10 digits');
-        res.redirect(`/edit-address/${id}`);
+        res.json({success: false, url: `/edit-address/${id}`});
         return;
       }
 
@@ -246,14 +253,17 @@ const editAddress = {
                           addressType : trimmedAddressType}
 
       const updatedAddress = await AddressDB.updateOne({ _id: id },{ $set: newData },{ new: true, useFindAndModify: false });
-        if(updatedAddress) {
+        
+        if(updatedAddress.modifiedCount === 0){
+          console.log("address not found or not updated");
+          res.status(200).json({ success: false, message: "address not updated" });
+        }else{
           console.log('new address details after updation',updatedAddress);
           console.log("Address Updated successfully");
-          req.session.updatedAddress = true
-          res.redirect('/user-address');
-        }else{
-          console.log("address not found or not updated");
+          req.session.updatedAddress = true;
+          res.status(200).json({ success: true });
         }
+
     }catch(error) {
       console.error('Error while editing profile', error);
       res.status(500).send('Internal Server Error');
@@ -267,16 +277,29 @@ const editAddress = {
 const deleteAddress = {
   async removeAddress(req, res) {
     try{
+      console.log("coming here--------------mm");
       const {id} = req.body;
       console.log('address Id',id);
 
       const removedAddress = await AddressDB.findOneAndDelete({ _id: id });
-        if(removedAddress){
-          console.log("Address Deleted successfully");
-          res.redirect('/user-address');
-        }else{
+        // if(removedAddress){
+        //   console.log("Address Deleted successfully");
+        //   res.redirect('/user-address');
+        // }else{
+        //   console.log("address not found or not updated");
+        // }
+
+        if(removedAddress.modifiedCount === 0) {
           console.log("address not found or not updated");
+          res.status(200).json({ success: false, message: "address not found or not updated" });
+        }else{
+          console.log("Address Deleted successfully");
+          req.session.userAddressRemoved = true;
+          res.status(200).json({ success: true });
         }
+
+        // res.redirect('/user-address');
+
     }catch(error) {
       console.error('Error while editing profile', error);
       res.status(500).send('Internal Server Error');

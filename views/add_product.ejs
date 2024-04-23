@@ -83,6 +83,19 @@
                                         <% } %>
                                     </div>
                                 <!-- product added success msg -->
+
+                                <!-- duplicate product name found-->
+                                <div class="duplicateProductBox addproduct-success">
+                                    <% if (duplicateProductName && !msgDisplayed) { %>
+                                        <div class="addproduct-successBox" id="success-box">  
+                                            <p style="color: red;" class="duplicateName" id="duplicateName">Duplicate product name detected. Choose a different name.</p>
+                                        </div>
+                                    <% } %>
+                                </div>
+                                <!-- /duplicate product name found-->
+
+
+
                               <div class="head-title">
                                 <div class="left">
                                   <h1>Add Product</h1>
@@ -616,7 +629,18 @@
             successBox.style.display = 'none';
     
             }
-        }, 5000);
+        }, 77885000);
+
+        setTimeout(function () {
+            var duplicateName = document.getElementById('duplicateName');
+            var successBox = document.getElementById('success-box');
+    
+            if (duplicateName && successBox) {
+            duplicateName.style.display = 'none';
+            successBox.style.display = 'none';
+    
+            }
+        }, 77885000);
     </script>
 
 

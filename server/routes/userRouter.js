@@ -80,11 +80,11 @@ router.get('/shopping-cart', notAuth, getShoppingCart.shoppingCart);
 
 router.post('/shopping-cart', isAuth, shoppingCart.userCart);
 
-router.post('/update-cart-quantity', isAuth, cartQty.addItem);
+router.patch('/update-cart-quantity', isAuth, cartQty.addItem);
 
-router.post('/cart-qty', isAuth, cartQuantity.productQuantity);  //check
+// router.post('/cart-qty', isAuth, cartQuantity.productQuantity);  //check
 
-router.post('/remove-item', isAuth, removeItem.moveFromCart);
+router.delete('/remove-item', isAuth, removeItem.moveFromCart);
 
 router.post('/product-payment', isAuth, productPayment.proceedtoPayment);   //not used properly
 
@@ -100,9 +100,9 @@ router.post('/checkout-addAddress', isAuth, checkoutNewAddress.newAddress);
 
 router.get('/checkout-editAddress/:id', notAuth, checkoutEditAddress.updateAddress);
 
-router.post('/checkout-editAddress', isAuth, checkoutUpdateAddress.updateAddress); 
+router.patch('/checkout-editAddress', isAuth, checkoutUpdateAddress.updateAddress); 
 
-router.post('/delete-checkoutAddress', isAuth, deleteCheckoutAddress.removeAddress); 
+router.delete('/delete-checkoutAddress', isAuth, deleteCheckoutAddress.removeAddress); 
 
 router.post('/coupon-apply', isAuth, CouponApply.applyAndRemoveCoupon); 
 
@@ -126,6 +126,8 @@ router.get('/payment-failed', notAuth, getPaymentFailed.paymentNotCompleted);
 // order section
 router.get('/orders', notAuth, getOrders.userOrders);
 
+router.get('/order-summary', notAuth, getOrdersummary.userOrdersummary);
+
 router.post('/cancel-order', isAuth, CancelUserOrder.CancelOrder);
 
 router.post('/return-product', isAuth, returnProduct.returnRequest);
@@ -140,8 +142,6 @@ router.post('/retryPaymentVerifyOfWallet', isAuth, orderVerifyPaymentOfWallet.re
 
 router.get('/retry-paymentSuccess', notAuth, getretryPaymentSuccess.orderPayment);
 
-router.get('/order-summary', notAuth, getOrdersummary.userOrdersummary);
-
 router.get('/download-invoice', notAuth, getDownloadInvoice.downloadInvoice);
 
 
@@ -150,7 +150,7 @@ router.post('/wishlist', isAuth, wishList.userwishlist);
 
 router.get('/wishlist', notAuth, getWishlist.wishlist);
 
-router.post('/wishlistRemove-item', isAuth, wishListRemoveItem.removeItem);
+router.delete('/wishlistRemove-item', isAuth, wishListRemoveItem.removeItem);
 
 router.post('/wishlist-moveToCart', isAuth, wishListMoveToCart.moveToCart);
 
@@ -162,7 +162,7 @@ router.post('/profile-edit', isAuth, profileEdit.userProfile);
 
 router.get('/edit-profile', notAuth, getUserEditProfile.EditProfile);
 
-router.post('/save-profileDetails', isAuth, saveDetails.userDetails);
+router.patch('/save-profileDetails', isAuth, saveDetails.userDetails);
 
 
 // user address section
@@ -174,9 +174,9 @@ router.get('/user-address', notAuth, getUserAddress.userAddress);
 
 router.get('/edit-address/:id', notAuth, getEditAddress.updateAddress);
 
-router.post('/edit-address', isAuth, editAddress.userAddress);
+router.patch('/edit-address', isAuth, editAddress.userAddress);
 
-router.post('/delete-address', isAuth, deleteAddress.removeAddress);
+router.delete('/delete-address', isAuth, deleteAddress.removeAddress);
 
 router.get('/address-image', notAuth, getAddressImage.addressImage);
 

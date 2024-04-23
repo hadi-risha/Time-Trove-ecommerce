@@ -126,6 +126,7 @@ const addproduct = {
             return;
         }
 
+
         const files = req.files           //with this, we can access all the images
         //only upload images with valid extensions, ignore any other files
         const allowedImageExtensions = /\.(png|jpeg|jpg|gif|bmp)$/i;
@@ -154,23 +155,45 @@ const addproduct = {
         let imgArray = files.map((file)=>{  return `/uploads/resizedImg${file.filename}`});
         // end of image crop
 
-        //create new product details
-        let newProduct = new productDB({
-                productName: trimmedPName,
-                category: category,
-                productDescription: trimmedPDescription,
-                firstPrice: trimmedFPrice,
-                lastPrice: trimmedLPrice,
-                discount: trimmedDiscount,
-                quantity: trimmedQuantity,
-                images: imgArray
-        });
 
-        const result = await newProduct.save();
-            if(result){
-            req.session.productAdded = true
-            res.redirect('/add-product');
+        productDB.findOne({ $and: [{ productName: pName }, { category: category }] })
+        .then( async existingProduct => {
+            if(existingProduct){
+                req.session.duplicateProductName = true;
+                console.log('Duplicate product name and category detected. Please choose a different name or category.');
+                res.redirect('/add-product');
+            }else{
+                //no duplicate product found,so add new product
+                console.log("no document were match for the query");
+
+                //create new product details
+                let newProduct = new productDB({
+                        productName: trimmedPName,
+                        category: category,
+                        productDescription: trimmedPDescription,
+                        firstPrice: trimmedFPrice,
+                        lastPrice: trimmedLPrice,
+                        discount: trimmedDiscount,
+                        quantity: trimmedQuantity,
+                        images: imgArray
+                });
+
+                try{
+                    const result = await newProduct.save();
+                    if(result) {
+                        req.session.productAdded = true;
+                        res.redirect('/add-product');
+                    }
+                }catch(error) {
+                    console.error('Error adding new product:', error);
+                    res.status(500).send('Internal server error');
+                }
             }
+        })
+        .catch(error => {
+            console.error('Error checking for duplicate product/ adding new product', error);
+            res.status(500).send('Internal server error');
+        });
     },
 };
 

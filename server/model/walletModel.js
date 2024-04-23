@@ -15,7 +15,7 @@ const userWalletSchema = new mongoose.Schema({
         },
         transactionDate: {
             type: Date,
-            default: Date.now(),
+            default: () => Date.now(),
         },
         action:{
             type:"string",
@@ -23,6 +23,20 @@ const userWalletSchema = new mongoose.Schema({
         }
     }]
 }, { timestamps: true });
+
+
+// Update the transactionDate dynamically before saving
+// userWalletSchema.pre('save', function(next) {
+//     if (this.isNew && this.transactions.length > 0) {
+//         const currentDate = new Date();
+//         this.transactions.forEach(transaction => {
+//             if (!transaction.transactionDate) {
+//                 transaction.transactionDate = currentDate;
+//             }
+//         });
+//     }
+//     next();
+// });
 
 const walletDB = new mongoose.model("walletdbs",userWalletSchema);
 

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/css/shopping_cart.css">
     <link rel="stylesheet" href="css/checkout_address.css">
 
+    <!-- sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
      <!-- SweetAlert library -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
@@ -17,8 +20,13 @@
     
     
     <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-    integrity="sha384-k6RqeT8HML5Amx6YeHdCeZpMVO8Tz2plkgwEe1UwWj5IiiMvVq/ZqCkrItjR5AaQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Bootstrap css cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- end of Bootstrap css cdn link -->
     
     <!-- bootstrap -->
     
@@ -145,6 +153,27 @@
                                 </a>
                             </li>
                             <li style="margin-left: 10px;">
+
+                                <!-- show wishlist count -->
+                                <% if(wishlistCount > 0 && userLoggined){ %>
+                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% }else{ %>
+                                    <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% } %>
+
+
                                 <a href='/wishlist' class="wishlist">
                                     <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                 </a>
@@ -165,6 +194,74 @@
         <div class="container-fluid" style="padding: 0px 156px;">
             <div class="row p-0">
                 <div class="col-12 m-0 p-0">
+
+                    <!-- address updation success popup -->
+                    <% if (updatedAddress && !messageDisplayed) { %> 
+                        <script>
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            customClass: {
+                                container: 'custom-toast-container',
+                                popup: 'custom-toast-popup',
+                                header: 'custom-toast-header',
+                                title: 'custom-toast-title',
+                                icon: 'custom-toast-icon',
+                                image: 'custom-toast-image',
+                                content: 'custom-toast-content',
+                                confirmButton: 'custom-toast-confirm-button'
+                            }
+                            });
+                            Toast.fire({
+                                icon: "success",
+                                title: "Address updated."
+                            });
+                            
+                        </script>
+                    <% } %> 
+                    <!-- end of address updation success popup -->
+
+
+
+                    <!-- address removed success popup -->
+                    <% if (checkoutAddressDeleted && !msgDisplayed) { %> 
+                        <script>
+                            const Toastt = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            customClass: {
+                                container: 'custom-toast-container',
+                                popup: 'custom-toast-popup',
+                                header: 'custom-toast-header',
+                                title: 'custom-toast-title',
+                                icon: 'custom-toast-icon',
+                                image: 'custom-toast-image',
+                                content: 'custom-toast-content',
+                                confirmButton: 'custom-toast-confirm-button'
+                            }
+                            });
+                            Toastt.fire({
+                                icon: "success",
+                                title: "Address removed."
+                            });
+                            
+                        </script>
+                    <% } %> 
+                    <!-- end of address removed success popup -->
                 
                 <!-- <form action="/delivery-address" method="post"> -->
                 <div class="lines1"></div>
@@ -219,7 +316,7 @@
                                     
                                     <!-- remove address -->
                                     <div class="remove-btn">
-                                        <form action="/delete-checkoutAddress" method="post" onsubmit="return confirmDelete(event);">
+                                        <form class="deleteAddressForm">
                                             <input type="hidden" name="id" value="<%= userAddressDetails[0]._id %>">
                                             <button class="edit-btn" style="border: none; background-color: white;">REMOVE</button>
                                         </form>
@@ -511,6 +608,64 @@
         </div>
     </footer> 
     <!-- /footer section -->
+
+
+   <!-- delete checkout address using fetch -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script>
+       const forms = document.querySelectorAll('.deleteAddressForm');
+       forms.forEach(each => {
+
+           each.addEventListener('submit', async (event) => {
+           event.preventDefault();
+
+           const result = await Swal.fire({
+               title: 'Are you sure?',
+               // text: 'You won\'t be able to revert this!', (optional)
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, delete it'
+           });
+           
+           if(result.isConfirmed) {
+               const formData = new FormData(event.target);
+               const data = Object.fromEntries(formData);
+               
+               try{
+                   const response = await fetch('/delete-checkoutAddress', {
+                       method: 'DELETE',
+                       headers: {
+                           'Content-Type': 'application/json',
+                       },
+                       body: JSON.stringify(data),
+                   });
+       
+                   if(!response.ok) {
+                       throw new Error('Network response was not ok');
+                   }
+       
+                   const result = await response.json();
+                   //check if the update was successful
+                   if(result.success) {
+                       window.location.href = '/checkout-address';
+                   }else{
+                       //handle errors
+                       console.error('deletion failed:', result.message);
+                   }
+               }catch(error) {
+                   console.error('There was a problem with your fetch operation:', error);
+               }
+           }else{
+               Swal.fire('Cancelled');
+           }
+       });
+
+       })
+       
+   </script>
+   <!-- /delete checkout address using fetch -->
 
 
     

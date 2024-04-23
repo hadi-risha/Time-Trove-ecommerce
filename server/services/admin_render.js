@@ -130,12 +130,22 @@ const getAdminAddProduct = {
                     messageDisplayed = false;
                 }
 
-            const {invalidlPrice, invalidfPrice, invalidImage, invalidproductName,notValidpName,
+            //duplicate product name found
+            let {duplicateProductName,succssMsgDisplayed} = req.session;
+            let msgDisplayed = succssMsgDisplayed;
+                if(duplicateProductName && !msgDisplayed) {                  
+                    succssMsgDisplayed = true;       //create session for displaying sccss msg
+                }else{
+                    succssMsgDisplayed = false;
+                    msgDisplayed = false;
+                }
+
+            const { invalidlPrice, invalidfPrice, invalidImage, invalidproductName,notValidpName,
                     emptypDescription,negativeFPrice,invalidFPrice,negativeLPrice,invalidLPrice,
                     negativeDiscountValue,notValidDiscount,invalidPercentage,invalidDiscount,
                     negativeQtyValue, invalidQtyValue} = req.session;
 
-            res.render("add_product", {invalidproductName,notValidpName,emptypDescription,negativeFPrice,invalidFPrice,
+            res.render("add_product", { duplicateProductName, msgDisplayed, invalidproductName,notValidpName,emptypDescription,negativeFPrice,invalidFPrice,
                                     negativeLPrice,invalidLPrice,negativeDiscountValue,notValidDiscount,invalidPercentage,
                                     invalidDiscount, negativeQtyValue, invalidQtyValue,invalidlPrice : invalidlPrice,
                                     invalidfPrice : invalidfPrice, invalidImage : invalidImage,addproductSuccess : productAdded,
@@ -143,6 +153,9 @@ const getAdminAddProduct = {
                 if (error) {
                     return res.status(500).send("Internal server error");
                 }
+                succssMsgDisplayed = false;
+                delete req.session.duplicateProductName;
+
                 successMessageDisplayed = false;
                 delete req.session.productAdded;
                 delete req.session.invalidImage;
@@ -201,8 +214,50 @@ const getProductManagement = {
                     deletedMessageDisplayed = false;
                 }
 
+
+
+
+
+
+
+
+
+
+            const categoryOfferExist = await categoryOfferDB.findOne({category: 'men',unlisted:false, expDate: {$gt: new Date()}});
+            console.log('hgcat off',categoryOfferExist);
+
+            
+            let categoryDiscInPercentage = 0
+            if(categoryOfferExist) {
+                console.log("category offer exist");
+                console.log("offer in Category:", categoryOfferExist.category);
+                console.log("Discount:", categoryOfferExist.discount);
+                categoryDiscInPercentage = categoryOfferExist.discount
+            }else{
+                console.log("category offer not exist");
+            }
+            // ***********/cate/product offer section************
+
+            // allProductDetails.forEach(product => {
+            //     console.log('show mens all watches',allProductDetails);
+            // })
+
+            // res.render("mens_watches", {  categoryOfferExist, categoryDiscInPercentage,
+
+
+
+
+
+
+
+
+
+
+
+
             res.render("product_management", {productDeleteSuccess : productDeleted, deletedMessageDisplayed,
-                            updateproductSuccess: productUpdated,messageDisplayed, allProductDetails }, (error,data) =>{ 
+                            updateproductSuccess: productUpdated,messageDisplayed, allProductDetails,
+                             categoryOfferExist, categoryDiscInPercentage }, (error,data) =>{ 
                 if(error){
                     console.error('Error rendering product_management template:', error);
                     return res.status(500).send("Internal server error");
