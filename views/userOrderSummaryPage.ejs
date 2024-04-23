@@ -215,6 +215,9 @@
                                 <% if(finalData.orderStatus === "cancelled"){ %>
                                   <p style="background-color: rgb(213, 17, 17);" class="dot done"></p>
                                   <p style="color: red; text-transform: capitalize;" id="oText"><%= finalData.orderStatus %></p>
+                                <% }else{ %>
+                                  <p  class="dot done"></p>
+                                  <p style="text-transform: capitalize;" id="oText"><%= finalData.orderStatus %></p>
                                 <% } %>
                             </div>
                             <!-- <div class="lineParent position-relative">
