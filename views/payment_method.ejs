@@ -207,12 +207,7 @@
             <div class="row p-0">
                 <div class="col-12 m-0 p-0">
 
-                    <% if(codNotApplicable == undefined){ %>
-                        <h1 style="display: none; width: 100vw; background-color: white; height: 300px;">hy</h1>
-                        <p style="display: none;">cash on Delivery only for orders under Rs 1000</p>
-                    <% }else if(codNotApplicable === true){ %>
-                        <p >cash on Delivery only for orders under Rs 1000</p>
-                    <% } %>
+                    
 
                     <div class="lines1"></div>
                     <div class="rightAndLeftContainer">
@@ -609,7 +604,15 @@
     
 
 
-    
+    <% if(codNotApplicable){ %>
+        <p >cash on Delivery only for orders under Rs 1000</p>
+        <script defer>
+            console.log("nnbjghkhkl");
+            setTimeout(() => {
+                alert("Cash on Delivery only for orders under Rs 1000")
+            }, 500);
+        </script>
+    <% } %>
 
     <!-- search box- clear input field after performing operations -->
     <script>
@@ -879,6 +882,7 @@
 
             })
             .catch(err => {
+                location.reload();
                 console.error(err);
             })
         }

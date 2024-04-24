@@ -1046,9 +1046,9 @@ const getPaymentMethod = {
                 successMessageDisplayed = true;       
             }else{
                 successMessageDisplayed = false;
-                messageDisplayed = false;
+                messageDisplayed = false; 
             }
-            console.log("cod not applicable", req.session.codNotApplicable);
+            console.log("cod not applicable", codNotApplicable);
             
             res.render('payment_method', { wishlistCount,
                             codNotApplicable, totalPriceAfterCouponDiscount, discountAmountInNumber, cartCount, 

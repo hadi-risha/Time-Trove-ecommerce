@@ -207,11 +207,7 @@
 
                         <!-- ************sorting************ -->
                         <div style="background-color: transparent; display: flex; justify-content: flex-end; cursor: pointer;">
-                            <select id="sort-by" onchange="sortProducts()"
-                                     style=" background-color: aliceblue; color: black;position: relative;top: -44px;
-                                     right: 89px;
-                                     height: 33px;
-                                     border-radius: 10px;">
+                            <select id="sort-by" onchange="sortProducts()">
                                 <option value="productName_asc">Sort By</option>
                                 <option value="productName_asc">Product Name (A-Z)</option>
                                 <option value="productName_desc">Product Name (Z-A)</option>
@@ -219,12 +215,7 @@
                                 <option value="lastPrice_desc">Price (High to Low)</option>
                             </select>
                         </div>
-                        <p id="clear-sortBtn" style="position: relative;
-                                    top: -81px;
-                                    /* background-color: red; */
-                                    color: white;
-                                    /* font-size: 30px; */
-                                    left: 95vw;"><i class="fa fa-times" aria-hidden="true"></i></p>
+                        <p id="clear-sortBtn"><i class="fa fa-times" aria-hidden="true"></i></p>
 
                                 <!-- clear btn js -->
                                 <script>

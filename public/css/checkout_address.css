@@ -124,6 +124,7 @@
     height: 700px;
     width: 1px;
     background-color: rgb(157, 154, 154);
+    margin-left: 50px;
 }
 
 /* *********right side********* */
@@ -324,6 +325,9 @@
 
 /* /coupon code dropdown */
 
+.main-container{
+    min-height: 140vh;
+}
 
 @media screen and (max-width : 398px){
     .no-address-foundTxt{
@@ -3352,4 +3356,502 @@
         font-size: 12px;
         border-radius: 10px;
     }
+}
+
+
+@media screen and (max-width : 1254px) {
+    .lines2 {
+        /* height: 700px;
+        width: 1px;
+        background-color: rgb(157, 154, 154); */
+        margin-left: 9px;
+    }
+    .viewCouponBox{
+        border: 1px solid black;
+        padding-top: 10px;
+        width: 200px;
+        border: 1px solid black;
+        padding-top: 21px;
+        width: 282px;
+        margin-left: 2px;
+        width: 305;
+        position: relative;
+        display: inline-block; /* Adjust as needed */
+        
+    }
+    #viewCouponBtn{
+        background-color: #ff3f6c;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        width: 221px;
+        color: black;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        /* background-color: #d9ffd2; */
+        background-color: #dddedd;
+        font-size: 12px;
+        height: 29px;
+        padding: 3px 55px
+        
+    }
+}
+
+@media screen and (max-width : 1213px) {
+    
+    .rightSide-container {
+        margin-left: 0vw;
+        /* margin-top: 100px; */
+        /* margin-top: 29px; */
+    }
+
+}
+
+
+
+@media screen and (max-width : 1100px) {
+    .payment-box{
+        height: 379px;
+    }
+    
+    .rightSide-container {
+        margin-left: 0vw;
+        /* margin-top: 100px; */
+        /* margin-top: 29px; */
+    }
+    .viewCouponBox {
+        border: 1px solid black;
+        padding-top: 10px;
+        width: 200px;
+        border: 1px solid black;
+        padding-top: 21px;
+        width: 224px;
+        margin-left: -9px;
+        width: 305;
+        position: relative;
+        display: inline-block;
+    }
+
+    #viewCouponBtn {
+        background-color: #ff3f6c;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        width: 175px;
+        color: black;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        /* background-color: #d9ffd2; */
+        background-color: #dddedd;
+        font-size: 12px;
+        height: 27px;
+        padding: 3px 27px;
+    }
+
+    #couponCodeInput {
+        width: 112px;
+    }
+    
+    .coupon-container {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -73px;
+    }    
+
+    #not-AppliedTxt{
+        margin-left: -50px;
+        font-size: 11px;
+    }
+
+}
+
+
+@media screen and (max-width : 1100px) {
+    .payment-box{
+        height: 379px;
+    }
+    
+    .rightSide-container {
+        margin-left: 0vw;
+        /* margin-top: 100px; */
+        /* margin-top: 29px; */
+    }
+    .viewCouponBox {
+        border: 1px solid black;
+        padding-top: 10px;
+        width: 200px;
+        border: 1px solid black;
+        padding-top: 21px;
+        width: 224px;
+        margin-left: -9px;
+        width: 305;
+        position: relative;
+        display: inline-block;
+    }
+
+    #viewCouponBtn {
+        background-color: #ff3f6c;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        width: 175px;
+        color: black;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        /* background-color: #d9ffd2; */
+        background-color: #dddedd;
+        font-size: 12px;
+        height: 27px;
+        padding: 3px 27px;
+    }
+
+    #couponCodeInput {
+        width: 112px;
+    }
+    
+    .coupon-container {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -24px;
+    }    
+
+    #not-AppliedTxt{
+        margin-left: -50px;
+        font-size: 11px;
+    }
+
+}
+
+@media screen and (max-width : 966px) {
+    .payment-box{
+        height: 379px;
+    }
+    
+    .rightSide-container {
+        margin-left: 0vw;
+        /* margin-top: 100px; */
+        /* margin-top: 29px; */
+    }
+    .viewCouponBox {
+        border: 1px solid black;
+        padding-top: 10px;
+        width: 200px;
+        border: 1px solid black;
+        padding-top: 15px;
+        width: 188px;
+        margin-left: -27px;
+        width: 305;
+        position: relative;
+        display: inline-block;
+        height: 61px;
+    }
+
+    #viewCouponBtn {
+        background-color: #ff3f6c;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        width: 145px;
+        color: black;
+        margin-left: 20px;
+        margin-bottom: -3px;
+        /* background-color: #d9ffd2; */
+        background-color: #dddedd;
+        font-size: 12px;
+        height: 27px;
+        padding: 3px 14px;
+    }
+
+    #couponCodeInput {
+        width: 112px;
+    }
+    
+    .coupon-container {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -51px;
+    }
+
+    #not-AppliedTxt{
+        margin-left: -85px;
+        font-size: 11px;
+    }
+    .apply-button {
+        background-color: black;
+        color: white;
+        border: none;
+        width: 85px;
+        height: 23px;
+        font-size: 14px;
+    }
+    #couponCodeInput {
+        width: 98px;
+        font-size: 8px;
+    }
+
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 41px;
+        /* align-items: end; */
+        font-size: 12px;
+        font-weight: bold;
+        /* margin-top: 49px; */
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    .rightSide-container {
+        margin-left: 1.5vw;
+        margin-top: 34px;
+    }
+    .lines1 {
+        height: 1px;
+        width: 81vw;
+        background-color: rgb(157, 154, 154);
+        margin-top: 50px;
+        margin-left: -20px;
+    }
+
+
+}
+
+@media screen and (max-width : 895px) {
+    .main-container{
+        min-height: 225vh;
+    }
+    .payment-box {
+        height: 354px;
+    }
+
+    .viewCouponBox {
+        margin-left: -8px;
+    }
+    .coupon-container {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 6px;
+    }
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 13px;
+    }
+    .rightSide-container {
+        margin-left: -2.5vw;
+        margin-top: 34px;
+    }
+
+}
+
+@media screen and (max-width : 761px) {
+    
+    .main-container{
+        min-height: 209vh;
+    }
+    
+    /* .payment-box {
+        height: 354px;
+    }
+
+    .viewCouponBox {
+        margin-left: -8px;
+    }
+    .coupon-container {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 6px;
+    }
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 13px;
+    }
+    .rightSide-container {
+        margin-left: -2.5vw;
+        margin-top: 34px;
+    } */
+
+    .viewCouponBox{
+        border: 1px solid black;
+        padding-top: 10px;
+        width: 200px;
+        border: 1px solid black;
+        padding-top: 21px;
+        width: 282px;
+        margin-left: 77px;
+        width: 305;
+        position: relative;
+        display: inline-block; /* Adjust as needed */
+        
+    }
+    #viewCouponBtn{
+        background-color: #ff3f6c;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        width: 221px;
+        color: black;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        /* background-color: #d9ffd2; */
+        background-color: #dddedd;
+        font-size: 12px;
+        height: 29px;
+        padding: 3px 55px
+        
+    }
+
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 293px;
+        /* align-items: end; */
+        font-size: 13px;
+        font-weight: bold;
+        /* margin-top: 49px; */
+        margin-top: 6px;
+        margin-left: 20px;
+    }
+    #not-AppliedTxt {
+        margin-left: 168px;
+        font-size: 12px;
+    }
+
+
+}
+
+@media screen and (max-width : 753px) {
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 293px;
+        /* align-items: end; */
+        font-size: 11px;
+        font-weight: bold;
+        /* margin-top: 49px; */
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+    .payment-box {
+        height: 366px;
+    }
+}
+
+@media screen and (max-width : 686px) {
+    .payment-box {
+        height: 376px;
+    }
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 293px;
+        /* align-items: end; */
+        font-size: 11px;
+        font-weight: bold;
+        /* margin-top: 49px; */
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width : 657px) {
+    #not-AppliedTxt {
+        margin-left: 88px;
+        font-size: 12px;
+    }
+
+    .payment-box {
+        height: 376px;
+    }
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 293px;
+        /* align-items: end; */
+        font-size: 11px;
+        font-weight: bold;
+        /* margin-top: 49px; */
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+
+    .coupon-container {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 65px;
+    }
+}
+
+@media screen and (max-width : 592px) {
+    #not-AppliedTxt {
+        margin-left: 88px;
+        font-size: 12px;
+    }
+    .payment-box {
+        height: 376px;
+    }
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 201px;
+        /* align-items: end; */
+        font-size: 11px;
+        font-weight: bold;
+        /* margin-top: 49px; */
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+    .coupon-container {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 65px;
+    }
+}
+
+@media screen and (max-width : 564px) {
+    .viewCouponBox {
+        border: 1px solid black;
+        padding-top: 10px;
+        width: 200px;
+        border: 1px solid black;
+        padding-top: 21px;
+        width: 282px;
+        margin-left: 22px;
+        width: 305;
+        position: relative;
+        display: inline-block;
+    }
+    
+    #not-AppliedTxt {
+        margin-left: 88px;
+        font-size: 12px;
+    }
+    .payment-box {
+        height: 376px;
+    }
+    .totalFinalAmountcpntainer {
+        display: flex;
+        gap: 201px;
+        /* align-items: end; */
+        font-size: 11px;
+        font-weight: bold;
+        /* margin-top: 49px; */
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+    .coupon-container {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -12px;
+    }
+
 }

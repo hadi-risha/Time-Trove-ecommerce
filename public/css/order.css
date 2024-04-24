@@ -309,12 +309,20 @@ body::-webkit-scrollbar{
 }
 .cancelled-status-btn{
     align-items: center; 
-    margin-left: 6vw;
+    margin-left: 7vw;
     background-color: rgb(218, 57, 57);
     border-radius: 4px;
     padding: 0px 10px 0px 10px;
     color: rgb(255, 255, 255);
     text-transform: capitalize;
+}
+#razorpay-btn{
+    height: 28px;
+    margin-top: 0px;
+    background-color: #fa1e0a;
+    margin-left: -114px;
+    position: relative;
+    left: 134px;
 }
 .normal-svg{
     margin-left: 2px;

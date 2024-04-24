@@ -55,24 +55,27 @@ body::-webkit-scrollbar{
     width: 81vw;
     min-height: 160vh;
     /* background-color: #BFBFBF; */
-    background-color: #cedaef;
+    background-color: #eff2f8;  
     position: absolute;
     top: 0px;
     left: 19vw;
 }
 .subhead{
-    font-size: 17px;
+    font-size: 26px;
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 12px;
     margin-top: 30px;
 }
+/* #ShortDetailsContainer{
+    margin-top: 50px;
+} */
 .user-box{
     width: 200px;
     height: 110px;
     border-radius: 16px;
     background-color: white;
     margin-left: 11vw;
-    margin-top: 34px;
+    margin-top: 62px;
 }
 .user-box svg{
     width: 60px;
@@ -100,7 +103,7 @@ body::-webkit-scrollbar{
     background-color: white;
     position: absolute;
     left: 32vw;
-    top: 106px;
+    top: 149px;
 }
 .order-box svg{
     width: 40px;
@@ -127,7 +130,7 @@ body::-webkit-scrollbar{
     background-color: white;
     position: absolute;
     left: 53vw;
-    top: 106px;
+    top: 149px;
 }
 .sales-box svg{
     width: 47px;
@@ -260,15 +263,16 @@ body::-webkit-scrollbar{
 
    
     .downloadBtn{
-        height: 43px;
-        width: 218px;
+        height: 33px;
+        width: 175px;
         border: none;
         background-color: blue;
         color: white;
         border-radius: 24px;
         position: relative;
         top: 51px;
-        left: 54vw;
+        left: 55vw;
+        font-size: 13px;
     }
     #cloudIcon{
         margin-right: 10px;

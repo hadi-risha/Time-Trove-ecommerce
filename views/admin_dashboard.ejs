@@ -65,7 +65,7 @@
                             <!-- /generate excel -->
 
 
-                            <div class="d-flex gap-3">
+                            <div id="ShortDetailsContainer" class="d-flex gap-3">
                                 <div class="user-box">
                                     <svg width="82" height="97" viewBox="0 0 82 97" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M40.9993 16.1665C44.624 16.1665 48.1001 17.8698 50.6631 20.9016C53.2261 23.9334 54.666 28.0455 54.666 32.3332C54.666 36.6208 53.2261 40.7329 50.6631 43.7647C48.1001 46.7966 44.624 48.4998 40.9993 48.4998C37.3747 48.4998 33.8986 46.7966 31.3356 43.7647C28.7726 40.7329 27.3327 36.6208 27.3327 32.3332C27.3327 28.0455 28.7726 23.9334 31.3356 20.9016C33.8986 17.8698 37.3747 16.1665 40.9993 16.1665ZM40.9993 80.8332C40.9993 80.8332 68.3327 80.8332 68.3327 72.7498C68.3327 63.0498 55.0077 52.5415 40.9993 52.5415C26.991 52.5415 13.666 63.0498 13.666 72.7498C13.666 80.8332 40.9993 80.8332 40.9993 80.8332Z" fill="black"/>
@@ -74,6 +74,7 @@
                                     <p class="txt">Total Users</p>
                                     <input hidden type="text" value="<%= totalUsers %>" name="totalUsers">
                                 </div>
+                                
                                 <div class="order-box">
                                     <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_110_86)"><path d="M26.25 15V18.75H15V15H26.25ZM15 26.25V22.5H26.25V26.25H15ZM15 33.75V30H22.5V33.75H15ZM11.25 15V18.75H7.5V15H11.25ZM11.25 22.5V26.25H7.5V22.5H11.25ZM7.5 33.75V30H11.25V33.75H7.5ZM3.75 3.75V56.25H22.5V60H0V0H32.666L48.75 16.084V22.5H45V18.75H30V3.75H3.75ZM33.75 6.41602V15H42.334L33.75 6.41602ZM52.5 30H60V60H26.25V30H33.75V26.25H37.5V30H48.75V26.25H52.5V30ZM56.25 56.25V41.25H30V56.25H56.25ZM56.25 37.5V33.75H30V37.5H56.25Z" fill="black"/>
                                         </g><defs><clipPath id="clip0_110_86"><rect width="60" height="60" fill="white"/></clipPath></defs>
@@ -86,7 +87,7 @@
                                     <svg width="68" height="69" viewBox="0 0 68 69" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M58.0827 20.125L33.9993 5.75L9.91602 20.125V48.875L33.9993 63.25L58.0827 48.875V20.125Z" stroke="black" stroke-width="3.33333" stroke-linejoin="round"/><path d="M33.9993 31.625V43.125M45.3327 25.875V43.125M22.666 37.375V43.125" stroke="black" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>                                    
-                                    <p class="no-txt3">₹<%= totalSalesAmount %></p>
+                                    <p class="no-txt3">₹<%= Math.round(totalSalesAmount) %></p>
                                     <p class="txt3">Total Sales</p>
                                     <input hidden type="text" value="<%= totalSalesAmount %>" name="totalSalesAmount">
                                 </div> 
@@ -130,13 +131,13 @@
 
 
                         <!-- best selling products -->
-                            <div class="d-flex gap-3">
-                                <p style="background-color: white; width: 100px;background-color: #a3a7e9;
+                            <div style="    margin-top: 40px;" class="d-flex gap-3">
+                                <p style="background-color: white; width: 100px;background-color: #3c45e0;
                                     width: 173px;
                                     padding: 8px;
                                     margin-left: 20px;
                                     margin-top: 50px;
-                                    border-radius: 20px;
+                                    border-radius: 1px;
                                     color: white;
                                     font-size: 17px;">Best selling products</p>
                                 <select id="timeIntervalSelect" style="width: 130px;    width: 130px;
@@ -168,12 +169,12 @@
                                 <option value="daily">Daily</option>
                                 <option value="yearly">Yearly</option>
                             </select>
-                            <p style="background-color: white; width: 100px;background-color: #c27171;
+                            <p style="background-color: white; width: 100px;background-color: #3c45e0;
                                 width: 173px;
                                 padding: 8px;
                                 margin-left: 20px;
                                 margin-top: 50px;
-                                border-radius: 20px;
+                                border-radius: 1px;
                                 color: white;
                                 font-size: 17px;">Best selling category</p>
                             <canvas id="bestSellingCategoriesChart"></canvas>
@@ -191,12 +192,12 @@
                                 <option value="daily">Daily</option>
                                 <option value="yearly">Yearly</option>
                             </select>
-                            <p style="background-color: white; width: 100px;background-color: #8a94da;
+                            <p style="background-color: white; width: 100px;background-color: #3c45e0;
                                 width: 173px;
                                 padding: 8px;
                                 margin-left: 20px;
                                 margin-top: 50px;
-                                border-radius: 20px;
+                                border-radius: 1px;
                                 color: white;
                                 font-size: 17px;">Best selling brands</p>
                             <canvas id="bestSellingBrandsChart"></canvas>

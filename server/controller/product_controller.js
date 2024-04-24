@@ -12,6 +12,7 @@ const Razorpay = require('razorpay');
 const crypto = require('crypto');
 const couponDB = require("../model/couponModel");
 const { log } = require("util");
+const { url } = require("inspector");
 
 //razorpay
 var instance = new Razorpay({
@@ -424,7 +425,8 @@ const CouponApply = {
               }
               
               console.log(totalPrice , data.useAbove);
-              if(totalPrice < data.useAbove){
+             
+              if(Number(totalPrice) < Number(data.useAbove)){
                 return res.json({error: 'Price criteria not met'});
               }
 
@@ -727,15 +729,14 @@ const finalpData = {
       // if ttl amnt above 1000 and cod , user cannot order
       const price = req.body.amount || req.body.testingTotalPrice
       const paymType = SelectedPaymentType || 'cod'
-      req.session.codNotApplicable = false;
-      // console.log('whats hereeeeeeee',req.session.codNotApplicable);
-      // if((req.body.amount || req.body.testingTotalPrice) > 1000 &&  paymType === 'cod' ){
-      //   console.log("user can't order,cash on delivery only for orders under rs 1000");
-      //   req.session.codBelowThousand = true;
-      //   // req.session.codNotApplicable = true;
-      //   console.log('whats hereeeeeeee',req.session.codNotApplicable);
-      //   return res.redirect('/checkout-paymentMode');   //pass error parameter
-      // }
+      
+      if( (Number(req.body.amount) || Number(req.body.testingTotalPrice) ) > 1000 &&  paymType === 'cod' ){
+        console.log("user can't order,cash on delivery only for orders under rs 1000");
+        // req.session.codBelowThousand = true;
+        req.session.codNotApplicable = true;
+        console.log('whats hereeeeeeee',req.session.codNotApplicable);
+        return res.status(500).json({url : "/checkout-paymentMode"})  //pass error parameter
+      }
       const result = await shoppingCartDB.find({ _id: { $in: req.body.productId } });
       if (result) {
         const productIds = result.map(item => item.productId);
