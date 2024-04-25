@@ -26,20 +26,20 @@ const searchProduct = {
   async findProduct(req, res) {
     try {
       const query = req.query.q;
-        if (!query) {
-            return res.status(400).send({ error: 'Query parameter is missing' });
-        }
+      if (!query) {
+        return res.status(400).send({ error: 'Query parameter is missing' });
+      }
 
-        //perform the search
-        const products = await productDB.find({
-            $or: [
-                { productName: { $regex: query, $options: 'i' } },
-                { productDescription: { $regex: query, $options: 'i' } },
-                { category: { $regex: query, $options: 'i' } }
-            ]
-        });
+      //perform the search
+      const products = await productDB.find({
+        $or: [
+          { productName: { $regex: query, $options: 'i' } },
+          { productDescription: { $regex: query, $options: 'i' } },
+          { category: { $regex: query, $options: 'i' } }
+        ]
+      });
 
-        res.send(products);
+      res.send(products);
     } catch (error) {
       console.error('Error adding product to cart : ', error);
       res.status(500).send('Internal Server Error');
@@ -54,7 +54,7 @@ const shoppingCart = {
     try {
       const { id } = req.body;
       const { userEmail } = req.session;
-      console.log( id);
+      console.log(id);
 
       const newCartDetails = new shoppingCartDB({ email: userEmail, productId: id });
       await newCartDetails.save();
@@ -71,20 +71,20 @@ const shoppingCart = {
 // cartQty - POST
 const cartQty = {
   async addItem(req, res) {
-    try{
+    try {
       console.log(".........ggnhjgkhj, working here");
-      const { productId, quantity, totalPrice, totalDiscount} = req.body;
+      const { productId, quantity, totalPrice, totalDiscount } = req.body;
       console.log('current needed qty of the prdct for the user', quantity);
-      console.log('id of product/cart data(_id of product in shoppingCart db)',productId);
+      console.log('id of product/cart data(_id of product in shoppingCart db)', productId);
 
-      const findCartData = await shoppingCartDB.findOne({_id:productId})
-      console.log('real productId(from productDb',(findCartData.productId))
+      const findCartData = await shoppingCartDB.findOne({ _id: productId })
+      console.log('real productId(from productDb', (findCartData.productId))
       const actualProductId = findCartData.productId;
 
-      const productOgDetails = await productDB.findOne({_id : actualProductId})
+      const productOgDetails = await productDB.findOne({ _id: actualProductId })
       const availableQty = productOgDetails.quantity;
-      
-      if( availableQty > 0 && quantity > availableQty ) {
+
+      if (availableQty > 0 && quantity > availableQty) {
         console.log('Product Quantity limit exceeded.');
         return res.json({ error: 'Product Quantity limit exceeded.', details: 'Product Quantity limit exceeded.' });
       }
@@ -95,11 +95,11 @@ const cartQty = {
 
 
       res.json({
-        success: "proceed to address page",           
+        success: "proceed to address page",
         showMessage: 'Proceed'
       });
-     
-    }catch(error) {
+
+    } catch (error) {
       console.error('Error updating cart qty :', error);
       res.status(500).send('Internal Server Error');
     }
@@ -114,10 +114,10 @@ const removeItem = {
       const { id } = req.body;
 
       const result = await productDB.findOneAndUpdate({ _id: id }, { $set: { addToBag: false } }, { new: true })
-      if(result){
+      if (result) {
         console.log("success,Product removed from cart");
         console.log('addToBag result should be false', result);
-      }else{
+      } else {
         console.log('product still in the cart,not removed');
       }
 
@@ -132,7 +132,7 @@ const removeItem = {
       if (removeCartDB.modifiedCount === 0) {
         console.log('product not found or not removed');
         res.status(200).json({ success: false, message: "product not removed from cart" });
-      }else{
+      } else {
         console.log('product removed successfully');
         res.status(200).json({ success: true });
       }
@@ -151,7 +151,7 @@ const productPayment = {
   async proceedtoPayment(req, res) {
     try {
       console.log("data : ", req.body);
-    }catch(error) {
+    } catch (error) {
       console.error('Error in productPayment :', error);
       res.status(500).send('Internal Server Error');
     }
@@ -290,49 +290,49 @@ const checkoutUpdateAddress = {
       if (!/^\d{6}$/.test(trimmedPincode)) {
         console.log("Invalid PIN code. Please enter a 6-digit numeric PIN code");
         req.session.checkoutAddressInvalidPin = true;
-        res.json({success: false, url: `/checkout-editAddress/${id}`});
+        res.json({ success: false, url: `/checkout-editAddress/${id}` });
         return;
       }
 
       if (trimmedState === '') {
         req.session.checkoutAddressNotvalidState = true;
         console.log('state is empty,field required');
-        res.json({success: false, url: `/checkout-editAddress/${id}`});
+        res.json({ success: false, url: `/checkout-editAddress/${id}` });
         return;
       }
 
       if (!/^[A-Za-z\s]+$/.test(trimmedState)) {
         console.log('Invalid state name,Please use only letters and spaces');
         req.session.checkoutAddressInvalidState = true;
-        res.json({success: false, url: `/checkout-editAddress/${id}`});
+        res.json({ success: false, url: `/checkout-editAddress/${id}` });
         return;
       }
 
       if (trimmedAddress === '') {
         req.session.checkoutAddressInvalidAddress = true;
         console.log('adress is empty,field required');
-        res.json({success: false, url: `/checkout-editAddress/${id}`});
+        res.json({ success: false, url: `/checkout-editAddress/${id}` });
         return;
       }
 
       if (trimmedDistrict === '') {
         req.session.checkoutAddressNotnvalidDistrict = true;
         console.log('district is empty,field required');
-        res.json({success: false, url: `/checkout-editAddress/${id}`});
+        res.json({ success: false, url: `/checkout-editAddress/${id}` });
         return;
       }
 
       if (!/^[A-Za-z\s]+$/.test(trimmedDistrict)) {
         console.log('Invalid district name,Please use only letters and spaces');
         req.session.checkoutAddressInvalidDistrict = true;
-        res.json({success: false, url: `/checkout-editAddress/${id}`});
+        res.json({ success: false, url: `/checkout-editAddress/${id}` });
         return;
       }
 
       if (!/^\d{10}$/.test(mobile)) {
         req.session.invalidMobile = true;
         console.log('mobile number not included 10 digits');
-        res.json({success: false, url: `/checkout-editAddress/${id}`});
+        res.json({ success: false, url: `/checkout-editAddress/${id}` });
         return;
       }
 
@@ -346,18 +346,18 @@ const checkoutUpdateAddress = {
       }
 
       const updatedAddress = await AddressDB.updateOne({ _id: id }, { $set: newData }, { new: true, useFindAndModify: false });
-        
-      if(updatedAddress.modifiedCount === 0){
-          console.log("address not found or not updated");
-          res.status(200).json({ success: false, message: "address not found or not updated" });
-      }else{
-          console.log('new address details after updation', updatedAddress);
-          console.log("Address Updated successfully");
-          req.session.updatedAddress = true;
-          res.status(200).json({ success: true });
+
+      if (updatedAddress.modifiedCount === 0) {
+        console.log("address not found or not updated");
+        res.status(200).json({ success: false, message: "address not found or not updated" });
+      } else {
+        console.log('new address details after updation', updatedAddress);
+        console.log("Address Updated successfully");
+        req.session.updatedAddress = true;
+        res.status(200).json({ success: true });
       }
 
-    }catch (error) {
+    } catch (error) {
       console.error('Error while editing address', error);
       res.status(500).send('Internal Server Error');
     }
@@ -372,17 +372,17 @@ const deleteCheckoutAddress = {
       const { id } = req.body;
       console.log('address Id', id);
 
-      const removedAddress = await AddressDB.findOneAndDelete({ _id: id }, );
-     
-      if(removedAddress.modifiedCount === 0) {
+      const removedAddress = await AddressDB.findOneAndDelete({ _id: id },);
+
+      if (removedAddress.modifiedCount === 0) {
         console.log("checkout address not found or not removed");
         res.status(200).json({ success: false, message: "address not deleted" });
-      }else{
+      } else {
         console.log("checkout Address Deleted successfully");
         req.session.checkoutAddressDeleted = true;
         res.status(200).json({ success: true });
       }
-    }catch(error){
+    } catch (error) {
       console.error('Error while deleting address', error);
       res.status(500).send('Internal Server Error');
     }
@@ -393,113 +393,113 @@ const deleteCheckoutAddress = {
 //apply and remove couponCode in CheckoutAddress - POST
 const CouponApply = {
   async applyAndRemoveCoupon(req, res) {
-     try{
-        req.session.discountAmountInNumber = 0;
-        console.log('body...',req.body);
-        req.session.couponDiscountApplied = false;
+    try {
+      req.session.discountAmountInNumber = 0;
+      console.log('body...', req.body);
+      req.session.couponDiscountApplied = false;
 
-        if(req.body.totalPrice && req.body.q){   //if block,because in remove case these data will not send to here
-            req.session.OldTotalPrice = req.body.totalPrice;
-            req.session.usedCouponCode = req.body.q;
+      if (req.body.totalPrice && req.body.q) {   //if block,because in remove case these data will not send to here
+        req.session.OldTotalPrice = req.body.totalPrice;
+        req.session.usedCouponCode = req.body.q;
+      }
+
+      console.log('bool string value---', req.body.cpnApplyNotRemoveRequest);  //constant val in both case,to check which block should execute
+
+      const { cpnApplyNotRemoveRequest } = req.body;
+      if (cpnApplyNotRemoveRequest === 'true') {
+
+        const { q, totalPrice } = req.body;   //q - coupon code
+
+        req.session.newTotalPrice = totalPrice;
+        req.session.ogTotalPriceBeforeCouponDiscount = totalPrice;   // with this track og price and apply the coupon price accordingly in order section
+
+        req.session.couponCode = null;
+
+        const caps = q.toUpperCase();
+        const data = await couponDB.findOne({ couponCode: caps });  //check coupon exist or not
+
+        // console.log("coupoApplyNotRemoveRequest===", req.body.cpnApplyNotRemoveRequest);  //it will be boolean
+
+        if (!data) {
+          return res.json({ error: 'invalid coupon code' });
         }
-       
-       console.log('bool string value---',req.body.cpnApplyNotRemoveRequest);  //constant val in both case,to check which block should execute
 
-       const {cpnApplyNotRemoveRequest} = req.body;
-          if(cpnApplyNotRemoveRequest === 'true'){
+        console.log(totalPrice, data.useAbove);
 
-            const {q, totalPrice } = req.body;   //q - coupon code
+        if (Number(totalPrice) < Number(data.useAbove)) {
+          return res.json({ error: 'Price criteria not met' });
+        }
 
-            req.session.newTotalPrice = totalPrice;
-            req.session.ogTotalPriceBeforeCouponDiscount = totalPrice;   // with this track og price and apply the coupon price accordingly in order section
-       
-            req.session.couponCode = null;
 
-            const caps = q.toUpperCase();
-            const data = await couponDB.findOne({couponCode: caps});  //check coupon exist or not
+        const { userEmail } = req.session;
+        //check if the user has already used the coupon
+        // const existingUser = await couponDB.findOne({couponCode: caps, "usedUsers.email": userEmail });
+        // if(existingUser){
+        //   return res.json({error: 'User coupon already used.'});
+        // }
 
-            // console.log("coupoApplyNotRemoveRequest===", req.body.cpnApplyNotRemoveRequest);  //it will be boolean
+        // add user email in coupon email-field and decrease maxUse value by 1
+        const result = await couponDB.findOneAndUpdate({ couponCode: caps },
+          { $push: { usedUsers: { email: userEmail } }, $inc: { maxUses: -1 } }, { new: true } // Return the updated document
+        );
+        if (result) {
+          console.log("added the user email to the email field and decreased the maxUses field", result);
+        } else {
+          console.log("not deacresed the maxUse value and not Added user email to the email field");
+        }
 
-              if(!data){
-                return res.json({error: 'invalid coupon code'});
-              }
-              
-              console.log(totalPrice , data.useAbove);
-             
-              if(Number(totalPrice) < Number(data.useAbove)){
-                return res.json({error: 'Price criteria not met'});
-              }
+        const discount = data.discount;
+        const discountAmountInNumber = (totalPrice * discount) / 100
 
-              
-              const {userEmail} = req.session;
-              //check if the user has already used the coupon
-              // const existingUser = await couponDB.findOne({couponCode: caps, "usedUsers.email": userEmail });
-              // if(existingUser){
-              //   return res.json({error: 'User coupon already used.'});
-              // }
+        req.session.discountAmountInNumber = discountAmountInNumber //0 
 
-              // add user email in coupon email-field and decrease maxUse value by 1
-              const result = await couponDB.findOneAndUpdate({ couponCode: caps }, 
-                            { $push: { usedUsers: { email: userEmail } } ,$inc:{maxUses : -1}}, { new: true } // Return the updated document
-                            );
-                  if (result) {
-                      console.log("added the user email to the email field and decreased the maxUses field", result);
-                  } else {
-                      console.log("not deacresed the maxUse value and not Added user email to the email field");
-                  }
+        const newTotalPrice = Math.ceil(totalPrice - discountAmountInNumber);
+        req.session.couponDiscountApplied = true;           //used to track the state and render the value while reload the page of checkout address
 
-              const discount = data.discount;
-              const discountAmountInNumber = (totalPrice * discount)/ 100
+        req.session.couponCode = caps;
+        req.session.totalPriceAfterCouponDiscount = newTotalPrice;
 
-              req.session.discountAmountInNumber = discountAmountInNumber //0 
+        res.json({
+          success: "Coupon applied",
+          newTotalPrice: newTotalPrice,
+          discountAmountInNumber
+        });
+      } else {
+        console.log("coupon remove section");
+        console.log('old total price', req.session.OldTotalPrice);
+        console.log('old coupon code from if case', req.session.usedCouponCode);   //use this code to find the discount (and increment with the current prize or directly access the oldprice session)
 
-              const newTotalPrice = Math.ceil(totalPrice - discountAmountInNumber);
-              req.session.couponDiscountApplied = true;           //used to track the state and render the value while reload the page of checkout address
+        req.session.couponDiscountApplied = false;           //used to track the state and render the value while reload the page of checkout address
 
-              req.session.couponCode = caps;
-              req.session.totalPriceAfterCouponDiscount = newTotalPrice ;
+        const { userEmail } = req.session;
 
-              res.json({
-                success: "Coupon applied",
-                newTotalPrice: newTotalPrice,
-                discountAmountInNumber
-              });
-          }else{    
-              console.log("coupon remove section");
-              console.log('old total price', req.session.OldTotalPrice);
-              console.log('old coupon code from if case',req.session.usedCouponCode);   //use this code to find the discount (and increment with the current prize or directly access the oldprice session)
+        // reset both session to get correct price when remove coupon codes
+        // req.session.totalPriceAfterCouponDiscount = req.session.ogTotalPriceBeforeCouponDiscount;
+        req.session.totalPriceAfterCouponDiscount = req.session.OldTotalPrice
+        req.session.discountAmountInNumber = 0;  //coupon discount
 
-              req.session.couponDiscountApplied = false;           //used to track the state and render the value while reload the page of checkout address
+        //remove email in coupon email-field and increase maxUse value by 1
+        const result = await couponDB.findOneAndUpdate({ couponCode: req.session.couponCode },
+          { $pull: { usedUsers: { email: userEmail } }, $inc: { maxUses: 1 } }, { new: true } // Return the updated document
+        );
+        if (result) {
+          console.log("removed the user email from usedUsers array and increased the maxUses field by 1", result);
+        } else {
+          console.log("failed to remove the user email from usedUsers array and/or increase the maxUses field.");
+        }
 
-              const {userEmail} = req.session;
+        res.json({
+          success: "Coupon removed",
+          OldTotalPrice: req.session.OldTotalPrice,     //og total price
+        });
+      }
 
-              // reset both session to get correct price when remove coupon codes
-              // req.session.totalPriceAfterCouponDiscount = req.session.ogTotalPriceBeforeCouponDiscount;
-              req.session.totalPriceAfterCouponDiscount = req.session.OldTotalPrice
-              req.session.discountAmountInNumber = 0;  //coupon discount
 
-              //remove email in coupon email-field and increase maxUse value by 1
-              const result = await couponDB.findOneAndUpdate({ couponCode: req.session.couponCode }, 
-                { $pull: { usedUsers: { email : userEmail } } ,$inc:{maxUses : 1 }}, { new : true } // Return the updated document
-                          );
-                if (result) {
-                    console.log("removed the user email from usedUsers array and increased the maxUses field by 1", result);
-                } else {
-                    console.log("failed to remove the user email from usedUsers array and/or increase the maxUses field.");
-                }
-
-              res.json({
-                success: "Coupon removed",
-                OldTotalPrice : req.session.OldTotalPrice,     //og total price
-              });
-          }
-
-        
-     }catch(err){
-       console.log(err);
-     }
+    } catch (err) {
+      console.log(err);
+    }
   },
- };
+};
 
 
 
@@ -517,150 +517,150 @@ const paymentType = {
       console.log("this will come only if coupon applied, req.session.totalPriceAfterCouponDiscount", req.session.totalPriceAfterCouponDiscount);
       console.log('final amount in paymentmethod page------------------', req.body.finalAmountInPayment);
 
-      
+
 
 
 
 
       // ******************* testing *****************
       //get shopping cart section
-      const {userEmail} = req.session;
+      const { userEmail } = req.session;
       const cartProductDetails = await shoppingCartDB.aggregate([
-          {
-              $match: {
-                  email: userEmail
-              }
-          },
-          {
-              '$lookup': {
-                  'from': 'productdbs',
-                  'localField': 'productId',
-                  'foreignField': '_id',
-                  'as': 'pDetails'
-              }
+        {
+          $match: {
+            email: userEmail
           }
+        },
+        {
+          '$lookup': {
+            'from': 'productdbs',
+            'localField': 'productId',
+            'foreignField': '_id',
+            'as': 'pDetails'
+          }
+        }
       ]);
 
 
 
-      
-      
+
+
       // ******************* /calculate total price *****************
       let totalFinalPrice = 0;
-      if(cartProductDetails && cartProductDetails.length > 0) {
-          console.log('Cart product details found:');
+      if (cartProductDetails && cartProductDetails.length > 0) {
+        console.log('Cart product details found:');
+        cartProductDetails.forEach(item => {
+          const productDetails = item.pDetails[0];
+          if (productDetails) {
+            console.log('Product Name:', productDetails.productName);
+            console.log('Category:', productDetails.category);
+            console.log('First Price:', productDetails.firstPrice);
+            console.log('Last Price:', productDetails.lastPrice);
+            console.log('Discount:', productDetails.discount);
+            console.log('Quantity:', productDetails.quantity);
+            console.log('Product Offer Discount:', productDetails.productofferDiscount);
+            console.log('Category Offer Discount:', productDetails.categoryofferDiscount);
+            console.log('-----------------------------');
+          } else {
+            console.log('No product details found for this item.');
+          }
+
+          // first price
+          let totalFPrice = 0;
           cartProductDetails.forEach(item => {
-              const productDetails = item.pDetails[0]; 
-              if(productDetails) {
-                  console.log('Product Name:', productDetails.productName);
-                  console.log('Category:', productDetails.category);
-                  console.log('First Price:', productDetails.firstPrice);
-                  console.log('Last Price:', productDetails.lastPrice);
-                  console.log('Discount:', productDetails.discount);
-                  console.log('Quantity:', productDetails.quantity);
-                  console.log('Product Offer Discount:', productDetails.productofferDiscount);
-                  console.log('Category Offer Discount:', productDetails.categoryofferDiscount);
-                  console.log('-----------------------------');
-              }else{
-                console.log('No product details found for this item.');
-              }
+            const productDetails = item.pDetails[0];
+            totalFPrice += parseFloat(productDetails.firstPrice) * item.userAddedQuantity;
+          })
+          // /first price
 
-              // first price
-              let totalFPrice = 0;
-              cartProductDetails.forEach(item => {
-                  const productDetails = item.pDetails[0]; 
-                  totalFPrice += parseFloat(productDetails.firstPrice) * item.userAddedQuantity;
-              })
-              // /first price
+          // discount
+          let totalDiscount = 0
+          cartProductDetails.forEach(item => {
+            const productDetails = item.pDetails[0];
 
-              // discount
-              let totalDiscount = 0
-              cartProductDetails.forEach(item => {
-                  const productDetails = item.pDetails[0]; 
+            let discountPercentage = 0
+            if (productDetails.productofferDiscount && productDetails.categoryofferDiscount) {
+              let finalizeDiscount = productDetails.productofferDiscount > productDetails.categoryofferDiscount ? productDetails.productofferDiscount : productDetails.categoryofferDiscount;
+              discountPercentage = productDetails.discount + finalizeDiscount
+            } else if (productDetails.productofferDiscount) {
+              discountPercentage = productDetails.discount + productDetails.productofferDiscount
+            } else if (productDetails.categoryofferDiscount) {
+              discountPercentage = productDetails.discount + productDetails.categoryofferDiscount
+            } else {
+              discountPercentage = productDetails.discount
+            }
 
-                  let discountPercentage = 0
-                  if(productDetails.productofferDiscount &&  productDetails.categoryofferDiscount){
-                    let finalizeDiscount = productDetails.productofferDiscount > productDetails.categoryofferDiscount ? productDetails.productofferDiscount : productDetails.categoryofferDiscount;
-                    discountPercentage = productDetails.discount + finalizeDiscount
-                  }else if(productDetails.productofferDiscount){
-                    discountPercentage = productDetails.discount + productDetails.productofferDiscount
-                  }else if(productDetails.categoryofferDiscount){
-                    discountPercentage = productDetails.discount + productDetails.categoryofferDiscount
-                  }else{
-                    discountPercentage = productDetails.discount
-                  }
+            let discInNum = (productDetails.firstPrice * discountPercentage) / 100
+            let prdctPrice = productDetails.firstPrice - discInNum
 
-                  let discInNum = (productDetails.firstPrice * discountPercentage) /100
-                  let prdctPrice = productDetails.firstPrice - discInNum 
-                  
-                  const prdcttPricefirst = productDetails.firstPrice 
-                  const productQty = item.userAddedQuantity;
+            const prdcttPricefirst = productDetails.firstPrice
+            const productQty = item.userAddedQuantity;
 
-                  const productDiscntt = ((prdcttPricefirst - prdctPrice) * item.userAddedQuantity) 
-                  totalDiscount += productDiscntt;
-                  totalDiscount = Math.trunc(totalDiscount) 
-              })
-              // /discount
+            const productDiscntt = ((prdcttPricefirst - prdctPrice) * item.userAddedQuantity)
+            totalDiscount += productDiscntt;
+            totalDiscount = Math.trunc(totalDiscount)
+          })
+          // /discount
 
-              // lastprice
-              // let totalFinalPrice = 0;
-              cartProductDetails.forEach(item => {
-                  const productDetails = item.pDetails[0]; 
-                  let {discountAmountInNumber } = req.session;
-                  (productDetails.firstPrice * item.userAddedQuantity)  - totalDiscount;
-                  totalFinalPrice = Math.round(discountAmountInNumber? (totalFPrice - totalDiscount) - discountAmountInNumber : (totalFPrice - totalDiscount) )
+          // lastprice
+          // let totalFinalPrice = 0;
+          cartProductDetails.forEach(item => {
+            const productDetails = item.pDetails[0];
+            let { discountAmountInNumber } = req.session;
+            (productDetails.firstPrice * item.userAddedQuantity) - totalDiscount;
+            totalFinalPrice = Math.round(discountAmountInNumber ? (totalFPrice - totalDiscount) - discountAmountInNumber : (totalFPrice - totalDiscount))
 
-                  console.log("final price...", totalFinalPrice)
-              })
-              // /lastprice
-  
-          });
-      }else{
-          console.log('No cart product details found.');
+            console.log("final price...", totalFinalPrice)
+          })
+          // /lastprice
+
+        });
+      } else {
+        console.log('No cart product details found.');
       }
       // ******************* /calculate total price *****************
 
       let { paymentType } = req.body;
       req.session.selectedPaymentType = paymentType;
-      console.log('selected payment type.....................',paymentType);
+      console.log('selected payment type.....................', paymentType);
       const paymentMethod = req.session.selectedPaymentType;
       req.session.selectedPaymentMethod = paymentType;
 
 
       let buyWithWallet = false;
-     let buyWithWalletAndRazorpay = false
-      if(paymentType === 'wallet'){
-          const walletData = await walletDB.findOne({email : userEmail})
-          if(!walletData){
-            console.log('user wallet not exist');
-            return res.json({error: 'Insufficient funds in wallet. Please select another payment method.'});
-          }
-          if(walletData.balance === 0 ){
-            console.log('Insufficient funds in wallet. Please select another payment method.');
-          }
-          req.session.walletAmount = walletData.balance
-          
-          
-          let remainingBalanceInWallet = 0
-          if(walletData.balance >= totalFinalPrice){
-            console.log('user can fully buy product with wallet');
-            buyWithWallet = true   //if its true show only wallet option
-            remainingBalanceInWallet = walletData.balance - totalFinalPrice   // remaining bal should be this in wallet(update wallet)
-            req.session.remainingBalanceInWallet = remainingBalanceInWallet;
-          }else{
-            buyWithWalletAndRazorpay = true   //if its true show both wallet and razorpay option (and in razorpay amount show the remaining price)
-            remainingBalanceInWallet = 0.00;
-            req.session.remainingBalanceInWallet = remainingBalanceInWallet;
+      let buyWithWalletAndRazorpay = false
+      if (paymentType === 'wallet') {
+        const walletData = await walletDB.findOne({ email: userEmail })
+        if (!walletData) {
+          console.log('user wallet not exist');
+          return res.json({ error: 'Insufficient funds in wallet. Please select another payment method.' });
+        }
+        if (walletData.balance === 0) {
+          console.log('Insufficient funds in wallet. Please select another payment method.');
+        }
+        req.session.walletAmount = walletData.balance
 
-            const remainingBalancetoPay = totalFinalPrice - walletData.balance    // remaining bal
-            req.session.firstAmountThoroughWallet = totalFinalPrice - remainingBalancetoPay;
-            console.log("1st payed amount through wallet", req.session.firstAmountThoroughWallet);
-            req.session.remainingBalancetoPay = remainingBalancetoPay;
-            console.log("remainingBalancetoPay", req.session.remainingBalancetoPay);     //it will be 11 something
-            console.log('user need to pay remaining balance with razorpay option');
-          }
-          remainingBalanceInWallet = req.session.remainingBalanceInWallet;
-          
+
+        let remainingBalanceInWallet = 0
+        if (walletData.balance >= totalFinalPrice) {
+          console.log('user can fully buy product with wallet');
+          buyWithWallet = true   //if its true show only wallet option
+          remainingBalanceInWallet = walletData.balance - totalFinalPrice   // remaining bal should be this in wallet(update wallet)
+          req.session.remainingBalanceInWallet = remainingBalanceInWallet;
+        } else {
+          buyWithWalletAndRazorpay = true   //if its true show both wallet and razorpay option (and in razorpay amount show the remaining price)
+          remainingBalanceInWallet = 0.00;
+          req.session.remainingBalanceInWallet = remainingBalanceInWallet;
+
+          const remainingBalancetoPay = totalFinalPrice - walletData.balance    // remaining bal
+          req.session.firstAmountThoroughWallet = totalFinalPrice - remainingBalancetoPay;
+          console.log("1st payed amount through wallet", req.session.firstAmountThoroughWallet);
+          req.session.remainingBalancetoPay = remainingBalancetoPay;
+          console.log("remainingBalancetoPay", req.session.remainingBalancetoPay);     //it will be 11 something
+          console.log('user need to pay remaining balance with razorpay option');
+        }
+        remainingBalanceInWallet = req.session.remainingBalanceInWallet;
+
       }
 
 
@@ -674,30 +674,32 @@ const paymentType = {
       let totalOrderPrice = totalFinalPrice;
 
       req.session.totalOrderPriceFromWallet = totalFinalPrice;
-      console.log('walletAmount',walletAmount);
-      console.log('remaininggBalanceInWallet',remaininggBalanceInWallet);
-      console.log('remainingBalancetoPay',remainingBalancetoPay);
-      console.log('totalOrderPrice',totalOrderPrice);
+      console.log('walletAmount', walletAmount);
+      console.log('remaininggBalanceInWallet', remaininggBalanceInWallet);
+      console.log('remainingBalancetoPay', remainingBalancetoPay);
+      console.log('totalOrderPrice', totalOrderPrice);
 
       let codNotApplicable = false;
-      if( totalOrderPrice > 1000 &&  paymentType === 'cod' ){
+      if (totalOrderPrice > 1000 && paymentType === 'cod') {
         console.log("user can't order,cash on delivery only for orders under rs 1000");
         // req.session.codBelowThousand = true;
         codNotApplicable = true;
         // return res.redirect('/checkout-paymentMode?error=codAbove1000');
-        console.log('whats hereeeeeeee',req.session.codNotApplicable);
+        console.log('whats hereeeeeeee', req.session.codNotApplicable);
         // return res.redirect('/checkout-paymentMode');   //pass error parameter
       }
 
 
       req.session.payedAmountThoroughWallet = req.session.firstAmountThoroughWallet || totalFinalPrice
-      
-      
 
 
-      res.json({ success: true, paymentMethod, buyWithWallet, buyWithWalletAndRazorpay, walletAmount, remainingBalancetoPay,
-                  totalOrderPrice, remaininggBalanceInWallet, codNotApplicable })
-    }catch(error) {
+
+
+      res.json({
+        success: true, paymentMethod, buyWithWallet, buyWithWalletAndRazorpay, walletAmount, remainingBalancetoPay,
+        totalOrderPrice, remaininggBalanceInWallet, codNotApplicable
+      })
+    } catch (error) {
       console.error('Error accessing payment type', error);
       res.status(500).send('Internal Server Error');
     }
@@ -708,34 +710,34 @@ const paymentType = {
 
 // final-products - POST
 const finalpData = {
-  async orderedProducts(req, res) {        
+  async orderedProducts(req, res) {
     try {
-      console.log("testingTotaldiscount",req.body.totalDiscountInNums);
+      console.log("testingTotaldiscount", req.body.totalDiscountInNums);
 
       const { discountAmountInNumber } = req.session;
-      console.log('wallet, payedAmountThoroughWallet , remainingBalancetoPay ',req.session.payedAmountThoroughWallet, req.session.remainingBalancetoPay );
-      console.log('total order price from wallet, ',req.session.totalOrderPriceFromWallet );
-      
-      console.log('1 this is from coupon section totalPriceAfterCouponDiscount', req.session.totalPriceAfterCouponDiscount);   //this is coupon applied total price
-      console.log("2 this is from coupon section discountAmountInNumber",req.session.discountAmountInNumber);
-      console.log('3 og price from totalPrice column of paymentpage',req.body.testingTotalPrice);    //og price comes frob body
+      console.log('wallet, payedAmountThoroughWallet , remainingBalancetoPay ', req.session.payedAmountThoroughWallet, req.session.remainingBalancetoPay);
+      console.log('total order price from wallet, ', req.session.totalOrderPriceFromWallet);
 
-      console.log('4 in razorpay this will give proper final amount',req.body.amount);
-      
+      console.log('1 this is from coupon section totalPriceAfterCouponDiscount', req.session.totalPriceAfterCouponDiscount);   //this is coupon applied total price
+      console.log("2 this is from coupon section discountAmountInNumber", req.session.discountAmountInNumber);
+      console.log('3 og price from totalPrice column of paymentpage', req.body.testingTotalPrice);    //og price comes frob body
+
+      console.log('4 in razorpay this will give proper final amount', req.body.amount);
+
 
 
       const SelectedPaymentType = req.session.selectedPaymentMethod;
-      console.log('',SelectedPaymentType);
+      console.log('', SelectedPaymentType);
       // if ttl amnt above 1000 and cod , user cannot order
       const price = req.body.amount || req.body.testingTotalPrice
       const paymType = SelectedPaymentType || 'cod'
-      
-      if( (Number(req.body.amount) || Number(req.body.testingTotalPrice) ) > 1000 &&  paymType === 'cod' ){
+
+      if ((Number(req.body.amount) || Number(req.body.testingTotalPrice)) > 1000 && paymType === 'cod') {
         console.log("user can't order,cash on delivery only for orders under rs 1000");
         // req.session.codBelowThousand = true;
         req.session.codNotApplicable = true;
-        console.log('whats hereeeeeeee',req.session.codNotApplicable);
-        return res.status(500).json({url : "/checkout-paymentMode"})  //pass error parameter
+        console.log('whats hereeeeeeee', req.session.codNotApplicable);
+        return res.status(500).json({ url: "/checkout-paymentMode" })  //pass error parameter
       }
       const result = await shoppingCartDB.find({ _id: { $in: req.body.productId } });
       if (result) {
@@ -755,51 +757,51 @@ const finalpData = {
           userAddedQty: userQtyMap.get(product._id.toString()),
           firstPrice: product.firstPrice,
           lastPrice: product.lastPrice,
-          discount : product.discount,
+          discount: product.discount,
           images: product.images.map(image => image.replace('/uploads/', '/')),
           category: product.category,
-          productofferDiscount : product.productofferDiscount || null,
-          categoryofferDiscount : product.categoryofferDiscount || null
+          productofferDiscount: product.productofferDiscount || null,
+          categoryofferDiscount: product.categoryofferDiscount || null
         }));
 
-        
+
 
         const selectedAddressDetails = await AddressDB.findOne({ _id: req.session.selectedAddressId })
         const { pincode, state, address, district, mobile, addressType } = selectedAddressDetails;
 
 
-        console.log('in cod this will give proper final amount',req.body.testingTotalPrice);
-        console.log('in razorpay this will give proper final amount',req.body.amount);
+        console.log('in cod this will give proper final amount', req.body.testingTotalPrice);
+        console.log('in razorpay this will give proper final amount', req.body.amount);
 
         console.log("req.session.discountAmountInNumber", req.session.discountAmountInNumber);
         let newOrder = new Orderdb({
           email: req.session.userEmail,
           orderItems: orderItems,
-          userAddedQty: UserQty[0],               
-          finalAmount: req.session.totalPriceAfterCouponDiscount || req.session.payedAmountThoroughWallet || req.body.testingTotalPrice ||  Math.round(req.body.amount) ,
-          balanceToPay :  req.session.remainingBalancetoPay ?  req.session.remainingBalancetoPay : 0 ,
+          userAddedQty: UserQty[0],
+          finalAmount: req.session.totalPriceAfterCouponDiscount || req.session.payedAmountThoroughWallet || req.body.testingTotalPrice || Math.round(req.body.amount),
+          balanceToPay: req.session.remainingBalancetoPay ? req.session.remainingBalancetoPay : 0,
           paymentMethod: SelectedPaymentType || 'cod',
           selectedAddress: [{ pincode, state, address, district, mobile, addressType }],
-          usedCouponDiscount : req.session.discountAmountInNumber > 0 ? req.session.discountAmountInNumber : 0,
-          totalDiscount : req.body.totalDiscountInNums
+          usedCouponDiscount: req.session.discountAmountInNumber > 0 ? req.session.discountAmountInNumber : 0,
+          totalDiscount: req.body.totalDiscountInNums
         });
 
         const newOrderData = await newOrder.save();
         req.session.discountAmountInNumber = 0;     //reset session to avoi conflict in next order,it will take coupon value in all orde after order set as 0 
         req.session.selectedPaymentMethod = null;
         req.session.totalPriceAfterCouponDiscount = 0;
-        console.log('full data',newOrderData,'new order _id',newOrderData._id );
+        console.log('full data', newOrderData, 'new order _id', newOrderData._id);
         req.session.newOrderId = newOrderData._id;
         console.log(req.session.newOrderId);
-        console.log('newOrderData.balanceToPay88888888888888888888888888888888',newOrderData.balanceToPay);
+        console.log('newOrderData.balanceToPay88888888888888888888888888888888', newOrderData.balanceToPay);
 
         //clear shoping cart once place order
         if (newOrderData) {
           const result = await shoppingCartDB.deleteMany({ _id: { $in: req.body.productId } });
 
-          if(result.deletedCount === 0) {
+          if (result.deletedCount === 0) {
             console.log('no documents were deleted.');
-          }else{
+          } else {
             console.log(`${result.deletedCount} data/document were deleted from shoping cart.`);
 
             //reduce quantity(in productDB) based on useraddedQuantity        
@@ -815,15 +817,15 @@ const finalpData = {
           }
         }
         if (newOrderData.paymentMethod == 'cod') {
-            return res.status(200).json({
-              success: true,
-              paymentMethod: newOrderData.paymentMethod,
-              url: '/order-placed'
-            });
+          return res.status(200).json({
+            success: true,
+            paymentMethod: newOrderData.paymentMethod,
+            url: '/order-placed'
+          });
         } else if (newOrderData.paymentMethod == 'razorpay') {
 
           console.log('when razorpay........this will give the proper price: ', req.session.totalPriceAfterCouponDiscount);
-          console.log('current ttl price amnts ', req.body.testingTotalPrice );
+          console.log('current ttl price amnts ', req.body.testingTotalPrice);
           var instance = new Razorpay({
             key_id: 'rzp_test_FFleULTlFE3GDB',
             key_secret: 'K0ewvhB5fi7BrEllAxgfWdrp',
@@ -837,7 +839,7 @@ const finalpData = {
           // create an order with Razorpay
           console.log(req.body.amount);
           var options = {
-            amount: Math.round(req.session.remainingBalancetoPay || req.body.testingTotalPrice ||  Math.round(req.body.amount) || req.session.totalPriceAfterCouponDiscount) * 100, //amount in the smallest currency unit 
+            amount: Math.round(req.session.remainingBalancetoPay || req.body.testingTotalPrice || Math.round(req.body.amount) || req.session.totalPriceAfterCouponDiscount) * 100, //amount in the smallest currency unit 
             currency: "INR",
             receipt: "rcp1", //custom receipt ID
             payment_capture: 1 //auto capture the payment
@@ -846,101 +848,111 @@ const finalpData = {
           const order = await instance.orders.create(options);
 
           res.status(200).json({
-            success:true,
-            paymentMethod:newOrderData.paymentMethod,
+            success: true,
+            paymentMethod: newOrderData.paymentMethod,
             order
           });
 
-        }else if(newOrderData.paymentMethod == 'wallet' && newOrderData.balanceToPay === 0){
-            console.log("final data----------------------------wallet section");
-            console.log(newOrderData.finalAmount);
-            
-            let decrementPrice = await walletDB.findOneAndUpdate({email:  req.session.userEmail}, {$inc: {balance: -newOrderData.finalAmount},
-              $push: { transactions: {
+        } else if (newOrderData.paymentMethod == 'wallet' && newOrderData.balanceToPay === 0) {
+          console.log("final data----------------------------wallet section");
+          console.log(newOrderData.finalAmount);
+
+          let decrementPrice = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+            $inc: { balance: -newOrderData.finalAmount },
+            $push: {
+              transactions: {
                 amount: newOrderData.finalAmount,
-                action: "debit"}}}, { new:true } );
-
-            if( decrementPrice.modifiedCountCount > 0 ){
-              console.log("order price decremented and history added in wallet");
-
-            }else{
-              console.log("order price not decremented and transaction history not added");
+                action: "debit"
+              }
             }
+          }, { new: true });
 
-            updatePaymentStatus = await Orderdb.findOneAndUpdate({_id:newOrderData._id}, {$set: {paymentstatus: "completed"}}, {new: true});
-            if( updatePaymentStatus.updatedCount > 0 ){
-              console.log("payment status updated in orderdb(wallet case)");
-            }else{
-              console.log("payment status not updated in orderdb(wallet case)");
-            }
+          if (decrementPrice.modifiedCountCount > 0) {
+            console.log("order price decremented and history added in wallet");
+
+          } else {
+            console.log("order price not decremented and transaction history not added");
+          }
+
+          updatePaymentStatus = await Orderdb.findOneAndUpdate({ _id: newOrderData._id }, { $set: { paymentstatus: "completed" } }, { new: true });
+          if (updatePaymentStatus.updatedCount > 0) {
+            console.log("payment status updated in orderdb(wallet case)");
+          } else {
+            console.log("payment status not updated in orderdb(wallet case)");
+          }
 
 
 
-            return res.status(200).json({
-              success: true,
-              paymentMethod: newOrderData.paymentMethod,
-              noBalanceToPay : true,
-              url: '/order-placed'
-            });
-        }else if(newOrderData.paymentMethod == 'wallet' && newOrderData.balanceToPay > 0) {
+          return res.status(200).json({
+            success: true,
+            paymentMethod: newOrderData.paymentMethod,
+            noBalanceToPay: true,
+            url: '/order-placed'
+          });
+        } else if (newOrderData.paymentMethod == 'wallet' && newOrderData.balanceToPay > 0) {
 
-            // implement razorpay with the remainin balance
-            console.log('this will give the correct payed balance throgh wallet',req.session.payedAmountThoroughWallet);
-            console.log('this will give the correct remaining balance of the order, balance to pay through razorpay', req.session.remainingBalancetoPay);
+          // implement razorpay with the remainin balance
+          console.log('this will give the correct payed balance throgh wallet', req.session.payedAmountThoroughWallet);
+          console.log('this will give the correct remaining balance of the order, balance to pay through razorpay', req.session.remainingBalancetoPay);
 
-            console.log('in this case complete existing money in wallet used , so set as 0');
-            // const reduceWalletMoney = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$set:{balance: 0 }})
+          console.log('in this case complete existing money in wallet used , so set as 0');
+          // const reduceWalletMoney = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$set:{balance: 0 }})
 
-            const reduceWalletMoney = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$set:{balance: 0 },
-              $push: { transactions: {
+          const reduceWalletMoney = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+            $set: { balance: 0 },
+            $push: {
+              transactions: {
                 amount: req.session.payedAmountThoroughWallet,
-                action: "debit"}}}, { new:true } );
-            // if(reduceWalletMoney.modifiedCount > 0){
-            //   console.log("transaction history added and balance set to 0");
-            // }else{
-            //   console.log("transaction history not added and balance doesn't set to 0");
-            // }
-            
-
-
-          
-
-
-
-            var instance = new Razorpay({
-              key_id: 'rzp_test_FFleULTlFE3GDB',
-              key_secret: 'K0ewvhB5fi7BrEllAxgfWdrp',
-            });
-
-            //razorpay utils
-            function generateSignature(data, secret) {
-              return crypto.createHmac('sha256', secret).update(data).digest('hex');
+                action: "debit"
+              }
             }
-
-            // create an order with Razorpay
-            var options = {
-              amount: Math.round(req.session.remainingBalancetoPay || req.body.testingTotalPrice ||  Math.round(req.body.amount) || req.session.totalPriceAfterCouponDiscount) * 100, //amount in the smallest currency unit 
-              currency: "INR",
-              receipt: "rcp1", //custom receipt ID
-              payment_capture: 1 //auto capture the payment
-            };
-
-            const order = await instance.orders.create(options);
-
-            res.status(200).json({
-              success:true,
-              paymentMethod:newOrderData.paymentMethod,
-              balanceToPay : true,
-              orderId: newOrderData._id,
-              order
-            });
+          }, { new: true });
+          // if(reduceWalletMoney.modifiedCount > 0){
+          //   console.log("transaction history added and balance set to 0");
+          // }else{
+          //   console.log("transaction history not added and balance doesn't set to 0");
+          // }
 
 
-        } 
+
+
+
+
+
+          var instance = new Razorpay({
+            key_id: 'rzp_test_FFleULTlFE3GDB',
+            key_secret: 'K0ewvhB5fi7BrEllAxgfWdrp',
+          });
+
+          //razorpay utils
+          function generateSignature(data, secret) {
+            return crypto.createHmac('sha256', secret).update(data).digest('hex');
+          }
+
+          // create an order with Razorpay
+          var options = {
+            amount: Math.round(req.session.remainingBalancetoPay || req.body.testingTotalPrice || Math.round(req.body.amount) || req.session.totalPriceAfterCouponDiscount) * 100, //amount in the smallest currency unit 
+            currency: "INR",
+            receipt: "rcp1", //custom receipt ID
+            payment_capture: 1 //auto capture the payment
+          };
+
+          const order = await instance.orders.create(options);
+
+          res.status(200).json({
+            success: true,
+            paymentMethod: newOrderData.paymentMethod,
+            balanceToPay: true,
+            orderId: newOrderData._id,
+            order
+          });
+
+
+        }
         req.session.remainingBalancetoPay = null
-      }else{
+      } else {
         console.log("nothing in shopping cart, removed all the products,so cannot place order!!!!");
-        res.json({url: '/shopping-cart'});
+        res.json({ url: '/shopping-cart' });
       }
     } catch (error) {
       console.error('Error adding final product to orderDB:', error);
@@ -982,24 +994,24 @@ const verifyPayment = {
         .update(orderId + "|" + paymentId)
         .digest("hex");
 
-      if(generatedSignature === signature) {
-          const result = await Orderdb.updateOne({_id:req.session.newOrderId, email: req.session.userEmail}, { $set:{ paymentstatus:'completed' }});
-          // res.send({ success: true, message: 'Payment verified successfully.' });
-          if(result.modifiedCount > 0) {
-            res.send({ success: true, message: 'Payment verified and updated successfully.' });
-          }else{
-            res.send({ success: false, message: 'Payment  status could not be updated.' });
-          }
-      }else if(generatedSignature === signature && paymentCompletedUsingWallet){
-        const result = await Orderdb.updateOne({_id:req.session.newOrderId, email: req.session.userEmail}, { $set:{ paymentstatus:'completed' }});
-          // res.send({ success: true, message: 'Payment verified successfully.' });
-          if(result.modifiedCount > 0) {
-            res.send({ success: true, message: 'Payment verified and updated successfully.' });
-          }else{
-            res.send({ success: false, message: 'Payment  status could not be updated.' });
-          }
-      }else{
-          res.send({ success: false, message: 'Payment verification failed.' });
+      if (generatedSignature === signature) {
+        const result = await Orderdb.updateOne({ _id: req.session.newOrderId, email: req.session.userEmail }, { $set: { paymentstatus: 'completed' } });
+        // res.send({ success: true, message: 'Payment verified successfully.' });
+        if (result.modifiedCount > 0) {
+          res.send({ success: true, message: 'Payment verified and updated successfully.' });
+        } else {
+          res.send({ success: false, message: 'Payment  status could not be updated.' });
+        }
+      } else if (generatedSignature === signature && paymentCompletedUsingWallet) {
+        const result = await Orderdb.updateOne({ _id: req.session.newOrderId, email: req.session.userEmail }, { $set: { paymentstatus: 'completed' } });
+        // res.send({ success: true, message: 'Payment verified successfully.' });
+        if (result.modifiedCount > 0) {
+          res.send({ success: true, message: 'Payment verified and updated successfully.' });
+        } else {
+          res.send({ success: false, message: 'Payment  status could not be updated.' });
+        }
+      } else {
+        res.send({ success: false, message: 'Payment verification failed.' });
       }
     } catch (err) {
       console.log(err);
@@ -1013,12 +1025,12 @@ const verifyPayment = {
 const verifyPaymentOfWallet = {
   async razorpayPayment(req, res) {
     try {
-console.log("wallet amount decrease here0000000000000000000000000000");
+      console.log("wallet amount decrease here0000000000000000000000000000");
       console.log("its came hereeeeeeee for verification-----------------------oo");
 
       console.log("og order id------------------", req.body.ogOrderId);
       console.log("its here    :),,,,,,,,,", req.body);
-      const { orderId, paymentId, signature, paymentCompletedUsingWallet , ogOrderId} = req.body;
+      const { orderId, paymentId, signature, paymentCompletedUsingWallet, ogOrderId } = req.body;
       console.log("asdfghj..", orderId, paymentId, signature);
       const secret = 'K0ewvhB5fi7BrEllAxgfWdrp';
 
@@ -1027,9 +1039,9 @@ console.log("wallet amount decrease here0000000000000000000000000000");
         .update(orderId + "|" + paymentId)
         .digest("hex");
 
-      if(generatedSignature === signature && paymentCompletedUsingWallet){
-        const orderDetails = await Orderdb.findOne({_id:ogOrderId, email: req.session.userEmail});
-        console.log('here datamm',orderDetails);
+      if (generatedSignature === signature && paymentCompletedUsingWallet) {
+        const orderDetails = await Orderdb.findOne({ _id: ogOrderId, email: req.session.userEmail });
+        console.log('here datamm', orderDetails);
         let balanceAmount = orderDetails.balanceToPay;
         let paydAmount = orderDetails.finalAmount;
         let addBoth = balanceAmount + paydAmount
@@ -1038,30 +1050,30 @@ console.log("wallet amount decrease here0000000000000000000000000000");
         console.log(balanceAmount);
         console.log(usedWalletAmount);
         let sample = (balanceAmount + paydAmount) - balanceAmount
-        console.log('usedWalletAmount..................................uu',usedWalletAmount);
+        console.log('usedWalletAmount..................................uu', usedWalletAmount);
 
 
         const amountUpdate = await Orderdb.updateOne({ _id: ogOrderId, email: req.session.userEmail },
-              {$inc : {finalAmount: balanceAmount}},{ new: true });
-        if(amountUpdate.modifiedCount > 0) {
+          { $inc: { finalAmount: balanceAmount } }, { new: true });
+        if (amountUpdate.modifiedCount > 0) {
           console.log("both amount added together and ---------");
         }
 
-        const balance = await Orderdb.updateOne({ _id: ogOrderId, email: req.session.userEmail}, {$set:{balanceToPay: 0}},{new:true})
-        if(balance.modifiedCount>0){
+        const balance = await Orderdb.updateOne({ _id: ogOrderId, email: req.session.userEmail }, { $set: { balanceToPay: 0 } }, { new: true })
+        if (balance.modifiedCount > 0) {
           console.log("balancetopay  modified");
-        }else{
+        } else {
           console.log("balancetopay  not modified");
         }
-        const result = await Orderdb.updateOne({_id:ogOrderId, email: req.session.userEmail}, { $set:{ paymentstatus:'completed' }});
-          // res.send({ success: true, message: 'Payment verified successfully.' });
-          if(result.modifiedCount > 0) {
-            res.send({ success: true, message: 'Payment verified and updated successfully.' });
-          }else{
-            res.send({ success: false, message: 'Payment  status could not be updated.' });
-          }
-      }else{
-          res.send({ success: false, message: 'Payment verification failed.' });
+        const result = await Orderdb.updateOne({ _id: ogOrderId, email: req.session.userEmail }, { $set: { paymentstatus: 'completed' } });
+        // res.send({ success: true, message: 'Payment verified successfully.' });
+        if (result.modifiedCount > 0) {
+          res.send({ success: true, message: 'Payment verified and updated successfully.' });
+        } else {
+          res.send({ success: false, message: 'Payment  status could not be updated.' });
+        }
+      } else {
+        res.send({ success: false, message: 'Payment verification failed.' });
       }
     } catch (err) {
       console.log(err);
@@ -1081,7 +1093,7 @@ const CancelUserOrder = {
 
       //find product to increase qty in productdb
       const result = await Orderdb.findOne({ _id: orderId, 'orderItems._id': productId }, { 'orderItems.$': 1 }).exec();
-      if(result){
+      if (result) {
         const foundProduct = result.orderItems[0];
         console.log('Found product in orderDb:', foundProduct);
         console.log("Product ID:", foundProduct.productId);
@@ -1102,19 +1114,19 @@ const CancelUserOrder = {
         } else {
           console.log('Product not found or status not updated.');
         }
-      }else{
+      } else {
         console.log('Product not found.');
       }
 
 
 
-      
+
 
       // testing
       console.log("Order id: thi is same for multiple products(parent)", req.body.orderId);
       console.log("single product id:", req.body.productId);
-      const orderData = await Orderdb.findOne({_id: orderId});
-      console.log('jhhhhhhhhh',orderData._id);
+      const orderData = await Orderdb.findOne({ _id: orderId });
+      console.log('jhhhhhhhhh', orderData._id);
 
       // find cancelled single product in orderArray
       const cancelledProductDetails = await Orderdb.findOne({ _id: orderId, 'orderItems._id': productId }, { 'orderItems.$': 1 }).exec();
@@ -1124,7 +1136,7 @@ const CancelUserOrder = {
       }
       const cancelledDetails = cancelledProductDetails.orderItems[0];
       console.log("cancelled product details", cancelledDetails);
-      
+
       console.log('product first price', cancelledDetails.firstPrice);
       console.log('product last price', cancelledDetails.lastPrice);
       console.log('product proDiscount', cancelledDetails.productofferDiscount);
@@ -1134,137 +1146,143 @@ const CancelUserOrder = {
       const categoryDiscount = cancelledDetails.categoryofferDiscount;
       const firstPrice = cancelledDetails.firstPrice;
       const discount = cancelledDetails.discount;
-      const discountInNo = (firstPrice * discount)/100;
+      const discountInNo = (firstPrice * discount) / 100;
       const lastPrice = firstPrice - discountInNo
-      
+
 
       let price = 0
-      if(productDiscount && categoryDiscount){
+      if (productDiscount && categoryDiscount) {
         const finalizeDiscount = productDiscount > categoryDiscount ? productDiscount : categoryDiscount;
         console.log(finalizeDiscount);
         const discnt = finalizeDiscount + discount;
         console.log('lastPrice...', lastPrice);
 
 
-        const discountInNums = (firstPrice * discnt)/100;
+        const discountInNums = (firstPrice * discnt) / 100;
         console.log('discountInNums', discountInNums);
-        price = firstPrice - discountInNums ;
+        price = firstPrice - discountInNums;
         console.log('1', price);
-      }else if(productDiscount){
+      } else if (productDiscount) {
         console.log(productDiscount);
         const discnt = productDiscount + discount
-        const discountInNums = (firstPrice * discnt)/100;
-        price = firstPrice - discountInNums ;
+        const discountInNums = (firstPrice * discnt) / 100;
+        price = firstPrice - discountInNums;
         console.log('2', price);
-      }else if(categoryDiscount){
+      } else if (categoryDiscount) {
         console.log(categoryDiscount);
         const discnt = categoryDiscount + discount
-        const discountInNums = (firstPrice * discnt)/100;
-        price = firstPrice - discountInNums ;
+        const discountInNums = (firstPrice * discnt) / 100;
+        price = firstPrice - discountInNums;
         console.log('3', price);
-      }else{
-        console.log( 'lastPrice', lastPrice );
-        price = lastPrice ;
+      } else {
+        console.log('lastPrice', lastPrice);
+        price = lastPrice;
         console.log('4', price);
       }
 
       const productFinalPrice = Math.floor(price * cancelledDetails.userAddedQty);
-      console.log('price of a cancelled single product after apply all offers or without any offers',productFinalPrice);
+      console.log('price of a cancelled single product after apply all offers or without any offers', productFinalPrice);
       // console.log('price of a single product after apply all offers or without any offers',price * cancelledDetails.userAddedQty);
       const orderAmount = orderData.finalAmount;
-      console.log('price of all products',orderAmount);
+      console.log('price of all products', orderAmount);
       const newFinalAmount = orderAmount - (price * cancelledDetails.userAddedQty)
       console.log('the price should show in orderdb after cancel the single product', newFinalAmount);
 
-      if(orderData.paymentMethod === 'cod'){
-        const updatePrice = await Orderdb.findOneAndUpdate({_id: orderId}, {$inc:{finalAmount : -productFinalPrice}}, {new : true});
+      if (orderData.paymentMethod === 'cod') {
+        const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $inc: { finalAmount: -productFinalPrice } }, { new: true });
       }
-      if(orderData.paymentMethod === 'razorpay' && orderData.paymentstatus === 'completed'){
-        const updatePrice = await Orderdb.findOneAndUpdate({_id: orderId}, {$inc:{finalAmount : -productFinalPrice}}, {new : true});
+      if (orderData.paymentMethod === 'razorpay' && orderData.paymentstatus === 'completed') {
+        const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $inc: { finalAmount: -productFinalPrice } }, { new: true });
       }
-      
-      if(orderData.paymentstatus === 'completed'){
-        const updatePrice = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{finalAmount : newFinalAmount}}, {new : true});
+
+      if (orderData.paymentstatus === 'completed') {
+        const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newFinalAmount } }, { new: true });
 
         //handle wallet
         const walletAmount = Math.round(price * cancelledDetails.userAddedQty)
-        const wallet = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$inc:{balance: walletAmount},
-                        $push: { transactions: {
-                                  amount: price,
-                                  action: "credit"
-                                },},
-                            },{ new: true, upsert: true });
+        const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+          $inc: { balance: walletAmount },
+          $push: {
+            transactions: {
+              amount: price,
+              action: "credit"
+            },
+          },
+        }, { new: true, upsert: true });
 
-          // if(!wallet){
-          //   throw new Error('Wallet not found or nor created');
-          // }
+        // if(!wallet){
+        //   throw new Error('Wallet not found or nor created');
+        // }
 
-          // const newBalance = wallet.balance
+        // const newBalance = wallet.balance
       }
 
       //case of using both razorpay and wallet, but razorpay payment pending and single product order cancelled
       let ttlPricebeforeCancellation = orderData.finalAmount + orderData.balanceToPay;
       let ttlPriceAfterCancellation = ttlPricebeforeCancellation - productFinalPrice
-      if(orderData.paymentstatus === 'pending' && orderData.paymentMethod === "wallet" && orderData.balanceToPay > 0){
+      if (orderData.paymentstatus === 'pending' && orderData.paymentMethod === "wallet" && orderData.balanceToPay > 0) {
 
-        if(productFinalPrice === orderData.balanceToPay){
-            console.log("case 1");
-            const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{balanceToPay : 0, paymentstatus: "completed"}}, {new : true});
-            if(updateOrders.modifiedCount === 0){
-              console.log("while cancel order,payment status and balancetopay not updated(walletWithRazorpay)");
-            }else{
-              console.log("while cancel order, payment status and balancetopay updated(walletWithRazorpay)");
-            }
+        if (productFinalPrice === orderData.balanceToPay) {
+          console.log("case 1");
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { balanceToPay: 0, paymentstatus: "completed" } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
+            console.log("while cancel order,payment status and balancetopay not updated(walletWithRazorpay)");
+          } else {
+            console.log("while cancel order, payment status and balancetopay updated(walletWithRazorpay)");
+          }
 
-        }else if(ttlPriceAfterCancellation > orderData.finalAmount){
+        } else if (ttlPriceAfterCancellation > orderData.finalAmount) {
           console.log("case 4");
           let remainingBalance = ttlPriceAfterCancellation - orderData.finalAmount;
-          const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{balanceToPay : remainingBalance}}, {new : true});
-          if(updateOrders.modifiedCount === 0){
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { balanceToPay: remainingBalance } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
             console.log("while cancel order,balancetopay not updated(walletWithRazorpay)");
-          }else{
+          } else {
             console.log("while cancel order,balancetopay updated(walletWithRazorpay)");
           }
-        }else if(orderData.balanceToPay > productFinalPrice){
-              console.log("case 2");
-              let newPrice = ttlPricebeforeCancellation - productFinalPrice
-              const updateBalance = orderData.balanceToPay - productFinalPrice;
-              const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{finalAmount: newPrice ,balanceToPay : updateBalance}}, {new : true});
-              if(updateOrders.modifiedCount === 0){
-                console.log("while cancel order,balancetopay not updated(walletWithRazorpay)");
-              }else{
-                console.log("while cancel order,balancetopay updated(walletWithRazorpay)");
-              }
-        }else if(orderData.finalAmount > ttlPriceAfterCancellation){
-            console.log("case 3");
-            let walletMoney = orderData.finalAmount - ttlPriceAfterCancellation;
+        } else if (orderData.balanceToPay > productFinalPrice) {
+          console.log("case 2");
+          let newPrice = ttlPricebeforeCancellation - productFinalPrice
+          const updateBalance = orderData.balanceToPay - productFinalPrice;
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newPrice, balanceToPay: updateBalance } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
+            console.log("while cancel order,balancetopay not updated(walletWithRazorpay)");
+          } else {
+            console.log("while cancel order,balancetopay updated(walletWithRazorpay)");
+          }
+        } else if (orderData.finalAmount > ttlPriceAfterCancellation) {
+          console.log("case 3");
+          let walletMoney = orderData.finalAmount - ttlPriceAfterCancellation;
 
-            const wallet = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$inc:{balance: walletMoney},
-              $push: { transactions: {
-                        amount: walletMoney,
-                        action: "credit"
-                      },},
-                  },{ new: true, upsert: true });
-            if(wallet.modifiedCount === 0){
-              console.log("while cancel order,wallet amount not credited(walletWithRazorpay)");
-            }else{
-              console.log("while cancel order, wallet amount credited (walletWithRazorpay)");
-            }
-            let newPrice = ttlPricebeforeCancellation - productFinalPrice;
-            console.log("newprice in cancel-----------------", newPrice);
-            const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{finalAmount: newPrice ,balanceToPay:0, paymentstatus:"completed"}}, {new: true});
-            if(updateOrders.modifiedCount === 0){
-              console.log("while cancel order,payment status and balancetopay not updated(walletWithRazorpay)");
-            }else{
-              console.log("while cancel order, payment status and balancetopay updated(walletWithRazorpay)");
-            }
+          const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+            $inc: { balance: walletMoney },
+            $push: {
+              transactions: {
+                amount: walletMoney,
+                action: "credit"
+              },
+            },
+          }, { new: true, upsert: true });
+          if (wallet.modifiedCount === 0) {
+            console.log("while cancel order,wallet amount not credited(walletWithRazorpay)");
+          } else {
+            console.log("while cancel order, wallet amount credited (walletWithRazorpay)");
+          }
+          let newPrice = ttlPricebeforeCancellation - productFinalPrice;
+          console.log("newprice in cancel-----------------", newPrice);
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newPrice, balanceToPay: 0, paymentstatus: "completed" } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
+            console.log("while cancel order,payment status and balancetopay not updated(walletWithRazorpay)");
+          } else {
+            console.log("while cancel order, payment status and balancetopay updated(walletWithRazorpay)");
+          }
 
         }
 
       }
 
       res.redirect('/orders');
-    }catch(error) {
+    } catch (error) {
       console.error('Error:', error);
       res.status(500).send('Internal Server Error');
     }
@@ -1314,8 +1332,8 @@ const returnProduct = {
       // testing
       console.log("Order id: thi is same for multiple products(parent)", req.body.orderId);
       console.log("single product id:", req.body.productId);
-      const orderData = await Orderdb.findOne({_id: orderId});
-      console.log('jhhhhhhhhh',orderData._id);
+      const orderData = await Orderdb.findOne({ _id: orderId });
+      console.log('jhhhhhhhhh', orderData._id);
 
       // find cancelled single product in orderArray
       const cancelledProductDetails = await Orderdb.findOne({ _id: orderId, 'orderItems._id': productId }, { 'orderItems.$': 1 }).exec();
@@ -1325,7 +1343,7 @@ const returnProduct = {
       }
       const cancelledDetails = cancelledProductDetails.orderItems[0];
       console.log("cancelled product details", cancelledDetails);
-      
+
       console.log('product first price', cancelledDetails.firstPrice);
       console.log('product last price', cancelledDetails.lastPrice);
       console.log('product proDiscount', cancelledDetails.productofferDiscount);
@@ -1335,129 +1353,135 @@ const returnProduct = {
       const categoryDiscount = cancelledDetails.categoryofferDiscount;
       const firstPrice = cancelledDetails.firstPrice;
       const discount = cancelledDetails.discount;
-      const discountInNo = (firstPrice * discount)/100;
+      const discountInNo = (firstPrice * discount) / 100;
       const lastPrice = firstPrice - discountInNo
-      
+
 
       let price = 0
-      if(productDiscount && categoryDiscount){
+      if (productDiscount && categoryDiscount) {
         const finalizeDiscount = productDiscount > categoryDiscount ? productDiscount : categoryDiscount;
         console.log(finalizeDiscount);
         const discnt = finalizeDiscount + discount;
         console.log('lastPrice...', lastPrice);
 
 
-        const discountInNums = (firstPrice * discnt)/100;
+        const discountInNums = (firstPrice * discnt) / 100;
         console.log('discountInNums', discountInNums);
-        price = firstPrice - discountInNums ;
+        price = firstPrice - discountInNums;
         console.log('1', price);
-      }else if(productDiscount){
+      } else if (productDiscount) {
         console.log(productDiscount);
         const discnt = productDiscount + discount
-        const discountInNums = (firstPrice * discnt)/100;
-        price = firstPrice - discountInNums ;
+        const discountInNums = (firstPrice * discnt) / 100;
+        price = firstPrice - discountInNums;
         console.log('2', price);
-      }else if(categoryDiscount){
+      } else if (categoryDiscount) {
         console.log(categoryDiscount);
         const discnt = categoryDiscount + discount
-        const discountInNums = (firstPrice * discnt)/100;
-        price = firstPrice - discountInNums ;
+        const discountInNums = (firstPrice * discnt) / 100;
+        price = firstPrice - discountInNums;
         console.log('3', price);
-      }else{
-        console.log( 'lastPrice', lastPrice );
-        price = lastPrice ;
+      } else {
+        console.log('lastPrice', lastPrice);
+        price = lastPrice;
         console.log('4', price);
       }
 
       const productFinalPrice = Math.floor(price * cancelledDetails.userAddedQty);
-      console.log('price of a returned single product after apply all offers or without any offers',productFinalPrice);
+      console.log('price of a returned single product after apply all offers or without any offers', productFinalPrice);
       // console.log('price of a single product after apply all offers or without any offers',price * cancelledDetails.userAddedQty);
       const orderAmount = orderData.finalAmount;
-      console.log('price of all products',orderAmount);
+      console.log('price of all products', orderAmount);
       const newFinalAmount = orderAmount - (price * cancelledDetails.userAddedQty)
       console.log('the price should show in orderdb after return the single product', newFinalAmount);
 
-      if(orderData.paymentMethod === 'cod'){
-        const updatePrice = await Orderdb.findOneAndUpdate({_id: orderId}, {$inc:{finalAmount : -productFinalPrice}}, {new : true});
+      if (orderData.paymentMethod === 'cod') {
+        const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $inc: { finalAmount: -productFinalPrice } }, { new: true });
       }
-      if(orderData.paymentMethod === 'razorpay' && orderData.paymentstatus === 'completed'){
-        const updatePrice = await Orderdb.findOneAndUpdate({_id: orderId}, {$inc:{finalAmount : -productFinalPrice}}, {new : true});
+      if (orderData.paymentMethod === 'razorpay' && orderData.paymentstatus === 'completed') {
+        const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $inc: { finalAmount: -productFinalPrice } }, { new: true });
       }
-      
-      if(orderData.paymentstatus === 'completed'){
-        const updatePrice = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{finalAmount : newFinalAmount}}, {new : true});
+
+      if (orderData.paymentstatus === 'completed') {
+        const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newFinalAmount } }, { new: true });
 
         //handle wallet
-        const wallet = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$inc:{balance: price * cancelledDetails.userAddedQty},
-                        $push: { transactions: {
-                                  amount: price,
-                                  action: "credit"
-                                },},
-                            },{ new: true, upsert: true });
+        const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+          $inc: { balance: price * cancelledDetails.userAddedQty },
+          $push: {
+            transactions: {
+              amount: price,
+              action: "credit"
+            },
+          },
+        }, { new: true, upsert: true });
 
-          // if(!wallet){
-          //   throw new Error('Wallet not found or nor created');
-          // }
+        // if(!wallet){
+        //   throw new Error('Wallet not found or nor created');
+        // }
 
-          // const newBalance = wallet.balance
+        // const newBalance = wallet.balance
       }
 
       //case of using both razorpay and wallet, but razorpay payment pending and single product order cancelled
       let ttlPricebeforeCancellation = orderData.finalAmount + orderData.balanceToPay;
       let ttlPriceAfterCancellation = ttlPricebeforeCancellation - productFinalPrice
-      if(orderData.paymentstatus === 'pending' && orderData.paymentMethod === "wallet" && orderData.balanceToPay > 0){
+      if (orderData.paymentstatus === 'pending' && orderData.paymentMethod === "wallet" && orderData.balanceToPay > 0) {
 
-        if(productFinalPrice === orderData.balanceToPay){
-            console.log("case 1");
-            const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{balanceToPay : 0, paymentstatus: "completed"}}, {new : true});
-            if(updateOrders.modifiedCount === 0){
-              console.log("while return order,payment status and balancetopay not updated(walletWithRazorpay)");
-            }else{
-              console.log("while return order, payment status and balancetopay updated(walletWithRazorpay)");
-            }
+        if (productFinalPrice === orderData.balanceToPay) {
+          console.log("case 1");
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { balanceToPay: 0, paymentstatus: "completed" } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
+            console.log("while return order,payment status and balancetopay not updated(walletWithRazorpay)");
+          } else {
+            console.log("while return order, payment status and balancetopay updated(walletWithRazorpay)");
+          }
 
-        }else if(ttlPriceAfterCancellation > orderData.finalAmount){
+        } else if (ttlPriceAfterCancellation > orderData.finalAmount) {
           console.log("case 4");
           let remainingBalance = ttlPriceAfterCancellation - orderData.finalAmount;
-          const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{balanceToPay : remainingBalance}}, {new : true});
-          if(updateOrders.modifiedCount === 0){
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { balanceToPay: remainingBalance } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
             console.log("while return order,balancetopay not updated(walletWithRazorpay)");
-          }else{
+          } else {
             console.log("while return order,balancetopay updated(walletWithRazorpay)");
           }
-        }else if(orderData.balanceToPay > productFinalPrice){
-              console.log("case 2");
-              let newPrice = ttlPricebeforeCancellation - productFinalPrice
-              const updateBalance = orderData.balanceToPay - productFinalPrice;
-              const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{finalAmount: newPrice ,balanceToPay : updateBalance}}, {new : true});
-              if(updateOrders.modifiedCount === 0){
-                console.log("while return order,balancetopay not updated(walletWithRazorpay)");
-              }else{
-                console.log("while return order,balancetopay updated(walletWithRazorpay)");
-              }
-        }else if(orderData.finalAmount > ttlPriceAfterCancellation){
-            console.log("case 3");
-            let walletMoney = orderData.finalAmount - ttlPriceAfterCancellation;
+        } else if (orderData.balanceToPay > productFinalPrice) {
+          console.log("case 2");
+          let newPrice = ttlPricebeforeCancellation - productFinalPrice
+          const updateBalance = orderData.balanceToPay - productFinalPrice;
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newPrice, balanceToPay: updateBalance } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
+            console.log("while return order,balancetopay not updated(walletWithRazorpay)");
+          } else {
+            console.log("while return order,balancetopay updated(walletWithRazorpay)");
+          }
+        } else if (orderData.finalAmount > ttlPriceAfterCancellation) {
+          console.log("case 3");
+          let walletMoney = orderData.finalAmount - ttlPriceAfterCancellation;
 
-            const wallet = await walletDB.findOneAndUpdate({email: req.session.userEmail}, {$inc:{balance: walletMoney},
-              $push: { transactions: {
-                        amount: walletMoney,
-                        action: "credit"
-                      },},
-                  },{ new: true, upsert: true });
-            if(wallet.modifiedCount === 0){
-              console.log("while return order,wallet amount not credited(walletWithRazorpay)");
-            }else{
-              console.log("while return order, wallet amount credited (walletWithRazorpay)");
-            }
-            let newPrice = ttlPricebeforeCancellation - productFinalPrice;
-            console.log("newprice in cancel-----------------", newPrice);
-            const updateOrders = await Orderdb.findOneAndUpdate({_id: orderId}, {$set:{finalAmount: newPrice ,balanceToPay:0, paymentstatus:"completed"}}, {new: true});
-            if(updateOrders.modifiedCount === 0){
-              console.log("while return order,payment status and balancetopay not updated(walletWithRazorpay)");
-            }else{
-              console.log("while return order, payment status and balancetopay updated(walletWithRazorpay)");
-            }
+          const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+            $inc: { balance: walletMoney },
+            $push: {
+              transactions: {
+                amount: walletMoney,
+                action: "credit"
+              },
+            },
+          }, { new: true, upsert: true });
+          if (wallet.modifiedCount === 0) {
+            console.log("while return order,wallet amount not credited(walletWithRazorpay)");
+          } else {
+            console.log("while return order, wallet amount credited (walletWithRazorpay)");
+          }
+          let newPrice = ttlPricebeforeCancellation - productFinalPrice;
+          console.log("newprice in cancel-----------------", newPrice);
+          const updateOrders = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newPrice, balanceToPay: 0, paymentstatus: "completed" } }, { new: true });
+          if (updateOrders.modifiedCount === 0) {
+            console.log("while return order,payment status and balancetopay not updated(walletWithRazorpay)");
+          } else {
+            console.log("while return order, payment status and balancetopay updated(walletWithRazorpay)");
+          }
 
         }
 
@@ -1481,14 +1505,103 @@ const returnProduct = {
 const retryOnlinePayment = {
   async razorpayOption(req, res) {
     try {
-      const { ordrId, prdctId, prdctQty } = req.body;
-      console.log('data...',ordrId, prdctId, prdctQty);
+      // const { ordrId, prdctId, prdctQty } = req.body;
+      // console.log('data...',ordrId, prdctId, prdctQty);
+
+      const { ordrId } = req.body;
+      console.log('data...', ordrId);
+
       console.log("hereeeee");
-      const orderData = await Orderdb.findOne({_id : ordrId})
+      const orderData = await Orderdb.findOne({ _id: ordrId })
       console.log("herhjgjh");
-      const finalAmount = orderData.finalAmount ;
+
+
+      // *************************
+      let cancelledProductAmount = 0;
+      let cancelledPriceArr = []
+      let orderProducts = orderData.orderItems;
+      for (const product of orderProducts) {
+        console.log("product.orderStatus-----------", product.orderStatus);
+        let cancelledQty = 0;
+        if (product.orderStatus === "cancelled") {
+          let cancelledId = product.productId;
+          cancelledQty = product.userAddedQty;
+
+          let cancelledData = await productDB.findOne({ _id: cancelledId });
+          console.log("cancelled product found section", cancelledData);
+
+          let productDiscount = cancelledData.productofferDiscount;
+          let categoryDiscount = cancelledData.categoryofferDiscount;
+          let discount = cancelledData.discount;
+          let firstPrice = cancelledData.firstPrice;
+          let lastPrice = cancelledData.lastPrice;
+
+          let price = 0;
+
+          if (productDiscount && categoryDiscount) {
+            const finalizeDiscount = productDiscount > categoryDiscount ? productDiscount : categoryDiscount;
+            // const discnt = finalizeDiscount + discount;
+            // const discountInNums = (firstPrice * discnt) / 100;
+            // price = firstPrice - discountInNums;
+
+
+            console.log(finalizeDiscount);
+            const discnt = finalizeDiscount + discount;
+            // console.log('lastPrice...', lastPrice);
+
+
+            const discountInNums = (firstPrice * discnt) / 100;
+            // console.log('discountInNums', discountInNums);
+            price = firstPrice - discountInNums;
+            // console.log('1', price);
+
+
+
+
+          } else if (productDiscount) {
+            console.log(productDiscount);
+            const discnt = productDiscount + discount
+            const discountInNums = (firstPrice * discnt) / 100;
+            price = firstPrice - discountInNums;
+            console.log('2', price);
+          } else if (categoryDiscount) {
+            console.log(categoryDiscount);
+            const discnt = categoryDiscount + discount
+            const discountInNums = (firstPrice * discnt) / 100;
+            price = firstPrice - discountInNums;
+            console.log('3', price);
+          } else {
+            console.log('lastPrice', lastPrice);
+            price = lastPrice;
+            console.log('4', price);
+          }
+
+          const productFinalPrice = Math.floor(price * cancelledQty);
+          console.log('price of a cancelled single product after apply all offers or without any offers', productFinalPrice);
+          cancelledPriceArr.push(productFinalPrice);
+          cancelledPriceArr.forEach(price => {
+            console.log("price..", price);
+          });
+          console.log('price of a single product after apply all offers or without any offers',price * cancelledQty);
+          const orderAmount = orderData.finalAmount;
+          console.log('price of all products', orderAmount);
+          const newFinalAmount = orderAmount - (price * cancelledQty)
+          console.log('the price should show in orderdb after cancel the single product', newFinalAmount);
+          cancelledProductAmount += productFinalPrice;
+
+          console.log("cancelledProductAmount-------reduce this amount from finalAmount", cancelledProductAmount);
+        }
+      }
+
+      // *************************
+
+
+      console.log("cancelledProductAmount", cancelledProductAmount);
+      console.log("orderData.finalAmount", orderData.finalAmount);
+      console.log(orderData.finalAmount);
+      const finalAmount = orderData.finalAmount - cancelledProductAmount;
       console.log("herehjgujveeee", orderData.finalAmount);
-      console.log("final Amount got in retry option", finalAmount );
+      console.log("final Amount got in retry option", finalAmount);
 
       // console.log('when razorpay........this will give the proper price: ', req.body.amount);
 
@@ -1526,15 +1639,16 @@ const retryOnlinePayment = {
 
       const order = await instance.orders.create(options);
 
-      
+
+
+
       res.status(200).json({
-        success:true,
-        paymentMethod : "razorpay",
+        success: true,
+        paymentMethod: "razorpay",
         order,
-        ordrId,
-        prdctId
+        ordrId
       });
-    
+
 
 
 
@@ -1554,7 +1668,7 @@ const orderVerifyPayment = {
     try {
       const { orderId, paymentId, signature, parentId, productId } = req.body;
 
-      console.log("this is retry verify section, is orderId and single is here------------..",parentId, productId );
+      console.log("this is retry verify section, is orderId and single is here------------..", parentId, productId);
       console.log("hghg", orderId, paymentId, signature, parentId, productId);
 
 
@@ -1565,21 +1679,21 @@ const orderVerifyPayment = {
         .createHmac("sha256", secret)
         .update(orderId + "|" + paymentId)
         .digest("hex");
-        console.log("111111111");
-      if(generatedSignature === signature) {
+      console.log("111111111");
+      if (generatedSignature === signature) {
         console.log("2222222222222");
-          const result = await Orderdb.updateOne({_id:parentId, email: req.session.userEmail}, { $set:{ paymentstatus:'completed' }});
-          // res.send({ success: true, message: 'Payment verified successfully.' });
-          if(result.modifiedCount > 0) {
-            console.log('Payment verified and updated successfully.');
-            res.send({ success: true, message: 'Payment verified and updated successfully.' });
-          }else{
-            console.log('Payment  status could not be updated.');
-            res.send({ success: false, message: 'Payment  status could not be updated.' });
-          }
-      }else{
+        const result = await Orderdb.updateOne({ _id: parentId, email: req.session.userEmail }, { $set: { paymentstatus: 'completed' } });
+        // res.send({ success: true, message: 'Payment verified successfully.' });
+        if (result.modifiedCount > 0) {
+          console.log('Payment verified and updated successfully.');
+          res.send({ success: true, message: 'Payment verified and updated successfully.' });
+        } else {
+          console.log('Payment  status could not be updated.');
+          res.send({ success: false, message: 'Payment  status could not be updated.' });
+        }
+      } else {
         console.log('Payment verification failed.');
-          res.send({ success: false, message: 'Payment verification failed.' });
+        res.send({ success: false, message: 'Payment verification failed.' });
       }
     } catch (err) {
       console.log(err);
@@ -1596,9 +1710,9 @@ const retryRazorpayWithWallet = {
     try {
       console.log('payment with wallet and razorpy');
       const { orderId, productId, productQty } = req.body;
-      console.log('data...',orderId, productId, productQty);
-      const orderData = await Orderdb.findOne({_id : orderId})
-      
+      console.log('data...', orderId, productId, productQty);
+      const orderData = await Orderdb.findOne({ _id: orderId })
+
       // const finalAmount = orderData.finalAmount ;
       const balanceToPay = orderData.balanceToPay;
 
@@ -1612,7 +1726,7 @@ const retryRazorpayWithWallet = {
         return crypto.createHmac('sha256', secret).update(data).digest('hex');
       }
 
-      
+
 
       // create an order with Razorpay
       console.log(balanceToPay);
@@ -1625,14 +1739,14 @@ const retryRazorpayWithWallet = {
 
       const order = await instance.orders.create(options);
 
-      
+
       res.status(200).json({
-        success:true,
-        paymentMethod : "wallet",
-        razorpayWithWallet : true,
+        success: true,
+        paymentMethod: "wallet",
+        razorpayWithWallet: true,
         order
       });
-    
+
 
 
 
@@ -1649,12 +1763,12 @@ const retryRazorpayWithWallet = {
 const orderVerifyPaymentOfWallet = {
   async retryPayment(req, res) {
     try {
-const {userEmail} = req.session;
+      const { userEmail } = req.session;
 
       console.log('now in the verify section of retry razorpayWithWallet');
       const { orderId, paymentId, signature, parentId, productId } = req.body;
 
-      console.log("this is retry verify section ",parentId, productId );
+      console.log("this is retry verify section ", parentId, productId);
 
 
       console.log("asdfghj..", orderId, paymentId, signature);
@@ -1665,48 +1779,48 @@ const {userEmail} = req.session;
         .update(orderId + "|" + paymentId)
         .digest("hex");
 
-      if(generatedSignature === signature) {
+      if (generatedSignature === signature) {
         console.log("inside of if condition,,,,,,,,,", parentId);
 
-          const orderData = await Orderdb.findOne({_id:parentId, email: req.session.userEmail});
-          const newFinalAmount = parseInt(orderData.finalAmount + orderData.balanceToPay);
-          console.log("newFinalAmount", newFinalAmount);
+        const orderData = await Orderdb.findOne({ _id: parentId, email: req.session.userEmail });
+        const newFinalAmount = parseInt(orderData.finalAmount + orderData.balanceToPay);
+        console.log("newFinalAmount", newFinalAmount);
 
-          const result = await Orderdb.updateOne({_id:parentId, email: req.session.userEmail},
-                         { $set:{ paymentstatus:'completed', finalAmount : newFinalAmount }, $unset:{ balanceToPay:""} },{ new : true } );
+        const result = await Orderdb.updateOne({ _id: parentId, email: req.session.userEmail },
+          { $set: { paymentstatus: 'completed', finalAmount: newFinalAmount }, $unset: { balanceToPay: "" } }, { new: true });
 
-          // res.send({ success: true, message: 'Payment verified successfully.' });
-          if(result.modifiedCount > 0) {
-            
-            const totalAmount = orderData.finalAmount + orderData.balanceToPay;
-            const usedWalletAmount = totalAmount - orderData.finalAmount
-            const reduceWalletAmount = await walletDB.findOneAndUpdate({email: userEmail}, {$inc:{balance: -usedWalletAmount}}, {new: true});
-            if(reduceWalletAmount.modifiedCount > 0){
-              console.log("wallet amount reduced");
-            }else{
-              console.log('wallet amount not reduced');
-            }
-         
-            console.log('Payment verified and updated successfully.');
-            res.send({ success: true, message: 'Payment verified and updated successfully.' });
-          }else{
+        // res.send({ success: true, message: 'Payment verified successfully.' });
+        if (result.modifiedCount > 0) {
 
-            const totalAmount = orderData.finalAmount + orderData.balanceToPay;
-            const usedWalletAmount = totalAmount - orderData.finalAmount
-            const reduceWalletAmount = await walletDB.findOneAndUpdate({email: userEmail}, {$inc:{balance: -usedWalletAmount}}, {new: true});
-            if(reduceWalletAmount.modifiedCount > 0){
-              console.log("wallet amount reduced");
-            }else{
-              console.log('wallet amount not reduced');
-            }
-
-
-            console.log('Payment  status could not be updated.');
-            res.send({ success: false, message: 'Payment  status could not be updated.' });
+          const totalAmount = orderData.finalAmount + orderData.balanceToPay;
+          const usedWalletAmount = totalAmount - orderData.finalAmount
+          const reduceWalletAmount = await walletDB.findOneAndUpdate({ email: userEmail }, { $inc: { balance: -usedWalletAmount } }, { new: true });
+          if (reduceWalletAmount.modifiedCount > 0) {
+            console.log("wallet amount reduced");
+          } else {
+            console.log('wallet amount not reduced');
           }
-      }else{
+
+          console.log('Payment verified and updated successfully.');
+          res.send({ success: true, message: 'Payment verified and updated successfully.' });
+        } else {
+
+          const totalAmount = orderData.finalAmount + orderData.balanceToPay;
+          const usedWalletAmount = totalAmount - orderData.finalAmount
+          const reduceWalletAmount = await walletDB.findOneAndUpdate({ email: userEmail }, { $inc: { balance: -usedWalletAmount } }, { new: true });
+          if (reduceWalletAmount.modifiedCount > 0) {
+            console.log("wallet amount reduced");
+          } else {
+            console.log('wallet amount not reduced');
+          }
+
+
+          console.log('Payment  status could not be updated.');
+          res.send({ success: false, message: 'Payment  status could not be updated.' });
+        }
+      } else {
         console.log('Payment verification failed.');
-          res.send({ success: false, message: 'Payment verification failed.' });
+        res.send({ success: false, message: 'Payment verification failed.' });
       }
     } catch (err) {
       console.log(err);
@@ -1762,16 +1876,16 @@ const wishListRemoveItem = {
       console.log("id and email", id, email);
       const result = await wishlistDB.deleteOne({ productId: id, email: email })
 
-      if(result.modifiedCount === 0) {
+      if (result.modifiedCount === 0) {
         console.log('product still in the wishlist,not removed');
         res.status(200).json({ success: false, message: "product still in the wishlist,not removed" });
-      }else{
+      } else {
         console.log("product removed from wishlist");
         req.session.wishlistProductRemoved = true;
         res.status(200).json({ success: true });
       }
 
-    }catch (error) {
+    } catch (error) {
       console.error('Error removing product from wishlist:', error);
       res.status(500).send('Internal Server Error');
     }
@@ -1810,7 +1924,9 @@ const wishListMoveToCart = {
 
 
 
-module.exports = { searchProduct, shoppingCart, cartQty, removeItem, productPayment, deliveryAddress, checkoutNewAddress,
-      checkoutUpdateAddress,deleteCheckoutAddress, paymentType, finalpData, createOrderId, verifyPayment, CancelUserOrder,
-      returnProduct,cartQuantity, wishList, wishListRemoveItem, wishListMoveToCart, CouponApply, retryOnlinePayment,
-      orderVerifyPayment, verifyPaymentOfWallet, retryRazorpayWithWallet, orderVerifyPaymentOfWallet }
+module.exports = {
+  searchProduct, shoppingCart, cartQty, removeItem, productPayment, deliveryAddress, checkoutNewAddress,
+  checkoutUpdateAddress, deleteCheckoutAddress, paymentType, finalpData, createOrderId, verifyPayment, CancelUserOrder,
+  returnProduct, cartQuantity, wishList, wishListRemoveItem, wishListMoveToCart, CouponApply, retryOnlinePayment,
+  orderVerifyPayment, verifyPaymentOfWallet, retryRazorpayWithWallet, orderVerifyPaymentOfWallet
+}

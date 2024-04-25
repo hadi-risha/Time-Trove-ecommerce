@@ -202,9 +202,15 @@ const addproduct = {
 const updateProduct = {
     async updateProd(req, res) {
 
+
+        console.log(req.body);
+
         const productId = req.body.id;
         const files = req.files;
-        console.log("imgs",files);
+
+
+        console.log("img inpfield",req.body.images);
+        console.log("imgs....",files);
         const {pName, category, pDescription, fPrice, lPrice, discount, quantity} = req.body;
 
         const trimmedPName = pName.trim();
@@ -214,27 +220,27 @@ const updateProduct = {
         const trimmedDiscount = discount.trim();
         const trimmedQuantity = quantity.trim();
 
-        //validate pname
-        if (trimmedPName.length < 2) {
+         // validate pname
+         if (trimmedPName.length < 2) {
             req.session.enterValidProductName = true;
             console.log('product name should contain at least 2 letters');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
-        //validate pname
+        // validate pname
         if (!/^[A-Za-z ]+$/.test(trimmedPName)) {
             req.session.notValidProName = true;
             console.log('product name should contain only letters');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
-        //validate pDescription
+        // validate pDescription
         if (trimmedPDescription === '') {
             req.session.emptypDscrptn = true; 
             console.log('description is empty,field required');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
@@ -242,15 +248,15 @@ const updateProduct = {
         if (!/^(?:\d*\.)?\d+$/.test(trimmedFPrice)) {
             console.log('Please provide non-negative values for fPrice.');
             req.session.negativeFirstPrice = true;
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
-        //validate fPrice
+        // validate fPrice
         if (!/\d{2,}/.test(trimmedFPrice)) {
             req.session.invalidFirstPrice = true;
             console.log('first price should contain at least 2 numbers');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
@@ -258,15 +264,15 @@ const updateProduct = {
         if (!/^(?:\d*\.)?\d+$/.test(trimmedLPrice)) {
             console.log('Please provide non-negative values for lPrice.');
             req.session.negativeLastPrice = true;
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
-        //validate lPrice
+        // validate lPrice
         if (!/\d{2,}/.test(trimmedLPrice)) {
             req.session.invalidLastPrice = true;
             console.log('Price should contain at least 2 numbers');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
@@ -274,31 +280,30 @@ const updateProduct = {
         if (!/^(?:\d*\.)?\d+$/.test(trimmedDiscount)) {
             console.log('Please provide non-negative values for discount.');
             req.session.negativeDiscount = true;
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
-
-        //check is discount within the valid percentage range(1-99)
+        // Validate if discount is within the valid percentage range (1-99)
         if (trimmedDiscount < 1 || trimmedDiscount > 99) {
             console.log('Discount percentage should be between 1 and 99.');
             req.session.notValidDscnt = true;
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
-        //validation for discount exceeding 100
+        // Additional validation for discount exceeding 100
         if (trimmedDiscount > 100) {
             console.log('Discount percentage cannot exceed 100.');
             req.session.notValidPercentage = true;
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
-        //validate discount
+        // validate discount
         if (!/\d{1,}/.test(trimmedDiscount)) {
             req.session.invalidDiscnt = true;
             console.log('discount should contain at least 1 number');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
@@ -306,23 +311,26 @@ const updateProduct = {
         if (!/^(?:\d*\.)?\d+$/.test(trimmedQuantity)) {
             console.log('Please provide non-negative values for qty.');
             req.session.negativeQty = true;
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
-        //validate qty
+        // validate quantity
         if (!/\d{1,}/.test(trimmedQuantity)) {
             req.session.invalidQty = true;
             console.log('quantity should contain at least 1 number');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
+        
         
         const existingProduct = await productDB.findById(productId);
             if(!existingProduct) {
                 console.log("Product not found");
                 return res.redirect('/adminProductManagement');
             }
+
+
         //update productName also update productOfferDb product-name
         const isProExistInproductOffer = await ProductOfferDB.findOneAndUpdate({ product : existingProduct.productName},
                                                                  {$set: {product : trimmedPName}}, { new: true }); 
@@ -331,6 +339,7 @@ const updateProduct = {
             }else{
                 console.log("Product found with the old name in ProductOfferDB. Successfully updated with the new name.");
             }
+
 
         const existingImages = existingProduct.images || [];
         const newImages = files?.map(file => `/uploads/${file.filename}`);
@@ -347,7 +356,7 @@ const updateProduct = {
         if ((req.files || req.files?.length) && !req.files.every(file => allowedImageExtensions.test(file.originalname))) {
             req.session.imagenotvalid = true;
             console.log('Please upload valid image files with extensions: .png, .jpeg, .jpg, .gif, .bmp');
-            res.json({success: false, url: `/update-product?productId=${productId}`})
+            res.redirect(`/update-product?productId=${productId}`);
             return;
         }
 
@@ -367,12 +376,12 @@ const updateProduct = {
             const updatedProduct = await productDB.findByIdAndUpdate({_id:productId}, { $set:newDetails}, { new: true, useFindAndModify: false});
             if(updatedProduct.modifiedCount === 0) {
                 console.log("Product not found or not updated");
-                res.status(200).json({ success: false, message: "product not updated" });
+                res.redirect("/adminProductManagement");
             }else{
                 console.log("Product Updated successfully");
                 console.log('new details after updation',updatedProduct);
                 req.session.productUpdated = true;
-                res.status(200).json({ success: true });
+                res.redirect("/adminProductManagement");
             }
         }catch(error) {
             console.error('Error updating product:', error);

@@ -228,14 +228,7 @@
                             <div class="orders"><a href="/user-wallet" class="profile-links"><P>My Wallet</P></a></div>
                             <div class="text-line1"></div>
                         </div>
-                                
-                        <!-- <div>
-                            <p class="headings">LEGAL</p>
-                            <div class="orders"><a href="#" class="profile-links"><p>Terms of Use</p></a></div>
-                            <div class="orders"><a href="#" class="profile-links"><p>Privacy Policy</p></a></div>
-                            <div class="text-line1"></div>
-                        </div> -->
-                        
+                             
                         <!-- user logout button -->
                         <form action="/user-logout" method="post">
                             <button class="logout-btn" style="margin-left: 13.8vw;"><svg class="userlogoutt-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -258,114 +251,93 @@
                                 </div>
 
                             <% for (const order of OrderData) { %>
+                                <div class="singleOrderBox" style="border : 1px solid #430303 ; padding: 10px; margin: 45px;">
                                 <% for (const item of order.orderItems) { %>
-                            
-                                <div class="single-box">
-                                    <div class="image-box mt-0">
-                                        <img class="og-img" src="/uploads<%= item.images[0] %>">
-                                    </div>
-                                    <div class="single-info-container">
-                                        <p class="brand-name"><%= item.pName %></p>                         
-                                        <div class="inline-data">
-                                            <div>
-                                                
-                                                <p class="pDescription">Qty: <%= item.userAddedQty %></p>
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                                <p class="lastPrice">₹<%= item.lastPrice %>(per item)</p>
-                                            </div>
-                                            <div>
-                                                <% if( item.orderStatus  === "cancelled"){ %>
-                                                    <div class="status-box">
-                                                        <div>
-                                                            <svg class="cancelled-svg"  width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#FF0000"/>
-                                                            </svg> 
-                                                        </div>
-                                                        <div>
-                                                            <p class="cancelled-status-btn" sty><%= item.orderStatus %></p>
-                                                        </div>  
-                                                    </div>  
-                                                <% }else if(item.orderStatus  === "delivered"){ %> 
-                                                    <div class="status-box">
-                                                        <div>
-                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#52C23F"/>
-                                                            </svg>
-                                                        </div>
-                                                        <div>
-                                                            <p class="normal-status"><%= item.orderStatus %></p>
-                                                        </div> 
-                                                            <input type="hidden" value="<%= order._id %>" name="orderId">
-                                                            <input type="hidden" value="<%= item._id %>" name="productId">
-                                                        <form action="/return-product" method="post" onsubmit="return returnProductConfirmation(event);">
-                                                            <input type="text" hidden value="<%= order._id %>" name="invoiceOrderId">
-                                                            <input type="text" hidden value="<%= item._id %>" name="invoiceProductId">
-                                                            <input type="hidden" value="<%= order._id %>" name="orderId">
-                                                            <input type="hidden" value="<%= item._id %>" name="productId">
-                                                            <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">
 
-                                                            <button style="background-color: #D3C330;"  class="cancel-btn" type="submit">Return</button>
-                                                        </form>
-
-                                                        <!-- invoice icon -->
-
-                                                        <input type="text" hidden value="<%= order._id %>" name="invoiceOrderId">
-                                                        <input type="text" hidden value="<%= item._id %>" name="invoiceProductId">
-
-                                                         <!-- <a id="invoiceBtn" class="invoiceBtn" href="/download-invoice?orderId=<%#= order._id %>&productId=<%#= item._id %>"> -->
-                                                            <button class="invoiceBtn" onclick="generateInvoice()"><svg width="22" height="25" viewBox="0 0 39 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M21.125 13.1253V5.10449L30.0625 13.1253M9.75 2.91699C7.94625 2.91699 6.5 4.21491 6.5 5.83366V29.167C6.5 29.9405 6.84241 30.6824 7.4519 31.2294C8.0614 31.7764 8.88805 32.0837 9.75 32.0837H29.25C30.112 32.0837 30.9386 31.7764 31.5481 31.2294C32.1576 30.6824 32.5 29.9405 32.5 29.167V11.667L22.75 2.91699H9.75Z" fill="white"/>
-                                                            </svg></button>
-                                                        <!-- invoice icon -->
-                                                                
-                                                        <!-- </a> -->
-                                                        <!-- invoice icon -->
-                                                                    
-                                                            
-                                                        <!-- </form> -->
-                                                    </div>
+                                    <div class="single-box">
+                                        <div class="image-box mt-0">
+                                            <img class="og-img" src="/uploads<%= item.images[0] %>">
+                                        </div>
+                                        <div class="single-info-container">
+                                            <p class="brand-name"><%= item.pName %></p>                         
+                                            <div class="inline-data">
+                                                <div>
                                                     
-                                                <% }else if(item.orderStatus  === "return requested"){ %> 
-                                                    <div class="status-box">
-                                                        <div>
-                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
-                                                            </svg>
-                                                                
-                                                        </div>
-                                                        <div>
-                                                            <p class="normal-status" style="color: #fa1e0a;"><%= item.orderStatus %></p>
-                                                        </div>
-                                                    </div>
-                                                <% }else if(item.orderStatus  === "pickup"){ %> 
-                                                    <div class="status-box">
-                                                        <div>
-                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
-                                                            </svg>
-                                                                
-                                                        </div>
-                                                        <div>
-                                                            <p class="normal-status" style="color: #fa1e0a;">Request is being processed</p>
-                                                        </div>
-                                                    </div>
-                                                <% }else if(item.orderStatus  === "picked"){ %> 
-                                                    <div class="status-box">
-                                                        <!-- <div>
-                                                            <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
-                                                            </svg>
-                                                                
-                                                        </div> -->
-                                                        <div>
-                                                            <p class="normal-status" style="color: green; margin-left: 70px;">Picked & Refunded</p>
-                                                        </div>
-                                                    </div>
-                                                    <% }else if(item.orderStatus  === "refund"){ %> 
+                                                    <p class="pDescription">Qty: <%= item.userAddedQty %></p>
+                                                </div>
+                                                <div style="visibility: hidden;">
+                                                    <p class="lastPrice">₹<%= item.lastPrice %>(per item)</p>
+                                                </div>
+                                                <div>
+
+
+                                                    <% if( item.orderStatus  === "cancelled"){ %>
+                                                        <div class="orderCancelledBox status-box d-flex gap-3">
+                                                            <div>
+                                                                <svg class="normal-svg" width="12" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p class="cancelled-status-btn" sty><%= item.orderStatus %></p>
+                                                            </div>  
+                                                        </div>  
+                                                    <% }else if(item.orderStatus  === "delivered"){ %> 
                                                         <div class="status-box">
                                                             <div>
-                                                                <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <svg class="normal-svg" width="12" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#52C23F"/>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p class="normal-status"><%= item.orderStatus %></p>
+                                                            </div> 
+                                                                <input type="hidden" value="<%= order._id %>" name="orderId">
+                                                                <input type="hidden" value="<%= item._id %>" name="productId">
+                                                            <form action="/return-product" method="post" onsubmit="return returnProductConfirmation(event);">
+                                                                <input type="text" hidden value="<%= order._id %>" name="invoiceOrderId">
+                                                                <input type="text" hidden value="<%= item._id %>" name="invoiceProductId">
+                                                                <input type="hidden" value="<%= order._id %>" name="orderId">
+                                                                <input type="hidden" value="<%= item._id %>" name="productId">
+                                                                <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">
+    
+                                                                <button style="background-color: #D3C330;"  class="cancel-btn" type="submit">Return</button>
+                                                            </form>
+    
+                                                            <!-- invoice icon -->
+    
+                                                            <input type="text" hidden value="<%= order._id %>" name="invoiceOrderId">
+                                                            <input type="text" hidden value="<%= item._id %>" name="invoiceProductId">
+    
+                                                             <!-- <a id="invoiceBtn" class="invoiceBtn" href="/download-invoice?orderId=<%#= order._id %>&productId=<%#= item._id %>"> -->
+                                                                <button class="invoiceBtn" onclick="generateInvoice()"><svg width="22" height="25" viewBox="0 0 39 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M21.125 13.1253V5.10449L30.0625 13.1253M9.75 2.91699C7.94625 2.91699 6.5 4.21491 6.5 5.83366V29.167C6.5 29.9405 6.84241 30.6824 7.4519 31.2294C8.0614 31.7764 8.88805 32.0837 9.75 32.0837H29.25C30.112 32.0837 30.9386 31.7764 31.5481 31.2294C32.1576 30.6824 32.5 29.9405 32.5 29.167V11.667L22.75 2.91699H9.75Z" fill="white"/>
+                                                                </svg></button>
+                                                            <!-- invoice icon -->
+                                                                    
+                                                            <!-- </a> -->
+                                                            <!-- invoice icon -->
+                                                                        
+                                                                
+                                                            <!-- </form> -->
+                                                        </div>
+                                                        
+                                                    <% }else if(item.orderStatus  === "return requested"){ %> 
+                                                        <div class=" returnStatusContainer status-box">
+                                                            <div>
+                                                                <svg class="normal-svg" width="12" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                                </svg>
+                                                                    
+                                                            </div>
+                                                            <div>
+                                                                <p class="normal-status" style="color: rgb(218, 57, 57);"><%= item.orderStatus %></p>
+                                                            </div>
+                                                        </div>
+                                                    <% }else if(item.orderStatus  === "pickup"){ %> 
+                                                        <div class="status-box">
+                                                            <div>
+                                                                <svg class="normal-svg" width="12" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
                                                                 </svg>
                                                                     
@@ -374,125 +346,184 @@
                                                                 <p class="normal-status" style="color: #fa1e0a;">Request is being processed</p>
                                                             </div>
                                                         </div>
-                                                    <% }else if(item.orderStatus  === "refunded"){ %> 
+                                                    <% }else if(item.orderStatus  === "picked"){ %> 
                                                         <div class="status-box">
-                                                            <!-- <div>
-                                                                <svg class="normal-svg" width="20" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
-                                                                </svg>
-                                                                    
-                                                            </div> -->
                                                             <div>
                                                                 <p class="normal-status" style="color: green; margin-left: 70px;">Picked & Refunded</p>
                                                             </div>
                                                         </div>
-                                                <% }else{ %>
-                                                    <div class="status-box">
-                                                        <div>
-                                                            <svg class="normal-svg" width="20" height="17"  viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#E4D019"/>
-                                                            </svg> 
+                                                        <% }else if(item.orderStatus  === "refund"){ %> 
+                                                            <div class="status-box">
+                                                                <div>
+                                                                    <svg class="normal-svg" width="12" height="17" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#F82020"/>
+                                                                    </svg>
+                                                                        
+                                                                </div>
+                                                                <div>
+                                                                    <p class="normal-status" style="color: #fa1e0a;">Request is being processed</p>
+                                                                </div>
+                                                            </div>
+                                                        <% }else if(item.orderStatus  === "refunded"){ %> 
+                                                            <div class="status-box">
+                                                                <div>
+                                                                    <p class="normal-status" style="color: green; margin-left: 70px;">Picked & Refunded</p>
+                                                                </div>
+                                                            </div>
+                                                    <% }else{ %>
+                                                        <div class="status-box">
+                                                            <div>
+                                                                <svg class="normal-svg" width="12" height="17"  viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M13.665 0C6.10825 0 0 6.55525 0 14.665C0 22.7747 6.10825 29.33 13.665 29.33C21.2217 29.33 27.33 22.7747 27.33 14.665C27.33 6.55525 21.2217 0 13.665 0ZM13.665 26.397C7.62507 26.397 2.733 21.1469 2.733 14.665C2.733 8.18307 7.62507 2.933 13.665 2.933C19.7049 2.933 24.597 8.18307 24.597 14.665C24.597 21.1469 19.7049 26.397 13.665 26.397Z" fill="#E4D019"/>
+                                                                </svg> 
+                                                            </div>
+                                                            <div>
+                                                                <p class="normal-status"><%= item.orderStatus %></p>
+                                                            </div>
+                                                            <form action="/cancel-order" method="post" onsubmit="return confirmDelete(event);">
+                                                                <input type="hidden" value="<%= order._id %>" name="orderId">       <!-- its like a parent id -->
+                                                                <input type="hidden" value="<%= item._id %>" name="productId">      <!-- _id of single product in this order db(parsed from multiple product ids) -->
+                                                                <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">  <!-- user added qty in this specific pro -->
+                                                                <button  class="cancel-btn" type="submit">Cancel</button>
+                                                            </form>
                                                         </div>
-                                                        <div>
-                                                            <p class="normal-status"><%= item.orderStatus %></p>
-                                                        </div>
-                                                        <form action="/cancel-order" method="post" onsubmit="return confirmDelete(event);">
-                                                            <input type="hidden" value="<%= order._id %>" name="orderId">       <!-- its like a parent id -->
-                                                            <input type="hidden" value="<%= item._id %>" name="productId">      <!-- _id of single product in this order db(parsed from multiple product ids) -->
-                                                            <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">  <!-- user added qty in this specific pro -->
-                                                            <button  class="cancel-btn" type="submit">Cancel</button>
-                                                        </form>
-                                                    </div>
-                                                <% } %>
+                                                    <% } %>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="d-flex gap-3">
-                                            <% if(order.paymentstatus==='completed'){ %>
-                                                <p class="userAddedQty">Payment Status: 
-                                                    <span style="text-transform: capitalize; color: #09ba14;;"><%= order.paymentstatus %></span></p>
-                                            <% }else if(order.paymentstatus==='pending'){%>
-                                                <p class="userAddedQty">Payment Status: 
-                                                    <span style="text-transform: capitalize; color: #fa301e;"><%= order.paymentstatus %></span></p>
-                                            <% } %> 
-
-
-                                            <!-- item.pName -->
-                                            <input type="hidden" value="<%= order._id %>" name="orderIddd">
-                                            <input type="hidden" value="<%= item._id %>" name="productIddd">
-
-                                            <% if(item.orderStatus === 'cancelled'){ %>
-                                                <script>
-                                                    console.log('retry not show sec');
-                                                </script>
-                                                <!-- <div style="display: none;">
-                                                    <form id="razorpayForm" action="/retry-onlinePayment" method="post">
+    
+                                            <div class="d-flex gap-3">
+                                                <input type="hidden" value="<%= order._id %>" name="orderIddd">
+                                                <input type="hidden" value="<%= item._id %>" name="productIddd">
+    
+                                                <!-- <%# if(item.orderStatus === 'cancelled'){ %>
+                                                    <script>
+                                                        console.log('retry not show sec');
+                                                    </script> -->
+    
+                                                <!-- razorpay retry button -->
+                                                <%# } else if( order.paymentMethod==='razorpay' && order.paymentstatus ==='pending' ) {%>
+                                                    <!-- <script>
+                                                        console.log(' show sec');
+                                                        console.log(' show retry of razorpay');
+                                                        console.log("11");
+    
+                                                        const orderId = document.getElementById('orderIddd').value;
+                                                        const productId = document.getElementById('productIddd').value;
+    
+                                                        console.log("orderID", orderId);
+                                                        console.log("productId", productId);
+                                                        console.log("22");
+                                                    </script>
+    
+                                                    <form id="paymentWithRazorpayForm" action="/retry-onlinePayment" method="post">
+                                                        <input type="hidden" value="<%#= order._id %>" name="ordrId">
+                                                        <input type="hidden" value="<%#= item._id %>" name="prdctId">
+                                                        
+                                                        <input type="hidden" value="<%#= item.userAddedQty %>" name="prdctQty">
+    
+                                                                
+                                                        <button id="razorpay-btn" type="submit"  class="cancel-btn" type="submit">
+                                                            Retry</button>
+                                                    </form> -->
+                                                <!-- razorpay with wallet retry button -->
+                                                <!-- <%# }else if( order.paymentMethod==='wallet' && order.paymentstatus ==='pending'  &&  order.balanceToPay > 0 ) {%>
+                                                    <script>
+                                                        console.log('show retry of razorpay with wallet');
+                                                    </script>
+    
+                                                    <form id="razorpayWithWalletForm" action="/retry-walletWithRazorpay" method="post">
                                                         <input type="hidden" value="<%#= order._id %>" name="orderId">
                                                         <input type="hidden" value="<%#= item._id %>" name="productId">
                                                         <input type="hidden" value="<%#= item.userAddedQty %>" name="productQty">
-
-
-                                                        <button  id="razorpay-btn" type="submit" style="display: none; height: 28px; margin-top:0px; background-color: #fa1e0a; margin-left: 20px;" class="cancel-btn" type="submit">
+    
+    
+                                                        <button id="razorpay-btn" type="submit"class="cancel-btn" type="submit">
                                                             Retry</button>
                                                     </form>
-                                                </div> -->
-
-
-                                            <!-- razorpay retry button -->
-                                            <% } else if( order.paymentMethod==='razorpay' && order.paymentstatus ==='pending' ) {%>
-                                                <script>
-                                                    console.log(' show sec');
-                                                    console.log(' show retry of razorpay');
-                                                    console.log("11");
-
-                                                    const orderId = document.getElementById('orderIddd').value;
-                                                    const productId = document.getElementById('productIddd').value;
-
-                                                    console.log("orderID", orderId);
-                                                    console.log("productId", productId);
-                                                    console.log("22");
-                                                </script>
-
-                                                <form id="paymentWithRazorpayForm" action="/retry-onlinePayment" method="post">
-                                                    <input type="hidden" value="<%= order._id %>" name="ordrId">
-                                                    <input type="hidden" value="<%= item._id %>" name="prdctId">
-                                                    
-                                                    <input type="hidden" value="<%= item.userAddedQty %>" name="prdctQty">
-
-                                                            
-                                                    <button id="razorpay-btn" type="submit"  class="cancel-btn" type="submit">
-                                                        Retry</button>
-                                                </form>
-                                            <!-- razorpay with wallet retry button -->
-                                            <% }else if( order.paymentMethod==='wallet' && order.paymentstatus ==='pending'  &&  order.balanceToPay > 0 ) {%>
-                                                <script>
-                                                    console.log('show retry of razorpay with wallet');
-                                                </script>
-
-                                                <form id="razorpayWithWalletForm" action="/retry-walletWithRazorpay" method="post">
-                                                    <input type="hidden" value="<%= order._id %>" name="orderId">
-                                                    <input type="hidden" value="<%= item._id %>" name="productId">
-                                                    <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">
-
-
-                                                    <button id="razorpay-btn" type="submit"class="cancel-btn" type="submit">
-                                                        Retry</button>
-                                                </form>
-                                            <% } %>
-                                            <!-- /razorpay retry button -->
-
-
-
-                                            <a style="text-decoration: none; color: black;" href="/order-summary?orderId=<%= order._id %>&productId=<%= item._id %>"  >
-                                                <!-- <p>view full details</p> -->
-                                                <button class="orderSummary">Details</button>
-                                            </a>
+                                                <%# } %> -->
+                                                <!-- /razorpay retry button -->
+    
+    
+    
+                                                <a style=" color: rgb(43, 30, 216);" href="/order-summary?orderId=<%= order._id %>&productId=<%= item._id %>"  >
+                                                    <p class="orderSummary">View Details</p>
+                                                </a>
+                                            </div>
+                                            
                                         </div>
-                                        
                                     </div>
-                                </div>
-                                <!-- </a> -->
+
                                 <% } %>
+
+
+                                <!-- *************** -->
+                                <div class="paymentStatus">
+                                    <% if(order.paymentstatus==='completed'){ %>
+                                        <p class="userAddedQty">Payment Status: 
+                                            <span style="text-transform: capitalize; color: #09ba14;;"><%= order.paymentstatus %></span></p>
+                                    <% }else if(order.paymentstatus==='pending'){%>
+                                        <p class="userAddedQty">Payment Status: 
+                                            <span style="text-transform: capitalize; color: #fa301e;"><%= order.paymentstatus %></span></p>
+                                    <% } %> 
+                                </div>
+
+
+
+
+                                <% for (const item of order.orderItems) { %>
+                                    <% if(item.orderStatus === 'cancelled'){ %>
+                                        <script>
+                                            console.log('retry not show sec');
+                                        </script>
+                                    <% } %>
+                                <% } %>
+
+                                    <!-- razorpay retry button -->
+                                    <% if( order.paymentMethod==='razorpay' && order.paymentstatus ==='pending' ) { %>
+                                            <script>
+                                            console.log(' show sec');
+                                            console.log(' show retry of razorpay');
+                                            console.log("11");
+
+                                            const orderId = document.getElementById('orderIddd').value;
+                                            const productId = document.getElementById('productIddd').value;
+
+                                            console.log("orderID", orderId);
+                                            console.log("productId", productId);
+                                            console.log("22");
+                                        </script>
+
+                                        <form id="paymentWithRazorpayForm" action="/retry-onlinePayment" method="post">
+                                            <input type="hidden" value="<%= order._id %>" name="ordrId">
+                                                    
+                                            <button id="razorpay-btn" type="submit"  class="cancel-btn" type="submit">
+                                                Retry</button>
+                                        </form>
+                                    <!-- razorpay with wallet retry button -->
+                                    <% }else if( order.paymentMethod === 'wallet' && order.paymentstatus ==='pending'  &&  order.balanceToPay > 0 ) {%>
+                                        <script>
+                                            console.log('show retry of razorpay with wallet');
+                                        </script>
+
+                                        <form id="razorpayWithWalletForm" action="/retry-walletWithRazorpay" method="post">
+                                            <input type="hidden" value="<%= order._id %>" name="orderId">
+                                            <% for (const item of order.orderItems) { %>
+                                            <input type="hidden" value="<%= item._id %>" name="productId">
+                                            <input type="hidden" value="<%= item.userAddedQty %>" name="productQty">
+                                            <% } %>
+
+
+                                            <button id="razorpay-btn" type="submit"class="cancel-btn" type="submit">
+                                                Retry</button>
+                                        </form>
+                                    <% } %>
+                                
+                                <!-- /razorpay retry button -->
+                                <!-- *************** -->
+
+
+                                
+                            </div>
                             <% } %>
                         <% }else{ %>
                             <div class="no-orderSection">

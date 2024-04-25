@@ -252,7 +252,7 @@ body::-webkit-scrollbar{
 }
 .single-box{
     width: 900px;
-    height: 160px;
+    height: 79px;
     margin-bottom: 15px;
     border: 1px solid #b3a3a3;
     border-radius: 9px;
@@ -263,20 +263,21 @@ body::-webkit-scrollbar{
     
 } */
 .og-img{
-    width: 150px;
-    height: 150px;
+    width: 78px;
+    height: 70px;
     padding-top: 8px;
     padding-left: 10px;
     object-fit: cover;
 }
 .single-info-container{
-    margin-top: 27px;
+    margin-top: 2px;
     margin-left: 1vw;
 }
 .brand-name{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     text-transform: capitalize;
+    margin-bottom: 0px;
 }
 
 .inline-data{
@@ -287,19 +288,27 @@ body::-webkit-scrollbar{
 }
 .pDescription{
     text-transform: capitalize;
-    font-size: 15px;
+    font-size: 14px;
     /* make the remaining description like etc...  */
     width: 120px;
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap: nowrap;
+    margin-top: 7px;
 }
+
+.orderSummary{
+    margin-bottom: 0px;
+    margin-top: -13px;
+    font-size: 12px;
+}
+
 .lastPrice{
     margin-left: 2vw;
     width: 130px;
 }
 .status-box{
-    margin-left: 130px;
+    margin-left: 20px;
     display: flex;
     gap: 3px;
 }
@@ -308,13 +317,16 @@ body::-webkit-scrollbar{
     visibility: hidden;
 }
 .cancelled-status-btn{
-    align-items: center; 
-    margin-left: 7vw;
-    background-color: rgb(218, 57, 57);
+    /* align-items: center;  */
+    margin-left: -24px;
+    /* background-color: rgb(218, 57, 57); */
     border-radius: 4px;
     padding: 0px 10px 0px 10px;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
+    color: rgb(218, 57, 57);
     text-transform: capitalize;
+    height: 26px;
+    width: 90px;
 }
 #razorpay-btn{
     height: 28px;
@@ -326,6 +338,8 @@ body::-webkit-scrollbar{
 }
 .normal-svg{
     margin-left: 2px;
+    width :20;
+    height :17;
 }
 .normal-status{
     /* margin-left: -15px; */
@@ -338,8 +352,9 @@ body::-webkit-scrollbar{
     border: none;
     border-radius: 4px;
     width: 90px;
+    height: 26px;
     margin-top: -10px;
-    margin-left: 40px;
+    margin-left: 236px;
 }
 
 
@@ -663,17 +678,16 @@ body::-webkit-scrollbar{
     padding-left: 4px;
 }
 /* ******** /invoice icon ***** */
-
-.orderSummary{
-    background-color: rgb(147 141 27);
-    color: white;
-    border-radius: 10px;
-    border-color: transparent;
-    margin-left: 25.2vw;
-    width: 80px;
-    height: 30px;
-    font-size: 14px;
+.returnStatusContainer{
+    margin-left: 274px;
+    color:  rgb(218, 57, 57);
 }
+.orderCancelledBox{
+    margin-left: 333px;
+
+}
+
+
 
 
 @media screen and (max-width:1091px){
@@ -2043,6 +2057,10 @@ body::-webkit-scrollbar{
         text-overflow: ellipsis;
         text-wrap: nowrap;
     }
+
+    
+
+
     .lastPrice{
         margin-left: 2vw;
         width: 130px;

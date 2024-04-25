@@ -73,7 +73,7 @@ router.get("/adminUnlisted-product", isAuthenticate,  getAdminUnlistedProduct.un
 
 router.get("/update-product", isAuthenticate,  getUpdateProduct.updateProduct); 
 
-router.patch("/update-product", isAuthenticate, store.array('images',6),updateProduct.updateProd);       //must add multer middleware (also include it in EJS), otherwise get an error.
+router.post("/update-product", isAuthenticate, store.array('images',6), updateProduct.updateProd);       //must add multer middleware (also include it in EJS), otherwise get an error.
 
 router.post("/update-deleteImage", isAuthenticate, deleteImage.deleteImg);
 
