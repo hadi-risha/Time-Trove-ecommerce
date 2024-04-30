@@ -19,310 +19,11 @@ main::-webkit-scrollbar{
 	display: none;
 }
 
-/* :root {
-	--poppins: 'Poppins', sans-serif;
-	--lato: 'Lato', sans-serif;
-
-	--light: #F9F9F9;
-	--blue: #3C91E6;
-	--light-blue: #CFE8FF;
-	--grey: #eee;
-	--dark-grey: #AAAAAA;
-	--dark: #342E37;
-	--red: #DB504A;
-	--yellow: #FFCE26;
-	--light-yellow: #FFF2C6;
-	--orange: #FD7238;
-	--light-orange: #FFE0D3;
-} */
 
 html {
 	overflow-x: hidden;
 }
 
-/* body.dark {
-	--light: #0C0C1E;
-	--grey: #060714;
-	--dark: #FBFBFB;
-}
-
-body {
-	background: var(--grey);
-	overflow-x: hidden;
-} */
-
-
-/* .dashboard-containerbox{
-    width: 78vw;
-    height: 800px;
-    background-color: #BFBFBF;
-    position: absolute;
-    top: 60px;
-    left: 22vw;
-} */
-
-
-/* MAIN */
-/* #content main {
-	width: 100%;
-	padding: 36px 24px;
-	font-family: var(--poppins);
-	max-height: calc(100vh - 56px);
-	overflow-y: auto;
-}
-#content main .head-title {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	grid-gap: 16px;
-	flex-wrap: wrap;
-} */
-/* #content main .head-title .left h1 {
-	font-size: 36px;
-	font-weight: 600;
-	margin-bottom: 10px;
-	color: var(--dark);
-}
-#content main .head-title .left .breadcrumb {
-	display: flex;
-	align-items: center;
-	grid-gap: 16px;
-}
-#content main .head-title .left .breadcrumb li {
-	color: var(--dark);
-} */
-/* #content main .head-title .left .breadcrumb li a {
-	color: var(--dark-grey);
-	pointer-events: none;
-}
-#content main .head-title .left .breadcrumb li a.active {
-	color: var(--blue);
-	pointer-events: unset;
-}
-#content main .head-title .btn-download {
-	height: 36px;
-	padding: 0 16px;
-	border-radius: 36px;
-	background: var(--blue);
-	color: var(--light);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	grid-gap: 10px;
-	font-weight: 500;
-} */
-
-
-
-
-/* #content main .box-info {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	grid-gap: 24px;
-	margin-top: 36px;
-}
-#content main .box-info li {
-	padding: 24px;
-	background: var(--light);
-	border-radius: 20px;
-	display: flex;
-	align-items: center;
-	grid-gap: 24px;
-}
-#content main .box-info li .bx {
-	width: 80px;
-	height: 80px;
-	border-radius: 10px;
-	font-size: 36px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-} */
-/* #content main .box-info li:nth-child(1) .bx {
-	background: var(--light-blue);
-	color: var(--blue);
-}
-#content main .box-info li:nth-child(2) .bx {
-	background: var(--light-yellow);
-	color: var(--yellow);
-}
-#content main .box-info li:nth-child(3) .bx {
-	background: var(--light-orange);
-	color: var(--orange);
-}
-#content main .box-info li .text h3 {
-	font-size: 24px;
-	font-weight: 600;
-	color: var(--dark);
-}
-#content main .box-info li .text p {
-	color: var(--dark);	
-} */
-
-/* #content main .table-data {
-	display: flex;
-	flex-wrap: wrap;
-	grid-gap: 24px;
-	margin-top: 24px;
-	width: 100%;
-	color: var(--dark);
-}
-#content main .table-data > div {
-	border-radius: 20px;
-	background: var(--light);
-	padding: 24px;
-	overflow-x: auto;
-}
-#content main .table-data .head {
-	display: flex;
-	align-items: center;
-	grid-gap: 16px;
-	margin-bottom: 24px;
-}
-#content main .table-data .head h3 {
-	margin-right: auto;
-	font-size: 24px;
-	font-weight: 600;
-}
-#content main .table-data .head .bx {
-	cursor: pointer;
-} */
-
-/* #content main .table-data .order {
-	flex-grow: 1;
-	padding: 1.5rem 2rem;
-}
-#content main .table-data .order table {
-	width: 100%;
-	border-collapse: collapse;
-}
-#content main .table-data .order table th {
-	padding-bottom: 12px;
-	font-size: 13px;
-	text-align: left;
-	border-bottom: 1px solid var(--grey);
-}
-#content main .table-data .order table td {
-	padding: 16px 0;
-}
-#content main .table-data .order table tr td:first-child {
-	display: flex;
-	align-items: center;
-	grid-gap: 12px;
-	padding-left: 6px;
-} */
-/* #content main .table-data .order table td img {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	object-fit: cover;
-}
-#content main .table-data .order table tbody tr:hover {
-	background: var(--grey);
-}
-#content main .table-data .order table tr td .status {
-	font-size: 10px;
-	padding: 6px 16px;
-	color: var(--light);
-	border-radius: 20px;
-	font-weight: 700;
-}
-#content main .table-data .order table tr td .status.completed {
-	background: var(--blue);
-}
-#content main .table-data .order table tr td .status.process {
-	background: var(--yellow);
-}
-#content main .table-data .order table tr td .status.pending {
-	background: var(--orange);
-} */
-
-
-/* #content main .table-data .todo {
-	flex-grow: 1;
-	flex-basis: 300px;
-}
-#content main .table-data .todo .todo-list {
-	width: 100%;
-}
-#content main .table-data .todo .todo-list li {
-	width: 100%;
-	margin-bottom: 16px;
-	background: var(--grey);
-	border-radius: 10px;
-	padding: 14px 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-#content main .table-data .todo .todo-list li .bx {
-	cursor: pointer;
-}
-#content main .table-data .todo .todo-list li.completed {
-	border-left: 10px solid var(--blue);
-} */
-/* #content main .table-data .todo .todo-list li.not-completed {
-	border-left: 10px solid var(--orange);
-}
-#content main .table-data .todo .todo-list li:last-child {
-	margin-bottom: 0;
-}
-.order div h2{
-	color: #000;
-	font-family: Lato;
-	font-size: 1.125rem;
-	font-style: normal;
-	font-weight: 600;
-	line-height: normal;
-	margin-bottom: 2.25rem;
-}
-.order div input{
-	width: 9.875rem;
-	height: 1.6875rem;
-	border-radius: 0.8125rem 0 0 0.8125rem;
-	background: #DEDEDE;
-	border: transparent;
-	outline: transparent;
-	padding: 0.31rem;
-	padding-left: 0.69rem;
-	font-size: 0.875rem;
-} */
-/* .order div input::placeholder{
-	color: #CBCBCB;
-	font-family: Lato;
-	font-size: 0.875rem;
-	font-style: normal;
-	line-height: normal;
-}
-.order div button{
-	outline: transparent;
-	border: transparent;
-	border-radius: 0 0.8125rem 0.8125rem 0;
-	width: 1.6875rem;
-	height: 1.6875rem;
-}
-.order div button svg{
-	transform: translateY(-5%);
-}
-.produts{
-	border-radius: 0.5625rem;
-	border-radius: 0.5625rem;
-	background: rgba(211, 211, 211, 0.30);
-	padding: 1rem;
-	padding-right: 2.38rem;
-	margin-bottom: 1rem;
-	transition: all 0.4s ease-in-out;
-	cursor: pointer;
-	
-} */
-/* .produts:last-child{
-	margin-bottom: 0;
-}
-.produts:hover{
-	background: rgba(211, 211, 211, 1);
-} */
-
-/* ************************** imp *********************** */
 .manageOptions a button{
 	min-width: 8.375rem;
 	height: 2.1875rem;
@@ -338,40 +39,7 @@ body {
 	margin: 0.5rem 0;
 	margin-right: 1rem;
 }
-/* ************************** imp *********************** */
 
-/* .description p{
-	color: #000;
-	font-family: Ubuntu;
-	font-size: 0.625rem;
-	font-style: normal;
-	font-weight: bold;
-	line-height: normal;
-}
-.description p:last-child{
-	color: #000;
-	font-family: Inter;
-	font-size: small;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-}
-.proImg img{
-	width: 80px;
-	height: 80px;
-	object-fit: contain;
-} */
-/* .dPrice p{
-	color: #000;
-	font-family: Lato;
-	font-size: small;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-}
-.actions{
-	gap: 1.5rem;
-} */
 .popup {
 	font-size: 13px;
 	font-family: Arial, sans-serif;
@@ -401,9 +69,6 @@ body {
 	background-color: #f44336;
 	color: white;
 }
-
-/* ******************************* */
-
 a{
 	cursor: pointer;
 }
@@ -412,10 +77,7 @@ a{
 .updateproduct-success{
 	width: 271px;
 	height: 40px;
-	/* background-color: white; */
-	/* color: #19b319; */
 	margin-left: 344px;
-	/* border-radius: 5px; */
 }
 #updateproductSuccessMessage{
 	background-color: white;
@@ -431,11 +93,7 @@ a{
 .deleteproduct-success{
 	width: 271px;
 	height: 40px;
-	/* background-color: white; */
-	/* color: #19b319; */
 	margin-left: 344px;
-	
-	/* border-radius: 5px; */
 }
 #deleteproductSuccessMessage{
 	background-color: white;
@@ -451,11 +109,7 @@ a{
 .recoverproduct-success{
 	width: 291px;
 	height: 40px;
-	/* background-color: white; */
-	/* color: #19b319; */
 	margin-left: 344px;
-	
-	/* border-radius: 5px; */
 }
 #recoverproductSuccessMessage{
 	background-color: white;
@@ -468,11 +122,7 @@ a{
 .deletecategory-success{
 	width: 291px;
 	height: 40px;
-	/* background-color: white; */
-	/* color: #19b319; */
 	margin-left: 344px;
-	
-	/* border-radius: 5px; */
 }
 #deletecategorySuccessMessage{
 	background-color: white;
@@ -485,11 +135,7 @@ a{
 .recovercategory-success{
 	width: 291px;
 	height: 40px;
-	/* background-color: white; */
-	/* color: #19b319; */
 	margin-left: 344px;
-	
-	/* border-radius: 5px; */ 
 }
 #recovercategorySuccessMessage{
 	background-color: white;
@@ -519,27 +165,28 @@ a{
 	margin-left: 40px;
 	margin-top: -60px;
 }
-/* .breadcrumb a{
-	color: black;
-	background-color: #ddd5d5;
-	border-radius: 10px;
-	padding: 1px 5px 1px 5px;
-} */
 .addProductBtn{
+	position: relative;
+	top: 30px;
 	background-color: black;
 	color: white;
 	padding: 3px 5px 3px 5px;
 	border-radius: 10px;
+	margin-left: 40px;
+	
 }
 .addProductBtn:hover{
 	background-color: #1c8c11;
 	color: white;
 	border-color: transparent;
+	
 }
 .goToUnlist{
 	margin-left: 40px;
 }
 .goToUnlistBtn{
+	position: relative;
+	top: 30px;
 	background-color: black;
 	color: white;
 	padding: 3px 5px 3px 5px;
@@ -557,7 +204,7 @@ a{
     padding: 5px;
     background-color: white; 
     color: #333; 
-	margin-left: 40px;
+	margin-left: 20px;
 	margin-bottom: 10px;
 	margin-top: 20px;
 }
@@ -565,6 +212,7 @@ a{
 	position: relative;
 	left: -43px;
 	top: 28px;
+	margin-right: -19px;
 }
 .dataTables_filter input{
 	width: 270px;
@@ -614,7 +262,7 @@ a{
 	padding: 5px 10px;
 }
 .dataTables_info{
-	margin-left: 40px;
+	margin-left: 20px;
 }
 .dataTables_paginate{
 	position: relative;
@@ -632,11 +280,10 @@ a{
 .admin-links:hover,
 .admin-links:active,
 .admin-links:focus {
-    color: #050505;
+    color: blue;
     font-weight: 500;
 }
 .active {
-    background-color: #e0dce1; 
     border-radius: 20px;
     padding-left: 5px;
     width: 170px;

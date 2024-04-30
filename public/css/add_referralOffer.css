@@ -124,7 +124,7 @@
     font-weight: 500;
 }
 .active {
-    background-color: #e0dce1; 
+    /* background-color: #e0dce1;  */
     border-radius: 20px;
     padding-left: 5px;
     width: 207px;

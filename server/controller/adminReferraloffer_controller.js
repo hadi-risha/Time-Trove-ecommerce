@@ -47,7 +47,7 @@ const addReferralOffer = {
         const result = await newReferralOffer.save();
         if(result){
             req.session.referralOfferAdded = true
-            res.redirect('/add-referralOffer');
+            res.redirect('/referralOffer-management');
         }
         
       }catch(error) {

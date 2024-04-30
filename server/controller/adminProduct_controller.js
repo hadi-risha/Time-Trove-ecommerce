@@ -4,6 +4,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 const ProductOfferDB = require("../model/offer-ProductModel");
+const categoryOfferDB = require("../model/offer-CategoryModel");
 
 
 
@@ -156,6 +157,18 @@ const addproduct = {
         // end of image crop
 
 
+        // check the category offer exist
+        let categoryOffDisc = null;
+        let categoryOffExp = null;
+
+        let categoryOfferExist = await categoryOfferDB.findOne({ category: category });
+        
+        if(categoryOfferExist){
+            categoryOffDisc = categoryOfferExist.discount;
+            categoryOffExp = categoryOfferExist.expDate;
+        }
+
+
         productDB.findOne({ $and: [{ productName: pName }, { category: category }] })
         .then( async existingProduct => {
             if(existingProduct){
@@ -175,7 +188,9 @@ const addproduct = {
                         lastPrice: trimmedLPrice,
                         discount: trimmedDiscount,
                         quantity: trimmedQuantity,
-                        images: imgArray
+                        images: imgArray,
+                        categoryofferDiscount : categoryOffDisc,
+                        categoryofferExpDate : categoryOffExp
                 });
 
                 try{
@@ -212,11 +227,13 @@ const updateProduct = {
         console.log("img inpfield",req.body.images);
         console.log("imgs....",files);
         const {pName, category, pDescription, fPrice, lPrice, discount, quantity} = req.body;
+        console.log("..............vallll.",pName, category, pDescription, fPrice, lPrice, discount, quantity)
+
 
         const trimmedPName = pName.trim();
         const trimmedPDescription = pDescription.trim();
         const trimmedFPrice = fPrice.trim();
-        const trimmedLPrice = lPrice.trim();
+        const trimmedLPrice = lPrice ? lPrice.trim() : lPrice;
         const trimmedDiscount = discount.trim();
         const trimmedQuantity = quantity.trim();
 
@@ -260,21 +277,21 @@ const updateProduct = {
             return;
         }
 
-        //validate lprice
-        if (!/^(?:\d*\.)?\d+$/.test(trimmedLPrice)) {
-            console.log('Please provide non-negative values for lPrice.');
-            req.session.negativeLastPrice = true;
-            res.redirect(`/update-product?productId=${productId}`);
-            return;
-        }
+        // //validate lprice
+        // if (!/^(?:\d*\.)?\d+$/.test(trimmedLPrice)) {
+        //     console.log('Please provide non-negative values for lPrice.');
+        //     req.session.negativeLastPrice = true;
+        //     res.redirect(`/update-product?productId=${productId}`);
+        //     return;
+        // }
 
-        // validate lPrice
-        if (!/\d{2,}/.test(trimmedLPrice)) {
-            req.session.invalidLastPrice = true;
-            console.log('Price should contain at least 2 numbers');
-            res.redirect(`/update-product?productId=${productId}`);
-            return;
-        }
+        // // validate lPrice
+        // if (!/\d{2,}/.test(trimmedLPrice)) {
+        //     req.session.invalidLastPrice = true;
+        //     console.log('Price should contain at least 2 numbers');
+        //     res.redirect(`/update-product?productId=${productId}`);
+        //     return;
+        // }
 
         //validate discount
         if (!/^(?:\d*\.)?\d+$/.test(trimmedDiscount)) {

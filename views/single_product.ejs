@@ -212,8 +212,9 @@
                         <div class="allPrices-ExtraOffContainer">
 
                             <!-- both offer exist case -->
-                            <% if(categoryOfferExist && allProductDetails?.productofferDiscount){ %>
-                                <% let finalizeDiscount = allProductDetails.productofferDiscount > categoryOfferExist.discount ? allProductDetails.productofferDiscount : categoryOfferExist.discount %>
+                            <%# if(categoryOfferExist && allProductDetails?.productofferDiscount){ %>
+                            <% if(allProductDetails?.categoryofferDiscount && allProductDetails?.productofferDiscount){ %>
+                                <% let finalizeDiscount = allProductDetails.productofferDiscount > allProductDetails.categoryofferDiscount ? allProductDetails.productofferDiscount : categoryOfferExist.discount %>
 
                                 <% let totalDisc = allProductDetails.discount + finalizeDiscount %>
                                 <% let disc = (allProductDetails.firstPrice * totalDisc)/100 %>
@@ -246,9 +247,9 @@
                                 </script>
 
                             <!-- only category-offer exist case -->
-                            <% } else if(categoryOfferExist) { %>
+                            <% } else if(allProductDetails?.categoryofferDiscount) { %>
 
-                                <% let totalDisc = allProductDetails.discount + categoryOfferExist.discount %>
+                                <% let totalDisc = allProductDetails.discount + allProductDetails.categoryofferDiscount %>
                                 <% let disc = (allProductDetails.firstPrice * totalDisc)/100 %>
                                 <% let finalAmount = allProductDetails.firstPrice - disc %>
                                 <% finalAmount = Math.trunc(finalAmount); %>
@@ -256,7 +257,7 @@
                                 <p class="all-prices">
                                     <span class="last-price">Rs. <%= finalAmount %></span>
                                     <span class="first-price">Rs. <%= allProductDetails.firstPrice %></span>
-                                    <span class="offer-text">(<%= allProductDetails.discount + categoryOfferExist.discount %>% OFF)</span>
+                                    <span class="offer-text">(<%= allProductDetails.discount + allProductDetails.categoryofferDiscount %>% OFF)</span>
                                 </p>
                                 <script>
                                     console.log('in cat offer case');

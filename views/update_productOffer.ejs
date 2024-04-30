@@ -2,144 +2,268 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product Offer</title>
-    <!-- css -->
-    <link rel="stylesheet" href="/css/admin_dashboard.css">
-    <link rel="stylesheet" href="/css/product_management.css">
-    <link rel="stylesheet" href="/css/add_productOffer.css">
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>TT admin - Update product Offer  </title>
+      <!-- Meta -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="description" content="CodedThemes">
+      <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+      <meta name="author" content="CodedThemes">
+
+      <!-- Required Fremwork -->
+      <link rel="stylesheet" type="text/css" href="/css/bootstrap/css/bootstrap.min.css">
+
+      <!-- Style.css -->
+      <link rel="stylesheet" type="text/css" href="/css/style.css">
+      <link rel="stylesheet" type="text/css" href="/css/adminStyel.css">
+      <link rel="stylesheet" type="text/css" href="/css/add_productOffer.css">
+      <link rel="stylesheet" href="../css/product_management.css">
+
+      <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+      <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.css">
+
     <!-- Bootstrap css cdn link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- end of Bootstrap css cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"crossorigin="anonymous"/>
+      
+    <!-- cropper cdn css link -->
+    <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
 
-    <!-- Boxicons -->
-    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
+    <!-- sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+     
+
+  </head>
+
+  <body>
     
-</head>
-
-<body>
-
     
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
 
-    <!-- main section -->
-    <main class="main-container" style="min-height: 77vh;">
-        <div class="container-fluid">
-            <div class="row p-0">
-                <div class="col-12 m-0 d-flex p-0">
-                    <div class="container-box">  
+            <nav style="padding-top: 1px;" class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
 
-                    <!-- admin dashboard section -->
-                        <p class="constant-txt">Admin Time Trove</p>
-                        <div class="management-txt">
-                            <ul>
-                                <li><a href="/adminHome">Dashboard</a></li>
-                                <li><a href="/user-management">User Management</a></li>
-                                <li><a href="/adminProductManagement">Product Management</a></li>
-                                <li><a href="/add-category" class="admin-links">Category Management</a></li>
-                                <li><a href="/order-management">Order Management</a></li>
-                                <li><a href="/add-coupon" class="admin-links">Coupon Management</a></li>
-                                <li><a href="/add-ProductOffer" class="admin-links">Offer Management</a></li>
-                                <li><a href="/referralOffer-management" class="admin-links">Referral Offer Management</a></li>
-                            </ul>
-                            <!-- <div class="log-div" style=" display:flex; justify-content: end;"> -->
-                                <form action="/ad-logout" method="post"><button class="logout-btn">
-                                    <svg class="logout-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M29.8118 24.632H27.1455C26.9635 24.632 26.7928 24.7116 26.679 24.8518C26.4135 25.1739 26.1291 25.4846 25.8294 25.7802C24.604 27.0059 23.1524 27.9826 21.555 28.6565C19.9001 29.3549 18.1213 29.7132 16.3248 29.71C14.5081 29.71 12.7483 29.3537 11.0946 28.6565C9.49723 27.9826 8.04566 27.0059 6.8202 25.7802C5.59255 24.5587 4.61365 23.1109 3.93771 21.517C3.23606 19.8648 2.88333 18.1102 2.88333 16.295C2.88333 14.4798 3.23985 12.7253 3.93771 11.0731C4.61282 9.47767 5.58377 8.04144 6.8202 6.80984C8.05664 5.57824 9.49409 4.60812 11.0946 3.93359C12.7483 3.23631 14.5081 2.8801 16.3248 2.8801C18.1416 2.8801 19.9014 3.23252 21.555 3.93359C23.1556 4.60812 24.593 5.57824 25.8294 6.80984C26.1291 7.10921 26.4097 7.41995 26.679 7.73827C26.7928 7.87849 26.9673 7.95807 27.1455 7.95807H29.8118C30.0508 7.95807 30.1987 7.6928 30.0659 7.49195C27.1569 2.97484 22.067 -0.0151007 16.2831 5.73684e-05C7.19568 0.0227945 -0.0901822 7.39343 0.000843713 16.4618C0.0918696 25.3861 7.36636 32.59 16.3248 32.59C22.0936 32.59 27.1607 29.6039 30.0659 25.0981C30.1949 24.8973 30.0508 24.632 29.8118 24.632ZM33.1836 16.0563L27.8017 11.812C27.6007 11.6529 27.3086 11.7969 27.3086 12.0508V14.9308H15.3994C15.2325 14.9308 15.096 15.0672 15.096 15.234V17.3561C15.096 17.5228 15.2325 17.6593 15.3994 17.6593H27.3086V20.5393C27.3086 20.7932 27.6045 20.9372 27.8017 20.778L33.1836 16.5338C33.2198 16.5054 33.2492 16.4692 33.2693 16.4278C33.2895 16.3864 33.3 16.341 33.3 16.295C33.3 16.249 33.2895 16.2036 33.2693 16.1622C33.2492 16.1209 33.2198 16.0846 33.1836 16.0563Z" fill="white"/>
-                                        </svg>
-                                        
-                                    Logout</button></form>
-                            <!-- </div> -->
+                    <div class="navbar-logo">
+                        <a style="text-decoration: none;" class="mobile-menu"  href="#!">
+                            Time Trove
+                        </a>
+
+                        <!-- tt logo -->
+                        <div class="">
+                            <a href="">
+                                <svg class="logo" width="115" height="115" viewBox="0 0 115 115" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M31 90.44C26.7867 90.44 23.8267 89.1867 22.12 86.68C21.5333 85.88 21.24 84.84 21.24 83.56C21.24 82.12 21.6933 80.8667 22.6 79.8C23.6667 78.5733 25 77.96 26.6 77.96C27.6667 77.96 28.52 78.3333 29.16 79.08C29.7467 79.6667 30.04 80.4667 30.04 81.48C30.04 82.76 29.5867 83.8 28.68 84.6C27.7733 85.3467 26.8133 85.72 25.8 85.72C24.8933 85.72 24.0667 85.4 23.32 84.76C24.2267 86.7867 25.8533 87.8 28.2 87.8C33.6933 87.8 38.84 84.2267 43.64 77.08C44.8667 75.32 46.0667 73.48 47.24 71.56C48.4133 69.5867 49.5867 67.5333 50.76 65.4C51.8267 63.3733 52.8933 61.3467 53.96 59.32C55.0267 57.2933 56.0933 55.2667 57.16 53.24C61.5333 44.9733 66.36 40.0667 71.64 38.52C69.6133 38.2533 67.5867 37.96 65.56 37.64C63.5867 37.32 61.5867 37 59.56 36.68C57.16 36.3067 54.9467 36.04 52.92 35.88C50.9467 35.72 49.1867 35.64 47.64 35.64C41.3467 35.64 36.2533 36.9467 32.36 39.56C30.12 41.0533 28.3333 42.8667 27 45C25.6133 47.1867 24.92 49.2933 24.92 51.32C24.92 56.0133 28.0667 58.36 34.36 58.36C36.4933 58.36 38.6267 57.96 40.76 57.16C42.8933 56.3067 45.08 55.1067 47.32 53.56C49.1867 52.1733 50.92 50.6267 52.52 48.92C54.12 47.16 55.5333 45.2133 56.76 43.08C57.0267 42.6533 57.3733 42.44 57.8 42.44C58.44 42.44 58.6267 42.68 58.36 43.16C57.2933 45.6133 55.9867 47.8533 54.44 49.88C52.8933 51.8533 51.08 53.6133 49 55.16C44.7333 58.2533 40.0133 59.8 34.84 59.8C32.5467 59.8 30.4933 59.5067 28.68 58.92C26.8667 58.28 25.3467 57.32 24.12 56.04C22.0933 53.9067 21.08 51.3467 21.08 48.36C21.08 45.7467 21.88 43.2133 23.48 40.76C25.08 38.2533 27.3467 36.2533 30.28 34.76C35.08 32.4133 40.3867 31.24 46.2 31.24C48.28 31.24 50.7867 31.4267 53.72 31.8C56.6533 32.1733 60.0133 32.7333 63.8 33.48C68.8667 34.4933 73.0267 35.24 76.28 35.72C79.5333 36.2 81.88 36.44 83.32 36.44C86.4667 36.44 89 35.88 90.92 34.76C91.24 34.6 91.5067 34.52 91.72 34.52C92.04 34.52 92.2 34.7333 92.2 35.16C92.2 35.5333 91.9867 35.8533 91.56 36.12C88.04 38.52 83.5867 39.56 78.2 39.24L75.64 39C70.52 39.5867 66.28 44.0133 62.92 52.28C58.44 63.2133 55.7733 69.5067 54.92 71.16C51.3467 78.0933 47.1067 83.32 42.2 86.84C38.84 89.24 35.1067 90.44 31 90.44ZM76.2094 87C72.7427 87 71.0094 85.1067 71.0094 81.32C71.0094 80.5733 71.0627 79.8 71.1694 79C71.3294 78.2 71.5694 77.4 71.8894 76.6C74.716 69.1333 77.116 63.0533 79.0894 58.36H73.8894L74.8494 56.6H79.8094L81.7294 51C82.4227 49.0267 83.0094 47.8533 83.4894 47.48C83.8627 47.2133 84.716 47.08 86.0494 47.08L89.4894 47.16C88.4227 48.0667 87.6227 49.16 87.0894 50.44L84.4494 56.6H90.5294L89.5694 58.36H83.7294C83.356 59.2133 82.9827 60.0667 82.6094 60.92C82.2894 61.7733 81.916 62.6533 81.4894 63.56C80.3694 66.0133 79.4094 68.3333 78.6094 70.52C77.6494 73.0267 76.876 75.1867 76.2894 77C75.756 78.8133 75.436 80.2533 75.3294 81.32C75.116 83.9333 75.8094 85.24 77.4094 85.24C78.9027 85.24 80.716 83.64 82.8494 80.44L83.8094 81.56C81.2494 85.1867 78.716 87 76.2094 87Z"
+                                        fill="#FDFFA8" />
+                                    <path
+                                        d="M57.55 114.1C88.7817 114.1 114.1 88.7817 114.1 57.55C114.1 26.3183 88.7817 1 57.55 1C26.3183 1 1 26.3183 1 57.55C1 88.7817 26.3183 114.1 57.55 114.1Z"
+                                        stroke="#F1F5D9" stroke-width="1.38095" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
                         </div>
-                        
-                        <!-- here -->
-                        <section id="content">
+                        <!-- tt logo -->
+                    </div>
 
-                            <!-- MAIN -->
-                        <div class="dashboard-containerbox"> 
-                            <main>
+                    <div class="d-flex gap-3">
+                        <p class="manageHeading">Update Product Offer</p>
+                        <a href="/offer-management" style="text-decoration: none;">
+                            
+                            <p class="addProductBtn"><i style="padding: 2px;" class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                Back To Offer Management</p>
+                        </a>
+                            
+                    </div>
+                </div>
+            </nav>
 
-                                <!-- coupon added success msg -->
-                                <!-- <div class="deletecategory-success">
-                                    <%# if (couponAddedSuccess && !messageDisplayed) { %>
-                                        <div class="deletecategory-successBox" id="success-box">  
-                                            <p id="deletecategorySuccessMessage">Coupon Added Successfully!</p>
-                                        </div>
-                                    <%# } %>
-                                </div> -->
-                                <!-- end of coupon added success msg -->
+            
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
 
+                    <!-- left side links -->
+                    <nav class="pcoded-navbar">
+                        <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                        <div style="margin-left: -270px;" class="leftSideBox pcoded-inner-navbar main-menu">
+                            <div class="">
 
-
-                        
-                                <div class="head-title">
-                                  <div class="left">
-                                    <h1>Update Product Offer</h1>
-                                    
-                                  </div>
+                                <div class="main-menu-header">
+                                    <div class="user-details">
+                                        <span>Time Trove</span>
+                                        <span id="more-details">Admin<i class="ti-angle-down"></i></span>
+                                    </div>
                                 </div>
-                        
-                                <div class="manageOptions">
-                                  <a href="/offer-management">
-                                    <button>Back To Offer Management</button>
+
+                            </div>
+                            
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation"></div>
+
+                            <ul class="pcoded-item pcoded-left-item">
+
+                                <li style="margin-top: 30px;" class="listTag active">
+                                    <a href="/adminHome">
+                                        <!-- <div style="padding: 30px;"> -->
+                                            <span class="pcoded-micon"><i class="fa fa-home" aria-hidden="true"></i></i><b></b></span>
+                                            <span style="font-weight: lighter;" class="pcoded-mtext" data-i18n="nav.form-components.main">Dashboard</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        <!-- </div> -->
                                     </a>
-                                </div>
+                                </li>
+                                <li style="margin-top: 30px;" class="listTag pcoded-hasmenu">
+                                    <a href="/user-management">
+                                        <span class="pcoded-micon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">User Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li style="margin-top: 30px;" class="listTag">
+                                    <a href="/adminProductManagement">
+                                        <span style="background-color: #4680ff;" class="pcoded-micon"><i class="fa fa-th" aria-hidden="true"></i><b></b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Product Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li style="    margin-top: 30px;" class="listTag">
+                                    <a href="/category-management">
+                                        <span style="background-color: #FC6180;" class="pcoded-micon"><i class="fa fa-female" aria-hidden="true"></i><b></b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Category Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li style="margin-top: 30px;" class="listTag">
+                                    <a href="/order-management">
+                                        <span style="background-color: #4680ff;" class="pcoded-micon"><i class="fa fa-truck" aria-hidden="true"></i><b></b></span>
+                                        <span   class="pcoded-mtext" data-i18n="nav.form-components.main">Order Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li style="margin-top: 30px;" class="listTag">
+                                    <a href="/coupon-management">
+                                        <span style="background-color: #FC6180;" class="pcoded-micon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i><b></b></span>
+                                        <span  class="pcoded-mtext" data-i18n="nav.form-components.main">Coupon Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li style="margin-top: 30px;" class="listTag pcoded-hasmenu">
+                                    <a href="/offer-management">
+                                        <span style="background-color: #4680ff;" class="pcoded-micon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i><b></b></span>
+                                        <span style="font-weight: bold;" class="pcoded-mtext"  data-i18n="nav.basic-components.main">Upddate product Offer</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li style="margin-top: 30px; margin-bottom: 30px;" class="listTag pcoded-hasmenu ">
+                                    <a href="/referralOffer-management">
+                                        <span style="background-color: #FC6180;" class="pcoded-micon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i><b></b></span>
+                                        <span   class="pcoded-mtext" data-i18n="nav.menu-levels.main">Referrral Offer Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other"></div>
+                            <form action="/ad-logout" method="post"><button class="logout-btn">
+                                <svg class="logout-svg" width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M29.8118 24.632H27.1455C26.9635 24.632 26.7928 24.7116 26.679 24.8518C26.4135 25.1739 26.1291 25.4846 25.8294 25.7802C24.604 27.0059 23.1524 27.9826 21.555 28.6565C19.9001 29.3549 18.1213 29.7132 16.3248 29.71C14.5081 29.71 12.7483 29.3537 11.0946 28.6565C9.49723 27.9826 8.04566 27.0059 6.8202 25.7802C5.59255 24.5587 4.61365 23.1109 3.93771 21.517C3.23606 19.8648 2.88333 18.1102 2.88333 16.295C2.88333 14.4798 3.23985 12.7253 3.93771 11.0731C4.61282 9.47767 5.58377 8.04144 6.8202 6.80984C8.05664 5.57824 9.49409 4.60812 11.0946 3.93359C12.7483 3.23631 14.5081 2.8801 16.3248 2.8801C18.1416 2.8801 19.9014 3.23252 21.555 3.93359C23.1556 4.60812 24.593 5.57824 25.8294 6.80984C26.1291 7.10921 26.4097 7.41995 26.679 7.73827C26.7928 7.87849 26.9673 7.95807 27.1455 7.95807H29.8118C30.0508 7.95807 30.1987 7.6928 30.0659 7.49195C27.1569 2.97484 22.067 -0.0151007 16.2831 5.73684e-05C7.19568 0.0227945 -0.0901822 7.39343 0.000843713 16.4618C0.0918696 25.3861 7.36636 32.59 16.3248 32.59C22.0936 32.59 27.1607 29.6039 30.0659 25.0981C30.1949 24.8973 30.0508 24.632 29.8118 24.632ZM33.1836 16.0563L27.8017 11.812C27.6007 11.6529 27.3086 11.7969 27.3086 12.0508V14.9308H15.3994C15.2325 14.9308 15.096 15.0672 15.096 15.234V17.3561C15.096 17.5228 15.2325 17.6593 15.3994 17.6593H27.3086V20.5393C27.3086 20.7932 27.6045 20.9372 27.8017 20.778L33.1836 16.5338C33.2198 16.5054 33.2492 16.4692 33.2693 16.4278C33.2895 16.3864 33.3 16.341 33.3 16.295C33.3 16.249 33.2895 16.2036 33.2693 16.1622C33.2492 16.1209 33.2198 16.0846 33.1836 16.0563Z" fill="white"/>
+                                </svg>
+                                Logout</button>
+                            </form>
+                        </div>
+                    </nav>
+                    <!-- /left side links -->
 
 
-                            <form id="updateProductOfferForm" >
-                                <div id="couponContainerBox" class="sub-boxx">
-                                    <p class="cat-mainhead">Update Product Offer</p>
-                                    
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
 
-                                    <label for="coupnCode" class="label-txt">Product</label>
-                                    <input id="coupnCode" type="text" class="cat-inputbox" name="product" value="<%= allProductOfferDetails.product %>">
-                                    <p id="cpncode" style="color: red; margin-top: 5px; font-size: 12px;margin-left: 40px;"></p>
+                                    <div class="page-body">
+                                    <div style="margin-left: 274px;" >
+                                        <div class="row">
 
-                                    <div class="d-flex gap-3">
-                                        <div style="display: block;">
-                                            <label for="discount" class="label-txt">Discount</label>
-                                            <input id="discount" type="number" class="discount cat-inputbox" name="discount" value="<%= allProductOfferDetails.discount %>">
+                                            <form id="updateProductOfferForm" >
+                                                <div id="couponContainerBox" class="sub-boxx">
+                                                    <p class="cat-mainhead">Update Product Offer</p>
+                                                    
+                
+                                                    <label for="coupnCode" class="label-txt">Product</label>
+                                                    <input id="coupnCode" type="text" class="cat-inputbox" name="product" value="<%= allProductOfferDetails.product %>">
+                                                    <% if(invalidProductName){ %>
+                                                        <p style="color: red; margin-top: 5px; font-size: 12px;margin-left: 40px;">product name should contain at least 2+ letters</p>
+                                                    <% } %>
+                                                    <p id="cpncode" style="color: red; margin-top: 5px; font-size: 12px;margin-left: 40px;"></p>
+                
+                                                    <div class="d-flex gap-3">
+                                                        <div style="display: block;">
+                                                            <label for="discount" class="label-txt">Discount</label>
+                                                            <input id="discount" type="number" class="discount cat-inputbox" name="discount" value="<%= allProductOfferDetails.discount %>">
+                                                        </div>
+                                                        
+                                                        <div>
+                                                            <label for="exp" class="useAbovelabel-txt">Coupon Expiry</label>
+                                                            <% const dateObject = new Date(allProductOfferDetails.expDate); %>
+                                                            <% 
+                                                                //format to YYYY-MM-DD
+                                                                const year = dateObject.getFullYear();
+                                                                const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); //months are 0 indxd, so add 1
+                                                                const day = dateObject.getDate().toString().padStart(2, '0');
+                                                                const formattedDate = `${year}-${month}-${day}`;
+                                                            %>
+                                                            <input id="exp" type="date" class="useAbove cat-inputbox" name="expDate" value="<%= formattedDate %>">
+                                                        </div>
+                
+                
+                                                    </div>
+                                                    <% if(negativeOfferDiscount){ %>
+                                                        <p style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;">Please provide non-negative value.</p>
+                                                    <% } %>
+                                                    <% if(notValidDiscount){ %>
+                                                        <p style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;">Discount percentage should be between 1 and 99.</p>
+                                                    <% } %>
+                                                    <% if(invalidPercentage){ %>
+                                                        <p style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;">Discount percentage cannot exceed 100.</p>
+                                                    <% } %>
+                                                    <% if(invalidDiscount){ %>
+                                                        <p style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;">Discount should contain at least 1 number</p>
+                                                    <% } %>
+
+                                                    <p id="discountoff" style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;"></p>
+                                                    <p id="expdate" style="color: red;  margin-left: 18.6vw; font-size: 12px;margin-top: -9px;"></p>
+                                                    
+                
+                                                    <p id="category" style="color: red;font-size: 12px; margin-left: 70px;"></p>
+                                                    <button class="cat-btn">Update Offer</button>
+                                                    <input hidden   type="text" name="id" value="<%= allProductOfferDetails._id %>">
+                
+                                                </div>
+                                            </form>
                                         </div>
-                                        
-                                        <div>
-                                            <label for="exp" class="useAbovelabel-txt">Coupon Expiry</label>
-                                            <% const dateObject = new Date(allProductOfferDetails.expDate); %>
-                                            <% 
-                                                //format to YYYY-MM-DD
-                                                const year = dateObject.getFullYear();
-                                                const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); //months are 0 indxd, so add 1
-                                                const day = dateObject.getDate().toString().padStart(2, '0');
-                                                const formattedDate = `${year}-${month}-${day}`;
-                                            %>
-                                            <input id="exp" type="date" class="useAbove cat-inputbox" name="expDate" value="<%= formattedDate %>">
-                                        </div>
 
+                                           
+                        
+                                        </div>
 
                                     </div>
-                                    <p id="discountoff" style="color: red; margin-top: 5px;font-size: 12px;margin-left: 40px;"></p>
-                                    <p id="expdate" style="color: red;  margin-left: 18.6vw; font-size: 12px;margin-top: -9px;"></p>
-                                    
-
-                                    <p id="category" style="color: red;font-size: 12px; margin-left: 70px;"></p>
-                                    <button class="cat-btn">Update Offer</button>
-                                    <input hidden   type="text" name="id" value="<%= allProductOfferDetails._id %>">
-
+                                    </div>
                                 </div>
-                            </form>
-                            </main>
-                            </div>
-                        </section>
+                                    
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-    <!-- /main section  --> 
+                
+    </div>
+    </div>
 
+    
 
 
     <!-- update productOffer using fetch -->
@@ -332,4 +456,5 @@
     <!--end of Bootstrap script file -->
 
 </body>
+
 </html>

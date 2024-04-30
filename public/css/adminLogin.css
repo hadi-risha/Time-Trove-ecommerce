@@ -1,0 +1,34 @@
+
+.login-box{
+  margin-left: 34vw;
+  margin-top: -80px;
+}
+
+.inputName{
+  width: 404px;
+  height: 33px;
+  margin-top: 12px;
+}
+
+.inputPassword{
+  width: 404px;
+  height: 33px;
+}
+.loginButton{
+  width: 407px;
+  height: 46px;
+  margin-top: 12px;
+  background-color: #07183e ;
+}
+.welcomeTxt{
+  color: white;
+  margin-top: 40px;
+  color: rgb(0, 0, 0);
+}
+.logoImg{
+  margin-left: 374px;
+  margin-top: -20px;
+}
+.login{
+  background: linear-gradient(to bottom right, #d4c787, #b6dcb9, #878181, #a5aa7b);
+}

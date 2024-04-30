@@ -195,9 +195,9 @@ html {
 .addProductBtn{
 	background-color: black;
 	color: white;
-	padding: 3px 5px 3px 5px;
+	height: 29px;
+    font-size: 14px;
 	border-radius: 10px;
-	margin-top: 20px;
 }
 .addProductBtn:hover{
 	background-color: #1c8c11;
@@ -294,13 +294,13 @@ table.dataTable tbody td p {
 }
 .offer-container{
     margin-top: 30px;
-    background-color: #e0dce1;
+    background-color: white;
     width: 74vw;
     height: 100px;
-    margin-left: 30px;
     padding-top: 1px;
     border-radius: 15px;
     cursor: pointer;
+	border: 1px solid rgb(194, 191, 191);
 }
 .headings{
     margin-left: 10px;
@@ -339,7 +339,7 @@ table.dataTable tbody td p {
     font-weight: 500;
 }
 .active {
-    background-color: #e0dce1; 
+    /* background-color: #e0dce1;  */
     border-radius: 20px;
     padding-left: 5px;
     width: 205px;

@@ -9,7 +9,10 @@ const {getAdminLogin,getAdminHome, getuserManagement, getUserSearchResult, getAd
        getAdminUnlistedProduct,getUpdateProduct, getCategoryManagement,getUnlistedCategory,getAddCategory,getEditCategory,
        getOrderManagement, getCouponManagement, getAddCoupon, getUpdateCoupon, getOfferManagement,
        getAddProductOffer, getUpdateProductOffer, getAddCategoryOffer, getUpdateCategoryOffer,
-       getReferralOffer, getAddReferralOffer, getUpdateReferralOffer, getUnlistedCoupon, getUnlistedOffers} = require('../services/admin_render');
+       getReferralOffer, getAddReferralOffer, getUpdateReferralOffer, getUnlistedCoupon, getUnlistedOffers,
+
+       // testing...
+        } = require('../services/admin_render');
 
 const { adminLoginPost, adminLogout, userManagement, blockUnblockUser}=require('../controller/adminController');
 
@@ -39,7 +42,7 @@ router.post("/ad-logout", adminLogout.adminsignout);
 
 
 //admin dashboard
-router.get("/adminHome", isAuthenticate,  getAdminHome.adminHome);
+router.get("/adminHome", isAuthenticate,  getAdminHome.adminHome); 
 
 router.get("/pdf-salesReport", downloadSalesReport.download);          //pdf file
 
@@ -65,11 +68,14 @@ router.get('/adminFilterUsers', isAuthenticate, getUserSearchResult.userManageme
 //Product Management section
 router.get("/add-product", isAuthenticate, getAdminAddProduct.addProduct);
 
+
 router.post('/add-product', isAuthenticate,store.array('images',6), addproduct.addProd);      //images is the img input fieldname and 15 is the limit,the middleware create a file method.
 
 router.get("/adminProductManagement", isAuthenticate,  getProductManagement.productManage );
 
+
 router.get("/adminUnlisted-product", isAuthenticate,  getAdminUnlistedProduct.unlistedProduct);
+
 
 router.get("/update-product", isAuthenticate,  getUpdateProduct.updateProduct); 
 
@@ -89,9 +95,11 @@ router.get("/unlisted-category", isAuthenticate, getUnlistedCategory.unlistedCat
 
 router.get("/add-category", isAuthenticate, getAddCategory.addCategory);
 
+
 router.post("/add-category", isAuthenticate, addCategory.addCat);
 
-router.get("/edit-category/:id", isAuthenticate, getEditCategory.updateCategory);   
+router.get("/edit-category/:id", isAuthenticate, getEditCategory.updateCategory);  
+
 
 router.patch("/edit-category", isAuthenticate, editCategory.updateCategory);
 
@@ -104,7 +112,6 @@ router.patch("/recover-category", isAuthenticate, recoverCategory.recoverCat);
 router.get("/order-management", isAuthenticate, getOrderManagement.orderManagement);   
 
 router.post("/admin-productStatus", isAuthenticate, changeStatus.orderProductstatus);
-
 
 //coupon management section
 router.get("/coupon-management", isAuthenticate, getCouponManagement.couponManage);   
