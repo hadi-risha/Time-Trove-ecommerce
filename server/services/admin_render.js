@@ -15,7 +15,7 @@ const referralOfferDB = require("../model/referralModel")
 const getAdminLogin = {
     adminLogin(req, res) {
         const {invalidCredentials} = req.session;
-        res.render('admin',{ adminPassError:invalidCredentials}, (error,data) =>{
+        res.render('adminLogin',{ adminPassError:invalidCredentials}, (error,data) =>{
             if(error){
                 return res.status(500).send("Internal server error");
             }
@@ -24,6 +24,10 @@ const getAdminLogin = {
         });
     },
 };
+
+
+
+
 
 
 //adminHome - GET
@@ -67,6 +71,8 @@ const getAdminHome = {
 }
 
 
+
+
 //user-management - GET
 const getuserManagement = {
     uManagement: async (req, res) => {
@@ -83,6 +89,8 @@ const getuserManagement = {
         }
     },
 };
+
+
 
 
 //user-management - GET
@@ -186,6 +194,8 @@ const getAdminAddProduct = {
 };
 
 
+
+
 //adminProductManagement - GET   
 const getProductManagement = {
     async productManage (req, res) {
@@ -277,6 +287,8 @@ const getProductManagement = {
 };
 
 
+
+
 //adminUnlisted-product - GET
 const getAdminUnlistedProduct = {
     async unlistedProduct (req, res) {
@@ -310,6 +322,51 @@ const getAdminUnlistedProduct = {
     },
 };
 
+
+//update-product - GET  
+// const getUpdateProduct = {
+//     async updateProduct(req, res) {
+//         try {
+//             const productId = req.query.productId;    
+//             const updateProductDetails = await productDB.findOne({ _id: productId });   
+//                 console.log('details before updation',updateProductDetails);
+            
+//             const allCategories = await categoryDB.find(); 
+
+//             const {imagenotvalid, enterValidProductName,notValidProName,emptypDscrptn,negativeFirstPrice,invalidFirstPrice,
+//                     negativeLastPrice,invalidLastPrice,negativeDiscount,notValidDscnt,notValidPercentage,
+//                     invalidDiscnt, negativeQty, invalidQty} = req.session;
+//             res.render("update_product", { enterValidProductName,notValidProName,emptypDscrptn,negativeFirstPrice,invalidFirstPrice,
+//                                             negativeLastPrice,invalidLastPrice,negativeDiscount,notValidDscnt,notValidPercentage,
+//                                             invalidDiscnt, negativeQty, invalidQty,imagenotvalid : imagenotvalid, updateProductDetails,
+//                                             allCategories },(error,data) =>{
+//                 if(error) {
+//                     console.error('error rendering update_product template:', error);
+//                     return res.status(500).send("Internal server error");
+//                 }
+//                 delete req.session.imagenotvalid
+//                 delete req.session.enterValidProductName;
+//                 delete req.session.notValidProName;
+//                 delete req.session.emptypDscrptn;
+//                 delete req.session.negativeFirstPrice;
+//                 delete req.session.invalidFirstPrice;
+//                 delete req.session.negativeLastPrice;
+//                 delete req.session.invalidLastPrice;
+//                 delete req.session.negativeDiscount;
+//                 delete req.session.notValidDscnt;
+//                 delete req.session.notValidPercentage;
+//                 delete req.session.invalidDiscnt;
+//                 delete req.session.negativeQty;
+//                 delete req.session.invalidQty;
+
+//                 res.send(data);
+//             });
+//         }catch(error) {
+//             console.error('Error fetching details:', error);
+//             res.status(500).send('Internal Server Error');
+//         }
+//     },
+// };
 
 //update-product - GET  
 const getUpdateProduct = {
@@ -438,6 +495,11 @@ const getUnlistedCategory = {
 };
 
 
+
+
+
+
+
 //add-category - GET
 const getAddCategory = {
     addCategory(req, res) {
@@ -467,7 +529,6 @@ const getAddCategory = {
         });
     },
 };
-
 
 //edit-category - GET
 const getEditCategory = {
@@ -529,12 +590,26 @@ const getOrderManagement = {
             }else{
                 console.log('User not found');
             }
+
+
+            
+        //order status updated message
+        let {statusUpdated, successMessageDisplayed} =req.session;
+        let messageDisplayed = successMessageDisplayed;
+            if(statusUpdated && !messageDisplayed) {                       
+                successMessageDisplayed = true;       //create session for displaying sccss msg
+            }else{
+                successMessageDisplayed = false;
+                messageDisplayed = false;
+            }
     
-        res.render('order_management',{ OrderData}, (err,html) =>{
+        res.render('order_management',{ statusUpdated, messageDisplayed, OrderData}, (err,html) =>{
             if(err){
                 console.log(err);
                 return res.send('Render error', err);
             }
+            req.session.successMessageDisplayed = false;
+            delete req.session.statusUpdated
             res.send(html);
         });         
     },
@@ -629,8 +704,11 @@ const getUpdateCoupon = {
             }else{
                 console.log('coupon data not found');
             }
-
-        res.render('update_coupon',{ allCouponDetails,couponAddedSuccess : couponAdded, messageDisplayed},(err, data)=>{
+        const { invalidCpnCode, fieldReq, negativeCouponDiscount, notValidCouponDiscount, invalidCouponPercentage,
+            invalidCouponDiscount, maxFieldReq, negativeUseAboveNum, invalidUseAboveNum, useAbReq, invalidMaxUseNum } = req.session;
+        res.render('update_coupon',{ invalidCpnCode, fieldReq, negativeCouponDiscount, notValidCouponDiscount, invalidCouponPercentage,
+                                      invalidCouponDiscount, maxFieldReq, negativeUseAboveNum, invalidUseAboveNum, useAbReq,
+                                       invalidMaxUseNum,allCouponDetails,couponAddedSuccess : couponAdded, messageDisplayed},(err, data)=>{
             if(err) {
                 console.error('Error rendering update_coupon template:', err);
                 return res.status(500).send("Internal server error");
@@ -638,6 +716,18 @@ const getUpdateCoupon = {
             successMessageDisplayed = false;
             delete req.session.couponAdded;
             delete req.session.couponCodeAlreadyExist;
+            
+            delete req.session.invalidCpnCode;
+            delete req.session.fieldReq;
+            delete req.session.negativeCouponDiscount;
+            delete req.session.notValidCouponDiscount;
+             delete req.session.invalidCouponPercentage;
+            delete req.session.invalidCouponDiscount;
+            delete req.session.maxFieldReq;
+            delete req.session.negativeUseAboveNum;
+            delete req.session.invalidUseAboveNum;
+            delete req.session.useAbReq;
+            delete req.session.invalidMaxUseNum;
 
             res.send(data);
         })
@@ -852,12 +942,18 @@ const getUpdateProductOffer = {
             }else{
                 console.log('product offer data not found');
             }
-        
-        res.render('update_productOffer',{ allProductOfferDetails},(err, data)=>{
+        const { invalidProductName, negativeOfferDiscount, notValidDiscount, invalidPercentage, invalidDiscount } = req.session;
+        res.render('update_productOffer',{ invalidProductName, negativeOfferDiscount, notValidDiscount, 
+                    invalidPercentage, invalidDiscount, allProductOfferDetails},(err, data)=>{
             if(err) {
                 console.error('Error rendering update_productOffer template:', err);
                 return res.status(500).send("Internal server error");
             }
+            delete req.session.invalidProductName;
+            delete req.session.negativeOfferDiscount;
+            delete req.session.notValidDiscount;
+            delete req.session.invalidPercentage;
+            delete req.session.invalidDiscount;
             res.send(data);
         })
     },
@@ -879,25 +975,34 @@ const getAddCategoryOffer = {
                 messageDisplayed = false;
             }
 
-        // category-offer deleted success message 
-        let {categoryOfferDeleted, successMsgDisplayed} =req.session;
+        // category-offer already exist message 
+        let {alreadyOfferExistOnCategory, successMsgDisplayed} =req.session;
         let msgDisplayed = successMsgDisplayed;
-            if(categoryOfferDeleted && !msgDisplayed) {                       
+            if(alreadyOfferExistOnCategory && !msgDisplayed) {                       
                 successMsgDisplayed = true;       
             }else{
                 successMsgDisplayed = false;
                 msgDisplayed = false;
             }
             
-        const {alreadyOfferExistOnCategory} = req.session;
-        res.render('add_categoryOffer',{ alreadyOfferExistOnCategory, allCategories, categoryOfferAdded, messageDisplayed},(err, data)=>{
+        const {  invalidCategoryinOffer, negativeCouponDiscount, notValidCouponDiscount, invalidCouponPercentage, invalidCouponDiscount} = req.session;
+        res.render('add_categoryOffer',{ invalidCategoryinOffer, negativeCouponDiscount, notValidCouponDiscount,
+                                            invalidCouponPercentage, invalidCouponDiscount,alreadyOfferExistOnCategory,
+                                            msgDisplayed, allCategories, categoryOfferAdded, messageDisplayed},(err, data)=>{
             if(err) {
                 console.error('Error rendering add_categoryOffer template:', err);
                 return res.status(500).send("Internal server error");
             }
             successMessageDisplayed = false;
             delete req.session.categoryOfferAdded;
+            req.session.successMsgDisplayed = false;
             delete req.session.alreadyOfferExistOnCategory;
+
+            delete req.session.invalidCategoryinOffer;
+            delete req.session.negativeCouponDiscount;
+            delete req.session.notValidCouponDiscount;
+            delete req.session.invalidCouponPercentage;
+            delete req.session.invalidCouponDiscount;
 
             res.send(data);
         })
@@ -917,13 +1022,18 @@ const getUpdateCategoryOffer = {
                 console.log('category offer data not found');
             }
      
-        const {negativeCouponDiscount} = req.session;
-        res.render('update_categoryOffer',{negativeCouponDiscount, allCategories, singleCategoryOfferDetails},(err, data)=>{
+        const {negativeCouponDiscount, notValidCouponDiscount, invalidCouponPercentage, invalidCouponDiscount} = req.session;
+        res.render('update_categoryOffer',{notValidCouponDiscount, invalidCouponPercentage, invalidCouponDiscount,
+                     negativeCouponDiscount, allCategories, singleCategoryOfferDetails},(err, data)=>{
             if(err) {
                 console.error('Error rendering update_categoryOffer template:', err);
                 return res.status(500).send("Internal server error");
             }
-            delete req.session.negativeCouponDiscount
+            delete req.session.notValidCouponDiscount;
+            delete req.session.invalidCouponPercentage;
+            delete req.session.invalidCouponDiscount;
+
+            delete req.session.negativeCouponDiscount;
 
             res.send(data);
         })
@@ -948,12 +1058,13 @@ const getReferralOffer = {
             console.log(formattedDate); 
         }
         
-        const { referralOfferUpdated, referralOfferDeleted } = req.session;  
-        res.render('referralOffer_Management',{ referralOfferDeleted, referralOfferUpdated,referralDetails, formattedDate },(err, data)=>{
+        const { referralOfferAdded, referralOfferUpdated, referralOfferDeleted } = req.session;  
+        res.render('referralOffer_Management',{ referralOfferAdded, referralOfferDeleted, referralOfferUpdated,referralDetails, formattedDate },(err, data)=>{
             if(err) {
                 console.error('Error rendering referralOffer_Management template:', err);
                 return res.status(500).send("Internal server error");
             }
+            delete req.session.referralOfferAdded; 
             req.session.referralOfferUpdated = null;
             req.session.referralOfferDeleted = null;
 
@@ -1022,5 +1133,8 @@ module.exports = {getAdminLogin, getAdminHome, getuserManagement, getUserSearchR
                     getAdminUnlistedProduct,getUpdateProduct, getCategoryManagement, getUnlistedCategory, getAddCategory,
                     getEditCategory, getOrderManagement, getCouponManagement, getAddCoupon, getUpdateCoupon, getOfferManagement,
                     getAddProductOffer, getUpdateProductOffer, getAddCategoryOffer, getUpdateCategoryOffer, getReferralOffer, 
-                    getAddReferralOffer, getUpdateReferralOffer, getUnlistedCoupon, getUnlistedOffers}
+                    getAddReferralOffer, getUpdateReferralOffer, getUnlistedCoupon, getUnlistedOffers,
+                
+                // testinggg...
+                 }
 

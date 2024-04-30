@@ -1,0 +1,196 @@
+.logo{
+    width: 65px;
+    height: 48px;
+}
+.leftSideBox{
+    background-color: white;
+}
+
+.listTag{
+    padding: 30px;
+}
+
+.downloadBtn{
+    height: 33px;
+    width: 185px;
+    border: none;
+    background-color: blue;
+    color: white;
+    border-radius: 24px;
+    position: relative;
+    top: 17px;
+    left: 24px;
+    font-size: 13px;
+}
+#cloudIcon{
+    margin-right: 10px;
+}
+
+.logout-btn{
+    width: 104px;
+    height: 32px;
+    margin-left: 78px;
+    background-color: #4e73b7;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.logout-svg{
+    width: 16px;
+    height: 16px;
+    margin-left: -5px;
+}
+
+
+#pdfExcelContainer{
+    display: none;
+    background-color: white;
+    width: 79vw;
+    height: 122px;
+    padding: 42px;
+    position: relative;
+    top: -141px;
+    left: .5vw;
+}
+.labels{
+    gap: 30px;
+}
+.exportBtn{
+    margin-left: 15px;
+    color: white;
+    background-color: blue;
+    border: none;
+    height: 28px;
+}
+.cancelBtn{
+    margin-left: 15px;
+    color: white;
+    background-color: rgb(155, 155, 160);
+    border: none;
+    height: 28px;
+}
+.manageHeading{
+    font-size: 19px;
+    font-weight: bold;
+    position: relative;
+    top: 27px;
+    left: 15px;
+}
+.bestProductcontainer{
+    margin-left: 15px;
+    background-color: white;
+    padding: 30px;
+}
+.productNestBox{
+    display: flex;
+    gap: 3px;
+    background-color: #f4f4f4;
+    padding: 10px 0px 0px 0px;
+    width: 74vw;
+    border-radius: 5px;
+    height: 48px;
+}
+.bestProductText{
+    /* background-color: white; */
+    width: 100px;
+    width: 209px;
+    border-radius: 1px;
+    font-size: 17px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: rgb(65, 63, 63);
+}
+#timeIntervalSelect{
+    width: 130px;
+    height: 25px;
+    position: relative;
+    left: 48vw;
+    font-size: 13px;
+    color: gray;
+    border-color: #d2d0d0;
+    border-radius: 20px;
+}
+
+
+
+.bestCategorycontainer{
+    margin-left: 15px;
+    background-color: white;
+    padding: 30px;
+    margin-top: 30px;
+}
+.categoryNestBox{
+    display: flex;
+    gap: 3px;
+    background-color: #f4f4f4;
+    padding: 10px 0px 0px 0px;
+    width: 74vw;
+    border-radius: 5px;
+    height: 48px;
+}
+.bestCategoryText{
+    /* background-color: white; */
+    width: 100px;
+    width: 209px;
+    border-radius: 1px;
+    font-size: 17px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: rgb(65, 63, 63);
+    margin-top: -38px;
+
+}
+#timeIntervalCategory{
+    width: 130px;
+    height: 25px;
+    position: relative;
+    left: 63vw;
+    font-size: 13px;
+    color: gray;
+    border-color: #d2d0d0;
+    border-radius: 20px;
+}
+
+
+
+
+.bestBrandcontainer{
+    margin-left: 15px;
+    background-color: white;
+    padding: 30px;
+    margin-top: 30px;
+}
+.brandNestBox{
+    display: flex;
+    gap: 3px;
+    background-color: #f4f4f4;
+    padding: 10px 0px 0px 0px;
+    width: 74vw;
+    border-radius: 5px;
+    height: 48px;
+}
+.bestBrandText{
+    /* background-color: white; */
+    width: 100px;
+    width: 209px;
+    border-radius: 1px;
+    font-size: 17px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: rgb(65, 63, 63);
+    margin-top: -38px;
+
+}
+#timeIntervalBrand{
+    width: 130px;
+    height: 25px;
+    position: relative;
+    left: 63vw;
+    font-size: 13px;
+    color: gray;
+    border-color: #d2d0d0;
+    border-radius: 20px;
+}

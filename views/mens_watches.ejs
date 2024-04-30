@@ -361,12 +361,16 @@
                                             <div class="price-container d-flex gap-3">
 
                                                 <!-- both offer exist case -->
-                                                <% if(categoryOfferExist && allProductDetails[i]?.productofferDiscount){ %>
-                                                    <% let finalizeDiscount = allProductDetails[i].productofferDiscount > categoryOfferExist.discount ? allProductDetails[i].productofferDiscount : categoryOfferExist.discount %>
+                                                <% if(allProductDetails[i]?.categoryofferDiscount && allProductDetails[i]?.productofferDiscount){ %>
+                                                    
+                                                    <%# let finalizeDiscount = allProductDetails[i].productofferDiscount > categoryOfferExist.discount ? allProductDetails[i].productofferDiscount : categoryOfferExist.discount %>
+                                                    <% let finalizeDiscount = allProductDetails[i].productofferDiscount > allProductDetails[i].categoryofferDiscount ? allProductDetails[i].productofferDiscount : allProductDetails[i].categoryofferDiscount %>
+
 
                                                     <% let totalDisc = allProductDetails[i].discount + finalizeDiscount %>
                                                     <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
                                                     <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+
                                                     <% finalAmount = Math.trunc(finalAmount); %>
 
                                                     <p class="price">Rs. <%= finalAmount %></p>
@@ -382,6 +386,7 @@
                                                     <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>
                                                     <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
                                                     <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+
                                                     <% finalAmount = Math.trunc(finalAmount); %>
 
                                                     <p class="price">Rs. <%= finalAmount %></p>
@@ -392,16 +397,18 @@
                                                     </script>
 
                                                 <!-- only category-offer exist case -->
-                                                <% } else if(categoryOfferExist) { %>
+                                                <%# } else if(categoryOfferExist) { %>
+                                                <% } else if(allProductDetails[i]?.categoryofferDiscount) { %>
 
-                                                    <% let totalDisc = allProductDetails[i].discount + categoryOfferExist.discount %>
+                                                    <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].categoryofferDiscount %>
                                                     <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
                                                     <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+
                                                     <% finalAmount = Math.trunc(finalAmount); %>
 
                                                     <p class="price">Rs. <%= finalAmount %></p>
                                                     <p class="offer-price">Rs. <%= allProductDetails[i].firstPrice %></p>
-                                                    <p class="offer">(<%= allProductDetails[i].discount + categoryOfferExist.discount %>% OFF)</p>
+                                                    <p class="offer">(<%= allProductDetails[i].discount + allProductDetails[i]?.categoryofferDiscount %>% OFF)</p>
                                                     <script>
                                                         console.log('in cat offer case');
                                                     </script>

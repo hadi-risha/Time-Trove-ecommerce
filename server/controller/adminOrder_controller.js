@@ -149,6 +149,7 @@ const changeStatus = {
         //handle status
         const result = await Orderdb.updateOne({ _id: orderId, 'orderItems._id': productId },{ $set: { 'orderItems.$.orderStatus': orderStatus } }, { new: true })
             if(result){
+                req.session.statusUpdated = true;
                 console.log("status updated successfully : ", result);
             }
         // /handle status
@@ -280,6 +281,7 @@ const updateCoupon = {
 
         const discountString = discount.toString();
         if(discountString.trim() <= 0){
+            res.session.fieldReq = true;
             console.log('no values found in discount');
             res.json({success: false, url: `/update-coupon/${id}`})
             return;
@@ -319,11 +321,8 @@ const updateCoupon = {
 
         //validate trimmedUseAbove
         const maxUsesString = useAbove.toString();
-        if(maxUses.trim() <= 0){
-            console.log('no values found in maxUses field');
-            res.json({success: false, url: `/update-coupon/${id}`})
-            return;
-        }
+
+        
 
         if (!/^(?:\d*\.)?\d+$/.test(useAbove)) {
             console.log('Please provide non-negative values for trimmedPUseAbove.');
@@ -343,10 +342,18 @@ const updateCoupon = {
         const useAboveString = useAbove.toString();
         if(useAboveString.trim() <= 0){
             console.log('no values found in UseAvove field');
+            req.session.useAbReq = true;
             res.json({success: false, url: `/update-coupon/${id}`})
             return;
         }
 
+        if(maxUses.trim() <= 0){
+            console.log('no values found in maxUses field');
+            req.session.maxFieldReq = true;
+            res.json({success: false, url: `/update-coupon/${id}`})
+            return;
+        }
+        
         if (!/\d{1,}/.test(maxUses)) {
             req.session.invalidMaxUseNum = true;
             console.log('trimmedMaxUse should contain at least 1 number');
@@ -529,46 +536,39 @@ const updateProductOffer = {
             
             const trimmedProductName = product.trim();
     
-            // Checking if the product already has an offer
-            // const data = await ProductOfferDB.find({ product: trimmedProductName });
-            // if(data.length > 0){
-            //     //a offer already exists
-            //     console.log('The product already has an offer.', data);
-            //     req.session.offerAlreadyExistOnProduct = true;    
-            //     res.redirect('/add-ProductOffer');
-            //     return;
-            // }
     
             if (trimmedProductName.length < 2) {
-                req.session.invalidCpnCode = true;
+                req.session.invalidProductName = true;
                 console.log('product name should contain at least 2 letters');
                 res.json({success: false, url: `/update-productOffer/${id}`})
                 return;
             }
     
+            
             if (!/^(?:\d*\.)?\d+$/.test(discount)) {
                 console.log('Please provide non-negative values for discount.');
-                req.session.negativeCouponDiscount= true;
+                req.session.negativeOfferDiscount= true;
                 res.json({success: false, url: `/update-productOffer/${id}`})
                 return;
             }
             
             if (discount < 1 || discount > 99) {
                 console.log('Discount percentage should be between 1 and 99.');
-                req.session.notValidCouponDiscount = true;
+                req.session.notValidDiscount = true;
                 res.json({success: false, url: `/update-productOffer/${id}`})
                 return;
             }
 
             if (discount > 100) {
                 console.log('Discount percentage cannot exceed 100.');
-                req.session.invalidCouponPercentage = true;
+                req.session.invalidPercentage = true;
                 res.json({success: false, url: `/update-productOffer/${id}`})
                 return;
             }
     
-            if (!/\d{1,}/.test(discount)) {
-                req.session.invalidCouponDiscount = true;
+            const trimmedProductDiscount = discount.trim();
+            if (!/\d{1,}/.test(trimmedProductDiscount || discount )) {
+                req.session.invalidDiscount = true;
                 console.log('discount should contain at least 1 number');
                 res.json({success: false, url: `/update-productOffer/${id}`})
                 return;
@@ -792,8 +792,9 @@ const updateCategoryOffer = {
                 res.json({success: false, url: `/update-categoryOffer/${id}`})
                 return;
             }
-    
-            if (!/\d{1,}/.test(discount)) {
+            
+            const trimmedDisc = discount.trim();
+            if (!/\d{1,}/.test(trimmedDisc)) {
                 req.session.invalidCouponDiscount = true;
                 console.log('discount should contain at least 1 number');
                 res.json({success: false, url: `/update-categoryOffer/${id}`})
