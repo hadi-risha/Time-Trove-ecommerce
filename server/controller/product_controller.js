@@ -732,13 +732,16 @@ const finalpData = {
       const price = req.body.amount || req.body.testingTotalPrice
       const paymType = SelectedPaymentType || 'cod'
 
-      if ((Number(req.body.amount) || Number(req.body.testingTotalPrice)) > 1000 && paymType === 'cod') {
+      console.log( "cod testing....nn",req.body.amount , req.body.testingTotalPrice, paymType)
+      console.log(req.body.CodPrice, req.body.codTotalAmount);
+      if ((Number(req.body.CodPrice) || Number(req.body.amount) || Number(req.body.testingTotalPrice)) > 1000 && paymType === 'cod') {
         console.log("user can't order,cash on delivery only for orders under rs 1000");
         // req.session.codBelowThousand = true;
         req.session.codNotApplicable = true;
         console.log('whats hereeeeeeee', req.session.codNotApplicable);
         return res.status(500).json({ url: "/checkout-paymentMode" })  //pass error parameter
       }
+      
       const result = await shoppingCartDB.find({ _id: { $in: req.body.productId } });
       if (result) {
         const productIds = result.map(item => item.productId);
@@ -778,7 +781,7 @@ const finalpData = {
           email: req.session.userEmail,
           orderItems: orderItems,
           userAddedQty: UserQty[0],
-          finalAmount: req.session.totalPriceAfterCouponDiscount || req.session.payedAmountThoroughWallet || req.body.testingTotalPrice || Math.round(req.body.amount),
+          finalAmount: req.session.totalPriceAfterCouponDiscount || req.body.CodPrice || req.session.payedAmountThoroughWallet || req.body.testingTotalPrice || Math.round(req.body.amount),
           balanceToPay: req.session.remainingBalancetoPay ? req.session.remainingBalancetoPay : 0,
           paymentMethod: SelectedPaymentType || 'cod',
           selectedAddress: [{ pincode, state, address, district, mobile, addressType }],

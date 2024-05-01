@@ -427,6 +427,8 @@
                                             <% }); %>
                                             <!-- <p style="font-weight: 500;" class="tPrice">₹<%#= totalPrice %></p>     -->              <!-- bt in this coupon not included -->
                                         <p style="font-weight: 500;" class="tPrice">₹<%= Math.round(discountAmountInNumber? (totalFirstPrice - totalDiscount) - discountAmountInNumber : (totalFirstPrice - totalDiscount) ) %></p>
+
+
                                     </div>
                                     <!-- /final last price -->
                                 </div>
@@ -463,6 +465,21 @@
 
                                         <input  type="hidden" name="testingTotalPrice" value="<%= Math.round(discountAmountInNumber? (totalFirstPrice - totalDiscount) - discountAmountInNumber : (totalFirstPrice - totalDiscount) ) %>">
                                         <input  type="hidden" name="totalPrice" value="<%= Math.round(discountAmountInNumber? (totalFirstPrice - totalDiscount) - discountAmountInNumber : (totalFirstPrice - totalDiscount) ) %>">
+
+
+                                        
+
+
+                                        <script>
+                                            // Accessing the values using JavaScript
+                                            var testingTotalPrice = document.querySelector('input[name="testingTotalPrice"]').value;
+                                            var totalPrice = document.querySelector('input[name="totalPrice"]').value;
+                                        
+                                            console.log("testingTotalPrice:.................nn", testingTotalPrice);
+                                            console.log("totalPrice:..........nn", totalPrice);
+                                        </script>
+
+
                                         <% for(let i=0; i<cartProductDetails.length; i++) { %>
                                             <% if (cartProductDetails.length !==0 ) { %>
                                                 <input type="hidden" name="productId[]"
@@ -507,6 +524,9 @@
                                                 <% totalPricee += parseFloat(product.pDetails[0].lastPrice)* product.userAddedQuantity; %>
                                             <% }); %>
                                         <input type="text" hidden name="testingTotalPrice" value="<%= (discountAmountInNumber > 0 ? totalPricee - discountAmountInNumber : totalPricee) %>">
+
+                                        <input  type="hidden" name="CodPrice" value="<%= Math.round(discountAmountInNumber? (totalFirstPrice - totalDiscount) - discountAmountInNumber : (totalFirstPrice - totalDiscount) ) %>">
+                                        <input  type="hidden" name="codTotalAmount" value="<%= Math.round(discountAmountInNumber? (totalFirstPrice - totalDiscount) - discountAmountInNumber : (totalFirstPrice - totalDiscount) ) %>">
 
                                         <% for(let i=0; i<cartProductDetails.length; i++) { %>
                                             <% if (cartProductDetails.length !==0 ) { %>

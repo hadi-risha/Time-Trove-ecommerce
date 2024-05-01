@@ -115,12 +115,8 @@
                             <li>
                                 <!-- show cart count -->
                                 <% if(cartCount > 0 && userLoggined){ %>
-                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
-                                            position: absolute; color: white; padding: 2px; left: 88.4vw; top: 37;">
-                                        <p style="    margin-top: -3px;
-                                        margin-bottom: 1rem;
-                                        font-size: 12px;
-                                    "><%= cartCount %></p>
+                                    <div class="cartCountBox">
+                                        <p class="cartCount"><%= cartCount %></p>
                                     </div>
                                 <% }else{ %>
                                     <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
@@ -140,12 +136,8 @@
 
                                 <!-- show wishlist count -->
                                 <% if(wishlistCount > 0 && userLoggined){ %>
-                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
-                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
-                                        <p style="    margin-top: -3px;
-                                        margin-bottom: 1rem;
-                                        font-size: 12px;
-                                    "><%= wishlistCount %></p>
+                                    <div class="wishlistCountBox">
+                                        <p class="wishlistCount"><%= wishlistCount %></p>
                                     </div>
                                 <% }else{ %>
                                     <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
