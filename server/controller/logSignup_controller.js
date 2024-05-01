@@ -19,7 +19,7 @@ const userSignup = {
       const Email = email.trim();       
 
       //hashing password before creating user
-      const {password, confirmPassword, name} = req.body;
+      const {password, confirmPassword, name } = req.body;
 
       const hashedPassword = bcrypt.hashSync(password, 10);        
       
@@ -30,7 +30,6 @@ const userSignup = {
         return
       }
 
-      //name validation
       if (!/^[A-Za-z\s]+$/.test(name)) {        
         req.session.namenotvalid = true;
         res.redirect("/signup");
@@ -47,6 +46,28 @@ const userSignup = {
         }
       
       const {phno, address, city} = req.body;
+
+
+      //************** */
+      const trimmedName = name.trim();
+      const trimmedEmail = email.trim();
+      const trimmedPassword = password.trim();
+      const trimmedConfirmPassword = confirmPassword.trim();
+      if (!/\d{1,}/.test(trimmedPassword)) {
+        console.log("password required"); 
+        req.session.invalidPassword = true;
+        res.redirect("/signup");
+    }else if (!/\d{1,}/.test(trimmedConfirmPassword)) {
+        console.log("confirm password required"); 
+        req.session.invalidConfirmPass = true;
+        res.redirect("/signup");
+    }
+    // else if (!/\d{1,}/.test(trimmedEmail)) {
+    //   console.log("email required"); 
+    //   req.session.invalidEmail = true;
+    //   res.redirect("/signup");
+    // }
+      //************** */
 
       const newUser = new userdbCollection({
               name: name,

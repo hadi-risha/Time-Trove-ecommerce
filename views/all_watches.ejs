@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>waltches</title>
+    <title>All Watches</title>
     <!-- css -->
-    <link rel="stylesheet" href="css/user_login.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/all_watches.css">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -16,9 +16,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- end of Bootstrap css cdn link -->
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 
     <!-- header section -->
     <header class="head-section">
@@ -44,22 +51,117 @@
                                 <a href="#" class="search">
                                     <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
                                 </a>
+                                <div class="search-box" style="display: none;">
+                                    <button type="button" class="search-close"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
+                                    <input id="searchInput" style="color: rgb(0, 0, 0);" type="text" class="search-input" placeholder="Search for products,brands and more">
+                                    <button type="submit" class="search-submit"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                </div>
+                            </li>
+
+                            <!-- container to show search results -->
+                            <div id="searchResults" class="search-results"></div>
+                            <!-- /container to show search results -->
+
+
+                            <li>
+                                <div class="dropdown">
+                                    <a  class="person">
+                                        <span><svg class="person-icon "  xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                        </svg></span>
+                                        <!-- <i class="bi bi-person-fill"></i> -->
+                                    </a>
+
+                                    <!-- Dropdown Content -->
+                                    <% if(userLoggined){ %>
+                                    <div class="dropdown-content" id="dropdownContent">
+                                        <p  class="name-text">Hello <%= userName %></p>
+                                        <div class="dropdown-line1"></div>
+                                        <a href="/user-profile" style="color: black;">Profile</a>
+                                        <a href="/orders" style="color: black;">Orders</a>
+                                        <a href="#" style="color: black;">Wishlist</a>
+                                        <a href="#" style="color: black;">Saved Addresses</a>
+                                        <a href="#" style="color: black;">Edit Profile</a>
+                                        <a href="/forgot-password" style="color: black;">Reset password</a>
+                                        <div class="dropdown-line2"></div>
+                                        <!-- user logout button -->
+                                        <a href="#" style="color: black;">
+                                            <form action="/user-logout" method="post">
+                                                <button class="logOut-btn">Logout</button>
+                                            </form>
+                                        </a>
+                                        <!-- end of user logout button -->
+                                    </div>
+                                <% }else{ %>
+                                    <div class="dropdown-content" id="dropdownContent">
+                                        <p class="name-text">Welcome</p>
+                                        <!-- <p style="font-size: 13px;">To access account and manage orders</p> -->
+                                        <a href="/user-login"><p class="login-signup">LOGIN / SIGNUP</p></a>
+                                        <div class="dropdown-line1"></div>
+                                        <a href="/user-login" style="color: black;">Profile</a>
+                                        <a href="/user-login" style="color: black;">Orders</a>
+                                        <a href="/user-login" style="color: black;">Wishlist</a>
+                                        <a href="/user-login" style="color: black;">Saved Addresses</a>
+                                        <a href="/user-login" style="color: black;">Edit Profile</a>
+                                    </div>
+                                <% } %>
+                                </div>
+
+                                <script>
+                                    // Function to toggle the dropdown content
+                                    function toggleDropdown() {
+                                        var dropdownContent = document.getElementById("dropdownContent");
+                                        dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+                                    }
+                                </script>
                             </li>
                             <li>
-                                <a href="/user-login" class="person">
-                                    <span class="person-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                      </svg></span>
-                                      <!-- <i class="bi bi-person-fill"></i> -->
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="cart">
+                                <!-- show cart count -->
+                                <% if(cartCount > 0 && userLoggined){ %>
+                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 88.4vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= cartCount %></p>
+                                    </div>
+                                <% }else{ %>
+                                    <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 88.4vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= cartCount %></p>
+                                    </div>
+                                <% } %>
+                                
+                                <a href="/shopping-cart" class="cart">
                                     <span class="bag-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" class="wishlist">
+                            <li style="margin-left: 10px;">
+
+                                <!-- show wishlist count -->
+                                <% if(wishlistCount > 0 && userLoggined){ %>
+                                    <div style="background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% }else{ %>
+                                    <div style=" display: none; background-color: rgb(208, 11, 11); width: 14px; height: 16px; border-radius: 20px;
+                                            position: absolute; color: white; padding: 2px; left: 90.7vw; top: 37;">
+                                        <p style="    margin-top: -3px;
+                                        margin-bottom: 1rem;
+                                        font-size: 12px;
+                                    "><%= wishlistCount %></p>
+                                    </div>
+                                <% } %>
+
+
+                                <a href='/wishlist' class="wishlist">
                                     <span class="heart-icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                 </a>
                             </li>
@@ -73,328 +175,292 @@
     </header>
     <!-- /header section -->
 
+
+    <div id="productDetails" data-product-details="<%= JSON.stringify(allProductDetails) %>"></div>
+
+    <div id="product-list">
+        <!-- Products will be dynamically added here(this is used to access  allproducts without using ejs syntax) --> 
+    </div>
+
+
+   
+
     <!-- main section -->
     <main class="main-section" style="min-height: 77vh;">
         <div class="container-fluid">
             <div class="row p-0">
                 <div class="col-12 m-0 d-flex p-0">
                     <div class="container-box">
-                        <!-- heading div -->
-                        <div class="heading-section">
-                            <h1>All Watches</h1>
-                        </div>
-                        <!-- /heading div -->
-
-                        <!-- sort section -->
-                        <div class="sort-section">
-                            <input type="checkbox" id="checkbox" name="checkbox">
-
-                        </div>
-                        <!-- /sort section -->
-
-                        <!-- filter section -->
-                        <div class="filter-section">
-                            <!-- single line -->
-                            <p class="sub-heading">FILTERS</p>
-                            <p class="clear-txt">Clear All</p>
-                            <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
-                                </svg>
-                            <ul>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Men</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Women</label>
-                                </li>
-                            </ul> 
-                            <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
-                                </svg>
-                            <p class="filter-heads">CATEGORIES</p>
-                            <ul>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Watches</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Watch Gift Set</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Smart Watches</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Fitness Bands</label>
-                                </li>
-                            </ul>   
-                            <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
-                                </svg> 
-                            <p class="filter-heads">BRAND</p>
-                            <ul>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Tissot</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Daniel wellington</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Breda</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Fossil</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Titan</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Casio</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Fastrack</label>
-                                </li>
-                            </ul> 
-                            <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
-                                </svg>
-                            <p class="filter-heads">DISCOUNT  RANGE</p>
-                            <ul>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>10% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>20% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>30% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>40% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>50% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>60% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>70% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>80% and above</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>90% and above</label>
-                                </li>
-                            </ul> 
-                            <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
-                                </svg>
-                            <p class="filter-heads">DIAL SHAPE</p>
-                            <ul>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Oval</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Round</label>
-                                </li>
-                                <li class="filter-component">
-                                    <input class="filter-checkbox" type="checkbox">
-                                    <label>Square</label>
-                                </li>
-                            </ul> 
-                        </div>
-                        <!-- /filter section -->
-
-                        <!-- collection section -->
-                        <div class="collection-section">
-                            <!-- <h1>hello there</h1> -->
-                            <div  style="display: flex; flex-wrap: wrap;" class="each-box" >
-                            <% for(let i=0; i<allProductDetails.length; i++) { %>
-                                <% if (allProductDetails[i].unlisted == false) { %>
-
-                                <a href="/single-product/<%= allProductDetails[i]._id %>" style="text-decoration: none;">
-                                    <div class="collection-box" >
-                                    <!-- <img  class="collection-img" src="img/img18.png" alt=""> -->
-                                    <img class="collection-img" src="<%= allProductDetails[i].images[0] %>" alt="<%= allProductDetails[i].filename %>">
-                                    <p class="brand-name"><%= allProductDetails[i].productName %></p>
-                                    <p class="caption"><%= allProductDetails[i].productDescription %></p>
-                                    <p class="price">Rs. <%= allProductDetails[i].firstPrice %></p>
-                                    <p class="offer-price">Rs. <%= allProductDetails[i].lastPrice %></p>
-                                    <svg class="line2" width="215" height="29" viewBox="0 0 215 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_56_411)">
-                                        <path d="M170.208 14.5L44.7915 14.5" stroke="#DDDDDD" stroke-width="2.41667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_56_411">
-                                        <rect width="29" height="215" fill="white" transform="matrix(0 -1 1 0 0 29)"/>
-                                        </clipPath>
-                                        </defs>
-                                        </svg>
-                                    <p class="offer">(<%= allProductDetails[i].discount %>% OFF)</p>
-                                    </div>
-                                </a>
-                                <% } %>
-                            <% } %>
+                        
+                        <div class="d-flex gap-6">
+                            <!-- ***************hamburger**************** -->
+                            <div class="navbar">
+                                <div class="hamburger"  onclick="toggleMenu()">
+                                <div class="line" style="height: 2px;"></div>
+                                <div class="line" style="height: 2px;"></div>
+                                <div class="line" style="height: 1.5px;"></div>
+                                </div>
                             </div>
+                            <!-- ***************/hamburger**************** -->
 
-                            <!-- <div  style="display: flex;" >
-                                <a href="/single-product" style="text-decoration: none;"><div class="collection-box" >
-                                    <img class="collection-img" src="img/img18.png" alt="">
-                                    <p class="brand-name">Casio</p>
-                                    <p class="caption">Women Vintage LA680WEL-8</p>
-                                    <p class="price">Rs. 3,597</p>
-                                    <p class="offer-price">Rs. 5,997</p>
-                                    <svg class="line2" width="215" height="29" viewBox="0 0 215 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_56_411)">
-                                        <path d="M170.208 14.5L44.7915 14.5" stroke="#DDDDDD" stroke-width="2.41667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_56_411">
-                                        <rect width="29" height="215" fill="white" transform="matrix(0 -1 1 0 0 29)"/>
-                                        </clipPath>
-                                        </defs>
-                                        </svg>
-                                    <p class="offer">(40% OFF)</p>
-                                </div></a>
-                                <a href="/single-product" style="text-decoration: none;"><div class="collection-box">
-                                    <img class="collection-img" src="img/img19.png" alt="">
-                                    <p class="brand-name">Breda</p>
-                                    <p class="caption">Women Jane (Tethered) Gold/Champagne</p>
-                                    <p class="price">Rs. 22,749</p>
-                                    <p class="offer-price">Rs. 32,750</p>
-                                    <svg class="line2" width="215" height="29" viewBox="0 0 215 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_56_411)">
-                                        <path d="M170.208 14.5L44.7915 14.5" stroke="#DDDDDD" stroke-width="2.41667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_56_411">
-                                        <rect width="29" height="215" fill="white" transform="matrix(0 -1 1 0 0 29)"/>
-                                        </clipPath>
-                                        </defs>
-                                        </svg>
-                                    <p class="offer">(30% OFF)</p>
-                                </div></a>
-                                <a href="/single-product" style="text-decoration: none;"><div class="collection-box">
-                                    <img class="collection-img" src="img/img20.png" alt="">
-                                    <p class="brand-name">Titan</p>
-                                    <p class="caption">Men Light Leathers Silver Dial Strap Watch</p>
-                                    <p class="price">Rs. 22,749</p>
-                                    <p class="offer-price">Rs. 32,750</p>
-                                    <svg class="line2" width="215" height="29" viewBox="0 0 215 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_56_411)">
-                                        <path d="M170.208 14.5L44.7915 14.5" stroke="#DDDDDD" stroke-width="2.41667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_56_411">
-                                        <rect width="29" height="215" fill="white" transform="matrix(0 -1 1 0 0 29)"/>
-                                        </clipPath>
-                                        </defs>
-                                        </svg>
-                                    <p class="offer">(30% OFF)</p>
-                                </div></a>
-                            </div> -->
-
-                            <!-- <div  style="display: flex;" >
-                                <a href="/single-product" style="text-decoration: none;"><div class="collection-box" >
-                                    <img class="collection-img" src="img/img21.png" alt="">
-                                    <p class="brand-name">Tissot</p>
-                                    <p class="caption">Men-Powermatic 80 Silicium</p>
-                                    <p class="price">Rs. 50,555</p>
-                                    <p class="offer-price">Rs. 58,300</p>
-                                    <svg class="line2" width="215" height="29" viewBox="0 0 215 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_56_411)">
-                                        <path d="M170.208 14.5L44.7915 14.5" stroke="#DDDDDD" stroke-width="2.41667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_56_411">
-                                        <rect width="29" height="215" fill="white" transform="matrix(0 -1 1 0 0 29)"/>
-                                        </clipPath>
-                                        </defs>
-                                        </svg>
-                                    <p class="offer">(13% OFF)</p>
-                                </div></a>
-                                <a href="/single-product" style="text-decoration: none;"><div class="collection-box">
-                                    <img class="collection-img" src="img/img22.png" alt="">
-                                    <p class="brand-name">Daniel Wellington</p>
-                                    <p class="caption">Men-Quadro Pressed Sheffield</p>
-                                    <p class="price">Rs. 7,999</p>
-                                    <p class="offer-price">Rs. 10,999</p>
-                                    <svg class="line2" width="215" height="29" viewBox="0 0 215 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_56_411)">
-                                        <path d="M170.208 14.5L44.7915 14.5" stroke="#DDDDDD" stroke-width="2.41667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_56_411">
-                                        <rect width="29" height="215" fill="white" transform="matrix(0 -1 1 0 0 29)"/>
-                                        </clipPath>
-                                        </defs>
-                                        </svg>
-                                    <p class="offer">(27% OFF)</p>
-                                </div></a>
-                                <a href="/single-product" style="text-decoration: none;"><div class="collection-box">
-                                    <img class="collection-img" src="img/img23.png" alt="">
-                                    <p class="brand-name">Titan</p>
-                                    <p class="caption">Women-Quarts Analog Strap Watch</p>
-                                    <p class="price">Rs. 22,649</p>
-                                    <p class="offer-price">Rs. 32,650</p>
-                                    <svg class="line2" width="215" height="29" viewBox="0 0 215 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_56_411)">
-                                        <path d="M170.208 14.5L44.7915 14.5" stroke="#DDDDDD" stroke-width="2.41667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_56_411">
-                                        <rect width="29" height="215" fill="white" transform="matrix(0 -1 1 0 0 29)"/>
-                                        </clipPath>
-                                        </defs>
-                                        </svg>
-                                    <p class="offer">(30% OFF)</p>
-                                </div></a>
-                            </div> -->
-                            
-                            <!-- <svg class="btm-line1" width="1000" height="1" viewBox="0 0 1000 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H1000V1H0V0Z" fill="black"/>
-                                </svg> -->
-
-                            <!-- temporarily commenting this -->
-                            <!-- <div class="btm-line1"></div>
-                            <button class="prev-btn"><svg class="lt-arrow" width="15" height="25" viewBox="0 0 15 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.9 22.25L4.21087 12.46L14.9 2.67L13.6043 0L0 12.46L13.6043 24.92L14.9 22.25Z" fill="#F2F2F2"/>
-                                </svg>
-                                Previous</button>   
-                            <button class="next-btn">Next <svg class="gt-arrow" width="15" height="25" viewBox="0 0 15 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M-9.72748e-05 2.66992L10.689 12.4599L-9.72748e-05 22.2499L1.29556 24.9199L14.8999 12.4599L1.29556 -7.82013e-05L-9.72748e-05 2.66992Z" fill="white"/>
-                                </svg>
-                                </button>  
-                            <svg class="btm-line2" width="1000" height="1" viewBox="0 0 1000 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H1000V1H0V0Z" fill="black"/>
-                                </svg>  -->
-                            <!-- /temporarily commenting this -->                          
+                            <!-- heading div -->
+                            <div class="heading-section">
+                                <h1>All Watches</h1>
+                            </div>
+                            <!-- /heading div -->
                         </div>
-                        <!-- /collection section -->
+
+
+
+                         <!-- ************sorting************ -->
+                         <div style="background-color: transparent; display: flex; justify-content: flex-end; cursor: pointer;">
+                            <select id="sort-by" onchange="sortProducts()"
+                                     style=" background-color: aliceblue; color: black;position: relative;top: -44px;
+                                     right: 89px;
+                                     height: 33px;
+                                     border-radius: 10px;">
+                                <option value="productName_asc">Sort By</option>
+                                <option value="productName_asc">Product Name (A-Z)</option>
+                                <option value="productName_desc">Product Name (Z-A)</option>
+                                <option value="lastPrice_asc">Price (Low to High)</option>
+                                <option value="lastPrice_desc">Price (High to Low)</option>
+                            </select>
+                        </div>
+                        
+                        <p id="clear-sortBtn" style="position: relative;
+                                    top: -81px;
+                                    /* background-color: red; */
+                                    color: white;
+                                    /* font-size: 30px; */
+                                    left: 95vw;"><i class="fa fa-times" aria-hidden="true"></i></p>
+
+                            <!-- clear btn js -->
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const clearSortBtn = document.getElementById('clear-sortBtn');
+                                    clearSortBtn.addEventListener('click', function() {
+                                        location.reload();
+                                    });
+                                });
+                            </script>
+                            <!-- clear btn js -->
+
+                        <!-- ************ /sorting************ -->
+
+
+
+
+
+
+
+                        <div class="d-flex gap-3">
+                            <!-- filter section -->
+                            <div id="filterSection" class="filter-section">
+                                <!-- single line -->
+                                <p class="sub-heading">FILTERS</p>
+                                <p id="reset-filters" class="clear-txt">Clear Filter</p>
+
+                                <!-- clear filter -->
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const clearFilterBtn = document.getElementById('reset-filters');
+                                        clearFilterBtn.addEventListener('click', function() {
+                                            location.reload();
+                                        });
+                                    });
+                                </script>
+                                <!-- clear filter -->
+
+
+                                <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
+                                    </svg>
+
+                                <p class="filter-heads">BRAND</p>
+                                <ul class="menu">
+                                    <li class="filter-component">
+                                        <input id="casio" class="filter-checkbox" type="checkbox"  data-filter="brand" value="Breda">
+                                        <label>Breda</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="tissot" class="filter-checkbox" type="checkbox" data-filter="brand" value="Rado">
+                                        <label>Rado</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="daniel-wellington" class="filter-checkbox" type="checkbox"  data-filter="brand" value="Daniel Wellington">
+                                        <label class="filter-longText">Daniel wellington</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="breda" class="filter-checkbox" type="checkbox"  data-filter="brand" value= 'titan'>
+                                        <label>Titan</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="fossil" class="filter-checkbox" type="checkbox"  data-filter="brand" value="Jaeger LeCoultre">
+                                        <label>Jaeger LeCoulture</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="titan" class="filter-checkbox" type="checkbox"  data-filter="brand" value="fastrack">
+                                        <label>Fastrack</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="casio" class="filter-checkbox" type="checkbox"  data-filter="brand" value="CARTIER">
+                                        <label>Cartier</label>
+                                    </li>
+                                </ul> 
+                                <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
+                                    </svg>
+                                <p class="filter-heads">DISCOUNT  RANGE</p>
+                                <ul>
+                                    <li class="filter-component">
+                                        <input id="nine-below" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="1">
+                                        <label>1% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="ten-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="10"> 
+                                        <label>10% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="twenty-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="20">
+                                        <label>20% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="thirty-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="30">
+                                        <label>30% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="fourty-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="40">
+                                        <label>40% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="fifty-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="50">
+                                        <label>50% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="sixty-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="60">
+                                        <label>60% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="seventy-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="70">
+                                        <label>70% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="eighty-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="80">
+                                        <label>80% and above</label>
+                                    </li>
+                                    <li class="filter-component">
+                                        <input id="ninety-above" class="filter-checkbox" type="checkbox" data-filter="discountRange" value="90">
+                                        <label>90% and above</label>
+                                    </li>
+                                </ul> 
+                                <svg class="line1" width="384" height="2" viewBox="0 0 384 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0H384V1.52H0V0Z" fill="#3A3939"/>
+                                    </svg>
+                            </div>
+                            <!-- /filter section -->
+
+
+
+                            <!-- collection section -->
+                            <div class="collection-section">
+                                <div  style="display: flex; flex-wrap: wrap;" class="each-box" >
+                                    <style>
+                                        .hidden {
+                                            display: none;
+                                        }
+                                    </style>
+                                    
+                                    
+                                    <% for(let i=0; i<allProductDetails.length; i++) { %>
+                                        <a href="/single-product/<%= allProductDetails[i]._id %>" style="text-decoration: none;">
+                                            <div class="collection-box hidden"  data-product-name="<%= allProductDetails[i].productName %>" data-last-price="<%= allProductDetails[i].lastPrice %>">
+                                                   
+
+                                                <img class="collection-img" src="<%= allProductDetails[i].images[0] %>" alt="<%= allProductDetails[i].filename %>">
+                                                <p class="brand-name"><%= allProductDetails[i].productName %></p>
+                                                <p class="caption"><%= allProductDetails[i].productDescription %></p>
+                                                
+                                                <!-- price handiling -->
+                                                <div class="price-container d-flex gap-3">
+
+                                                    <!-- both offer exist case -->
+                                                    <%# if(categoryOfferExist && allProductDetails[i]?.productofferDiscount){ %>
+                                                    <% if(allProductDetails[i]?.categoryofferDiscount && allProductDetails[i]?.productofferDiscount){ %>
+                                                    
+                                                        <%# let finalizeDiscount = allProductDetails[i].productofferDiscount > categoryOfferExist.discount ? allProductDetails[i].productofferDiscount : categoryOfferExist.discount %>
+                                                        <% let finalizeDiscount = allProductDetails[i].productofferDiscount > allProductDetails[i].categoryofferDiscount ? allProductDetails[i].productofferDiscount : allProductDetails[i].categoryofferDiscount %>
+
+
+                                                        <% let totalDisc = allProductDetails[i].discount + finalizeDiscount %>
+                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+
+                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                        <p class="price">Rs. <%= finalAmount %></p>
+                                                        <p class="offer-price">Rs. <%= allProductDetails[i].firstPrice %></p>
+                                                        <p class="offer">(<%= allProductDetails[i].discount + finalizeDiscount %>% OFF)</p>
+                                                        <script>
+                                                            console.log('in both offer case');
+                                                        </script>
+
+                                                    <!-- only product-offer exist case  -->
+                                                    <% } else if(allProductDetails[i]?.productofferDiscount) { %>
+
+                                                        <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>
+                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+
+                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                        <p class="price">Rs. <%= finalAmount %></p>
+                                                        <p class="offer-price">Rs. <%= allProductDetails[i].firstPrice %></p>
+                                                        <p class="offer">(<%= allProductDetails[i].discount + allProductDetails[i].productofferDiscount %>% OFF)</p>
+                                                        <script>
+                                                            console.log('in product offer case');
+                                                        </script>
+
+                                                    <!-- only category-offer exist case -->
+                                                    <%# } else if(categoryOfferExist) { %>
+                                                    <% } else if(allProductDetails[i]?.categoryofferDiscount) { %>
+
+                                                        <% let totalDisc = allProductDetails[i].discount + allProductDetails[i].categoryofferDiscount %>
+                                                        <% let disc = (allProductDetails[i].firstPrice * totalDisc)/100 %>
+                                                        <% let finalAmount = allProductDetails[i].firstPrice - disc %>
+
+                                                        <% finalAmount = Math.trunc(finalAmount); %>
+
+                                                        <p class="price">Rs. <%= finalAmount %></p>
+                                                        <p class="offer-price">Rs. <%= allProductDetails[i].firstPrice %></p>
+                                                        <p class="offer">(<%= allProductDetails[i].discount + allProductDetails[i]?.categoryofferDiscount %>% OFF)</p>
+                                                        <script>
+                                                            console.log('in cat offer case');
+                                                        </script>
+
+                                                    <!-- none of these offer exist case -->
+                                                    <% } else { %>
+                                                        <p class="price">Rs. <%= allProductDetails[i].lastPrice %></p>
+                                                        <p class="offer-price">Rs. <%= allProductDetails[i].firstPrice %></p>
+                                                        <p class="offer">(<%= allProductDetails[i].discount %>% OFF)</p>
+                                                        <script>
+                                                            console.log('in no-extra offer case');
+                                                        </script>
+                                                    <% } %>
+
+                                                </div>
+                                                <!-- /price handiling -->
+
+
+                                            </div>
+                                        </a>
+                                    <% } %>
+                                    <% if (productNotFound) { %>
+                                        <p style="margin-left: 20px;margin-top: 20px; color: red;">No products found in the women's category.</p>
+                                    <% } %>
+                                </div>                          
+                            </div>
+                            <!-- /collection section -->
+
 
                     </div>
                 </div>
@@ -402,6 +468,19 @@
         </div>
     </main>
     <!-- /main section -->
+
+
+    <!-- bootstrap pagination controller -->
+    <nav aria-label="Page navigation example" style="padding: 10px 0px 10px 0px; width: 100vw; background-color: rgb(241 237 237);">
+        <ul class="pagination" style="position: relative; left: 50vw;">
+            <% for (let i = 0; i < paginationLinks.length; i++) { %>
+                <li class="page-item <%= paginationLinks[i].isActive ? 'active' : '' %>">
+                    <a class="page-link" href="<%= paginationLinks[i].url %>"><%= paginationLinks[i].page %></a>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+    <!-- /bootstrap pagination controller -->
 
 
     <!-- footer section -->
@@ -452,10 +531,320 @@
 
 
 
+    <!-- filter section -->
+
+    <script>
+        // Function to filter products based on selected filters
+        function filterProducts(products, filters) {
+            return products.filter(product => {
+                let match = true; // Assume product matches initially
+    
+                // Check each filter criteria
+                for (const filterKey in filters) {
+                    const filterValue = filters[filterKey]; // Get selected value for the filter
+                    if (filterKey === 'brand') {
+                        match = match && product.productName.toLowerCase() === filterValue.toLowerCase(); // Case-insensitive brand matching
+                    } else if (filterKey === 'discountRange') {
+                        const discount = parseInt(product.discount); // Assuming discount is stored in a property
+                        match = match && discount >= filterValue; // Check discount range match
+                    }
+                }
+    
+                return match; // Return true if the product matches all filters
+            });
+        }
+    
+        // Function to get currently selected filters
+        function getSelectedFilters() {
+            const selectedFilters = {};
+            const brandCheckboxes = document.querySelectorAll('.filter-checkbox[data-filter="brand"]:checked');
+            const discountCheckboxes = document.querySelectorAll('.filter-checkbox[data-filter="discountRange"]:checked');
+    
+            // Collect selected brands
+            brandCheckboxes.forEach(checkbox => {
+                selectedFilters.brand = checkbox.value;
+            });
+    
+            // Collect selected discount ranges
+            discountCheckboxes.forEach(checkbox => {
+                selectedFilters.discountRange = parseInt(checkbox.value);
+            });
+    
+            return selectedFilters;
+        }
+
+
+        // Function to update the product list based on filtered results
+        function updateProductList(filteredProducts) {
+            const productBoxes = document.querySelectorAll('.collection-box');
+            productBoxes.forEach(box => {
+                // Initially show all products
+                box.classList.remove('hidden');
+            });
+
+            filteredProducts.forEach(product => {
+                const productBox = document.querySelector(`.collection-box[data-product-name="${product.productName}"]`);
+                if (productBox) {
+                    productBox.classList.remove('hidden'); // Ensure the product is shown
+                }
+            });
+
+            // After showing all products, hide those not in the filtered list
+            productBoxes.forEach(box => {
+                if (!filteredProducts.some(product => product.productName === box.dataset.productName)) {
+                    box.classList.add('hidden'); // Hide the product if not in the filtered list
+                }
+            });
+        }
+
+    
+        // Event listeners for filter checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+    
+            // Parse the allProductDetails JSON string
+            const productDetailsDiv = document.getElementById('productDetails');
+            const allProductDetails = JSON.parse(productDetailsDiv.getAttribute('data-product-details'));
+    
+            // Initially display all products
+            updateProductList(allProductDetails);
+    
+            filterCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const selectedFilters = getSelectedFilters(); // Get currently selected filters
+                    const filteredProducts = filterProducts(allProductDetails, selectedFilters);
+                    updateProductList(filteredProducts); // Update the product list based on filtered results
+                });
+            });
+        });
+    </script>
+
+    <!-- /filter section -->
+
+
+    
+
+
+
+    <!-- sort section js -->
+     <script>
+
+        function updateURLWithSortingCriteria(sortBy, order) {
+            // Assuming you want to update the URL query parameter for sorting
+            // This example uses the History API to update the URL without reloading the page
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('sort', `${sortBy}_${order}`);
+            window.history.pushState({}, '', `${window.location.pathname}?${urlParams}`);
+        }
+
+        function sortProducts() {
+            const sortBy = document.getElementById('sort-by').value.split('_')[0];
+            const order = document.getElementById('sort-by').value.split('_')[1];
+
+            // Select all product elements in the collection section
+            const productElements = document.querySelectorAll('.collection-section .collection-box');
+
+            // Convert NodeList to Array for sorting
+            const productsArray = Array.from(productElements);
+
+            // Sort the products
+            const sortedProducts = productsArray.sort((a, b) => {
+                // Correctly map sortBy to the corresponding attribute name
+                const attributeName = sortBy === 'lastPrice' ? 'last-price' : sortBy === 'productName' ? 'product-name' : '';
+
+                // Parse the values as numbers if the sortBy attribute is numeric
+                const aValue = sortBy === 'lastPrice' ? parseFloat(a.getAttribute(`data-${attributeName}`) || '0') : a.getAttribute(`data-${attributeName}`);
+                const bValue = sortBy === 'lastPrice' ? parseFloat(b.getAttribute(`data-${attributeName}`) || '0') : b.getAttribute(`data-${attributeName}`);
+
+                if (order === 'asc') {
+                    if (sortBy === 'lastPrice') {
+                        return aValue - bValue;
+                    } else {
+                        // Ensure both values are not null before calling localeCompare
+                        if (aValue && bValue) {
+                            return aValue.localeCompare(bValue);
+                        } else {
+                            // Handle case where one or both values are null
+                            if (!aValue && !bValue) return 0; // Both null, consider as equal
+                            if (!aValue) return 1; // aValue is null, consider bValue as greater
+                            return -1; // bValue is null, consider aValue as greater
+                        }
+                    }
+                } else {
+                    if (sortBy === 'lastPrice') {
+                        return bValue - aValue;
+                    } else {
+                        // Ensure both values are not null before calling localeCompare
+                        if (aValue && bValue) {
+                            return bValue.localeCompare(aValue);
+                        } else {
+                            // Handle case where one or both values are null
+                            if (!aValue && !bValue) return 0; // Both null, consider as equal
+                            if (!aValue) return -1; // aValue is null, consider bValue as greater
+                            return 1; // bValue is null, consider aValue as greater
+                        }
+                    }
+                }
+            });
+
+            // Clear the current product list
+            const collectionSection = document.querySelector('.collection-section');
+            collectionSection.innerHTML = '';
+
+            // Add the sorted products to the DOM
+            sortedProducts.forEach(product => {
+                collectionSection.appendChild(product);
+            });
+
+            // Update the URL with the new sorting criteria
+            updateURLWithSortingCriteria(sortBy, order);
+        }
+    </script> 
+   
+    <!-- sort section js -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- search box- clear input field after performing operations -->
+    <script>
+        // Function to clear the search input field
+        function clearSearchInput() {
+            // Select the input field by its ID
+            var searchInput = document.getElementById('searchInput');
+            // Clear the input field
+            searchInput.value = '';
+        }
+
+        //Clear the search input field after 5 seconds
+        setTimeout(clearSearchInput, 1000);
+    </script>
+    <!-- search box- clear input field after performing operations -->
+
+
+    <!-- search box main function-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#searchInput').on('input', function() {
+                const query = $(this).val();
+                if (query.length > 2) { // Only search if the query is at least 3 characters long
+                    $.ajax({
+                        url: '/search', // Adjust the URL as necessary
+                        type: 'GET',
+                        data: { q: query },
+                        success: function(products) {
+                            // Clear the previous search results
+                            $('.search-results').empty();
+
+                            // Render the new search results
+                            products.forEach(product => {
+                                // Create a new div for the product result
+                                const productDiv = $('<div class="product-result"></div>');
+
+                                // Append the product details to the div
+                                productDiv.append(`
+                                    <h6>${product.productName}</h6>
+                                    <p>${product.productDescription}</p>
+                                    <img src="${product.images[0]}" alt="${product.productName}">
+                                `);
+
+                                // Attach a click event handler to the div
+                                productDiv.on('click', function() {
+                                    // Redirect to the product details page, passing the product's ID as a parameter
+                                    window.location.href = `/single-product/${product._id}`;
+                                });
+
+                                // Append the div to the search results container
+                                $('.search-results').append(productDiv);
+                            });
+                            $('.search-results').show(); // Ensure the search results are visible
+
+                        },
+                        error: function(error) {
+                            console.error('Error fetching search results:', error);
+                        }
+                    });
+                }
+            });
+
+            // Define the hideSearchResults function
+            function hideSearchResults() {
+                $('.search-results').empty().hide(); // Clear and hide the search results
+            }
+
+            // Listen for click events on the document
+            $(document).on('click', function(event) {
+                // Check if the click was outside the search box and search results container
+                if (!$(event.target).closest('.search-box, .search-results').length) {
+                    // Hide the search results
+                    hideSearchResults();
+                }
+            });
+        });
+    </script>
+    <!-- search box main function-->
+
+
+    <!-- search box close and submit btn activation js-->
+    <script>
+        document.querySelector('.search').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the link
+            var searchBox = document.querySelector('.search-box');
+            searchBox.style.display = searchBox.style.display === 'none' ? 'block' : 'none';
+        });
+
+        document.querySelector('.search-close').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the button
+            document.querySelector('.search-box').style.display = 'none';
+            hideSearchResults(); 
+        });
+
+        document.querySelector('.search-submit').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the button
+            var searchInput = document.querySelector('.search-input').value;
+            console.log('Search submitted:', searchInput);
+            // Here you can add the functionality to perform the search
+        });
+
+        function hideSearchResults() {
+            $('.search-results').empty().hide(); // Clear and hide the search results
+        }
+    </script>
+        <!-- search box js-->
+
+
+
+        
+
+
+    <!-- hamburger -->
+        <script>
+            function toggleMenu() {
+                const filterSection = document.getElementById('filterSection');
+                filterSection.style.display = filterSection.style.display === 'none' ? 'block' : 'none';
+            }
+        </script>
+      <!-- /hamburger -->
+
+    <!-- DataTables JS -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
+        
+        
+
     <!-- Bootstrap script file -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"crossorigin="anonymous"></script>
     <!--end of Bootstrap script file -->
 
 </body>

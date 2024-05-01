@@ -62,13 +62,19 @@ const getUserSignup = {
             }
         }
         //**************************************** */
-          
-        const { passnotmatch, namenotvalid, userExist, invaliddReferralLink } = req.session;
-        res.render("signup", { invaliddReferralLink, referralId, passError: passnotmatch, nameError: namenotvalid,
-             userExistError: userExist }, (error, data) => {
+        const { invalidName, invalidEmail, invalidPassword, invalidConfirmPass,
+             passnotmatch, namenotvalid, userExist, invaliddReferralLink } = req.session;
+        res.render("signup", { invalidName, invalidEmail, invalidPassword, invalidConfirmPass, 
+            invaliddReferralLink, referralId, passError: passnotmatch, nameError: namenotvalid,
+            userExistError: userExist }, (error, data) => {
             if (error) {
                 return res.status(500).send("Internal server error");
             }
+
+            delete req.session.invalidName;
+            delete req.session.invalidEmail;
+            delete req.session.invalidPassword;
+            delete req.session.invalidConfirmPass;
 
             delete req.session.passnotmatch;
             delete req.session.namenotvalid;
@@ -301,12 +307,107 @@ const getPswSetup = {
 const getAllWatches = {
     async allWatches(req, res) {
         try {
-            const allProductDetails = await productDB.find();
-            res.render("all_watches", { allProductDetails });
-        } catch (error) {
+            const { userEmail } = req.session;
+            const result = await userdbCollection.findOne({ email: userEmail });
+            if (result) {
+                console.log('User data: ', result.name, result.email);
+            }else{
+                console.log('User not found');
+            }
+            const allCategoryDetails = await categoryDB.find();
+
+            const { isUserAuthenticated } = req.session;
+
+            // ****Pagination****
+            const pageNum = parseInt(req.query.page) || 1;
+            const totalProducts = await productDB.countDocuments({unlisted:false});
+            
+            let perPage = 12; 
+            const totalPages = Math.ceil(totalProducts / perPage);
+
+            //adjust products per page if total < 12
+            if (totalProducts < perPage && pageNum === totalPages) {
+                perPage = totalProducts;
+            }
+
+            //fetch products for the current page
+            const allProductDetails = await productDB.find({unlisted:false}).skip((pageNum - 1) * perPage).limit(perPage).sort({createdAt : -1});
+                if(allProductDetails.length < 0){
+                    req.session.productNotFound = true
+                }
+
+            //generate pagination links
+            const paginationLinks = [];
+            for (let i = 1; i <= totalPages; i++) {
+                //generate links only for pages with products
+                if (i <= totalPages) {
+                    paginationLinks.push({
+                        page: i,
+                        url: `/all-watches?page=${i}`,
+                        isActive: i === pageNum
+                    });
+                }
+            }
+            console.log('paginationLinks',paginationLinks);
+            console.log('totalProducts,totalPages',{ totalProducts, totalPages }); 
+
+            //sort section
+            const { sortBy = 'productName', order = 'asc' } = req.query;
+            if(!['productName', 'lastPrice'].includes(sortBy)) {
+                return res.status(400).send('Invalid sortBy parameter');
+            }
+            if(!['asc', 'desc'].includes(order)) {
+                return res.status(400).send('Invalid order parameter');
+            }
+
+            console.log('sortBy',sortBy, 'order',order);
+
+            const products = await productDB.find({ unlisted: false })
+            .sort({ [sortBy]: order })
+            .exec();
+            console.log('Final MongoDB query:', products.toString());
+            // /sort section
+
+            //cart count in cart icon
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            console.log(cartCount);
+
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            console.log("wishlistCount", wishlistCount);
+
+
+            // *********cate/product offer section*********
+            const categoryOfferExist = await categoryOfferDB.findOne({unlisted:false, expDate: {$gt: new Date()}});
+            console.log(categoryOfferExist);
+
+            let categoryDiscInPercentage = 0
+            if(categoryOfferExist) {
+                console.log("category offer exist in mens watches page");
+                console.log("offer in Category:", categoryOfferExist.category);
+                console.log("Discount:", categoryOfferExist.discount);
+                categoryDiscInPercentage = categoryOfferExist.discount
+            }else{
+                console.log("category offer not exist");
+            }
+           // ***********/cate/product offer section************
+
+            res.render("womens_watches", { categoryOfferExist, categoryDiscInPercentage,
+                  products, cartCount, wishlistCount,
+                pageTitle: 'Womens Watches',
+                page: '/womens-watches',
+                paginationLinks,
+                currentPage: pageNum,
+                totalPages,
+                productNotFound:req.session.productNotFound,
+                userName: result ? result.name : 'User not found',
+                userLoggined: isUserAuthenticated,
+                allCategoryDetails,
+                allProductDetails
+            });
+        }catch(error) {
             console.error('Error fetching products from MongoDB:', error);
             res.status(500).send('Internal Server Error');
-        };
+        }
     },
 };
 

@@ -126,38 +126,23 @@
                                                 placeholder="Name">
                                                 <% if(nameError){ %>
                                                     <p style="color: red; margin-top: 13px;font-size: 13px;">Name must contain only letters and spaces.</p>
-                                               <% } %>
+                                                <% } %>
+                                                <% if(invalidName){ %>
+                                                    <p style="color: red; margin-top: 13px;font-size: 13px;">Field Required</p>
+                                                <% } %>
+                                               <p style="color: red; margin-top: 13px;font-size: 13px;" id="nameErr"></p>
                                         </li>
                                         <br>
                                         <li>
-                                            <input class="input-box" type="text" id="phno" name="phno"
-                                                placeholder="Telephone">
-                                        </li>
-                                        <br>
-                                        <!-- <li>
-                                            <input class="input-box" type="email" id="email" name="email"
-                                                placeholder="Email">
-                                        </li> -->
-                                    </ul>
-                                </div>
-                                <!-- <div class="right-section">
-                                    <ul class="remainingDetails p-0 m-0 list-unstyled"> -->
-                                        <!-- <li>
-                                            <input class="input-box" type="text" id="address" name="address"
-                                                placeholder="Address">
-                                        </li> -->
-                                        <!-- <br>
-                                        <li>
-                                            <input class="input-box" type="text" id="city" name="city"
-                                                placeholder="City">
-                                        </li>
-                                        <br> -->
-                                        <!-- <li>
                                             <input class="input-box" type="number" id="phno" name="phno"
                                                 placeholder="Telephone">
-                                        </li> -->
-                                    <!-- </ul>
-                                </div> -->
+                                            <p style="color: red; margin-top: 13px;font-size: 13px;" id="phnoErr"></p>
+
+                                        </li>
+                                        <br>
+                                       
+                                    </ul>
+                                </div>
                             </div>
                             <!-- /user personal-information form -->
 
@@ -176,31 +161,42 @@
                                                 placeholder="Email">
                                                 <% if(userExistError){ %>
                                                     <p style="color: red; margin-top: -13px;font-size: 13px;">Email Already in use</p>
-                                            <% } %>
+                                                <% } %>
+                                                <% if(invalidEmail){ %>
+                                                    <p style="color: red; margin-top: -13px;font-size: 13px;">Field Required</p>
+                                                <% } %>
+                                            <p style="color: red; margin-top: 13px;font-size: 13px;" id="emailErr"></p>
+
                                         </li>
                                         <li>
                                             <input class="last-inputBox" type="password" id="password" name="password" required
                                                 placeholder="Password">
+                                                <% if(invalidPassword){ %>
+                                                    <p style="color: red; margin-top: 13px;font-size: 13px;">Field Required</p>
+                                                <% } %>
+                                                <p style="color: red; margin-top: 13px;font-size: 13px;" id="passwordErr"></p>
+
                                         </li>
                                         <br>
                                         <li>
                                             <input class="last-inputBox" type="password" id="confirmPassword" name="confirmPassword" required
                                                 placeholder="Confirm Password">
-                                               <% if(passError){ %>
+                                            <p style="color: red; margin-top: 13px;font-size: 13px;" id="confirmPasswordErr"></p>
+
+                                            <% if(passError){ %>
                                                 <p style="color: red; margin-top: 13px;font-size: 13px;">Password and confirm password do not match</p>
-                                           <% } %>
+                                            <% } %>
+                                            <% if(invalidConfirmPass){ %>
+                                                <p style="color: red; margin-top: 13px;font-size: 13px;">Field Required</p>
+                                            <% } %>
+
+
                                         </li>
                                     </ul>
                                 <!-- </div> -->
                             </div>
                             </div> 
                             <!-- user sign-in information form -->
-
-                            <!-- <input class="checkbox" type="checkbox">
-                            <span class="checkmark"></span>
-                            <label class="checkbox-text">I want to create an account and accept the <a class="link-txt" href="#">Terms of Use.</a>
-                                <span class="break-txt">I confirm to have read and understood the <a class="link-txt" href="#">Privacy Notice.</a></span>
-                            </label> -->
 
                             <button class="signup-btn" type="submit">Create an Account</button>
                             <p class="final-txt">Have already an account?<a class="link-txt"  href="/">login here</a></p>
@@ -256,6 +252,64 @@
         </div>
     </footer> 
     <!-- /footer section -->
+
+
+    <!-- signup form validation -->
+    <!-- <script>
+        function validateForm() { 
+            // Get form elements
+            const nameInput = document.querySelector('input[name="name"]');
+            const phnoInput = document.querySelector('input[name="phno"]');
+            const emailInput = document.querySelector('input[name="email"]');
+            const passwordInput = document.querySelector('input[name="password"]');
+            const confirmPasswordInput = document.querySelector('input[name="confirmPassword"]');
+    
+            // Validate product name
+            const trimmedName = nameInput.value.trim();
+            if (!/\d{1,}/.test(trimmedName)) {
+                document.getElementById('nameErr').innerHTML = "Field required";
+                return false;
+            }
+
+            const trimmedPho = phnoInput.value.trim();
+            if (!/\d{1,}/.test(trimmedPho)) {
+                document.getElementById('phnoErr').innerHTML = "Field required";
+                return false;
+            }
+
+            const trimmedEmail = emailInput.value.trim();
+            if (!/\d{1,}/.test(trimmedEmail)) {
+                document.getElementById('emailErr').innerHTML = "Field required";
+                return false;
+            }
+
+            const trimmedPassword = passwordInput.value.trim();
+            if (!/\d{1,}/.test(trimmedPassword)) {
+                document.getElementById('passwordErr').innerHTML = "Field required";
+                return false;
+            }
+
+            const trimmedConfirmPassword = confirmPasswordInput.value.trim();
+            if (!/\d{1,}/.test(trimmedConfirmPassword)) {
+                document.getElementById('confirmPasswordErr').innerHTML = "Field required...";
+                return false;
+            }
+            
+    
+            
+    
+            // If all validations pass, allow the form to submit
+            return true;
+        }
+    
+        // Attach the validateForm function to the form's onsubmit event
+        const form = document.querySelector('form[action="/signup"]');
+        if (form) {
+            form.onsubmit = validateForm;
+        }
+    </script>     -->
+    <!-- signup form validation -->
+    
    
    
 
