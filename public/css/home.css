@@ -14,7 +14,8 @@ body::-webkit-scrollbar{
 
 /* *********** header section *********** */
 .head-section{
-    background-color: #B1A669;
+    background-color: #7e7441;
+    /* background-color: #736c51; */
     width: 100vw;
     height: 100px;
     position: sticky;
