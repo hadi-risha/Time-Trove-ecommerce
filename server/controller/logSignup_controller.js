@@ -116,7 +116,7 @@ const userSignup = {
   
               const existinguserWallet = await walletDB.findOneAndUpdate({email : referrerEmail}, {$inc:{balance : referralAmount },
                 $push: { transactions: {
-                  amount: walletAmount,
+                  amount: referralAmount,
                   action: "credit"
                 },},
               },{ new: true, upsert: true });
@@ -129,7 +129,7 @@ const userSignup = {
   
               const newUserWallet = await walletDB.findOneAndUpdate({email : user.email}, {$inc:{balance : referredUserReward },
                 $push: { transactions: {
-                  amount: walletAmount,
+                  amount: referredUserReward,
                   action: "credit"
                 },},
                 },{ new: true, upsert: true });
