@@ -114,14 +114,26 @@ const userSignup = {
               const referredUserReward = referralOfferData.referredUserReward;
               // console.log("referredUserReward", referredUserReward);
   
-              const existinguserWallet = await walletDB.findOneAndUpdate({email : referrerEmail}, {$inc:{balance : referralAmount }}, {new : true, upsert: true});
+              const existinguserWallet = await walletDB.findOneAndUpdate({email : referrerEmail}, {$inc:{balance : referralAmount },
+                $push: { transactions: {
+                  amount: walletAmount,
+                  action: "credit"
+                },},
+              },{ new: true, upsert: true });
+              
               if(existinguserWallet.modifiedCount === 0){
                 console.log("referral amount not added in wallet");
               }else{
                 console.log("referral amount added in wallet");
               }
   
-              const newUserWallet = await walletDB.findOneAndUpdate({email : user.email}, {$inc:{balance : referredUserReward }}, {new : true, upsert: true});
+              const newUserWallet = await walletDB.findOneAndUpdate({email : user.email}, {$inc:{balance : referredUserReward },
+                $push: { transactions: {
+                  amount: walletAmount,
+                  action: "credit"
+                },},
+                },{ new: true, upsert: true });
+
               if(newUserWallet.modifiedCount === 0){
                 console.log("reward amount not added in wallet");
               }else{
