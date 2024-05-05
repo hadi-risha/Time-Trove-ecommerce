@@ -88,7 +88,7 @@ const userSignup = {
 
 
         //************ referalLink *********** *//
-        const referralLink = `https://timetrove.hadirisha.online//signup?userId=${user._id}`;
+        const referralLink = `https://timetrove.hadirisha.online/signup?userId=${user._id}`;
         await userdbCollection.updateOne({ _id: user._id },{ $set: { referralLink: referralLink } });
 
 
