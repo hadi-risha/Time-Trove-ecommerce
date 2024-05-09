@@ -147,9 +147,6 @@ const userSignup = {
               req.session.invalidReferalLink = true
             }
           }
-
-
-
         }
 
         
