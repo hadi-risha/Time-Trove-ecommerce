@@ -130,6 +130,25 @@
     margin-top: 7px;
 }
 
+.profile-links{
+    text-decoration: none;
+    color: rgb(99, 98, 98);
+}
+
+.profile-links:hover,
+.profile-links:active,
+.profile-links:focus {
+    color: #EC5858;
+    font-weight: 500;
+}
+.userlogoutt-svg{
+    height: 17px;
+    width: 17px;
+    margin-left: -10px;
+    margin-right: 8px;
+    margin-top: -4px;
+}
+
 /* *********************No address found - media Queries*********************** */
 @media screen and (max-width : 872px) {  
     .right-section{

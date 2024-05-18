@@ -56,7 +56,11 @@ const shoppingCart = {
       const { userEmail } = req.session;
       console.log(id);
 
-      const newCartDetails = new shoppingCartDB({ email: userEmail, productId: id });
+        const findUser = await userdbCollection.findOne({email : userEmail});
+        console.log("userId",findUser, findUser._id);
+        let userId = findUser._id;
+
+      const newCartDetails = new shoppingCartDB({ email: userEmail, productId: id, userId: userId  });
       await newCartDetails.save();
 
       res.redirect(`/single-product/${id}`);
@@ -241,6 +245,10 @@ const checkoutNewAddress = {
 
 
       const { userEmail } = req.session;
+        const findUser = await userdbCollection.findOne({email : userEmail});
+        console.log("userId",findUser, findUser._id);
+        let userId = findUser._id;
+
       const newAddress = new AddressDB({
         pincode: trimmedPincode,
         state: trimmedState,
@@ -248,7 +256,8 @@ const checkoutNewAddress = {
         district: trimmedDistrict,
         mobile: trimmedMobile,
         addressType: req.body['address-type'],
-        email: userEmail
+        email: userEmail,
+        userId : userId
       });
       console.log('new address before save in mongodb', newAddress);
 
@@ -777,6 +786,12 @@ const finalpData = {
         console.log('in razorpay this will give proper final amount', req.body.amount);
 
         console.log("req.session.discountAmountInNumber", req.session.discountAmountInNumber);
+
+        const findUser = await userdbCollection.findOne({email : req.session.userEmail});
+        console.log("userIddddddddddd........",findUser, "nnnn",findUser._id, "nbhgftgyhj");
+        let userId = findUser._id;
+
+
         let newOrder = new Orderdb({
           email: req.session.userEmail,
           orderItems: orderItems,
@@ -786,7 +801,8 @@ const finalpData = {
           paymentMethod: SelectedPaymentType || 'cod',
           selectedAddress: [{ pincode, state, address, district, mobile, addressType }],
           usedCouponDiscount: req.session.discountAmountInNumber > 0 ? req.session.discountAmountInNumber : 0,
-          totalDiscount: req.body.totalDiscountInNums
+          totalDiscount: req.body.totalDiscountInNums,
+          userId : userId
         });
 
         const newOrderData = await newOrder.save();
@@ -1201,9 +1217,14 @@ const CancelUserOrder = {
       if (orderData.paymentstatus === 'completed') {
         const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newFinalAmount } }, { new: true });
 
+        const { userEmail } = req.session;
+        const findUser = await userdbCollection.findOne({email : userEmail});
+        console.log("userId",findUser, findUser._id);
+        let userId = findUser._id;
+
         //handle wallet
         const walletAmount = Math.round(price * cancelledDetails.userAddedQty)
-        const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+        const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail, userId : userId }, {
           $inc: { balance: walletAmount },
           $push: {
             transactions: {
@@ -1257,7 +1278,13 @@ const CancelUserOrder = {
           console.log("case 3");
           let walletMoney = orderData.finalAmount - ttlPriceAfterCancellation;
 
-          const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+          const { userEmail } = req.session;
+          const findUser = await userdbCollection.findOne({email : userEmail});
+          console.log("userId",findUser, findUser._id);
+          let userId = findUser._id;
+          
+
+          const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail, userId : userId }, {
             $inc: { balance: walletMoney },
             $push: {
               transactions: {
@@ -1409,7 +1436,12 @@ const returnProduct = {
         const updatePrice = await Orderdb.findOneAndUpdate({ _id: orderId }, { $set: { finalAmount: newFinalAmount } }, { new: true });
 
         //handle wallet
-        const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+        const { userEmail } = req.session;
+        const findUser = await userdbCollection.findOne({email : userEmail});
+        console.log("userId",findUser, findUser._id);
+        let userId = findUser._id;
+
+        const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail, userId : userId }, {
           $inc: { balance: price * cancelledDetails.userAddedQty },
           $push: {
             transactions: {
@@ -1463,7 +1495,12 @@ const returnProduct = {
           console.log("case 3");
           let walletMoney = orderData.finalAmount - ttlPriceAfterCancellation;
 
-          const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail }, {
+          const { userEmail } = req.session;
+          const findUser = await userdbCollection.findOne({email : userEmail});
+          console.log("userId",findUser, findUser._id);
+          let userId = findUser._id;
+          
+          const wallet = await walletDB.findOneAndUpdate({ email: req.session.userEmail, userId : userId }, {
             $inc: { balance: walletMoney },
             $push: {
               transactions: {
@@ -1857,7 +1894,11 @@ const wishList = {
       const ogProductData = await productDB.findOne({ _id: id })
       console.log("product og qty from productDB", ogProductData.quantity);
 
-      const newWishlistDetails = new wishlistDB({ email: userEmail, productId: id });
+      const findUser = await userdbCollection.findOne({email : userEmail});
+      console.log("userId",findUser, findUser._id);
+      let userId = findUser._id;
+            
+      const newWishlistDetails = new wishlistDB({ email: userEmail, productId: id, userId : userId });
       //save new wishlist details in mongodb
       await newWishlistDetails.save();
       console.log("wishlist product saved in db");
@@ -1911,7 +1952,11 @@ const wishListMoveToCart = {
       } else {
         // add product to cart
         const { userEmail } = req.session;
-        const newCartDetails = new shoppingCartDB({ email: userEmail, productId: id });
+        const result = await userdbCollection.findOne({email : userEmail});
+        console.log("userId",result, result._id);
+        let userId = result._id;
+
+        const newCartDetails = new shoppingCartDB({ email: userEmail, productId: id , userId});
         //save new cartDetails in mongodb
         await newCartDetails.save();
         await wishlistDB.deleteOne({ productId: id })

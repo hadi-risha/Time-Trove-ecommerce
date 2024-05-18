@@ -3,6 +3,10 @@ const mongoose=require("mongoose");
 // schema is the format of document
 // Wishlist schema
 const wishListSchema = new mongoose.Schema({
+   userId:{
+      type:String,
+      required:true
+    },
     email:{
         type:String,
      },

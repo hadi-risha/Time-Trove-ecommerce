@@ -3,6 +3,10 @@ const mongoose=require("mongoose");
 // schema is the format of document
 // address sample schema
 const addressDb = new mongoose.Schema({
+    userId:{
+      type:String,
+      required:true
+    },
     pincode:{
         type:String,
         required:true

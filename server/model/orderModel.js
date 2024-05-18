@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 // schema is the format of document
 // order schema
 const orderSchema = new mongoose.Schema({
-    // userId: {
-    //     type: mongoose.SchemaTypes.ObjectId,
-    //     required: true,
-    // },
+    userId: {
+        type: String,
+        required: true,
+    },
     email:{
         type:String,
         required: true

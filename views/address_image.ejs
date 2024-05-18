@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/home.css">
     <!-- <link rel="stylesheet" href="css/user_profile.css"> -->
     <link rel="stylesheet" href="css/address_image.css">
+    <link rel="stylesheet" href="css/add_address.css">
 
     <!-- <link rel="stylesheet" href="css/all_watches.css"> -->
     <!-- font-awesome -->
@@ -147,24 +148,23 @@
 
                         <div>
                             <p class="headings">ORDERS</p>
-                            <a href="/orders" class="profile-links"><P class="orders">Orders & Returns</P></a>
+                            <div class="orders"><a href="/orders" class="profile-links"><P >Orders & Returns</P></a></div>
                             <div class="text-line1"></div>
                         </div>
-                        
+                                
                         <div>
                             <p class="headings">ACCOUNT</p>
-                            <a href="/user-profile" class="profile-links"><P class="orders">Profile</P></a>
-                            <a href="/add-address" class="profile-links"><p class="orders">Add Addresses</p></a>
-                            <a href="/user-address" class="profile-links"><p class="orders">Addresses</p></a>
-                            <a href="/forgot-password" class="profile-links"><p class="orders">Reset password</p></a>
+                            <div class="orders"><a href="/user-profile" class="profile-links"><P>Profile</P></a></div>
+                            <div class="orders"><a href="/add-address" class="profile-links"><p>Addresses</p></a></div>
+                            <div class="orders"><a href="/forgot-password" class="profile-links"><p>Reset password</p></a></div>
                             <div class="text-line1"></div>
-                        </div>
+                        </div> 
 
                         <div>
                             <p class="headings">MY STUFF</p>
-                            <!-- <a href="#" class="profile-links"><P class="orders">My Reviews & Ratings</P></a> -->
-                            <a href="#" class="profile-links"><P class="orders">My Wishlist</P></a>
-                            <a href="/user-wallet" class="profile-links"><P class="orders">My Wallet</P></a>
+                            <!-- <div class="orders"><a href="#" class="profile-links"><P>My Reviews & Ratings</P></a></div> -->
+                            <div class="orders"><a href="/wishlist" class="profile-links"><P>My Wishlist</P></a></div>
+                            <div class="orders"><a href="/user-wallet" class="profile-links"><P>My Wallet</P></a></div>
                             <div class="text-line1"></div>
                         </div>
                                 
@@ -243,10 +243,24 @@
    
 
 
+    <!-- script for sidebar menu activation -->
+    <script>
+        // get the current URL
+        var currentUrl = window.location.href;
+
+        // select all links inside the sidebar
+        var sidebarLinks = document.querySelectorAll('.profile-links');
+
+        sidebarLinks.forEach(function(link) {
+            if (link.href === currentUrl) {
+                link.parentElement.classList.add('active');
+            }
+        });
+    </script>
+<!-- script for sidebar menu activation -->
 
     
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-Qqd/EHpFnp6bsQz46erFbPaD8npf4lG8SXfM49cJL/9aG4Zg/YU5dF2DLgsP4LS" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-Qqd/EHpFnp6bsQz46erFbPaD8npf4lG8SXfM49cJL/9aG4Zg/YU5dF2DLgsP4LS" crossorigin="anonymous"></script>
 
 </body>
 </html>

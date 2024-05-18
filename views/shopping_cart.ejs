@@ -641,9 +641,24 @@
                         
                         if(response?.error){
                             if (change > 0) { // only show alert for incrementing qty
-                                alert('Quantity limit reached. Please adjust.');
+                                // alert('Quantity limit reached. Please adjust.');
+
+                                
+                                    Swal.fire({
+                                    // title: "Are you sure?",
+                                    text: "Quantity limit reached. Please adjust.",
+                                    icon: "warning",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#3085d6",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "Ok"
+                                    }).then((result) => {
+                                        console.log("ok");
+                                        location.reload();
+                                    });
+
                             }
-                            location.reload();
+                            // location.reload();
                             document.getElementById('finalProceedBtn').disabled = true;
 
                             //store the disabled state in local storage

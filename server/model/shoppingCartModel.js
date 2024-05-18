@@ -3,6 +3,10 @@ const mongoose=require("mongoose");
 // schema is the format of document
 // shoppingcart schema
 const shoppingCartDb = new mongoose.Schema({
+    userId : {
+      type : String,
+      required : true
+    },
     email:{
         type:String,
      },

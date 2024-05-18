@@ -128,7 +128,7 @@ const addproduct = {
         }
 
 
-        const files = req.files           //with this, we can access all the images
+        const files = req.files;           //with this, we can access all the images
         //only upload images with valid extensions, ignore any other files
         const allowedImageExtensions = /\.(png|jpeg|jpg|gif|bmp)$/i;
         if(!req.files.every(file => allowedImageExtensions.test(file.originalname))) {

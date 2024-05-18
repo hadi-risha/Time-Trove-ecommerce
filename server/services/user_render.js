@@ -12,7 +12,8 @@ const walletDB = require("../model/walletModel")
 const path = require('path');
 const fs = require('fs')
 const puppeteer = require('puppeteer-core');
-const ejs = require('ejs')
+const ejs = require('ejs');
+const { default: mongoose } = require("mongoose");
 
 
 /************* User side ****************/
@@ -174,6 +175,8 @@ const getHome = {
 
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = result? result._id : null;
+
             if(result){
                 console.log('data', result.name, result.email);
             }else{
@@ -188,11 +191,11 @@ const getHome = {
             const randomCouponData = couponData[randomIndex];
 
             //cart count in heart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
             //cart count in heart icon
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
 
@@ -309,6 +312,7 @@ const getAllWatches = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = result._id;
             if (result) {
                 console.log('User data: ', result.name, result.email);
             }else{
@@ -366,13 +370,13 @@ const getAllWatches = {
             .sort({ [sortBy]: order })
             .exec();
             console.log('Final MongoDB query:', products.toString());
-            // /sort section
+            
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
 
@@ -421,9 +425,12 @@ const getSingleProduct = {
             console.log('single product data:', allProductDetails);
 
             const { userEmail } = req.session;
+            
+
             const result = await userdbCollection.findOne({ email: userEmail });
-            const isInBag = await shoppingCartDB.findOne({ $and: [{ email: userEmail, productId: id }] });
-            const isInWishlist = await wishlistDB.findOne({ $and: [{ email: userEmail, productId: id }] });
+            let userId = result._id;
+            const isInBag = await shoppingCartDB.findOne({ $and: [{ email: userEmail, productId: id, userId: userId }] });
+            const isInWishlist = await wishlistDB.findOne({ $and: [{ email: userEmail, productId: id, userId: userId }] });
             if (isInWishlist) {
                 console.log("product already in wishlist.");
             }
@@ -436,9 +443,9 @@ const getSingleProduct = {
 
             const { isUserAuthenticated } = req.session;
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             // *********cat/product offer section*********             
@@ -480,6 +487,7 @@ const getMenswatches = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = result._id;
             if (result) {
                 console.log('user data:', result.name, result.email);
             } else {
@@ -544,10 +552,10 @@ const getMenswatches = {
             // /sort section
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
 
@@ -598,6 +606,7 @@ const getWomenswatches = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = result._id;
             if (result) {
                 console.log('User data: ', result.name, result.email);
             }else{
@@ -658,10 +667,10 @@ const getWomenswatches = {
             // /sort section
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
 
@@ -707,10 +716,18 @@ const getShoppingCart = {
         try {
             const { userEmail } = req.session;
 
+            const findUser = await userdbCollection.findOne({email : userEmail});
+            console.log("userId",findUser, findUser._id);
+            let userId = String(findUser._id);
+
+
+            let sample = await shoppingCartDB.find({email: userEmail, userId: userId});
+            console.log("sample", sample);
             const cartProductDetails = await shoppingCartDB.aggregate([
                 {
                     $match: {
-                        email: userEmail
+                        email: userEmail,
+                        userId: userId
                     }
                 },
                 {
@@ -720,13 +737,14 @@ const getShoppingCart = {
                         'foreignField': '_id',
                         'as': 'pDetails'
                     }
-                }
+                },
             ]).sort({createdAt : -1});
+            console.log("cartProductDetails", cartProductDetails);
 
             if (cartProductDetails) {
                 console.log("cartProductDetails found");
                 cartProductDetails.forEach(product => {
-                    console.log(product);
+                    console.log("product..",product);
                 })
             }
 
@@ -748,10 +766,10 @@ const getShoppingCart = {
             const { isUserAuthenticated } = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             res.render('shopping_cart', {cartCount, wishlistCount, userName: result ? result.name : 'User not found', QuantityData, cartProductDetails ,
@@ -777,7 +795,11 @@ const getPaymentDeliveryDetails = {
             const { productId, price, quantity } = req.query;
             const { userEmail } = req.session;
 
-            const userAddressDetails = await AddressDB.find({ email: userEmail }).sort({ createdAt: -1 });
+            const findUser = await userdbCollection.findOne({email : userEmail});
+            console.log("userId",findUser, findUser._id);
+            let userId = String(findUser._id);
+
+            const userAddressDetails = await AddressDB.find({ email: userEmail, userId : userId }).sort({ createdAt: -1 });
 
             const Result = await userdbCollection.findOne({ email: userEmail });
             if (Result) {
@@ -790,7 +812,8 @@ const getPaymentDeliveryDetails = {
             const cartProductDetails = await shoppingCartDB.aggregate([
                 {
                     $match: {
-                        email: userEmail
+                        email: userEmail,
+                        userId
                     }
                 },
                 {
@@ -802,6 +825,8 @@ const getPaymentDeliveryDetails = {
                     }
                 }
             ]);
+
+
             if(cartProductDetails) {
                 console.log('Cart product details found');
                 cartProductDetails.forEach(product => {
@@ -820,7 +845,7 @@ const getPaymentDeliveryDetails = {
 
             // coupon handling
             console.log(" 'address page' render coupon data, user total cart amount");
-            const allCouponDetails = await couponDB.find();
+            const allCouponDetails = await couponDB.find({unlisted: false});
             console.log(allCouponDetails);
             // /coupon
 
@@ -834,10 +859,10 @@ const getPaymentDeliveryDetails = {
             const { isUserAuthenticated } = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             let { successMessageDisplayed, updatedAddress } = req.session
@@ -892,6 +917,7 @@ const checkoutAddAddress = {
             //add-address sec
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
             if (result) {
                 console.log('User data: ', result.name, result.email);
             } else {
@@ -903,7 +929,8 @@ const checkoutAddAddress = {
             const cartProductDetails = await shoppingCartDB.aggregate([
                 {
                     $match: {
-                        email: userEmail
+                        email: userEmail,
+                        userId: userId
                     }
                 },
                 {
@@ -913,8 +940,9 @@ const checkoutAddAddress = {
                         'foreignField': '_id',
                         'as': 'pDetails'
                     }
-                }
-            ]);
+                },
+            ]).sort({createdAt : -1});
+
             if(cartProductDetails){
                 console.log('Cart product details found');
             }else{
@@ -929,10 +957,10 @@ const checkoutAddAddress = {
             }
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             const {checkoutAddressInvalidPin,checkoutAddressInvalidState, checkoutAddressNotvalidState,
@@ -972,6 +1000,7 @@ const checkoutEditAddress = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
             if(result){
                 console.log('User data: ', result.name, result.email);
             }else{
@@ -992,7 +1021,8 @@ const checkoutEditAddress = {
             const cartProductDetails = await shoppingCartDB.aggregate([
                 {
                     $match: {
-                        email: userEmail
+                        email: userEmail,
+                        userId: userId
                     }
                 },
                 {
@@ -1002,8 +1032,10 @@ const checkoutEditAddress = {
                         'foreignField': '_id',
                         'as': 'pDetails'
                     }
-                }
-            ]);
+                },
+            ])
+
+
             if (cartProductDetails) {
                 console.log('Cart product details found');
             } else {
@@ -1024,10 +1056,10 @@ const checkoutEditAddress = {
             const { isUserAuthenticated } = req.session;   
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             res.render('checkout_editAddress', { cartCount, wishlistCount,
@@ -1060,18 +1092,27 @@ const checkoutEditAddress = {
 const getPaymentMethod = {
     async paymentType(req, res) {
         try {
+
             const { userEmail } = req.session;
-            
+
+            const Result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(Result._id);
+            if(Result){
+                console.log('User data: ', Result.name, Result.email, Result.phno);
+            }else{
+                console.log('User not found');
+            }
+
             console.log('selected payment type (in checkout payament page)',req.session.selectedPaymentType);
             const { selectedAddressId , selectedPaymentType} = req.session;
             const selectedAddressDetails = await AddressDB.findOne({ _id: selectedAddressId })
             console.log("selectedAddressDetails found in the payment-type page", selectedAddressDetails);
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             const userAddressDetails = await AddressDB.find({});
@@ -1092,18 +1133,13 @@ const getPaymentMethod = {
                 console.log('Address not found');
             }
 
-            const Result = await userdbCollection.findOne({ email: userEmail });
-            if (Result) {
-                console.log('User data: ', Result.name, Result.email, Result.phno);
-            } else {
-                console.log('User not found');
-            }
 
             //get shopping cart section
             const cartProductDetails = await shoppingCartDB.aggregate([
                 {
                     $match: {
-                        email: userEmail
+                        email: userEmail,
+                        userId: userId
                     }
                 },
                 {
@@ -1113,8 +1149,8 @@ const getPaymentMethod = {
                         'foreignField': '_id',
                         'as': 'pDetails'
                     }
-                }
-            ]);
+                },
+            ])
             if (cartProductDetails) {
                 console.log('cart product details found');
             }
@@ -1178,6 +1214,7 @@ const getOrderSuccess = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
                 if(result) {
                     console.log('User data: ', result.name, result.email);
                 }else{
@@ -1187,10 +1224,10 @@ const getOrderSuccess = {
             const { isUserAuthenticated } = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             res.render('orderPlacedSuccessfull', { cartCount, wishlistCount,
@@ -1215,6 +1252,7 @@ const getPaymentFailed = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
                 if(result) {
                     console.log('User data: ', result.name, result.email);
                 }else{
@@ -1222,10 +1260,10 @@ const getPaymentFailed = {
                 }
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             const { isUserAuthenticated } = req.session;
@@ -1252,23 +1290,34 @@ const getOrders = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
                 if(result){
                     console.log('User data: ', result.name, result.email, result.phno);
                 }else{
                     console.log('User not found');
                 }
 
-            const OrderData = await Orderdb.find({ email: userEmail }).sort({createdAt : -1});
+
+                
+            console.log("userDetails....", result._id);
+            let ogUserId = result._id;    //userid in usercollectiondb
+            console.log("prrrrrrrrrrrrrrrr",ogUserId);
+
+            const OrderData = await Orderdb.find({ email: userEmail, userId:ogUserId }).sort({createdAt : -1});            
+            // if( userAddressDetails.length === 0) { 
+            //     console.log("you have no orders");
+            // }else{
+
             console.log("user OrderData: ", OrderData);
             console.log('payment status in order page',OrderData.paymentstatus);
 
             const { orderCancelled, isUserAuthenticated } = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
                
             res.render('orders', { cartCount, wishlistCount, orderCancelled: orderCancelled, OrderData, userName: result.name,
@@ -1294,6 +1343,8 @@ const getretryPaymentSuccess = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
+
                 if(result) {
                     console.log('User data: ', result.name, result.email);
                 }else{
@@ -1303,10 +1354,10 @@ const getretryPaymentSuccess = {
             const { isUserAuthenticated } = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             res.render('retryPayment_success', { cartCount, wishlistCount,
@@ -1331,6 +1382,7 @@ const getOrdersummary = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
             if(result){
                 console.log('User data: ', result.name, result.email);
             }else{
@@ -1752,7 +1804,21 @@ const getWishlist = {
                 console.log('User not found');
             }
 
+            console.log("userId",result, result._id);
+            let userId = String(result._id);
+
+
+            let details = await wishlistDB.find({email: userEmail,userId: userId})
+            console.log("jhgfdtygu",userId);
+            console.log("gggggggggggg", details);
+
             const wishlistProductDetails = await wishlistDB.aggregate([
+                {
+                    $match: {
+                        email: userEmail,
+                        userId: userId
+                    }
+                },
                 {
                     '$lookup': {
                         'from': 'productdbs',
@@ -1762,12 +1828,16 @@ const getWishlist = {
                     }
                 },
             ]).sort({createdAt : -1});
+            console.log("hhhhhhhh", wishlistProductDetails);
+            
+
+
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
 
@@ -1808,6 +1878,7 @@ const getUserProfile = {
         try{
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
                 if(result) {
                     console.log('User data: ', result.name, result.email, result.phno);
                     req.session.emailee = result.email
@@ -1817,10 +1888,10 @@ const getUserProfile = {
             const { isUserAuthenticated } = req.session;  
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             console.log("user referal link", result.referralLink ); 
@@ -1861,6 +1932,7 @@ const getUserEditProfile = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
                 if(result){
                     console.log('User data: ', result.name, result.email, result.phno);
                 }else{
@@ -1870,10 +1942,10 @@ const getUserEditProfile = {
             const { invalidNumber, invalidName, notValidName, isUserAuthenticated } = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId })
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId })
             console.log("wishlistCount", wishlistCount);
 
             res.render('edit_profile', { cartCount, wishlistCount,
@@ -1901,6 +1973,7 @@ const getAddAddress = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
             if(result){
                 console.log('User data: ', result.name, result.email, result.phno);
             }else{
@@ -1908,10 +1981,10 @@ const getAddAddress = {
             }
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             const { isUserAuthenticated } = req.session;       
@@ -1945,20 +2018,29 @@ const getAddAddress = {
 const getUserAddress = {
     async userAddress(req, res) {
         try {
-            console.log("its hereee....");
+            console.log("its hereee");
             const { userEmail } = req.session;
+            const userDetails = await userdbCollection.findOne({ email: userEmail });
+            console.log("userDetails....", userDetails._id);
+            let ogUserId = userDetails._id;    //userid in usercollectiondb
+            console.log("prrrrrrrrrrrrrrrr",ogUserId);
+
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, ogUserId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, ogUserId})
             console.log("wishlistCount", wishlistCount);
 
             const { isUserAuthenticated } = req.session;
 
-            const userAddressDetails = await AddressDB.find({ email: userEmail }).sort({ createdAt: -1 });
+            
+
+            const userAddressDetails = await AddressDB.find({ email: userEmail, userId:ogUserId }).sort({ createdAt: -1 });
+            
+
             // ******render no-address page******
-            if (userAddressDetails.length === 0) {
+            if ( userAddressDetails.length === 0) {
                 return res.render('address_image', {cartCount, wishlistCount, userLoggined: isUserAuthenticated}, (err, html) => {
                     if (err) {
                         console.log(err);
@@ -2003,7 +2085,7 @@ const getUserAddress = {
                     return res.send('Render error');
                 }
                 // successMessageDisplayed = false;
-                // delete req.session.updatedAddress;
+                delete req.session.updatedAddress;
                 res.send(html);
             });
         }catch(error) {
@@ -2019,6 +2101,7 @@ const getEditAddress = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
             if(result){
                 console.log('User data: ', result.name, result.email, result.phno);
             }else{
@@ -2037,10 +2120,10 @@ const getEditAddress = {
                     invalidDistrict,invalidMobile, isUserAuthenticated} = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
                    
 
@@ -2081,6 +2164,7 @@ const getUserWallet = {
             const { userEmail, isUserAuthenticated } = req.session;
             
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
             if(result){
                 console.log('User data: ', result.name, result.email, result.phno);
             }else{
@@ -2088,14 +2172,16 @@ const getUserWallet = {
             }
             
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
             // /cart count in cart icon
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
-            const userWalletData = await walletDB.findOne({email:userEmail}).sort({createdAt:-1});
+
+
+            const userWalletData = await walletDB.findOne({email:userEmail, userId : userId}).sort({createdAt:-1});
             console.log(userWalletData);
             
             if(userWalletData && userWalletData.transactions) {
@@ -2127,6 +2213,7 @@ const getWalletPaymentSuccess = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
                 if(result) {
                     console.log('User data: ', result.name, result.email);
                 }else{
@@ -2136,10 +2223,10 @@ const getWalletPaymentSuccess = {
             const { isUserAuthenticated } = req.session;
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             res.render('walletPayment_success', { cartCount, wishlistCount,
@@ -2164,6 +2251,7 @@ const getWalletPaymentFailed = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
+            let userId = String(result._id);
                 if(result) {
                     console.log('User data: ', result.name, result.email);
                 }else{
@@ -2171,10 +2259,10 @@ const getWalletPaymentFailed = {
                 }
 
             //cart count in cart icon
-            const cartCount = await shoppingCartDB.countDocuments({email: userEmail})
+            const cartCount = await shoppingCartDB.countDocuments({email: userEmail, userId})
             console.log(cartCount);
 
-            const wishlistCount = await wishlistDB.countDocuments({email: userEmail})
+            const wishlistCount = await wishlistDB.countDocuments({email: userEmail, userId})
             console.log("wishlistCount", wishlistCount);
 
             const { isUserAuthenticated } = req.session;

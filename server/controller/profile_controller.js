@@ -143,6 +143,9 @@ const NewAddress = {
         }
   
         const { userEmail } = req.session;
+        const findUser = await userdbCollection.findOne({email : userEmail});
+        console.log("userId",findUser, findUser._id);
+        let userId = findUser._id;
         const newAddress = new AddressDB({
                             pincode: trimmedPincode,
                             state: trimmedState,     
@@ -150,7 +153,8 @@ const NewAddress = {
                             district: trimmedDistrict,
                             mobile: trimmedPMobile,          
                             addressType: req.body['address-type'],
-                            email: userEmail
+                            email: userEmail,
+                            userId : userId
                           });
         console.log('new address before save in mongodb',newAddress);
 
