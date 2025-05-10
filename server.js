@@ -38,7 +38,7 @@ app.use(morgan('dev'));
 
 connectDB();
 
-//this middleware for JSON parsing
+//this middleware for JSON parsingg
 app.use(express.json());
 
 app.set('view engine','ejs')
