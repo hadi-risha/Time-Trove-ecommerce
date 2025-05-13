@@ -487,7 +487,7 @@ const getMenswatches = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
-            let userId = result._id;
+            let userId = result?._id;
             if (result) {
                 console.log('user data:', result.name, result.email);
             } else {
@@ -606,7 +606,7 @@ const getWomenswatches = {
         try {
             const { userEmail } = req.session;
             const result = await userdbCollection.findOne({ email: userEmail });
-            let userId = result._id;
+            let userId = result?._id;
             if (result) {
                 console.log('User data: ', result.name, result.email);
             }else{
