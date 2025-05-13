@@ -88,8 +88,8 @@ const userSignup = {
 
 
         //************ referalLink *********** *//
-        // const referralLink = `https://timetrove.hadirisha.online/signup?userId=${user._id}`;
-        const referralLink = `http://localhost:3031/signup?userId=${user._id}`;
+        const referralLink = `http://13.236.183.171:3031/signup?userId=${user._id}`;
+        // const referralLink = `http://localhost:3031/signup?userId=${user._id}`;
         await userdbCollection.updateOne({ _id: user._id },{ $set: { referralLink: referralLink } });
 
 

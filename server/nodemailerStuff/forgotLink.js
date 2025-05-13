@@ -46,8 +46,8 @@ const sendLinkMail = async (req, res) => {
         table: {
             data: [
             {
-                resetLink : `http://localhost:3031/set-psw?token=${randomLink}`   
-                // resetLink : `https://timetrove.hadirisha.online/set-psw?token=${randomLink}`                           
+                // resetLink : `http://localhost:3031/set-psw?token=${randomLink}`   
+                resetLink : `http://13.236.183.171:3031/set-psw?token=${randomLink}`                           
             },
             ],
         },
