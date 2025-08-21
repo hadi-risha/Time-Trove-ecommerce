@@ -39,20 +39,22 @@ const sendLinkMail = async (req, res) => {
         },
     });
 
-    const response = {                  //it's used to create structure the content for the email structure
-        body: {                   
+    const response = {
+      //it's used to create structure the content for the email structure
+      body: {
         name: req.session.fUserEmail,
         intro: "To reset your password for Time Trove, click the link below:",
         table: {
-            data: [
+          data: [
             {
-                // resetLink : `http://localhost:3031/set-psw?token=${randomLink}`   
-                resetLink : `http://13.236.183.171:3031/set-psw?token=${randomLink}`                           
+              // resetLink : `http://localhost:3031/set-psw?token=${randomLink}`
+              resetLink : `http://13.211.234.157:3031/set-psw?token=${randomLink}`,
             },
-            ],
+          ],
         },
-        outro: "If you did not request a password reset, please ignore this email.",
-        },
+        outro:
+          "If you did not request a password reset, please ignore this email.",
+      },
     };
 
     const forgotMail = MailGenerator.generate(response);
