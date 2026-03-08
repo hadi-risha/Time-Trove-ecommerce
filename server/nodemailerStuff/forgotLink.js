@@ -47,8 +47,8 @@ const sendLinkMail = async (req, res) => {
         table: {
           data: [
             {
-              // resetLink : `http://localhost:3031/set-psw?token=${randomLink}`
-              resetLink : `http://13.211.234.157:3031/set-psw?token=${randomLink}`,
+              // resetLink : `http://13.211.234.157:3031/set-psw?token=${randomLink}`,
+              resetLink: `http://timetrove.duckdns.org:3031/set-psw?token=${randomLink}`,
             },
           ],
         },
