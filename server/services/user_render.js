@@ -429,7 +429,8 @@ const getSingleProduct = {
             
 
             const result = await userdbCollection.findOne({ email: userEmail });
-            let userId = result._id;
+            console.log("user data in single product(get)")
+            let userId = result?._id;
             const isInBag = await shoppingCartDB.findOne({ $and: [{ email: userEmail, productId: id, userId: userId }] });
             const isInWishlist = await wishlistDB.findOne({ $and: [{ email: userEmail, productId: id, userId: userId }] });
             if (isInWishlist) {
