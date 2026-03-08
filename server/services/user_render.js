@@ -421,6 +421,7 @@ const getSingleProduct = {
     async singleProd(req, res) {
         try {
             const id = req.params.id;
+            console.log("id", id);
             const allProductDetails = await productDB.findOne({ _id: id });
             console.log('single product data:', allProductDetails);
 
@@ -781,7 +782,7 @@ const getShoppingCart = {
                 res.send(html);
             });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching shopping cart:', error);
             res.status(500).send("Internal server error", + error.message);
         }
     },
@@ -903,7 +904,7 @@ const getPaymentDeliveryDetails = {
                 res.send(html);
             });
         } catch (error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching payment delivery details:', error);
             res.status(500).send("Internal server error", + error.message);
         }
     },
@@ -987,7 +988,7 @@ const checkoutAddAddress = {
                 res.send(html);
             });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching address:', error);
             res.status(500).send("Internal server error", + error.message);
         }
     },
@@ -1081,7 +1082,7 @@ const checkoutEditAddress = {
                 res.send(html);
             });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching address:', error);
             res.status(500).send("Internal server error", + error.message);
         }
     },
@@ -1201,7 +1202,7 @@ const getPaymentMethod = {
                 res.send(html);
             });
         }catch(error){
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching payment method:', error);
             res.status(500).send("Internal server error", + error.message);
         }
     },
@@ -1239,7 +1240,7 @@ const getOrderSuccess = {
                 res.send(html);
             });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching order status:', error);
             res.status(500).send('Internal Server Error');
         }
     },
@@ -1277,7 +1278,7 @@ const getPaymentFailed = {
                     res.send(html);
                 });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching pymnt status:', error);
             res.status(500).send('Internal Server Error');
         }
     },
@@ -1369,7 +1370,7 @@ const getretryPaymentSuccess = {
                 res.send(html);
             });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching retry payment details:', error);
             res.status(500).send('Internal Server Error');
         }
     },
@@ -1607,7 +1608,7 @@ const getOrdersummary = {
                 res.send(html);
             });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching order summary:', error);
             res.status(500).send('Internal Server Error');
         }
     },
@@ -2276,7 +2277,7 @@ const getWalletPaymentFailed = {
                     res.send(html);
                 });
         }catch(error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error fetching wallet payment details:', error);
             res.status(500).send('Internal Server Error');
         }
     },
